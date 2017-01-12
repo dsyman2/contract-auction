@@ -18,6 +18,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
+            /* component in angular2 */
             let AppComponent = class AppComponent {
                 constructor() {
                     this.price = 0.0;

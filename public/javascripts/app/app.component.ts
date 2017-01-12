@@ -3,6 +3,7 @@
  */
 import {Component} from 'angular2/core';
 
+/* component in angular2 */
 @Component({
     selector: 'auction-app',
     templateUrl: '/templates/product.html'
