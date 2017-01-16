@@ -1,0 +1,48 @@
+doctype html
+// views/login.ejs
+html
+  head
+    title Node Authentication
+    | &#x9;
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css')
+    // load bootstrap css
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css')
+    // load fontawesome
+    style.
+      body 		{ padding-top:80px; }
+  body
+    .container
+      .col-sm-6.col-sm-offset-3
+        h1
+          span.fa.fa-sign-in
+          |  Login
+          if message.length
+            .alert.alert-danger= message
+        form(action='/login', method='post')
+          .form-group
+            label Username
+            | &#x9;&#x9;&#x9;
+            input.form-control(type='text', name='username')
+          | &#x9;&#x9;
+          .form-group
+            label Password
+            | &#x9;&#x9;&#x9;
+            input.form-control(type='password', name='password')
+          | &#x9;&#x9;
+          .form-group
+            label Remember Me
+            | &#x9;&#x9;&#x9;
+            input.form-control(type='checkbox', name='remember' value='yes')
+          | &#x9;&#x9;
+          button.btn.btn-warning.btn-lg(type='submit') Login
+          | &#x9;
+          hr
+          | &#x9;
+          p
+            | Need an account?
+            a(href='/signup') Signup
+          | &#x9;
+          p
+            | Or go
+            a(href='/') home
+            | .

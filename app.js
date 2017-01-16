@@ -5,12 +5,19 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
+var session  = require('express-session');
 var app = express();
+
+var passport = require('passport');
+var flash    = require('connect-flash');
 
 var http = require('http');
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
-server.listen(8000);
+
+require('./config/passport')(passport); // pass passport for configuration
+
+
 io.set("origins", "*:*");
 
 var currentPrice = 99;
@@ -43,14 +50,28 @@ connection.connect(function (err) {
 });
 
 
-
 app.use('/scripts', express.static(__dirname + '/node_modules/'));
 app.use('/templates', express.static(__dirname + '/views/templates/'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.set('view engine', 'jade'); // set up ejs for templating
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+    secret: 'omgwafflesareawesome',
+    resave: true,
+    saveUninitialized: true
+} )); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+
+// routes ======================================================================
+require('./routes/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 app.use('/', routes);
 
@@ -61,5 +82,6 @@ app.use(function(req, res, next) {
     next(err);
 });
 
+server.listen(8000);
 
 module.exports = app;
