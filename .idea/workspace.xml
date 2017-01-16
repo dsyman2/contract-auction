@@ -2,208 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a4c5e7b-2923-4fb5-bbe0-70241d7f84e4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/database.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/passport.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/base64-url/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/base64-url/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/base64-url/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/base64-url/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bcrypt-nodejs/.gitattributes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bcrypt-nodejs/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bcrypt-nodejs/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bcrypt-nodejs/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bcrypt-nodejs/bCrypt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bcrypt-nodejs/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bcrypt-nodejs/test-async.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bcrypt-nodejs/test-sync.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/LICENCE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bignumber.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/doc/API.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/bignumber.js/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect-flash/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect-flash/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect-flash/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect-flash/lib/flash.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect-flash/lib/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect-flash/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc16.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc16_ccitt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc16_kermit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc16_modbus.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc16_xmodem.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc24.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc32.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc8.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc8_1wire.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/lib/define_crc.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/lib/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/crc/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/HISTORY.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie/HISTORY.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/History.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/Readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/lib/browser/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/lib/compat/buffer-concat.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/lib/compat/callsite-tostring.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/lib/compat/event-listener-count.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/lib/compat/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/session/cookie.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/session/memory.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/session/session.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/session/store.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/Changes.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/License" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/Readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/Connection.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/ConnectionConfig.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/Pool.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/PoolCluster.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/PoolConfig.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/PoolConnection.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/PoolNamespace.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/PoolSelector.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Auth.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/PacketHeader.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/PacketWriter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Parser.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/Protocol.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/ResultSet.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/SqlString.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/charsets.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/client.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/errors.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/field_flags.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/server_status.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/ssl_profiles.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/types.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ClientAuthenticationPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ComChangeUserPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ComPingPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ComQueryPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ComQuitPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ComStatisticsPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/EmptyPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/EofPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ErrorPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/Field.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/FieldPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/HandshakeInitializationPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/LocalDataFilePacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/OkPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/OldPasswordPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ResultSetHeaderPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/RowDataPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/SSLRequestPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/StatisticsPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/UseOldPasswordPacket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/ChangeUser.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Handshake.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Ping.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Query.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Quit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Sequence.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Statistics.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/duplex.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/float.patch" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_duplex.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_passthrough.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_readable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_transform.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/lib/_stream_writable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/passthrough.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/readable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/transform.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/node_modules/readable-stream/writable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mysql/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/lib/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/lib/strategy.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/lib/utils.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-strategy/.jshintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-strategy/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-strategy/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-strategy/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-strategy/lib/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-strategy/lib/strategy.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-strategy/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/authenticator.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/errors/authenticationerror.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/framework/connect.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/http/request.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/middleware/authenticate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/middleware/initialize.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/strategies/session.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/pause/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/pause/History.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/pause/Makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/pause/Readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/pause/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/pause/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/random-bytes/HISTORY.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/random-bytes/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/random-bytes/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/random-bytes/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/random-bytes/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/sqlstring/HISTORY.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/sqlstring/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/sqlstring/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/sqlstring/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/sqlstring/lib/SqlString.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/sqlstring/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/uid-safe/HISTORY.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/uid-safe/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/uid-safe/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/uid-safe/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/uid-safe/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/routes/routes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/create_database.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/app.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/app.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/index.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/login.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/login.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/profile.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/profile.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/signup.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/signup.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typings/browser/ambient/es6-shim/es6-shim.d.ts" afterPath="$PROJECT_DIR$/typings/browser/ambient/es6-shim/es6-shim.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typings/main/ambient/es6-shim/es6-shim.d.ts" afterPath="$PROJECT_DIR$/typings/main/ambient/es6-shim/es6-shim.d.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/login.jade" afterPath="$PROJECT_DIR$/views/login.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/profile.jade" afterPath="$PROJECT_DIR$/views/profile.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/signup.jade" afterPath="$PROJECT_DIR$/views/signup.jade" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -221,39 +25,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding>
-                <marker date="1484599131000" expanded="true" signature="0:1035" ph="{&quot;name&quot;: &quot;auction&quot;...}" />
-                <marker date="1484599131000" expanded="true" signature="298:894" ph="{&quot;angular2&quot;: &quot;2.0.0-beta.6&quot;...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="86" column="21" lean-forward="false" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/routes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="app.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/app.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -274,21 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create_database.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="create_database.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/create_database.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="80" lean-forward="false" selection-start-line="10" selection-start-column="80" selection-end-line="10" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -306,21 +67,61 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/app/main.ts">
+      <file leaf-file-name="passport.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/passport.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/app.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="26" column="45" lean-forward="false" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/profile.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signup.jade" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/signup.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/login.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
               <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="passport.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/passport.js">
+      <file leaf-file-name="index.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/index.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="105">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -381,6 +182,10 @@
         <option value="$PROJECT_DIR$/config/database.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/views/login.jade" />
+        <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/views/profile.jade" />
+        <option value="$PROJECT_DIR$/views/signup.jade" />
       </list>
     </option>
   </component>
@@ -397,8 +202,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="640" />
-    <option name="height" value="736" />
+    <option name="width" value="1280" />
+    <option name="height" value="738" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -426,6 +231,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="contract-auction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contract-auction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contract-auction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -533,7 +352,7 @@
       <workItem from="1484222112164" duration="1733000" />
       <workItem from="1484305133254" duration="3259000" />
       <workItem from="1484324081578" duration="8593000" />
-      <workItem from="1484491387615" duration="5985000" />
+      <workItem from="1484491387615" duration="6932000" />
     </task>
     <task id="LOCAL-00001" summary="da">
       <created>1484222776158</created>
@@ -556,11 +375,18 @@
       <option name="project" value="LOCAL" />
       <updated>1484567889766</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="big commit today, this mostly involves the introduction of users to the system. There is now a login/sign up page where only signed up users may enter. However the auction still remains a separate application as it means the code is more modular and if at a later date authentication changes all will be well.">
+      <created>1484599474409</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1484599474409</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31495000" />
+    <option name="totallyTimeSpent" value="32442000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -572,13 +398,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="640" height="736" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="738" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39579967" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24543288" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07453416" sideWeight="0.5056543" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19504644" sideWeight="0.5056543" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1863354" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49434572" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -591,7 +418,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1863354" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -599,14 +425,14 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07453416" sideWeight="0.5056543" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07453416" sideWeight="0.5056543" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49434572" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.017770598" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24555735" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1863354" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -632,7 +458,8 @@
     <MESSAGE value="da" />
     <MESSAGE value="some experimentation" />
     <MESSAGE value="project now set up with mySQL" />
-    <option name="LAST_COMMIT_MESSAGE" value="project now set up with mySQL" />
+    <MESSAGE value="big commit today, this mostly involves the introduction of users to the system. There is now a login/sign up page where only signed up users may enter. However the auction still remains a separate application as it means the code is more modular and if at a later date authentication changes all will be well." />
+    <option name="LAST_COMMIT_MESSAGE" value="big commit today, this mostly involves the introduction of users to the system. There is now a login/sign up page where only signed up users may enter. However the auction still remains a separate application as it means the code is more modular and if at a later date authentication changes all will be well." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -738,13 +565,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -863,28 +683,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/database.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="2" lean-forward="false" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="80" lean-forward="false" selection-start-line="10" selection-start-column="80" selection-end-line="10" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/passport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -916,14 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/signup.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/app.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -944,6 +738,72 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="2" lean-forward="false" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/passport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/app.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="26" column="45" lean-forward="false" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/login.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/profile.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/signup.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
           <folding />
         </state>
       </provider>
