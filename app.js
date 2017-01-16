@@ -28,6 +28,22 @@ io.on('connection', function (socket) {
     });
 });
 
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'test'
+});
+
+connection.connect(function (err) {
+    if(err) throw err
+    console.log('you are now connected to mysql...');
+});
+
+
+
 app.use('/scripts', express.static(__dirname + '/node_modules/'));
 app.use('/templates', express.static(__dirname + '/views/templates/'));
 app.use(logger('dev'));
