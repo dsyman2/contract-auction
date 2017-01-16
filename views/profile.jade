@@ -1,0 +1,30 @@
+doctype html
+// views/profile.ejs
+html
+  head
+    title Node Authentication
+    | &#x9;
+    link(rel='stylesheet', href='stylesheets/bootstrap.min.css')
+    | &#x9;
+    style.
+      body 		{ padding-top:80px; word-wrap:break-word; }
+  body
+    .container
+      .page-header.text-center
+        h1
+          span.fa.fa-anchor
+          |  Profile Page
+        | &#x9;&#x9;
+        a.btn.btn-default.btn-sm(href='/logout') Logout
+      | &#x9;
+      .row
+        // LOCAL INFORMATION
+        .col-sm-6
+          .well
+            h3
+              span.fa.fa-user
+              |  Local
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            p
+              strong id
+              | :

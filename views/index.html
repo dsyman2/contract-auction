@@ -27,8 +27,17 @@
         System.import('javascripts/app/main.js')
             .then(null, console.error.bind(console));
     </script>
+
+    <script>
+        function open(){
+            var node = document.getElementsByTagName("body");
+            node.innerHTML('<auction-app>Loading...</auction-app>');
+        }
+    </script>
 </head>
 <body>
-    <auction-app>Loading...</auction-app>
+   <auction-app>Loading...</auction-app>
+
+    <button onclick="open()"> button </button>
 </body>
 </html>
