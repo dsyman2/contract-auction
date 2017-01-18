@@ -8,6 +8,27 @@ import {Component} from 'angular2/core';
     templateUrl: '/templates/message.html'
 })
 
-export class MessageApp {
+export class MessageComponent {
+    socket = null;
+    messages = [];
+    currentMessage = '';
 
+    constructor(){
+        this.socket = io('http://localhost:8000');
+
+        this.socket.on('chat msgs', function (msgs){
+            var tempMessages = [];
+            tempMessages = this.messages;
+            this.messages = tempMessages.concat(msgs)
+        }.bind(this));
+
+        this.socket.on('chat msg', function(msg){
+            this.messages.push(msg);
+        }.bind(this));
+    }
+
+    sendMsg(){
+        this.socket.emit('chat msg', this.currentMessage)
+        this.currentMessage = '';
+    }
 }

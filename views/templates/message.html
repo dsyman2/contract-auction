@@ -1,0 +1,9 @@
+<h1>Messages</h1>
+<div *ngFor="#message of messages">
+    {{message}}
+</div>
+
+<input [(ngModel)]="currentMessage" >
+    <br>
+    <br>
+    <button class = "btn btn-default" (click)="sendMsg()">SEND</button>

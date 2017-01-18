@@ -11,9 +11,9 @@ module.exports = function(app, passport) {
         res.render('index.jade'); // load the index.html file
     });
 
-    // =====================================
-    // LOGIN ===============================
-    // =====================================
+    /**
+     * Login form
+     **/
     // show the login form
     app.get('/login', function(req, res) {
 
@@ -38,9 +38,9 @@ module.exports = function(app, passport) {
             res.redirect('/');
         });
 
-    // =====================================
-    // SIGNUP ==============================
-    // =====================================
+    /**
+     * Sign up form
+     **/
     // show the signup form
     app.get('/signup', function(req, res) {
         // render the page and pass in any flash data if it exists
@@ -54,10 +54,11 @@ module.exports = function(app, passport) {
         failureFlash : true // allow flash messages
     }));
 
-    // =====================================
-    // PROFILE SECTION =========================
-    // =====================================
-    // we will want this protected so you have to be logged in to visit
+
+    /**
+     * Safety stuff
+     */
+    // we want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/app', isLoggedIn, function(req, res) {
         res.render('app.jade', {
@@ -65,15 +66,18 @@ module.exports = function(app, passport) {
         });
     });
 
-    // =====================================
-    // LOGOUT ==============================
-    // =====================================
+    /**
+     * Logout safely
+     */
     app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
     });
 };
 
+/**
+ * Are they logged in?
+ **/
 // route middleware to make sure
 function isLoggedIn(req, res, next) {
 
