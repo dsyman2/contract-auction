@@ -1,17 +1,15 @@
 doctype html
-// views/login.ejs
+// views/login.jade
 html
   head
-    title Node Authentication
+    title Contract Auction - Login
     | &#x9;
     link(rel='stylesheet', href='stylesheets/bootstrap.min.css')
-    style.
-      body 		{ padding-top:80px; }
+    link(rel='stylesheet', href='stylesheets/style.css')
   body
     .container
       .col-sm-6.col-sm-offset-3
         h1
-          span.fa.fa-sign-in
           |  Login
           if message.length
             .alert.alert-danger= message
@@ -31,7 +29,7 @@ html
             | &#x9;&#x9;&#x9;
             input.form-control(type='checkbox', name='remember' value='yes')
           | &#x9;&#x9;
-          button.btn.btn-warning.btn-lg(type='submit') Login
+          button.btn.btn-lg(type='submit') Login
           | &#x9;
           hr
           | &#x9;

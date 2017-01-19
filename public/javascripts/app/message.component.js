@@ -11,23 +11,41 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var MessageApp;
+    var MessageComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            let MessageApp = class MessageApp {
+            let MessageComponent = class MessageComponent {
+                constructor() {
+                    this.socket = null;
+                    this.messages = [];
+                    this.currentMessage = '';
+                    this.socket = io('http://localhost:8000');
+                    this.socket.on('chat msgs', function (msgs) {
+                        var tempMessages = [];
+                        tempMessages = this.messages;
+                        this.messages = tempMessages.concat(msgs);
+                    }.bind(this));
+                    this.socket.on('chat msg', function (msg) {
+                        this.messages.push(msg);
+                    }.bind(this));
+                }
+                sendMsg() {
+                    this.socket.emit('chat msg', this.currentMessage);
+                    this.currentMessage = '';
+                }
             };
-            MessageApp = __decorate([
+            MessageComponent = __decorate([
                 core_1.Component({
                     selector: 'message-app',
                     templateUrl: '/templates/message.html'
                 }), 
                 __metadata('design:paramtypes', [])
-            ], MessageApp);
-            exports_1("MessageApp", MessageApp);
+            ], MessageComponent);
+            exports_1("MessageComponent", MessageComponent);
         }
     }
 });

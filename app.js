@@ -35,6 +35,19 @@ io.on('connection', function (socket) {
     });
 });
 
+var msgs = [];
+
+io.on('connection', function(socket){
+    socket.emit('chat msgs', msgs);
+
+    socket.on('chat msg', function(msg){
+        msgs.push(msg);
+        console.log("Message: " + msg);
+        socket.emit('chat msg', msg);
+        socket.broadcast.emit('chat msg', msg);
+    });
+});
+
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
@@ -70,8 +83,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 
-// routes ======================================================================
-require('./routes/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./routes/routes.js')(app, passport); // load the routes and pass in our app and fully configured passport
 
 app.use('/', routes);
 
