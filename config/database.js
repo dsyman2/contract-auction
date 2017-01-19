@@ -7,6 +7,7 @@ module.exports = {
         'user': 'root',
         'password': 'password'
     },
-    'database': 'test',
-    'users_table': 'users'
+    'database': 'testDB2',
+    'users_table': 'users',
+    'auction_table': 'auctions'
 };

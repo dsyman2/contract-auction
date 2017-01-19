@@ -20,13 +20,13 @@ require('./config/passport')(passport); // pass passport for configuration
 
 io.set("origins", "*:*");
 
-var currentPrice = 99;
+var currentPrice = 9999;
 
 io.on('connection', function (socket) {
     socket.emit('priceUpdate', currentPrice);
     socket.on('bid', function (data) {
         var newBidPrice = parseInt(data);
-        if(currentPrice < newBidPrice){
+        if(currentPrice > newBidPrice){
             currentPrice = newBidPrice;
             socket.emit('priceUpdate', currentPrice);
             socket.broadcast.emit('priceUpdate', currentPrice);
