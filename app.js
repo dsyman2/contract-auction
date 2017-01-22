@@ -20,6 +20,11 @@ require('./config/passport')(passport); // pass passport for configuration
 
 io.set("origins", "*:*");
 
+var socketTools = require('./appModules/socketTools.js');
+socketTools.auctionEngine(io);
+socketTools.messageEngine(io);
+
+/*
 var currentPrice = 9999;
 
 io.on('connection', function (socket) {
@@ -47,8 +52,9 @@ io.on('connection', function(socket){
         socket.broadcast.emit('chat msg', msg);
     });
 });
+*/
 
-var mysql = require('mysql');
+/*var mysql = require('mysql');
 
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -60,7 +66,7 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
     if(err) throw err
     console.log('you are now connected to mysql...');
-});
+});*/
 
 
 app.use('/scripts', express.static(__dirname + '/node_modules/'));

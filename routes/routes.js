@@ -73,6 +73,10 @@ module.exports = function(app, passport) {
         req.logout();
         res.redirect('/');
     });
+
+    app.post("/createAuction", function(req, res) {
+
+    });
 };
 
 /**

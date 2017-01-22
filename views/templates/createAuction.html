@@ -1,0 +1,76 @@
+<div class="container">
+    <h2>Create a Job</h2>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create Job Auction</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create a job auction</h4>
+                </div>
+
+                <div class="modal-body">
+                    <p>Please enter the details of the job below: </p>
+                        <form class="form-horizontal" id='createAuctionForm' role="form" [ngFormModel]="CreateGroup">
+                            <div>
+                                Name:
+                                <input type = "text" name = "name" [(ngModel)]="formInputs.auctionName" class="form-control" ngControl="auctionName">
+                            </div>
+                            <br>
+
+                            <div>
+                                Description (what the job entails):
+                                <textarea type = "text" [(ngModel)]="formInputs.auctionDesc" class="form-control" ngControl="auctionDesc">
+                                Enter a description of the job here...
+                                </textarea>
+                            </div>
+                            <br>
+
+                            <div>
+                                Length of Auction:
+                                <input type = "text" [(ngModel)]="formInputs.length" class="form-control" ngControl="length">
+                            </div>
+                            <br>
+
+                            <div>
+                                Pick a protocol:
+                                <select #selectOption (change)="formInputs.protocol=selectOption.value" class="form-control" ngControl="protocol">
+                                    <option> select</option>
+                                    <option value="One" [selected]="formInputs.protocol==='One'">One Value</option>
+                                    <option value="Two" [selected]="formInputs.protocol==='Two'">two Value</option>
+                                    <option value="Three" [selected]="formInputs.protocol==='Three'">Three Value</option>
+                                </select>
+                            </div>
+                            <br>
+
+                            <div>
+                                Your used id below:
+                                <input type = "text" [(ngModel)]="formInputs.creatorID" class="form-control" ngControl="creatorID">
+                            </div>
+                            <br>
+
+                        </form>
+                    <br>
+                    <div>
+                        <button type="button" [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)"
+                                class ="btn btn-primary">
+                            Create
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+

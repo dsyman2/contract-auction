@@ -18,8 +18,8 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            let MessageComponent = class MessageComponent {
-                constructor() {
+            MessageComponent = (function () {
+                function MessageComponent() {
                     this.socket = null;
                     this.messages = [];
                     this.currentMessage = '';
@@ -33,18 +33,19 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         this.messages.push(msg);
                     }.bind(this));
                 }
-                sendMsg() {
+                MessageComponent.prototype.sendMsg = function () {
                     this.socket.emit('chat msg', this.currentMessage);
                     this.currentMessage = '';
-                }
-            };
-            MessageComponent = __decorate([
-                core_1.Component({
-                    selector: 'message-app',
-                    templateUrl: '/templates/message.html'
-                }), 
-                __metadata('design:paramtypes', [])
-            ], MessageComponent);
+                };
+                MessageComponent = __decorate([
+                    core_1.Component({
+                        selector: 'message-app',
+                        templateUrl: '/templates/message.html'
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], MessageComponent);
+                return MessageComponent;
+            }());
             exports_1("MessageComponent", MessageComponent);
         }
     }
