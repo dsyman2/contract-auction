@@ -28,7 +28,6 @@ module.exports = function(app, passport) {
             failureFlash : true // allow flash messages
         }),
         function(req, res) {
-            console.log("hello");
 
             if (req.body.remember) {
                 req.session.cookie.maxAge = 1000 * 60 * 3;
@@ -62,7 +61,7 @@ module.exports = function(app, passport) {
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/app', isLoggedIn, function(req, res) {
         res.render('app.jade', {
-            user : req.user // get the user out of session and pass to template
+            username : req.user.username // get the user out of session and pass to template
         });
     });
 
@@ -74,8 +73,14 @@ module.exports = function(app, passport) {
         res.redirect('/');
     });
 
-    app.post("/createAuction", function(req, res) {
+    app.post('/createAuction', function(req, res) {
+        console.log("you soluja boii");
+        console.log(req.body);
+        console.log("username: " + req.user.username);
 
+        var auctionCreationData = req.body;
+        //var createAuction = require('./appModules/createAuction.js');
+        //createAuction.insertAuctionIntoTable(auctionCreationData);
     });
 };
 
