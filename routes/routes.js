@@ -2,11 +2,12 @@
  * Created by Umar on 16/01/2017.
  */
 // app/routes.js
-module.exports = function(app, passport) {
 
-    // =====================================
-    // HOME PAGE (with login links) ========
-    // =====================================
+module.exports = function(app, passport, createAuction) {
+
+    /**
+     * Homepage -> Index
+     */
     app.get('/', function(req, res) {
         res.render('index.jade'); // load the index.html file
     });
@@ -74,13 +75,15 @@ module.exports = function(app, passport) {
     });
 
     app.post('/createAuction', function(req, res) {
-        console.log("you soluja boii");
-        console.log(req.body);
-        console.log("username: " + req.user.username);
+        /*console.log("username: " + req.user.username);
+        createAuction.getIDFromName(req.user.username);
+        createAuction.addAuctionEntry(req.body);*/
+        createAuction.getIDFromName(req.user.username, function(id){
+            createAuction.addAuctionEntry(req.body, id);
+            res.end();
+        });
 
-        var auctionCreationData = req.body;
-        //var createAuction = require('./appModules/createAuction.js');
-        //createAuction.insertAuctionIntoTable(auctionCreationData);
+        res.end("pablo");
     });
 };
 

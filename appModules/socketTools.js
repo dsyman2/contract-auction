@@ -17,7 +17,6 @@ module.exports = {
                     socket.emit('priceUpdate', currentPrice);
                     socket.broadcast.emit('priceUpdate', currentPrice);
                 }
-
             });
         })
     },

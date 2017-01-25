@@ -24,6 +24,8 @@ var socketTools = require('./appModules/socketTools.js');
 socketTools.auctionEngine(io);
 socketTools.messageEngine(io);
 
+var createAuction = require('./appModules/createAuction.js');
+
 /*
 var currentPrice = 9999;
 
@@ -88,8 +90,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-
-require('./routes/routes.js')(app, passport); // load the routes and pass in our app and fully configured passport
+require('./routes/routes.js')(app, passport, createAuction); // load the routes and pass in our app and fully configured passport
 
 app.use('/', routes);
 
@@ -99,6 +100,7 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
+
 
 server.listen(8000);
 

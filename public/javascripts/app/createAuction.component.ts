@@ -1,3 +1,4 @@
+///<reference path="../../../node_modules/rxjs/Observable.d.ts"/>
 /**
  * Created by Umar on 20/01/2017.
  */
@@ -11,13 +12,14 @@ import {Http, Headers, RequestOptions, RequestMethod, Request, Response} from 'a
 //import {Request} from "angular2/src/http/static_request";
 //import {Response} from "angular2/src/http/static_response";
 import 'rxjs/Rx';
+import 'rxjs/add/operator/first';
 
 class FormInputs{
     auctionName: string;
     auctionDesc: string;
     length: number;
     protocol: any;
-    creatorID: string;
+   // creatorID: string;
 }
 
 @Component({
@@ -40,19 +42,19 @@ export class CreateAuctionComponent {
             'auctionName'   : new Control(this.formInputs.auctionName, Validators.required),
             'auctionDesc'   : new Control(this.formInputs.auctionDesc, Validators.required),
             'length'        : new Control(this.formInputs.length, Validators.required),
-            'protocol'      : new Control(this.formInputs.protocol, Validators.required),
-            'creatorID'     : new Control(this.formInputs.creatorID, Validators.required)
+            'protocol'      : new Control(this.formInputs.protocol, Validators.required)
+            //'creatorID'     : new Control(this.formInputs.creatorID, Validators.required)
         })
     }
 
     addNewGroup(formInputs : FormInputs) {
         this.formInputs = new FormInputs();
         var data = {
-            auctionName:    formInputs.auctionName,
-            auctionDesc:    formInputs.auctionDesc,
+            name:    formInputs.auctionName,
+            description:    formInputs.auctionDesc,
             length:         formInputs.length,
-            protocol:       formInputs.protocol,
-            creatorID:      formInputs.creatorID
+            protocol:       formInputs.protocol
+           // creatorID:      formInputs.creatorID
         };
 
         this.addAuctionPostRequest("/createAuction", data);
@@ -81,8 +83,9 @@ export class CreateAuctionComponent {
                     return [{status: res.status, json: res.json() }]
                 }
             });*/
+       var body = JSON.stringify(data);
 
-        this.http.post(url, JSON.stringify(data), {headers: this.headers})
-            .map(res => console.log(res.json())).subscribe();
+        this.http.post(url, body, {headers: this.headers})
+           .map(res => (res.json())).subscribe();
     }
 }
