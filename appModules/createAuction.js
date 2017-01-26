@@ -15,25 +15,43 @@ module.exports = {
             if (err)
                 throw err;
             console.log("YOUL: " + rows[0].id);
-            idSQL = rows[0].id;
-            console.log("HI -> " + idSQL);
             callback(rows[0].id);
         });
         //console.log(this.id);
         return idSQL;
     },
-    addAuctionEntry : function (insertionData, username) {
-        console.log("ShIR" + username);
+
+    addAuctionEntry : function (insertionData, id, callback) {
+        console.log("ShIR" + id);
        /* this.getIDFromName(username, function(returnVal){
             console.log(returnVal);
         })//;*/
         //console.log("IDSQL ----> " + idSQL);
-       /* var query = ('INSERT INTO ' + dbconfig.database + '.' + dbconfig.auction_table + ' SET ?');
+        insertionData.creatorID = id;
+        var query = ('INSERT INTO ' + dbconfig.database + '.' + dbconfig.auction_table + ' SET ?');
         connection.query(query, insertionData, function(err, res){
            if(err)
                throw err;
            console.log('Last insert ID: ' + res.insertId);
-        });*/
+           callback(insertionData, res.insertId);
+        });
+    },
+
+    auction : function(aucInfo, id, io) {
+         console.log("the id of this created auction is: " + id);
+        var currentPrice = 9999;
+
+        io.on('connection-' + id, function (socket) {
+            socket.emit('priceUpdate-' + id, currentPrice);
+            socket.on('bid-' + id, function (data) {
+                var newBidPrice = parseInt(data);
+                if (currentPrice > newBidPrice) {
+                    currentPrice = newBidPrice;
+                    socket.emit('priceUpdate-' + id, currentPrice);
+                    socket.broadcast.emit('priceUpdate-' + id, currentPrice);
+                }
+            });
+        });
     }
 
 
