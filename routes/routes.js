@@ -2,11 +2,12 @@
  * Created by Umar on 16/01/2017.
  */
 // app/routes.js
-module.exports = function(app, passport) {
 
-    // =====================================
-    // HOME PAGE (with login links) ========
-    // =====================================
+module.exports = function(app, passport, createAuction) {
+
+    /**
+     * Homepage -> Index
+     */
     app.get('/', function(req, res) {
         res.render('index.jade'); // load the index.html file
     });
@@ -28,7 +29,6 @@ module.exports = function(app, passport) {
             failureFlash : true // allow flash messages
         }),
         function(req, res) {
-            console.log("hello");
 
             if (req.body.remember) {
                 req.session.cookie.maxAge = 1000 * 60 * 3;
@@ -62,7 +62,7 @@ module.exports = function(app, passport) {
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/app', isLoggedIn, function(req, res) {
         res.render('app.jade', {
-            user : req.user // get the user out of session and pass to template
+            username : req.user.username // get the user out of session and pass to template
         });
     });
 
@@ -72,6 +72,18 @@ module.exports = function(app, passport) {
     app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
+    });
+
+    app.post('/createAuction', function(req, res) {
+        /*console.log("username: " + req.user.username);
+        createAuction.getIDFromName(req.user.username);
+        createAuction.addAuctionEntry(req.body);*/
+        createAuction.getIDFromName(req.user.username, function(id){
+            createAuction.addAuctionEntry(req.body, id);
+            res.end();
+        });
+
+        res.end("pablo");
     });
 };
 

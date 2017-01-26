@@ -1,22 +1,12 @@
-System.register(['angular2/platform/browser', './app.component.js', "./message.component.js"], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    var browser_1, app_component_js_1, message_component_js_1;
-    return {
-        setters:[
-            function (browser_1_1) {
-                browser_1 = browser_1_1;
-            },
-            function (app_component_js_1_1) {
-                app_component_js_1 = app_component_js_1_1;
-            },
-            function (message_component_js_1_1) {
-                message_component_js_1 = message_component_js_1_1;
-            }],
-        execute: function() {
-            browser_1.bootstrap(app_component_js_1.AppComponent);
-            browser_1.bootstrap(message_component_js_1.MessageComponent);
-        }
-    }
-});
-//# sourceMappingURL=main.js.map
+"use strict";
+/**
+ * Created by Umar on 11/01/2017.
+ */
+var browser_1 = require('angular2/platform/browser');
+var app_component_js_1 = require('./app.component.js');
+var message_component_js_1 = require("./message.component.js");
+var http_1 = require('angular2/http');
+var createAuction_component_js_1 = require("./createAuction.component.js");
+browser_1.bootstrap(app_component_js_1.AppComponent);
+browser_1.bootstrap(message_component_js_1.MessageComponent);
+browser_1.bootstrap(createAuction_component_js_1.CreateAuctionComponent, [http_1.HTTP_PROVIDERS]);
