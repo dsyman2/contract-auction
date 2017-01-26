@@ -1,7 +1,7 @@
 /**
  * Created by Umar on 19/01/2017.
  */
-var Auction = function(id, name, desc, length, protocol) {
+function Auction(id, name, desc, length, protocol) {
     var currentPrice = 9999;
 
     io.on('connection-' + id, function (socket) {
@@ -18,7 +18,6 @@ var Auction = function(id, name, desc, length, protocol) {
 }
 
 module.exports = {
-
 
     auctionEngine : function (io) {
 

@@ -3,7 +3,7 @@
  */
 // app/routes.js
 
-module.exports = function(app, passport, createAuction) {
+module.exports = function(app, passport, createAuction, io) {
 
     /**
      * Homepage -> Index
@@ -74,16 +74,22 @@ module.exports = function(app, passport, createAuction) {
         res.redirect('/');
     });
 
+    /**
+     * Create an auction
+     */
     app.post('/createAuction', function(req, res) {
+        var auctions = [];
         /*console.log("username: " + req.user.username);
         createAuction.getIDFromName(req.user.username);
         createAuction.addAuctionEntry(req.body);*/
         createAuction.getIDFromName(req.user.username, function(id){
-            createAuction.addAuctionEntry(req.body, id);
+            createAuction.addAuctionEntry(req.body, id, function(aucInfo, aucId){
+                var auc1 = createAuction.auction(aucInfo, aucId, io);
+            });
             res.end();
         });
 
-        res.end("pablo");
+        res.end();
     });
 };
 
