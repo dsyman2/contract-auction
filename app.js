@@ -90,7 +90,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-require('./routes/routes.js')(app, passport, createAuction); // load the routes and pass in our app and fully configured passport
+require('./routes/routes.js')(app, passport, createAuction, io); // load the routes and pass in our app and fully configured passport
 
 app.use('/', routes);
 
