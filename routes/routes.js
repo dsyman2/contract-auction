@@ -3,18 +3,127 @@
  */
 // app/routes.js
 
-module.exports = function(app, passport, createAuction, io) {
+var auctionListeners = [];
+var currentAuctions = [];
 
-    /**
+module.exports = {
+    updateAuctionVar : function(currentAucs, aucListeners){
+      currentAuctions = currentAucs;
+      console.log("updating auction variables");
+      auctionListeners = aucListeners;
+  },
+
+  init : function(app, passport, createAuction, io){
+      /**
+       * Homepage -> Index
+       */
+      app.get('/', function(req, res) {
+          res.render('index.jade'); // load the index.html file
+      });
+
+      /**
+       * Login form
+       **/
+      // show the login form
+      app.get('/login', function(req, res) {
+
+          // render the page and pass in any flash data if it exists
+          res.render('login.jade', { message: req.flash('loginMessage') });
+      });
+
+      // process the login form
+      app.post('/login', passport.authenticate('local-login', {
+              successRedirect : '/app', // redirect to the secure profile section
+              failureRedirect : '/login', // redirect back to the signup page if there is an error
+              failureFlash : true // allow flash messages
+          }),
+          function(req, res) {
+
+              if (req.body.remember) {
+                  req.session.cookie.maxAge = 1000 * 60 * 3;
+              } else {
+                  req.session.cookie.expires = false;
+              }
+              res.redirect('/');
+          });
+
+      /**
+       * Sign up form
+       **/
+      // show the signup form
+      app.get('/signup', function(req, res) {
+          // render the page and pass in any flash data if it exists
+          res.render('signup.jade', { message: req.flash('signupMessage') });
+      });
+
+      // process the signup form
+      app.post('/signup', passport.authenticate('local-signup', {
+          successRedirect : '/app', // redirect to the secure profile section
+          failureRedirect : '/signup', // redirect back to the signup page if there is an error
+          failureFlash : true // allow flash messages
+      }));
+
+
+      /**
+       * Safety stuff
+       */
+      // we want this protected so you have to be logged in to visit
+      // we will use route middleware to verify this (the isLoggedIn function)
+      app.get('/app', isLoggedIn, function(req, res) {
+          res.render('app.jade', {
+              username          : req.user.username, // get the user out of session and pass to template
+              currentAuctions   : currentAuctions
+          });
+      });
+
+      /**
+       * Logout safely
+       */
+      app.get('/logout', function(req, res) {
+          req.logout();
+          res.redirect('/');
+      });
+
+      /**
+       * Create an auction
+       */
+      app.post('/createAuction', function(req, res) {
+          /*console.log("username: " + req.user.username);
+           createAuction.getIDFromName(req.user.username);
+           createAuction.addAuctionEntry(req.body);*/
+          createAuction.getIDFromName(req.user.username, function(id){
+              createAuction.addAuctionEntry(req.body, id, function(aucInfo, aucId){
+                  var auc1 = createAuction.auction(aucInfo, aucId, io);
+                  auctionListeners.push[auc1];
+                  aucInfo.id = aucId;
+                  currentAuctions.push(aucInfo);
+              });
+              res.end();
+          });
+
+          res.end();
+      });
+
+  }
+
+
+};
+
+/*module.exports = function(app, passport, createAuction, io) {
+    //auctionListeners = aucListners;
+    //console.log("hi");
+    //currentAuctions = currentAucs;
+
+    /!**
      * Homepage -> Index
-     */
+     *!/
     app.get('/', function(req, res) {
         res.render('index.jade'); // load the index.html file
     });
 
-    /**
+    /!**
      * Login form
-     **/
+     **!/
     // show the login form
     app.get('/login', function(req, res) {
 
@@ -38,9 +147,9 @@ module.exports = function(app, passport, createAuction, io) {
             res.redirect('/');
         });
 
-    /**
+    /!**
      * Sign up form
-     **/
+     **!/
     // show the signup form
     app.get('/signup', function(req, res) {
         // render the page and pass in any flash data if it exists
@@ -55,9 +164,9 @@ module.exports = function(app, passport, createAuction, io) {
     }));
 
 
-    /**
+    /!**
      * Safety stuff
-     */
+     *!/
     // we want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/app', isLoggedIn, function(req, res) {
@@ -66,32 +175,34 @@ module.exports = function(app, passport, createAuction, io) {
         });
     });
 
-    /**
+    /!**
      * Logout safely
-     */
+     *!/
     app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
     });
 
-    /**
+    /!**
      * Create an auction
-     */
+     *!/
     app.post('/createAuction', function(req, res) {
-        var auctions = [];
-        /*console.log("username: " + req.user.username);
+        /!*console.log("username: " + req.user.username);
         createAuction.getIDFromName(req.user.username);
-        createAuction.addAuctionEntry(req.body);*/
+        createAuction.addAuctionEntry(req.body);*!/
         createAuction.getIDFromName(req.user.username, function(id){
             createAuction.addAuctionEntry(req.body, id, function(aucInfo, aucId){
                 var auc1 = createAuction.auction(aucInfo, aucId, io);
+                auctionListeners.push[auc1];
+                aucInfo.id = aucId;
+                currentAuctions.push(aucInfo);
             });
             res.end();
         });
 
         res.end();
     });
-};
+};*/
 
 /**
  * Are they logged in?

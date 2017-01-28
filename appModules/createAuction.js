@@ -17,16 +17,12 @@ module.exports = {
             console.log("YOUL: " + rows[0].id);
             callback(rows[0].id);
         });
-        //console.log(this.id);
         return idSQL;
     },
 
     addAuctionEntry : function (insertionData, id, callback) {
-        console.log("ShIR" + id);
-       /* this.getIDFromName(username, function(returnVal){
-            console.log(returnVal);
-        })//;*/
-        //console.log("IDSQL ----> " + idSQL);
+        console.log("creatorID: " + id);
+
         insertionData.creatorID = id;
         var query = ('INSERT INTO ' + dbconfig.database + '.' + dbconfig.auction_table + ' SET ?');
         connection.query(query, insertionData, function(err, res){
@@ -38,10 +34,10 @@ module.exports = {
     },
 
     auction : function(aucInfo, id, io) {
-         console.log("the id of this created auction is: " + id);
+        console.log("the id of this created auction is: " + id);
         var currentPrice = 9999;
 
-        io.on('connection-' + id, function (socket) {
+        io.on('connection', function (socket) {
             socket.emit('priceUpdate-' + id, currentPrice);
             socket.on('bid-' + id, function (data) {
                 var newBidPrice = parseInt(data);
@@ -55,4 +51,4 @@ module.exports = {
     }
 
 
-}
+};
