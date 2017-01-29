@@ -14,13 +14,15 @@ var flash    = require('connect-flash');
 var http = require('http');
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
+
 var createAuction = require('./appModules/createAuction.js');
 var auctionListeners = [];
+var currentAuctions = [];
+
 require('./config/passport')(passport); // pass passport for configuration
 
 
 io.set("origins", "*:*");
-var currentAuctions = [];
 
 var socketTools = require('./appModules/socketTools.js');
 socketTools.auctionEngine(io);
@@ -99,12 +101,13 @@ onServerStartup.getAllCurrentAuctionsFromDB(function(res){
     setListenersForAuctions(function(){
         //require('./routes/routes.js')(app, passport, createAuction, io, currentAuctions, auctionListeners); // load the routes and pass in our app and fully configured passport
         routes.updateAuctionVar(currentAuctions, auctionListeners);
+        createAuction.pushAuctionsToClients_onConnection(io, currentAuctions);
     });
 });
 
 var setListenersForAuctions = function(callback){
     for(var i = 0; i < currentAuctions.length; i++){
-        var auc = createAuction.auction(currentAuctions[i], currentAuctions[i].id, io);
+        var auc = createAuction.initialiseAuctionEngine(currentAuctions[i], currentAuctions[i].id, io);
         auctionListeners.push(auc);
     }
     callback();

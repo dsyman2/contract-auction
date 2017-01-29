@@ -9,7 +9,7 @@ var currentAuctions = [];
 module.exports = {
     updateAuctionVar : function(currentAucs, aucListeners){
       currentAuctions = currentAucs;
-      console.log("updating auction variables");
+      console.log("updating initialiseAuctionEngine variables");
       auctionListeners = aucListeners;
   },
 
@@ -85,7 +85,7 @@ module.exports = {
       });
 
       /**
-       * Create an auction
+       * Create an initialiseAuctionEngine
        */
       app.post('/createAuction', function(req, res) {
           /*console.log("username: " + req.user.username);
@@ -93,7 +93,7 @@ module.exports = {
            createAuction.addAuctionEntry(req.body);*/
           createAuction.getIDFromName(req.user.username, function(id){
               createAuction.addAuctionEntry(req.body, id, function(aucInfo, aucId){
-                  var auc1 = createAuction.auction(aucInfo, aucId, io);
+                  var auc1 = createAuction.initialiseAuctionEngine(aucInfo, aucId, io);
                   auctionListeners.push[auc1];
                   aucInfo.id = aucId;
                   currentAuctions.push(aucInfo);
@@ -103,6 +103,8 @@ module.exports = {
 
           res.end();
       });
+
+
 
   }
 
@@ -184,7 +186,7 @@ module.exports = {
     });
 
     /!**
-     * Create an auction
+     * Create an initialiseAuctionEngine
      *!/
     app.post('/createAuction', function(req, res) {
         /!*console.log("username: " + req.user.username);
@@ -192,7 +194,7 @@ module.exports = {
         createAuction.addAuctionEntry(req.body);*!/
         createAuction.getIDFromName(req.user.username, function(id){
             createAuction.addAuctionEntry(req.body, id, function(aucInfo, aucId){
-                var auc1 = createAuction.auction(aucInfo, aucId, io);
+                var auc1 = createAuction.initialiseAuctionEngine(aucInfo, aucId, io);
                 auctionListeners.push[auc1];
                 aucInfo.id = aucId;
                 currentAuctions.push(aucInfo);

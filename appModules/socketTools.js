@@ -9,6 +9,7 @@ module.exports = {
 
         io.on('connection', function (socket) {
             socket.emit('priceUpdate', currentPrice);
+
             socket.on('bid', function (data) {
                 var newBidPrice = parseInt(data);
                 if (currentPrice > newBidPrice) {
@@ -17,6 +18,7 @@ module.exports = {
                     socket.broadcast.emit('priceUpdate', currentPrice);
                 }
             });
+
         });
     },
 

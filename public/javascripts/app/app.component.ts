@@ -16,9 +16,17 @@ export class AppComponent {
 
     constructor(){
         this.socket = io('http://localhost:8000');
+
+        this.socket.on('auctionList', function(data){
+            console.log("hello");
+            //this.price = data;
+        }.bind(this));
+
         this.socket.on('priceUpdate', function(data){
+            console.log("hi");
             this.price = data;
         }.bind(this));
+
     }
 
     bid(){

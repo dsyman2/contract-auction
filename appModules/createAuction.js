@@ -33,8 +33,8 @@ module.exports = {
         });
     },
 
-    auction : function(aucInfo, id, io) {
-        console.log("the id of this created auction is: " + id);
+    initialiseAuctionEngine : function(aucInfo, id, io) {
+        console.log("the id of this created initialiseAuctionEngine is: " + id);
         var currentPrice = 9999;
 
         io.on('connection', function (socket) {
@@ -48,7 +48,24 @@ module.exports = {
                 }
             });
         });
+    },
+
+    pushAuctionsToClients_onConnection : function(io, auctions) {
+
+        io.on('connection', function (socket){
+            socket.emit('auctionList', auctions);
+            //socket.broadcast.emit('auctionList', auctions);
+        });
+
+    },
+
+    pushAuctionsToClients_onChange : function(io) {
+
+        io.on('connection', function (socket){
+            //socket.emit('auctionList', auctions);
+            socket.on('auctionList-Change', function(auctionsList){
+                socket.broadcast.emit('auctionList', auctionsList);
+            });
+        });
     }
-
-
 };
