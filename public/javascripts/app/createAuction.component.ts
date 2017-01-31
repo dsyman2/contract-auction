@@ -61,7 +61,7 @@ export class CreateAuctionComponent {
     }
 
     addAuctionPostRequest(url, data) {
-        console.log(data.auctionName);
+        console.log("auction name: " + data.auctionName);
        /* let headers = new Headers({
             'Content-Type': 'application/json'
         });*/

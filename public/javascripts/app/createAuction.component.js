@@ -50,7 +50,7 @@ var CreateAuctionComponent = (function () {
         this.addAuctionPostRequest("/createAuction", data);
     };
     CreateAuctionComponent.prototype.addAuctionPostRequest = function (url, data) {
-        console.log(data.auctionName);
+        console.log("auction name: " + data.auctionName);
         /* let headers = new Headers({
              'Content-Type': 'application/json'
          });*/

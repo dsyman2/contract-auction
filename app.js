@@ -25,7 +25,7 @@ require('./config/passport')(passport); // pass passport for configuration
 io.set("origins", "*:*");
 
 var socketTools = require('./appModules/socketTools.js');
-socketTools.auctionEngine(io);
+//socketTools.auctionEngine(io);
 socketTools.messageEngine(io);
 
 /*

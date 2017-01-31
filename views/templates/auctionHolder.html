@@ -1,0 +1,7 @@
+<div *ngFor="#auctionObj of auctions">
+    {{auctionObj.id}}
+    <auction-app
+            auction = {auctionObj} id = {{auctionObj.id}} name = {{auctionObj.name}}
+            desc = {{auctionObj.description}}  >
+    </auction-app>
+</div>

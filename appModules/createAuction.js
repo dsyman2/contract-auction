@@ -57,15 +57,6 @@ module.exports = {
             //socket.broadcast.emit('auctionList', auctions);
         });
 
-    },
 
-    pushAuctionsToClients_onChange : function(io) {
-
-        io.on('connection', function (socket){
-            //socket.emit('auctionList', auctions);
-            socket.on('auctionList-Change', function(auctionsList){
-                socket.broadcast.emit('auctionList', auctionsList);
-            });
-        });
     }
 };
