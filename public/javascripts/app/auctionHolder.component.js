@@ -6,30 +6,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 /**
- * Created by Umar on 11/01/2017.
+ * Created by Umar on 29/01/2017.
  */
 var core_1 = require('angular2/core');
+var auctionApp_component_js_1 = require('./auctionApp.component.js');
 /* component in angular2 */
-var AppComponent = (function () {
-    function AppComponent() {
-        this.price = 0.0;
+var AuctionHolderComponent = (function () {
+    function AuctionHolderComponent() {
+        this.auctions = [];
         this.socket = null;
-        this.bidValue = '';
         this.socket = io('http://localhost:8000');
-        this.socket.on('priceUpdate', function (data) {
-            this.price = data;
+        this.socket.on('auctionList', function (data) {
+            this.auctions = data;
+            console.log(this.auctions);
         }.bind(this));
     }
-    AppComponent.prototype.bid = function () {
-        this.socket.emit('bid', this.bidValue);
-        this.bidValue = '';
-    };
-    AppComponent = __decorate([
+    AuctionHolderComponent = __decorate([
         core_1.Component({
-            selector: 'auction-app',
-            templateUrl: '/templates/product.html'
+            selector: 'auction-holder',
+            templateUrl: '/templates/auctionHolder.html',
+            directives: [auctionApp_component_js_1.AuctionAppComponent]
         })
-    ], AppComponent);
-    return AppComponent;
+    ], AuctionHolderComponent);
+    return AuctionHolderComponent;
 }());
-exports.AppComponent = AppComponent;
+exports.AuctionHolderComponent = AuctionHolderComponent;

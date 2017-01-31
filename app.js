@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var routes = require('./routes/index');
+//var routes = require('./routes/index');
 var session  = require('express-session');
 var app = express();
 
@@ -15,16 +15,18 @@ var http = require('http');
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
+var createAuction = require('./appModules/createAuction.js');
+var auctionListeners = [];
+var currentAuctions = [];
+
 require('./config/passport')(passport); // pass passport for configuration
 
 
 io.set("origins", "*:*");
 
 var socketTools = require('./appModules/socketTools.js');
-socketTools.auctionEngine(io);
+//socketTools.auctionEngine(io);
 socketTools.messageEngine(io);
-
-var createAuction = require('./appModules/createAuction.js');
 
 /*
 var currentPrice = 9999;
@@ -90,9 +92,31 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-require('./routes/routes.js')(app, passport, createAuction, io); // load the routes and pass in our app and fully configured passport
+var routes = require('./routes/routes.js')
 
-app.use('/', routes);
+var onServerStartup = require('./appModules/onServerStartup.js');
+
+onServerStartup.getAllCurrentAuctionsFromDB(function(res){
+    currentAuctions = res;
+    setListenersForAuctions(function(){
+        //require('./routes/routes.js')(app, passport, createAuction, io, currentAuctions, auctionListeners); // load the routes and pass in our app and fully configured passport
+        routes.updateAuctionVar(currentAuctions, auctionListeners);
+        createAuction.pushAuctionsToClients_onConnection(io, currentAuctions);
+    });
+});
+
+var setListenersForAuctions = function(callback){
+    for(var i = 0; i < currentAuctions.length; i++){
+        var auc = createAuction.initialiseAuctionEngine(currentAuctions[i], currentAuctions[i].id, io);
+        auctionListeners.push(auc);
+    }
+    callback();
+};
+
+routes.init(app, passport, createAuction, io);
+
+
+//app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

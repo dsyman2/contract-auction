@@ -1,8 +1,10 @@
-<h2>Some Auction Name</h2>
-<h3>Ya this is really cool auction brah</h3>
+<div>
+    <h2>{{name}}</h2>
+    <h3>{{desc}}</h3>
 
-<h1>£ {{price}}</h1>
-    <input  [(ngModel)]="bidValue" >
-    <br>
-    <br>
-    <button class="btn btn-default" (click)="bid()">Place Bid</button>
+    <h1>£ {{price}}</h1>
+        <input  [(ngModel)]="bidValue" >
+        <br>
+        <br>
+        <button class="btn btn-default" (click)="bid()">Place Bid</button>
+</div>
