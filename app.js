@@ -125,6 +125,13 @@ app.use(function(req, res, next) {
     next(err);
 });
 
+var CountdownTimer = require('./appModules/countdownTimer.js');
+
+var countdownTimer = new CountdownTimer(12);
+countdownTimer.on('tick', function(time) {
+    console.log('stopwatch tick: ' + time);
+});
+countdownTimer.start();
 
 server.listen(8000);
 
