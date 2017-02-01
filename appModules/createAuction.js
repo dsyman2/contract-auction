@@ -33,12 +33,21 @@ module.exports = {
         });
     },
 
-    initialiseAuctionEngine : function(aucInfo, id, io) {
+    initialiseAuctionEngine : function(aucInfo, id, io, CountdownTimer) {
         console.log("the id of this created initialiseAuctionEngine is: " + id);
+
+        var countdownTimer = new CountdownTimer(365);
+        countdownTimer.on('tick', function(time) {
+           // console.log('stopwatch tick: ' + time);
+        });
+        countdownTimer.start();
+
+
         var currentPrice = 9999;
 
         io.on('connection', function (socket) {
             socket.emit('priceUpdate-' + id, currentPrice);
+            socket.emit('timeRemaining-' + id, countdownTimer.time);
             socket.on('bid-' + id, function (data) {
                 var newBidPrice = parseInt(data);
                 if (currentPrice > newBidPrice) {

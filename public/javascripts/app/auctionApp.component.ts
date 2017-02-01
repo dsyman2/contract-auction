@@ -19,12 +19,18 @@ export class AuctionAppComponent {
     @Input()name : string;
     @Input()desc : string;
     @Input()creator : string;
+    time : number = 0;
 
     ngOnInit(){
         this.socket = io('http://localhost:8000');
 
         this.socket.on('priceUpdate-' +this.id, function(data){
             this.price = data;
+        }.bind(this));
+
+        this.socket.on('timeRemaining-' + this.id, function(data){
+            this.time = data;
+            console.log("Time is: " + data);
         }.bind(this));
 
        /* this.id = this.auction.id;

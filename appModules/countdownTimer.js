@@ -13,6 +13,7 @@ function CountdownTimer(length) {
     this.second = 1000;
     this.time = this.day * length;
     this.interval = undefined;
+    this.isActive = true;
 
     EventEmitter.call(this);
 
@@ -24,10 +25,12 @@ util.inherits(CountdownTimer, EventEmitter);
 
 CountdownTimer.prototype.onTick = function() {
     var remainder = this.time;
+    //this.timeLeft = remainder;
 
     if (this.time === 0) {
         this.stop();
-        return;
+        this.isActive = false;
+        return ;
     }
 
     var numDays = String(parseInt(remainder / this.day, 10));

@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 //var routes = require('./routes/index');
 var session  = require('express-session');
 var app = express();
+var routes = require('./routes/routes.js');
+
 
 var passport = require('passport');
 var flash    = require('connect-flash');
@@ -27,6 +29,8 @@ io.set("origins", "*:*");
 var socketTools = require('./appModules/socketTools.js');
 //socketTools.auctionEngine(io);
 socketTools.messageEngine(io);
+
+var CountdownTimer = require('./appModules/countdownTimer.js');
 
 /*
 var currentPrice = 9999;
@@ -92,8 +96,10 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-var routes = require('./routes/routes.js')
 
+/**
+ * Load up all current auctions into the server from the DB
+ */
 var onServerStartup = require('./appModules/onServerStartup.js');
 
 onServerStartup.getAllCurrentAuctionsFromDB(function(res){
@@ -107,31 +113,35 @@ onServerStartup.getAllCurrentAuctionsFromDB(function(res){
 
 var setListenersForAuctions = function(callback){
     for(var i = 0; i < currentAuctions.length; i++){
-        var auc = createAuction.initialiseAuctionEngine(currentAuctions[i], currentAuctions[i].id, io);
+        var auc = createAuction.initialiseAuctionEngine(currentAuctions[i], currentAuctions[i].id, io, CountdownTimer);
         auctionListeners.push(auc);
     }
     callback();
 };
 
-routes.init(app, passport, createAuction, io);
+/**
+ * Activate all routes with params required
+ */
+routes.init(app, passport, createAuction, io, CountdownTimer);
 
 
 //app.use('/', routes);
 
-// catch 404 and forward to error handler
+/**
+ * Catch the 404's
+ */
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-var CountdownTimer = require('./appModules/countdownTimer.js');
 
-var countdownTimer = new CountdownTimer(12);
+/*var countdownTimer = new CountdownTimer(12);
 countdownTimer.on('tick', function(time) {
     console.log('stopwatch tick: ' + time);
 });
-countdownTimer.start();
+countdownTimer.start();*/
 
 server.listen(8000);
 
