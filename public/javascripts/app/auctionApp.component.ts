@@ -3,11 +3,12 @@
  */
 import {Component} from 'angular2/core';
 import {Input} from "angular2/src/core/metadata";
+import {ClockAppComponent} from './clockApp.component.js';
 
-/* component in angular2 */
 @Component({
     selector: 'auction-app',
-    templateUrl: '/templates/product.html'
+    templateUrl: '/templates/product.html',
+    directives: [ClockAppComponent]
 })
 
 export class AuctionAppComponent {
@@ -20,18 +21,19 @@ export class AuctionAppComponent {
     @Input()desc : string;
     @Input()creator : string;
     time : number = 0;
+    active : boolean = true;
 
-    ngOnInit(){
+    ngOnInit() {
         this.socket = io('http://localhost:8000');
 
         this.socket.on('priceUpdate-' +this.id, function(data){
             this.price = data;
         }.bind(this));
 
-        this.socket.on('timeRemaining-' + this.id, function(data){
+       /* this.socket.on('timeRemaining-' + this.id, function(data){
             this.time = data;
             console.log("Time is: " + data);
-        }.bind(this));
+        }.bind(this));*/
 
        /* this.id = this.auction.id;
         this.name = this.auction.name;
@@ -41,8 +43,13 @@ export class AuctionAppComponent {
 
 
 
-    bid(){
+    bid() {
         this.socket.emit('bid-'+this.id, this.bidValue);
         this.bidValue = '';
+    }
+
+    onTimeUp(data:string) {
+        //alert(data);
+        this.active = false;
     }
 }

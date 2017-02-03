@@ -8,8 +8,8 @@ function CountdownTimer(length) {
     }
 
     this.day = 86400000;
-    this.hour = 3600000;
-    this.minute = 60000;
+    /*this.hour = 3600000;
+    this.minute = 60000;*/
     this.second = 1000;
     this.time = this.day * length;
     this.interval = undefined;
@@ -17,14 +17,14 @@ function CountdownTimer(length) {
 
     EventEmitter.call(this);
 
-    _.bindAll(this, 'start', 'onTick');
+    _.bindAll(this, 'start', 'stop', 'onTick');
 }
 
 util.inherits(CountdownTimer, EventEmitter);
 
 
 CountdownTimer.prototype.onTick = function() {
-    var remainder = this.time;
+    //var remainder = this.time;
     //this.timeLeft = remainder;
 
     if (this.time === 0) {
@@ -33,7 +33,7 @@ CountdownTimer.prototype.onTick = function() {
         return ;
     }
 
-    var numDays = String(parseInt(remainder / this.day, 10));
+   /* var numDays = String(parseInt(remainder / this.day, 10));
     remainder -= this.day * numDays;
 
     var numHours = String(parseInt(remainder / this.hour, 10));
@@ -49,9 +49,9 @@ CountdownTimer.prototype.onTick = function() {
             return "0" + str;
         }
         return str;
-    }).join(":");
+    }).join(":");*/
 
-    this.emit('tick', output);
+    this.emit('tick'/*, output*/);
     this.time -= this.second;
 };
 
@@ -60,12 +60,12 @@ CountdownTimer.prototype.start = function() {
   this.emit('start');
 };
 
-/*Stopwatch.prototype.stop = function() {
+CountdownTimer.prototype.stop = function() {
     console.log('Stopping Stopwatch!');
     if (this.interval) {
         clearInterval(this.interval);
         this.emit('stop');
     }
-};*/
+};
 
 module.exports = CountdownTimer;

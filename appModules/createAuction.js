@@ -36,10 +36,8 @@ module.exports = {
     initialiseAuctionEngine : function(aucInfo, id, io, CountdownTimer) {
         console.log("the id of this created initialiseAuctionEngine is: " + id);
 
-        var countdownTimer = new CountdownTimer(365);
-        countdownTimer.on('tick', function(time) {
-           // console.log('stopwatch tick: ' + time);
-        });
+        var countdownTimer = new CountdownTimer(0.000347222);
+        //countdownTimer.on('tick')
         countdownTimer.start();
 
 
