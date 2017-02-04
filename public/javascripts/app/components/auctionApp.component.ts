@@ -7,7 +7,7 @@ import {ClockAppComponent} from './clockApp.component.js';
 
 @Component({
     selector: 'auction-app',
-    templateUrl: '/templates/product.html',
+    templateUrl: '/templates/auction.html',
     directives: [ClockAppComponent]
 })
 

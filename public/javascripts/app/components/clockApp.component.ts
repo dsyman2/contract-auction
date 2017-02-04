@@ -87,3 +87,4 @@ export class ClockAppComponent {
 
 }
 
+/*http://stackoverflow.com/questions/36461089/time-countdown-in-angular-2*/
