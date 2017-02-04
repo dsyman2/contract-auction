@@ -20,6 +20,7 @@
                             <div>
                                 Name:
                                 <input type = "text" name = "name" [(ngModel)]="formInputs.auctionName" class="form-control" ngControl="auctionName">
+                                <small *ngIf="!CreateGroup.controls['auctionName'].valid">You must enter a name.</small>
                             </div>
                             <br>
 
@@ -28,12 +29,14 @@
                                 <textarea type = "text" [(ngModel)]="formInputs.auctionDesc" class="form-control" ngControl="auctionDesc">
                                 Enter a description of the job here...
                                 </textarea>
+                                <small *ngIf="!CreateGroup.controls['auctionDesc'].valid">You must enter a description.</small>
                             </div>
                             <br>
 
                             <div>
                                 Length of Auction:
-                                <input type = "text" [(ngModel)]="formInputs.length" class="form-control" ngControl="length">
+                                <input type="text" [(ngModel)]="formInputs.length" class="form-control" ngControl="length">
+                                <small *ngIf="!CreateGroup.controls['length'].valid">You must enter a length.</small>
                             </div>
                             <br>
 
@@ -45,6 +48,8 @@
                                     <option value="Two" [selected]="formInputs.protocol==='Two'">two Value</option>
                                     <option value="Three" [selected]="formInputs.protocol==='Three'">Three Value</option>
                                 </select>
+                                <small *ngIf="!CreateGroup.controls['protocol'].valid">You must select a protocol.</small>
+
                             </div>
                             <br>
                             <br>

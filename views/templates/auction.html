@@ -1,0 +1,12 @@
+<div>
+    <h2>{{name}}</h2>
+    <h3>{{desc}}</h3>
+
+    <h1>£ {{price}}</h1>
+        <input  [(ngModel)]="bidValue" >
+        <br>
+        <br>
+        <button class="btn btn-default" (click)="bid()" [disabled]="!alive">Place Bid</button>
+    time on arrival: {{time}}
+    <clock-app id = {{id}} (timeUp) ='onTimeUp($event)'></clock-app>
+</div>
