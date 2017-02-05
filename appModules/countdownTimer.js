@@ -27,9 +27,10 @@ CountdownTimer.prototype.onTick = function() {
     //var remainder = this.time;
     //this.timeLeft = remainder;
 
-    if (this.time === 0) {
+    if (this.time === 0 || this.time <= 0) {
         this.stop();
         this.isActive = false;
+        //this.emit('stop');
         return ;
     }
 

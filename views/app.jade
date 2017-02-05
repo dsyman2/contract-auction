@@ -42,8 +42,13 @@ head
         });
         System.import('javascripts/app/main.js')
             .then(null, console.error.bind(console));
+    script.
+        //localStorage.tester = "hi";
+        localStorage.username = '#{username}';
+        user = '#{username}'
+        console.log('Username: ' + user);
 body
-    auction-holder Loading...
+    auction-holder([user] = "#{username}") Loading...
     | &#x9;
     message-app Loading...
     | &#x9;

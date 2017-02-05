@@ -20,15 +20,18 @@ export class AuctionAppComponent {
     @Input()name : string;
     @Input()desc : string;
     @Input()creator : string;
+    @Input()username;
     time : number = 0;
     active : boolean = true;
 
     ngOnInit() {
+        console.log("username is:" + this.username);
         this.socket = io('http://localhost:8000');
 
         this.socket.on('priceUpdate-' +this.id, function(data){
             this.price = data;
         }.bind(this));
+
 
        /* this.socket.on('timeRemaining-' + this.id, function(data){
             this.time = data;
@@ -44,7 +47,11 @@ export class AuctionAppComponent {
 
 
     bid() {
-        this.socket.emit('bid-'+this.id, this.bidValue);
+        this.socket.emit('bid-'+this.id, {
+            bid: this.bidValue,
+            bidder: this.username
+        });
+
         this.bidValue = '';
     }
 

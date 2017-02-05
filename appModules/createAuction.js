@@ -42,19 +42,30 @@ module.exports = {
 
 
         var currentPrice = 9999;
+        var currentBidder = null;
 
         io.on('connection', function (socket) {
             socket.emit('priceUpdate-' + id, currentPrice);
             socket.emit('timeRemaining-' + id, countdownTimer.time);
             socket.on('bid-' + id, function (data) {
-                var newBidPrice = parseInt(data);
+                var newBidPrice = parseInt(data.bid);
+                var newBidder = data.bidder;
+                console.log('BID: ' + newBidPrice + newBidder);
+                /*** TO BE CHANGED WITH PROTOCOL***/
                 if (currentPrice > newBidPrice) {
                     currentPrice = newBidPrice;
+                    currentBidder = newBidder;
                     socket.emit('priceUpdate-' + id, currentPrice);
                     socket.broadcast.emit('priceUpdate-' + id, currentPrice);
                 }
             });
+
+            countdownTimer.on('stop', function(){
+                // currentPrice, id, userID(of currentPrice)
+            });
         });
+
+
     },
 
     pushAuctionsToClients_onConnection : function(io, auctions) {
