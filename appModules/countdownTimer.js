@@ -14,6 +14,7 @@ function CountdownTimer(length) {
     this.time = this.day * length;
     this.interval = undefined;
     this.isActive = true;
+    this.stopCount = 0;
 
     EventEmitter.call(this);
 
@@ -62,10 +63,14 @@ CountdownTimer.prototype.start = function() {
 };
 
 CountdownTimer.prototype.stop = function() {
+    this.stopCount++;
     console.log('Stopping Stopwatch!');
     if (this.interval) {
         clearInterval(this.interval);
-        this.emit('stop');
+        if(this.stopCount == 1){
+            console.log(this.stopCount);
+            this.emit('stop');
+        }
     }
 };
 

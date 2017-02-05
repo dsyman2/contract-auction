@@ -33,6 +33,7 @@ export class AuctionAppComponent {
         }.bind(this));
 
 
+
        /* this.socket.on('timeRemaining-' + this.id, function(data){
             this.time = data;
             console.log("Time is: " + data);

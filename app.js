@@ -31,6 +31,7 @@ var socketTools = require('./appModules/socketTools.js');
 socketTools.messageEngine(io);
 
 var CountdownTimer = require('./appModules/countdownTimer.js');
+var protocols = require('./appModules/auctionProtocols.js');
 
 /*
 var currentPrice = 9999;
@@ -108,12 +109,14 @@ onServerStartup.getAllCurrentAuctionsFromDB(function(res){
         //require('./routes/routes.js')(app, passport, createAuction, io, currentAuctions, auctionListeners); // load the routes and pass in our app and fully configured passport
         routes.updateAuctionVar(currentAuctions, auctionListeners);
         createAuction.pushAuctionsToClients_onConnection(io, currentAuctions);
+        currentAuctions = [];
+        auctionListeners = [];
     });
 });
 
 var setListenersForAuctions = function(callback){
     for(var i = 0; i < currentAuctions.length; i++){
-        var auc = createAuction.initialiseAuctionEngine(currentAuctions[i], currentAuctions[i].id, io, CountdownTimer);
+        var auc = createAuction.initialiseAuctionEngine(currentAuctions[i], currentAuctions[i].id, io, CountdownTimer, protocols);
         auctionListeners.push(auc);
     }
     callback();
@@ -122,7 +125,7 @@ var setListenersForAuctions = function(callback){
 /**
  * Activate all routes with params required
  */
-routes.init(app, passport, createAuction, io, CountdownTimer);
+routes.init(app, passport, createAuction, io, CountdownTimer, protocols);
 
 
 //app.use('/', routes);

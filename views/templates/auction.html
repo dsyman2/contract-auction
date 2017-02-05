@@ -1,12 +1,20 @@
-<div>
-    <h2>{{name}}</h2>
-    <h3>{{desc}}</h3>
+<div class="panel panel-auction">
+    <div class="panel-heading">
+        <h4>{{name}}</h4>
+    </div>
+    <div class="panel-body">
+        <h5>{{desc}}</h5>
 
-    <h1>£ {{price}}</h1>
-        <input  [(ngModel)]="bidValue" >
+        <h2> Current bid: £{{price}}</h2>
+        <div class="input-group">
+            <span class="input-group-addon">£</span>
+            <input class="form-control" [(ngModel)]="bidValue" placeholder="Enter a bid value in pounds" >
+            <span class="input-group-btn">
+                <button class="btn btn-orange" (click)="bid()" [disabled]="!active">Place Bid</button>
+            </span>
+        </div>
         <br>
         <br>
-        <button class="btn btn-default" (click)="bid()" [disabled]="!active">Place Bid</button>
-    time on arrival: {{time}}
-    <clock-app id = {{id}} (timeUp) ='onTimeUp($event)'></clock-app>
+        <clock-app id = {{id}} (timeUp) ='onTimeUp($event)'></clock-app>
+    </div>
 </div>

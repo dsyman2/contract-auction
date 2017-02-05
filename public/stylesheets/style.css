@@ -1,6 +1,8 @@
 body {
-  padding: 10%;
-  font: 125% "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  font: 125% "Century Gothic", bold, sans-serif;
 }
 
 a {
@@ -14,4 +16,52 @@ button{
 
 small{
   color: darkred;
+}
+
+.no-click{
+  pointer-events: none;
+}
+
+.panel-auction {
+  border-color: transparent;
+}
+
+.panel-auction > .panel-heading {
+  background: darkgray;
+  color: white;
+  border-color: darkgray;
+}
+
+.panel-auction > .panel-heading-2 {
+  background: grey;
+  color: white;
+  border-color: darkgray;
+}
+
+.footer {
+  position:fixed;
+  right:2%;
+  bottom:2%;
+}
+
+.footer-r {
+  text-align: center;
+  float: right;
+}
+
+.button-round {
+  width: 140%;
+  height: 100%;
+  border-radius: 50%;
+  font-size: 400%;
+  background-color: orange;
+  border-color: orange;
+}
+
+.button-round:hover {
+  color: darkgray;
+}
+
+.btn-orange {
+  background-color: orange;
 }
