@@ -73,8 +73,7 @@ module.exports = {
       // we want this protected so you have to be logged in to visit
       app.get('/app', isLoggedIn, function(req, res) {
           res.render('app.jade', {
-              username          : req.user.username, // get the user out of session and pass to template
-              currentAuctions   : currentAuctions
+              username          : req.user.username // get the user out of session and pass to template
           });
       });
 

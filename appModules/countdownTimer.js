@@ -67,11 +67,10 @@ CountdownTimer.prototype.stop = function() {
     console.log('Stopping Stopwatch!');
     if (this.interval) {
         clearInterval(this.interval);
-        if(this.stopCount == 1){
             console.log(this.stopCount);
             this.emit('stop');
         }
-    }
+
 };
 
 module.exports = CountdownTimer;

@@ -21,6 +21,7 @@ export class AuctionAppComponent {
     @Input()desc : string;
     @Input()creator : string;
     @Input()username;
+    @Input()protocol : string:
     time : number = 0;
     active : boolean = true;
 
@@ -31,6 +32,10 @@ export class AuctionAppComponent {
         this.socket.on('priceUpdate-' +this.id, function(data){
             this.price = data;
         }.bind(this));
+
+        this.socket.on('auctionEnd-' + this.id, function(data){
+            console.log('over and out: ' + data);
+        });
 
 
 

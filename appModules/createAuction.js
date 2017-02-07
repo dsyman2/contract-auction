@@ -39,7 +39,7 @@ module.exports = {
         var countdownTimer = new CountdownTimer(0.000347222, id);
         //countdownTimer.on('tick')
         countdownTimer.start();
-        countdownTimer.removeAllListeners('stop');
+        //countdownTimer.removeAllListeners('stop');
 
 
         if(aucInfo.protocol == "One"){
@@ -64,14 +64,16 @@ module.exports = {
                        socket.broadcast.emit('priceUpdate-' + id, currentPrice);
                    }
                });
-
+               // console.log('yeaah')
                countdownTimer.once('stop', function () {
                    // currentPrice, id, userID(of currentPrice)
                    counter++;
-                   console.log('AUCTION: ' + id + " : " + counter);
-                   //socket.broadcast.emit('auctionEnd-' + id, {})
-                  // this.removeListener('stop');
-                   countdownTimer.removeAllListeners('stop');
+                   if(counter < 2) {
+                       console.log('AUCTION: ' + id + " : " + counter);
+                       socket.broadcast.emit('auctionEnd-' + id, id)
+                       // this.removeListener('stop');
+                       countdownTimer.removeAllListeners('stop');
+                   }
                });
            });
        }
