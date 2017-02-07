@@ -1,5 +1,5 @@
 <div class="panel panel-auction">
-    <h1 class="panel-heading-2">LIVE AUCTIONS</h1>
+    <h4 class="panel-heading-2">There are {{auctions.length}} live auctions below: </h4>
     <div *ngFor="#auctionObj of auctions">
         {{auctionObj.id}}
         <auction-app
