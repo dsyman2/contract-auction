@@ -14,6 +14,7 @@ function CountdownTimer(length) {
     this.time = this.day * length;
     this.interval = undefined;
     this.isActive = true;
+    this.stopCount = 0;
 
     EventEmitter.call(this);
 
@@ -27,9 +28,10 @@ CountdownTimer.prototype.onTick = function() {
     //var remainder = this.time;
     //this.timeLeft = remainder;
 
-    if (this.time === 0) {
+    if (this.time === 0 || this.time <= 0) {
         this.stop();
         this.isActive = false;
+        //this.emit('stop');
         return ;
     }
 
@@ -61,11 +63,14 @@ CountdownTimer.prototype.start = function() {
 };
 
 CountdownTimer.prototype.stop = function() {
+    this.stopCount++;
     console.log('Stopping Stopwatch!');
     if (this.interval) {
         clearInterval(this.interval);
-        this.emit('stop');
-    }
+            console.log(this.stopCount);
+            this.emit('stop');
+        }
+
 };
 
 module.exports = CountdownTimer;

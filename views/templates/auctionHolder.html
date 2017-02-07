@@ -1,7 +1,10 @@
-<div *ngFor="#auctionObj of auctions">
-    {{auctionObj.id}}
-    <auction-app
-            auction = {auctionObj} id = {{auctionObj.id}} name = {{auctionObj.name}}
-            desc = {{auctionObj.description}}  >
-    </auction-app>
+<div class="panel panel-auction">
+    <h1 class="panel-heading-2">LIVE AUCTIONS</h1>
+    <div *ngFor="#auctionObj of auctions">
+        {{auctionObj.id}}
+        <auction-app
+                auction = {auctionObj} id = {{auctionObj.id}} name = {{auctionObj.name}}
+                desc = {{auctionObj.description}} username = {{user}} protocol = {{auctionObj.protocol}}>
+        </auction-app>
+    </div>
 </div>

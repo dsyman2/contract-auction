@@ -10,17 +10,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
  */
 var core_1 = require('angular2/core');
 var auctionApp_component_js_1 = require('./auctionApp.component.js');
+var metadata_1 = require("angular2/src/core/metadata");
 /* component in angular2 */
 var AuctionHolderComponent = (function () {
     function AuctionHolderComponent() {
         this.auctions = [];
         this.socket = null;
+    }
+    AuctionHolderComponent.prototype.ngOnInit = function () {
+        //console.log("u" + this.user);
+        this.user = localStorage.getItem('username');
         this.socket = io('http://localhost:8000');
         this.socket.on('auctionList', function (data) {
             this.auctions = data;
             console.log(this.auctions);
         }.bind(this));
-    }
+    };
+    __decorate([
+        metadata_1.Input()
+    ], AuctionHolderComponent.prototype, "user", void 0);
     AuctionHolderComponent = __decorate([
         core_1.Component({
             selector: 'auction-holder',

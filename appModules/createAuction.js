@@ -33,28 +33,52 @@ module.exports = {
         });
     },
 
-    initialiseAuctionEngine : function(aucInfo, id, io, CountdownTimer) {
+    initialiseAuctionEngine : function(aucInfo, id, io, CountdownTimer, protocols) {
         console.log("the id of this created initialiseAuctionEngine is: " + id);
-
-        var countdownTimer = new CountdownTimer(0.000347222);
+        var counter = 0;
+        var countdownTimer = new CountdownTimer(0.000347222, id);
         //countdownTimer.on('tick')
         countdownTimer.start();
+        //countdownTimer.removeAllListeners('stop');
 
 
-        var currentPrice = 9999;
+        if(aucInfo.protocol == "One"){
+           protocols.closedAuctionUsage(io, countdownTimer, id);
+       }
+       else {
+           var currentPrice = 9999;
+           var currentBidder = null;
 
-        io.on('connection', function (socket) {
-            socket.emit('priceUpdate-' + id, currentPrice);
-            socket.emit('timeRemaining-' + id, countdownTimer.time);
-            socket.on('bid-' + id, function (data) {
-                var newBidPrice = parseInt(data);
-                if (currentPrice > newBidPrice) {
-                    currentPrice = newBidPrice;
-                    socket.emit('priceUpdate-' + id, currentPrice);
-                    socket.broadcast.emit('priceUpdate-' + id, currentPrice);
-                }
-            });
-        });
+           io.on('connection', function (socket) {
+               socket.emit('priceUpdate-' + id, currentPrice);
+               socket.emit('timeRemaining-' + id, countdownTimer.time);
+               socket.on('bid-' + id, function (data) {
+                   var newBidPrice = parseInt(data.bid);
+                   var newBidder = data.bidder;
+                   console.log('BID: ' + newBidPrice + newBidder);
+                   /*** TO BE CHANGED WITH PROTOCOL***/
+                   if (currentPrice > newBidPrice) {
+                       currentPrice = newBidPrice;
+                       currentBidder = newBidder;
+                       socket.emit('priceUpdate-' + id, currentPrice);
+                       socket.broadcast.emit('priceUpdate-' + id, currentPrice);
+                   }
+               });
+               // console.log('yeaah')
+               countdownTimer.once('stop', function () {
+                   // currentPrice, id, userID(of currentPrice)
+                   counter++;
+                   if(counter < 2) {
+                       console.log('AUCTION: ' + id + " : " + counter);
+                       socket.broadcast.emit('auctionEnd-' + id, id)
+                       // this.removeListener('stop');
+                       countdownTimer.removeAllListeners('stop');
+                   }
+               });
+           });
+       }
+
+
     },
 
     pushAuctionsToClients_onConnection : function(io, auctions) {

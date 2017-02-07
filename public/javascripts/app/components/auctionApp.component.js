@@ -20,10 +20,14 @@ var AuctionAppComponent = (function () {
         this.active = true;
     }
     AuctionAppComponent.prototype.ngOnInit = function () {
+        console.log("username is:" + this.username);
         this.socket = io('http://localhost:8000');
         this.socket.on('priceUpdate-' + this.id, function (data) {
             this.price = data;
         }.bind(this));
+        this.socket.on('auctionEnd-' + this.id, function (data) {
+            console.log('over and out: ' + data);
+        });
         /* this.socket.on('timeRemaining-' + this.id, function(data){
              this.time = data;
              console.log("Time is: " + data);
@@ -34,7 +38,10 @@ var AuctionAppComponent = (function () {
          this.creator = this.auction.creatorID;*/
     };
     AuctionAppComponent.prototype.bid = function () {
-        this.socket.emit('bid-' + this.id, this.bidValue);
+        this.socket.emit('bid-' + this.id, {
+            bid: this.bidValue,
+            bidder: this.username
+        });
         this.bidValue = '';
     };
     AuctionAppComponent.prototype.onTimeUp = function (data) {
@@ -56,6 +63,12 @@ var AuctionAppComponent = (function () {
     __decorate([
         metadata_1.Input()
     ], AuctionAppComponent.prototype, "creator", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionAppComponent.prototype, "username", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionAppComponent.prototype, "protocol", void 0);
     AuctionAppComponent = __decorate([
         core_1.Component({
             selector: 'auction-app',

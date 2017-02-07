@@ -3,6 +3,7 @@
  */
 import {Component} from 'angular2/core';
 import {AuctionAppComponent} from './auctionApp.component.js';
+import {Input} from "angular2/src/core/metadata";
 
 /* component in angular2 */
 @Component({
@@ -15,8 +16,12 @@ import {AuctionAppComponent} from './auctionApp.component.js';
 export class AuctionHolderComponent {
     auctions = [];
     socket = null;
+    @Input()user;
 
-    constructor(){
+    ngOnInit(){
+        //console.log("u" + this.user);
+        this.user = localStorage.getItem('username');
+
         this.socket = io('http://localhost:8000');
 
         this.socket.on('auctionList', function(data){

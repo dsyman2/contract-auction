@@ -16,7 +16,7 @@ module.exports = {
       auctionListeners = aucListeners;
   },
 
-  init : function(app, passport, createAuction, io, CountdownTimer){
+  init : function(app, passport, createAuction, io, CountdownTimer, protocols){
       /**
        * Homepage -> Index (LOGIN)
        */
@@ -73,8 +73,7 @@ module.exports = {
       // we want this protected so you have to be logged in to visit
       app.get('/app', isLoggedIn, function(req, res) {
           res.render('app.jade', {
-              username          : req.user.username, // get the user out of session and pass to template
-              currentAuctions   : currentAuctions
+              username          : req.user.username // get the user out of session and pass to template
           });
       });
 
@@ -96,7 +95,7 @@ module.exports = {
           console.log("we get this far");
           createAuction.getIDFromName(req.user.username, function(id){
               createAuction.addAuctionEntry(req.body, id, function(aucInfo, aucId){
-                  var auc1 = createAuction.initialiseAuctionEngine(aucInfo, aucId, io, CountdownTimer);
+                  var auc1 = createAuction.initialiseAuctionEngine(aucInfo, aucId, io, CountdownTimer, protocols);
                   auctionListeners.push[auc1];
                   aucInfo.id = aucId;
                   currentAuctions.push(aucInfo);
