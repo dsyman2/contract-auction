@@ -5,10 +5,10 @@
 var _  = require('underscore');
 
 module.exports = {
-    closedAuctionUsage : function(io, countdownTimer, id) {
-
+    closedAuctionUsage : function(io, countdownTimer, id, type) {
+        var count = 0;
         var bids = {};
-
+        type = false;
         io.on('connection', function (socket) {
             socket.emit('priceUpdate-' + id, 'Closed Auction');
             socket.emit('timeRemaining-' + id, countdownTimer.time);
@@ -23,14 +23,30 @@ module.exports = {
             });
 
             countdownTimer.once('stop', function() {
-                if(!(_.isEmpty(bids))){
-                    var winner = _.max(Object.keys(bids), function (b) { return bids[b]; });
+                if(count == 0) {
+                    if (!(_.isEmpty(bids))) {
+                        var winner = _.min(Object.keys(bids), function (b) {
+                            return bids[b];
+                        });
+                        //var winningBidder = winner;
+                        var winningBid = bids[winner];
 
-                    socket.emit('priceUpdate-' + id, winner);
-                    socket.broadcast.emit('priceUpdate-' + id, bids[winner]);
-                    console.log('AUCTION + ' + id + ' has ended! --> Winner is: ' + winner);
-                    socket.broadcast.emit('auctionEnd-' + id, {})
+                        if (type === false && !_.isEmpty(bids)) {
+                            console.log('hihihi');
+                            bids = _.omit(bids, winner);
+                            var secondBestBidder = _.min(Object.keys(bids), function (b) {
+                                return bids[b];
+                            });
+                            winningBid = bids[secondBestBidder];
+                        }
 
+                        socket.emit('priceUpdate-' + id, winningBid);
+                        socket.broadcast.emit('priceUpdate-' + id, winningBid);
+                        console.log('AUCTION + ' + id + ' has ended! --> Winner is: ' + winner);
+                        socket.broadcast.emit('auctionEnd-' + id, {})
+
+                    }
+                    count++;
                 }
                 countdownTimer.removeAllListeners('stop');
 
