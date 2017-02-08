@@ -34,18 +34,20 @@ module.exports = {
     },
 
     initialiseAuctionEngine : function(aucInfo, id, io, CountdownTimer, protocols) {
-        console.log("the id of this created initialiseAuctionEngine is: " + id);
-        var counter = 0;
-        var countdownTimer = new CountdownTimer(0.000347222, id);
-        //countdownTimer.on('tick')
-        countdownTimer.start();
+
         //countdownTimer.removeAllListeners('stop');
 
 
         if(aucInfo.protocol == "One"){
-           protocols.closedAuctionUsage(io, countdownTimer, id);
+           protocols.dutchProtocol(io, CountdownTimer, id, 99999);
        }
        else {
+            console.log("the id of this created initialiseAuctionEngine is: " + id);
+            var counter = 0;
+            var countdownTimer = new CountdownTimer(0.000347222, id);
+            //countdownTimer.on('tick')
+
+            countdownTimer.start();
            var currentPrice = 9999;
            var currentBidder = null;
 

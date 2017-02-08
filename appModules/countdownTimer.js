@@ -35,6 +35,7 @@ CountdownTimer.prototype.onTick = function() {
         return ;
     }
 
+
    /* var numDays = String(parseInt(remainder / this.day, 10));
     remainder -= this.day * numDays;
 
