@@ -21,7 +21,7 @@ export class AuctionAppComponent {
     @Input()desc : string;
     @Input()creator : string;
     @Input()username;
-    @Input()protocol : string:
+    @Input()protocol : string;
     time : number = 0;
     active : boolean = true;
 

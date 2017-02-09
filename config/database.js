@@ -7,7 +7,8 @@ module.exports = {
         'user': 'root',
         'password': 'password'
     },
-    'database': 'testDB2',
+    'database': 'DB8',
     'users_table': 'users',
-    'auction_table': 'auctions'
+    'auction_table': 'auctions',
+    'results_table' : 'results'
 };

@@ -13,6 +13,7 @@
                 <button class="btn btn-orange" (click)="bid()" [disabled]="!active">Place Bid</button>
             </span>
         </div>
+        <small> Protocol being used is {{protocol}}</small>
         <br>
         <br>
         <clock-app id = {{id}} (timeUp) ='onTimeUp($event)'></clock-app>

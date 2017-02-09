@@ -5,7 +5,7 @@
 var _  = require('underscore');
 
 module.exports = {
-    closedAuctionUsage : function(io, CountdownTimer, id, type) {
+    vickerySealedBid : function(io, CountdownTimer, id, type) {
         var countdownTimer = new CountdownTimer(0.000347222, id);
         //countdownTimer.on('tick')
         var count = 0;
@@ -20,7 +20,7 @@ module.exports = {
                 var newBidPrice = parseInt(data.bid);
                 var newBidder = data.bidder;
                 if(!(bids.hasOwnProperty(newBidder))) {
-                    console.log('BID: ' + newBidPrice + ' From: ' +newBidder);
+                    console.log('BID: ' + newBidPrice + ' From: ' + newBidder);
                     bids[newBidder] = newBidPrice;
                 }
 
@@ -61,7 +61,7 @@ module.exports = {
         });
     },
 
-    dutchProtocol : function(io, CountdownTimer, id, maxPrice){
+    dutch : function(io, CountdownTimer, id, maxPrice){
         var increment = (maxPrice/100)/*.toFixed(2)*/;
         var currentPrice = +(increment.toFixed(2));
         var countdownTimer = new CountdownTimer(0.5, id);

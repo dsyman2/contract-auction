@@ -39,7 +39,7 @@ module.exports = {
 
 
         if(aucInfo.protocol == "One"){
-           protocols.dutchProtocol(io, CountdownTimer, id, 99999);
+           protocols.dutch(io, CountdownTimer, id, 99999);
        }
        else {
             console.log("the id of this created initialiseAuctionEngine is: " + id);
