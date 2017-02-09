@@ -1,9 +1,33 @@
-<h1>Messages</h1>
-<div *ngFor="#message of messages">
-    {{message}}
+<div class = "inline rightPad">
+    <button type="button" class="btn" data-toggle="modal" data-target="#messageModal">Messages</button>
 </div>
 
-<input [(ngModel)]="currentMessage" >
-    <br>
-    <br>
-    <button class = "btn btn-default" (click)="sendMsg()">SEND</button>
+<div class="modal fade" id="messageModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Auction Messages</h4>
+            </div>
+
+            <div class="modal-body">
+                <div *ngFor="#message of messages">
+                    {{message}}
+                </div>
+
+                <input [(ngModel)]="currentMessage" >
+                <br>
+                <br>
+                <button class = "btn" (click)="sendMsg()">SEND</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

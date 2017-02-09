@@ -4,11 +4,12 @@
 import {Component} from 'angular2/core';
 import {Input} from "angular2/src/core/metadata";
 import {ClockAppComponent} from './clockApp.component.js';
+import {MessageComponent} from "./message.component.js";
 
 @Component({
     selector: 'auction-app',
     templateUrl: '/templates/auction.html',
-    directives: [ClockAppComponent]
+    directives: [ClockAppComponent, MessageComponent]
 })
 
 export class AuctionAppComponent {
@@ -29,28 +30,14 @@ export class AuctionAppComponent {
         console.log("username is:" + this.username);
         this.socket = io('http://localhost:8000');
 
-        this.socket.on('priceUpdate-' +this.id, function(data){
+        this.socket.on('priceUpdate-' + this.id, function (data) {
             this.price = data;
         }.bind(this));
 
-        this.socket.on('auctionEnd-' + this.id, function(data){
+        this.socket.on('auctionEnd-' + this.id, function (data) {
             console.log('over and out: ' + data);
         });
-
-
-
-       /* this.socket.on('timeRemaining-' + this.id, function(data){
-            this.time = data;
-            console.log("Time is: " + data);
-        }.bind(this));*/
-
-       /* this.id = this.auction.id;
-        this.name = this.auction.name;
-        this.desc = this.auction.description;
-        this.creator = this.auction.creatorID;*/
     }
-
-
 
     bid() {
         this.socket.emit('bid-'+this.id, {

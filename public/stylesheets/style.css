@@ -18,6 +18,14 @@ small{
   color: darkred;
 }
 
+.inline{
+  display: inline;
+}
+
+.rightPad {
+  float: right;
+}
+
 .bg{
   background: url('../images/bg.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;

@@ -1,4 +1,4 @@
-System.register(['angular2/core', "angular2/src/core/metadata", './clockApp.component.js'], function(exports_1, context_1) {
+System.register(['angular2/core', "angular2/src/core/metadata", './clockApp.component.js', "./message.component.js"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', "angular2/src/core/metadata", './clockApp.comp
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, metadata_1, clockApp_component_js_1;
+    var core_1, metadata_1, clockApp_component_js_1, message_component_js_1;
     var AuctionAppComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', "angular2/src/core/metadata", './clockApp.comp
             },
             function (clockApp_component_js_1_1) {
                 clockApp_component_js_1 = clockApp_component_js_1_1;
+            },
+            function (message_component_js_1_1) {
+                message_component_js_1 = message_component_js_1_1;
             }],
         execute: function() {
             AuctionAppComponent = (function () {
@@ -41,14 +44,6 @@ System.register(['angular2/core', "angular2/src/core/metadata", './clockApp.comp
                     this.socket.on('auctionEnd-' + this.id, function (data) {
                         console.log('over and out: ' + data);
                     });
-                    /* this.socket.on('timeRemaining-' + this.id, function(data){
-                         this.time = data;
-                         console.log("Time is: " + data);
-                     }.bind(this));*/
-                    /* this.id = this.auction.id;
-                     this.name = this.auction.name;
-                     this.desc = this.auction.description;
-                     this.creator = this.auction.creatorID;*/
                 };
                 AuctionAppComponent.prototype.bid = function () {
                     this.socket.emit('bid-' + this.id, {
@@ -93,7 +88,7 @@ System.register(['angular2/core', "angular2/src/core/metadata", './clockApp.comp
                     core_1.Component({
                         selector: 'auction-app',
                         templateUrl: '/templates/auction.html',
-                        directives: [clockApp_component_js_1.ClockAppComponent]
+                        directives: [clockApp_component_js_1.ClockAppComponent, message_component_js_1.MessageComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AuctionAppComponent);
