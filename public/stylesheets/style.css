@@ -103,3 +103,7 @@ small{
 .navbar-default .navbar-toggle .icon-bar {
   background-color: white;
 }
+
+div ul{width:100%;}
+div ul{overflow:hidden; overflow-y:scroll;}
+.msg{width: 100%;}

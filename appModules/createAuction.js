@@ -33,10 +33,10 @@ module.exports = {
         });
     },
 
-    initialiseAuctionEngine : function(aucInfo, id, io, CountdownTimer, protocols) {
+    initialiseAuctionEngine : function(aucInfo, id, io, CountdownTimer, protocols, socketTools) {
 
         //countdownTimer.removeAllListeners('stop');
-
+        socketTools.messageEngine(io, id);
 
         if(aucInfo.protocol == "One"){
            protocols.dutch(io, CountdownTimer, id, 99999);

@@ -28,7 +28,7 @@ io.set("origins", "*:*");
 
 var socketTools = require('./appModules/socketTools.js');
 //socketTools.auctionEngine(io);
-socketTools.messageEngine(io);
+//socketTools.messageEngine(io);
 
 var CountdownTimer = require('./appModules/countdownTimer.js');
 var protocols = require('./appModules/auctionProtocols.js');
@@ -116,7 +116,7 @@ onServerStartup.getAllCurrentAuctionsFromDB(function(res){
 
 var setListenersForAuctions = function(callback){
     for(var i = 0; i < currentAuctions.length; i++){
-        var auc = createAuction.initialiseAuctionEngine(currentAuctions[i], currentAuctions[i].id, io, CountdownTimer, protocols);
+        var auc = createAuction.initialiseAuctionEngine(currentAuctions[i], currentAuctions[i].id, io, CountdownTimer, protocols, socketTools);
         auctionListeners.push(auc);
     }
     callback();
@@ -125,7 +125,7 @@ var setListenersForAuctions = function(callback){
 /**
  * Activate all routes with params required
  */
-routes.init(app, passport, createAuction, io, CountdownTimer, protocols);
+routes.init(app, passport, createAuction, io, CountdownTimer, protocols, socketTools);
 
 
 //app.use('/', routes);

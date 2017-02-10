@@ -16,7 +16,7 @@ module.exports = {
       auctionListeners = aucListeners;
   },
 
-  init : function(app, passport, createAuction, io, CountdownTimer, protocols){
+  init : function(app, passport, createAuction, io, CountdownTimer, protocols, socketTools){
       /**
        * Homepage -> Index (LOGIN)
        */
@@ -95,7 +95,7 @@ module.exports = {
           console.log("we get this far");
           createAuction.getIDFromName(req.user.username, function(id){
               createAuction.addAuctionEntry(req.body, id, function(aucInfo, aucId){
-                  var auc1 = createAuction.initialiseAuctionEngine(aucInfo, aucId, io, CountdownTimer, protocols);
+                  var auc1 = createAuction.initialiseAuctionEngine(aucInfo, aucId, io, CountdownTimer, protocols, socketTools);
                   auctionListeners.push[auc1];
                   aucInfo.id = aucId;
                   currentAuctions.push(aucInfo);

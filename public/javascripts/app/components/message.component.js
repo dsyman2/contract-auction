@@ -1,39 +1,67 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-/**
- * Created by Umar on 11/01/2017.
- */
-var core_1 = require('angular2/core');
-var MessageComponent = (function () {
-    function MessageComponent() {
-        this.socket = null;
-        this.messages = [];
-        this.currentMessage = '';
-        this.socket = io('http://localhost:8000');
-        this.socket.on('chat msgs', function (msgs) {
-            var tempMessages = [];
-            tempMessages = this.messages;
-            this.messages = tempMessages.concat(msgs);
-        }.bind(this));
-        this.socket.on('chat msg', function (msg) {
-            this.messages.push(msg);
-        }.bind(this));
-    }
-    MessageComponent.prototype.sendMsg = function () {
-        this.socket.emit('chat msg', this.currentMessage);
-        this.currentMessage = '';
+System.register(['angular2/core', "angular2/src/core/metadata"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
-    MessageComponent = __decorate([
-        core_1.Component({
-            selector: 'message-app',
-            templateUrl: '/templates/message.html'
-        })
-    ], MessageComponent);
-    return MessageComponent;
-}());
-exports.MessageComponent = MessageComponent;
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
+    var core_1, metadata_1;
+    var MessageComponent;
+    return {
+        setters:[
+            function (core_1_1) {
+                core_1 = core_1_1;
+            },
+            function (metadata_1_1) {
+                metadata_1 = metadata_1_1;
+            }],
+        execute: function() {
+            MessageComponent = (function () {
+                function MessageComponent() {
+                    this.socket = null;
+                    this.messages = [];
+                    this.currentMessage = '';
+                }
+                MessageComponent.prototype.ngOnInit = function () {
+                    this.socket = io('http://localhost:8000');
+                    this.socket.on('chat msgs-' + this.id, function (msgs) {
+                        var tempMessages = [];
+                        tempMessages = this.messages;
+                        this.messages = tempMessages.concat(msgs);
+                    }.bind(this));
+                    this.socket.on('chat msg-' + this.id, function (msg) {
+                        this.messages.push(msg);
+                        console.log(msg);
+                    }.bind(this));
+                };
+                MessageComponent.prototype.sendMsg = function () {
+                    this.socket.emit('chat msg-' + this.id, this.username + ': ' + this.currentMessage);
+                    this.currentMessage = '';
+                };
+                __decorate([
+                    metadata_1.Input(), 
+                    __metadata('design:type', String)
+                ], MessageComponent.prototype, "id", void 0);
+                __decorate([
+                    metadata_1.Input(), 
+                    __metadata('design:type', String)
+                ], MessageComponent.prototype, "username", void 0);
+                MessageComponent = __decorate([
+                    core_1.Component({
+                        selector: 'message-app',
+                        templateUrl: '/templates/message.html'
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], MessageComponent);
+                return MessageComponent;
+            }());
+            exports_1("MessageComponent", MessageComponent);
+        }
+    }
+});
+//# sourceMappingURL=message.component.js.map

@@ -10,7 +10,7 @@
         <div class="input-group">
             <span class="input-group-addon">£</span>
             <input class="form-control" [(ngModel)]="bidValue" placeholder="Enter a bid value in pounds" *ngIf="protocol != 'Dutch'">
-            <span class = "input-group-addon" *ngIf="protocol === 'Dutch'">Can't enter a value just bid &#8594;</span>
+            <span class = "input-group-addon" *ngIf="protocol === 'Dutch'">Like the bid &#8593;  You can't enter a value,  just bid &#8594;</span>
             <span class="input-group-btn">
                 <button class="btn btn-orange" (click)="bid()" [disabled]="!active">Place Bid</button>
             </span>
@@ -20,7 +20,7 @@
         <br>
         <div>
             <clock-app id = {{id}} (timeUp) ='onTimeUp($event)'></clock-app>
-            <message-app></message-app>
+            <message-app id = {{id}} username = {{username}}></message-app>
         </div>
     </div>
 </div>

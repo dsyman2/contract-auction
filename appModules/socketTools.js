@@ -22,17 +22,17 @@ module.exports = {
         });
     },
 
-    messageEngine : function (io) {
+    messageEngine : function (io, id) {
         var msgs = [];
 
         io.on('connection', function(socket){
-            socket.emit('chat msgs', msgs);
+            socket.emit('chat msgs-' + id, msgs);
 
-            socket.on('chat msg', function(msg){
+            socket.on('chat msg-' + id, function(msg){
                 msgs.push(msg);
                 console.log("Message: " + msg);
-                socket.emit('chat msg', msg);
-                socket.broadcast.emit('chat msg', msg);
+                socket.emit('chat msg-' + id, msg);
+                socket.broadcast.emit('chat msg-' + id, msg);
             });
         });
     }
