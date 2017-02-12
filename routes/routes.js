@@ -16,13 +16,13 @@ module.exports = {
       auctionListeners = aucListeners;
     },
 
-    deleteAuction : function(id, io){
+   /* deleteAuction : function(id, io){
         if (currentAuctions.hasOwnProperty(id)) {
             delete currentAuctions[id];
             //console.log('obj: '+ obj.id);
             io.sockets.emit('auctionList', currentAuctions);
         }
-    },
+    },*/
 
     init : function(app, passport, createAuction, io, CountdownTimer, protocols, socketTools, auctionEventEmitter){
       /**
@@ -133,6 +133,18 @@ module.exports = {
           res.end();
       });
 
+      createAuction.moveAuctionCompletedListener(auctionEventEmitter);
+
+      auctionEventEmitter.on('completedAucMoved', function(aucID){
+          if (currentAuctions.hasOwnProperty(aucID)
+              && auctionListeners.hasOwnProperty(aucID)) {
+              delete currentAuctions[aucID];
+              delete auctionListeners[aucID];
+              //console.log('obj: '+ obj.id);
+              //auctionEventEmitter.emit('delete-' + aucID);
+              io.sockets.emit('auctionList', currentAuctions);
+          }
+      });
   }
 
 };

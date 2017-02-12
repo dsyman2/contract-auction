@@ -59,6 +59,7 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.results_table + '` ( \
     `length` INT UNSIGNED NOT NULL, \
     `protocol` TEXT NOT NULL, \
     `creatorID` INT UNSIGNED NOT NULL, \
+    `price` TEXT NOT NULL,\
     `winnerID` INT UNSIGNED NOT NULL,\
         PRIMARY KEY (`resultID`), \
     UNIQUE INDEX `id_UNIQUE` (`resultID` ASC), \

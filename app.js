@@ -19,7 +19,6 @@ var io = require('socket.io').listen(server);
 
 var EventEmitter = require('events').EventEmitter;
 var auctionEventEmitter = new EventEmitter();
-console.log(auctionEventEmitter)
 
 var createAuction = require('./appModules/createAuction.js');
 var auctionListeners = {};

@@ -3,10 +3,13 @@
  */
 
 var _  = require('underscore');
+var moveCompletedAuction = function(auctionEventEmitter, aucInfo){
+    auctionEventEmitter.emit('moveCompletedAuc', aucInfo);
+}
 
 module.exports = {
 
-    sealedBid : function(io, CountdownTimer, id, type, length, auctionEventEmitter) {
+    sealedBid : function(io, aucInfo, CountdownTimer, id, type, length, auctionEventEmitter) {
         var countdownTimer = new CountdownTimer(0.000347222, id);
         //countdownTimer.on('tick')
         var count = 0;
@@ -54,9 +57,12 @@ module.exports = {
                     //sockets.broadcast.emit('priceUpdate-' + id, winningBid);
                     console.log('AUCTION + ' + id + ' has ended! --> Winner is: ' + winner);
                     io.sockets.emit('auctionEnd-' + id, {})
-
+                    aucInfo.price = winningBid;
+                    aucInfo.winnerID = winner;
+                    moveCompletedAuction(auctionEventEmitter, aucInfo);
                 }
                 count++;
+
             }
             countdownTimer.removeAllListeners('stop');
 
@@ -68,7 +74,7 @@ module.exports = {
         });
     },
 
-    dutch : function(io, CountdownTimer, id, maxPrice, length, auctionEventEmitter){
+    dutch : function(io, aucInfo, CountdownTimer, id, maxPrice, length, auctionEventEmitter){
         var increment = (maxPrice/100)/*.toFixed(2)*/;
         var currentPrice = +(increment.toFixed(2));
         var countdownTimer = new CountdownTimer(0.5, id);
@@ -117,6 +123,9 @@ module.exports = {
                 if(intervalID){
                     clearInterval(intervalID);
                 }
+                aucInfo.price = currentPrice;
+                aucInfo.winnerID = currentBidder;
+                moveCompletedAuction(auctionEventEmitter, aucInfo);
             }
             counter++;
         });
@@ -127,7 +136,7 @@ module.exports = {
         });
     },
 
-    english : function(io, CountdownTimer, id, length, auctionEventEmitter){
+    english : function(io, aucInfo, CountdownTimer, id, length, auctionEventEmitter){
         var counter = 0;
         var countdownTimer = new CountdownTimer(0.000347222, id);
         //countdownTimer.on('tick')
@@ -164,6 +173,9 @@ module.exports = {
                 io.sockets.emit('auctionEnd-' + id, id);
                 // this.removeListener('stop');
                 countdownTimer.removeAllListeners('stop');
+                aucInfo.price = currentPrice;
+                aucInfo.winnerID = currentBidder;
+                moveCompletedAuction(auctionEventEmitter, aucInfo);
             }
         });
 
