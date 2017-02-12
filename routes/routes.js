@@ -3,8 +3,8 @@
  */
 // app/routes.js
 
-var auctionListeners = [];
-var currentAuctions = [];
+var auctionListeners = {};
+var currentAuctions = {};
 
 module.exports = {
     /**
@@ -14,9 +14,17 @@ module.exports = {
       currentAuctions = currentAucs;
       console.log("updating initialise AuctionEngine variables");
       auctionListeners = aucListeners;
-  },
+    },
 
-  init : function(app, passport, createAuction, io, CountdownTimer, protocols, socketTools){
+    deleteAuction : function(id, io){
+        if (currentAuctions.hasOwnProperty(id)) {
+            delete currentAuctions[id];
+            //console.log('obj: '+ obj.id);
+            io.sockets.emit('auctionList', currentAuctions);
+        }
+    },
+
+    init : function(app, passport, createAuction, io, CountdownTimer, protocols, socketTools, auctionEventEmitter){
       /**
        * Homepage -> Index (LOGIN)
        */
@@ -95,10 +103,12 @@ module.exports = {
           console.log("we get this far");
           createAuction.getIDFromName(req.user.username, function(id){
               createAuction.addAuctionEntry(req.body, id, function(aucInfo, aucId){
-                  var auc1 = createAuction.initialiseAuctionEngine(aucInfo, aucId, io, CountdownTimer, protocols, socketTools);
-                  auctionListeners.push[auc1];
+                  var auc1 = createAuction.initialiseAuctionEngine(aucInfo, aucId, io, CountdownTimer, protocols, socketTools, auctionEventEmitter);
+                  //auctionListeners.push[auc1];
+                  auctionListeners[aucId] = auc1;
                   aucInfo.id = aucId;
-                  currentAuctions.push(aucInfo);
+                  //currentAuctions.push(aucInfo);
+                  currentAuctions[aucId] = aucInfo;
                   io.sockets.emit('auctionList', currentAuctions);
               });
               res.end();
@@ -107,10 +117,23 @@ module.exports = {
           res.end();
       });
 
-
+      app.post('/deleteAuction', function(req, res){
+          console.log('we get this far into delete');
+          var aucID = req.body.id;
+          createAuction.deleteAuction(aucID, req.user.username, function(id){
+              if (currentAuctions.hasOwnProperty(id)
+                  && auctionListeners.hasOwnProperty(id)) {
+                  delete currentAuctions[id];
+                  delete auctionListeners[id];
+                  //console.log('obj: '+ obj.id);
+                  auctionEventEmitter.emit('delete-' + id);
+                  io.sockets.emit('auctionList', currentAuctions);
+              }
+          });
+          res.end();
+      });
 
   }
-
 
 };
 

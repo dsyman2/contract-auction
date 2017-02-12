@@ -10,6 +10,6 @@ import {ValidatorService} from "./services/validator.service.js";
 import {NavbarComponent} from "./components/navbar.component.js";
 
 //bootstrap(MessageComponent);
-bootstrap(CreateAuctionComponent, [HTTP_PROVIDERS, ValidatorService]);
+bootstrap(CreateAuctionComponent, [ValidatorService]);
 bootstrap(AuctionHolderComponent);
 bootstrap(NavbarComponent);

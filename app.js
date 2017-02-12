@@ -17,9 +17,13 @@ var http = require('http');
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
+var EventEmitter = require('events').EventEmitter;
+var auctionEventEmitter = new EventEmitter();
+console.log(auctionEventEmitter)
+
 var createAuction = require('./appModules/createAuction.js');
-var auctionListeners = [];
-var currentAuctions = [];
+var auctionListeners = {};
+var currentAuctions = {};
 
 require('./config/passport')(passport); // pass passport for configuration
 
@@ -32,6 +36,7 @@ var socketTools = require('./appModules/socketTools.js');
 
 var CountdownTimer = require('./appModules/countdownTimer.js');
 var protocols = require('./appModules/auctionProtocols.js');
+
 
 /*
 var currentPrice = 9999;
@@ -109,23 +114,32 @@ onServerStartup.getAllCurrentAuctionsFromDB(function(res){
         //require('./routes/routes.js')(app, passport, createAuction, io, currentAuctions, auctionListeners); // load the routes and pass in our app and fully configured passport
         routes.updateAuctionVar(currentAuctions, auctionListeners);
         createAuction.pushAuctionsToClients_onConnection(io, currentAuctions);
-        currentAuctions = [];
-        auctionListeners = [];
+        currentAuctions = {};
+        auctionListeners = {};
     });
 });
 
 var setListenersForAuctions = function(callback){
-    for(var i = 0; i < currentAuctions.length; i++){
-        var auc = createAuction.initialiseAuctionEngine(currentAuctions[i], currentAuctions[i].id, io, CountdownTimer, protocols, socketTools);
-        auctionListeners.push(auc);
+    /*for(var i = 0; i < currentAuctions.length; i++){
+     var auc = createAuction.initialiseAuctionEngine(currentAuctions[i], currentAuctions[i].id, io, CountdownTimer, protocols, socketTools);
+     auctionListeners.push(auc);
+     }*/
+    for (var key in currentAuctions) {
+        if (currentAuctions.hasOwnProperty(key)) {
+            var auc = currentAuctions[key];
+            //console.log('obj: '+ obj.id);
+            var createdAuc = createAuction.initialiseAuctionEngine(auc, auc.id, io, CountdownTimer, protocols, socketTools, auctionEventEmitter);
+            auctionListeners[auc.id] = createdAuc;
+        }
     }
+
     callback();
 };
 
 /**
  * Activate all routes with params required
  */
-routes.init(app, passport, createAuction, io, CountdownTimer, protocols, socketTools);
+routes.init(app, passport, createAuction, io, CountdownTimer, protocols, socketTools, auctionEventEmitter);
 
 
 //app.use('/', routes);

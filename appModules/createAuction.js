@@ -33,53 +33,25 @@ module.exports = {
         });
     },
 
-    initialiseAuctionEngine : function(aucInfo, id, io, CountdownTimer, protocols, socketTools) {
-
+    initialiseAuctionEngine : function(aucInfo, id, io, CountdownTimer, protocols, socketTools, aucEventEmitter) {
+        console.log("the id of this created initialiseAuctionEngine is: " + id);
+        console.log(aucEventEmitter);
         //countdownTimer.removeAllListeners('stop');
         socketTools.messageEngine(io, id);
-
-        if(aucInfo.protocol == "One"){
-           protocols.dutch(io, CountdownTimer, id, 99999);
-       }
-       else {
-            console.log("the id of this created initialiseAuctionEngine is: " + id);
-            var counter = 0;
-            var countdownTimer = new CountdownTimer(0.000347222, id);
-            //countdownTimer.on('tick')
-
-            countdownTimer.start();
-           var currentPrice = 9999;
-           var currentBidder = null;
-
-           io.on('connection', function (socket) {
-               socket.emit('priceUpdate-' + id, currentPrice);
-               socket.emit('timeRemaining-' + id, countdownTimer.time);
-               socket.on('bid-' + id, function (data) {
-                   var newBidPrice = parseInt(data.bid);
-                   var newBidder = data.bidder;
-                   console.log('BID: ' + newBidPrice + newBidder);
-                   /*** TO BE CHANGED WITH PROTOCOL***/
-                   if (currentPrice > newBidPrice) {
-                       currentPrice = newBidPrice;
-                       currentBidder = newBidder;
-                       socket.emit('priceUpdate-' + id, currentPrice);
-                       socket.broadcast.emit('priceUpdate-' + id, currentPrice);
-                   }
-               });
-               // console.log('yeaah')
-               countdownTimer.once('stop', function () {
-                   // currentPrice, id, userID(of currentPrice)
-                   counter++;
-                   if(counter < 2) {
-                       console.log('AUCTION: ' + id + " : " + counter);
-                       socket.broadcast.emit('auctionEnd-' + id, id)
-                       // this.removeListener('stop');
-                       countdownTimer.removeAllListeners('stop');
-                   }
-               });
-           });
-       }
-
+        switch (aucInfo.protocol){
+            case 'Dutch':
+                protocols.dutch(io, CountdownTimer, id, 99999, 1, aucEventEmitter);
+                break;
+            case '1st-price-sealed':
+                protocols.sealedBid(io, CountdownTimer, id, true, 1, aucEventEmitter);
+                break;
+            case '2nd-price-sealed':
+                protocols.sealedBid(io, CountdownTimer, id, false, 1, aucEventEmitter);
+                break;
+            default:
+               protocols.english(io, CountdownTimer, id, 1, aucEventEmitter);
+            break;
+        }
 
     },
 
@@ -91,5 +63,21 @@ module.exports = {
         });
 
 
+    },
+
+    deleteAuction : function (auctionID, username, callback) {
+        this.getIDFromName(username, function(userID){
+            var query = ('DELETE FROM ' + dbconfig.database + '.' + dbconfig.auction_table + ' WHERE id = ? AND creatorID = ?');
+            connection.query(query, [auctionID, userID], function (err, result) {
+                if(err)
+                    throw err;
+                console.log('Record deleted ' + result.affectedRows + ' rows');
+                if(result.affectedRows > 0){
+                    callback(auctionID);
+                }
+            });
+        })
     }
+
+
 };

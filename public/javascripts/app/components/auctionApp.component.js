@@ -5,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 /**
  * Created by Umar on 11/01/2017.
  */
@@ -12,8 +15,12 @@ var core_1 = require('angular2/core');
 var metadata_1 = require("angular2/src/core/metadata");
 var clockApp_component_js_1 = require('./clockApp.component.js');
 var message_component_js_1 = require("./message.component.js");
+var http_1 = require('angular2/http');
+require('rxjs/Rx');
+var decorators_1 = require("angular2/src/core/di/decorators");
 var AuctionAppComponent = (function () {
-    function AuctionAppComponent() {
+    function AuctionAppComponent(http) {
+        this.http = http;
         this.price = 0.0;
         this.socket = null;
         this.bidValue = '';
@@ -41,6 +48,14 @@ var AuctionAppComponent = (function () {
         //alert(data);
         this.active = false;
     };
+    AuctionAppComponent.prototype.sendDelete = function () {
+        this.headers = new http_1.Headers();
+        this.headers.append('Content-Type', 'application/json');
+        var data = { id: this.id };
+        var body = JSON.stringify(data);
+        this.http.post("/deleteAuction", body, { headers: this.headers })
+            .map(function (res) { return (res.json()); }).subscribe();
+    };
     __decorate([
         metadata_1.Input()
     ], AuctionAppComponent.prototype, "auction", void 0);
@@ -66,8 +81,10 @@ var AuctionAppComponent = (function () {
         core_1.Component({
             selector: 'auction-app',
             templateUrl: '/templates/auction.html',
-            directives: [clockApp_component_js_1.ClockAppComponent, message_component_js_1.MessageComponent]
-        })
+            directives: [clockApp_component_js_1.ClockAppComponent, message_component_js_1.MessageComponent],
+            providers: [http_1.HTTP_PROVIDERS]
+        }),
+        __param(0, decorators_1.Inject(http_1.Http))
     ], AuctionAppComponent);
     return AuctionAppComponent;
 }());

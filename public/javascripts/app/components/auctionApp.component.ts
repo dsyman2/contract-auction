@@ -5,11 +5,15 @@ import {Component} from 'angular2/core';
 import {Input} from "angular2/src/core/metadata";
 import {ClockAppComponent} from './clockApp.component.js';
 import {MessageComponent} from "./message.component.js";
+import {Http, Headers, HTTP_PROVIDERS} from 'angular2/http';
+import 'rxjs/Rx';
+import {Inject} from "angular2/src/core/di/decorators";
 
 @Component({
     selector: 'auction-app',
     templateUrl: '/templates/auction.html',
-    directives: [ClockAppComponent, MessageComponent]
+    directives: [ClockAppComponent, MessageComponent],
+    providers: [HTTP_PROVIDERS]
 })
 
 export class AuctionAppComponent {
@@ -25,6 +29,9 @@ export class AuctionAppComponent {
     @Input()protocol : string;
     time : number = 0;
     active : boolean = true;
+
+
+    constructor(@Inject(Http)private http:Http){}
 
     ngOnInit() {
         console.log("username is:" + this.username);
@@ -51,5 +58,16 @@ export class AuctionAppComponent {
     onTimeUp(data:string) {
         //alert(data);
         this.active = false;
+    }
+
+    sendDelete(){
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
+
+        let data = {id: this.id};
+        let body = JSON.stringify(data);
+
+        this.http.post("/deleteAuction", body, {headers: this.headers})
+            .map(res => (res.json())).subscribe();
     }
 }

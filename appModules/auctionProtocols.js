@@ -5,11 +5,13 @@
 var _  = require('underscore');
 
 module.exports = {
-    vickerySealedBid : function(io, CountdownTimer, id, type) {
+
+    sealedBid : function(io, CountdownTimer, id, type, length, auctionEventEmitter) {
         var countdownTimer = new CountdownTimer(0.000347222, id);
         //countdownTimer.on('tick')
         var count = 0;
         var bids = {};
+        var deleteStatus = false;
         countdownTimer.start();
 
         type = false;
@@ -29,7 +31,7 @@ module.exports = {
         });
 
         countdownTimer.once('stop', function() {
-            if(count == 0) {
+            if(count == 0 && deleteStatus === false) {
                 if (!(_.isEmpty(bids))) {
                     var winner = _.min(Object.keys(bids), function (b) {
                         return bids[b];
@@ -59,14 +61,22 @@ module.exports = {
             countdownTimer.removeAllListeners('stop');
 
         });
+
+        auctionEventEmitter.on('delete-' + id, function(){
+            countdownTimer.stop();
+            deleteStatus = true;
+        });
     },
 
-    dutch : function(io, CountdownTimer, id, maxPrice){
+    dutch : function(io, CountdownTimer, id, maxPrice, length, auctionEventEmitter){
         var increment = (maxPrice/100)/*.toFixed(2)*/;
         var currentPrice = +(increment.toFixed(2));
         var countdownTimer = new CountdownTimer(0.5, id);
         var counter = 0;
         var interval = 60000;
+        var deleteStatus = false;
+        console.log(auctionEventEmitter);
+
         countdownTimer.start();
 
         var intervalID = setInterval(function() {
@@ -99,7 +109,7 @@ module.exports = {
 
         countdownTimer.once('stop', function () {
             // currentPrice, id, userID(of currentPrice)
-            if(counter < 1) {
+            if(counter < 1 && deleteStatus === false) {
                 console.log('AUCTION: ' + id + " : " + currentBidder);
                 io.sockets.emit('auctionEnd-' + id, id);
                 // this.removeListener('stop');
@@ -109,6 +119,57 @@ module.exports = {
                 }
             }
             counter++;
+        });
+
+        auctionEventEmitter.on('delete-' + id, function(){
+            deleteStatus = true;
+            countdownTimer.stop();
+        });
+    },
+
+    english : function(io, CountdownTimer, id, length, auctionEventEmitter){
+        var counter = 0;
+        var countdownTimer = new CountdownTimer(0.000347222, id);
+        //countdownTimer.on('tick')
+
+        countdownTimer.start();
+        var currentPrice = 9999;
+        var currentBidder = null;
+        var deleteStatus = false;
+
+        io.on('connection', function (socket) {
+            socket.emit('priceUpdate-' + id, currentPrice);
+            socket.emit('timeRemaining-' + id, countdownTimer.time);
+            socket.on('bid-' + id, function (data) {
+                var newBidPrice = parseInt(data.bid);
+                var newBidder = data.bidder;
+                console.log('BID: ' + newBidPrice + newBidder);
+                /*** TO BE CHANGED WITH PROTOCOL***/
+                if (currentPrice > newBidPrice) {
+                    currentPrice = newBidPrice;
+                    currentBidder = newBidder;
+                    socket.emit('priceUpdate-' + id, currentPrice);
+                    socket.broadcast.emit('priceUpdate-' + id, currentPrice);
+                }
+            });
+            // console.log('yeaah')
+
+        });
+
+        countdownTimer.once('stop', function () {
+            // currentPrice, id, userID(of currentPrice)
+            counter++;
+            if(counter < 2 && deleteStatus === false) {
+                console.log('AUCTION: ' + id + " : " + counter);
+                io.sockets.emit('auctionEnd-' + id, id);
+                // this.removeListener('stop');
+                countdownTimer.removeAllListeners('stop');
+            }
+        });
+
+        auctionEventEmitter.on('delete-' + id, function(){
+            countdownTimer.stop();
+            deleteStatus = true;
         });
     }
 
