@@ -103,10 +103,11 @@ System.register(['angular2/core', 'angular2/common', "angular2/src/core/di/decor
                         selector: 'createAuction-app',
                         templateUrl: '/templates/createAuction.html',
                         directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES],
-                        providers: [validator_service_js_1.ValidatorService]
+                        providers: [validator_service_js_1.ValidatorService, http_1.HTTP_PROVIDERS]
                     }),
                     __param(0, decorators_1.Inject(validator_service_js_1.ValidatorService)),
-                    __param(1, decorators_1.Inject(common_1.FormBuilder)), 
+                    __param(1, decorators_1.Inject(common_1.FormBuilder)),
+                    __param(2, decorators_1.Inject(http_1.Http)), 
                     __metadata('design:paramtypes', [(typeof (_a = typeof validator_service_js_1.ValidatorService !== 'undefined' && validator_service_js_1.ValidatorService) === 'function' && _a) || Object, common_1.FormBuilder, http_1.Http])
                 ], CreateAuctionComponent);
                 return CreateAuctionComponent;

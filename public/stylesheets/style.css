@@ -11,11 +11,19 @@ a {
 }
 
 button {
-  background-color: orange;
+  background-color: #5bc0de;
 }
 
 small{
   color: darkred;
+}
+
+.inline{
+  display: inline;
+}
+
+.rightPad {
+  float: right;
 }
 
 .bg{
@@ -62,21 +70,22 @@ small{
   height: 100%;
   border-radius: 50%;
   font-size: 400%;
-  background-color: orange;
-  border-color: orange;
+  color: white;
+  background-color: #5bc0de;
+  border-color: #5bc0de;
 }
 
 .button-round:hover {
-  color: white;
+  color: darkgray;
 }
 
 .btn-orange {
-  background-color: orange;
+  background-color: #5bc0de;
 }
 
 /* nav bar stuff*/
 .navbar-default {
-  background-color:orange;
+  background-color:#5bc0de;
   background-repeat: no-repeat;
 }
 
@@ -94,3 +103,7 @@ small{
 .navbar-default .navbar-toggle .icon-bar {
   background-color: white;
 }
+
+div ul{width:100%;}
+div ul{overflow:hidden; overflow-y:scroll;}
+.msg{width: 100%;}

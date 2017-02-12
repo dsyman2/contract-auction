@@ -45,9 +45,10 @@
                                 Pick a protocol:
                                 <select #selectOption (change)="formInputs.protocol=selectOption.value" class="form-control" ngControl="protocol">
                                     <option> select</option>
-                                    <option value="One" [selected]="formInputs.protocol==='One'">One Value</option>
-                                    <option value="Two" [selected]="formInputs.protocol==='Two'">two Value</option>
-                                    <option value="Three" [selected]="formInputs.protocol==='Three'">Three Value</option>
+                                    <option value="English" [selected]="formInputs.protocol==='English'">English</option>
+                                    <option value="Dutch" [selected]="formInputs.protocol==='Dutch'">Dutch</option>
+                                    <option value="1st-price-sealed" [selected]="formInputs.protocol==='1st-price-sealed'">1st-price Sealed-Bid</option>
+                                    <option value="2nd-price-sealed" [selected]="formInputs.protocol==='2nd-price-sealed'">2nd-price Sealed-Bid</option>
                                 </select>
                                 <small *ngIf="!CreateGroup.controls['protocol'].valid">You must select a protocol.</small>
 
@@ -59,7 +60,7 @@
                     <br>
                     <div>
                         <button type="button " [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)"
-                                class ="btn btn-primary">
+                                class ="btn">
                             Create
                         </button>
                     </div>

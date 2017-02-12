@@ -6,7 +6,7 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, Control, ControlGroup, FormBuilder, Validators} from 'angular2/common';
 import {Inject} from "angular2/src/core/di/decorators";
-import {Http, Headers} from 'angular2/http';
+import {Http, Headers, HTTP_PROVIDERS} from 'angular2/http';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/first';
 import {ValidatorService} from "../services/validator.service.js";
@@ -23,7 +23,8 @@ class FormInputs{
     selector: 'createAuction-app',
     templateUrl: '/templates/createAuction.html',
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
-    providers: [ValidatorService]
+    providers: [ValidatorService, HTTP_PROVIDERS]
+   // providers: [HTTP_PROVIDERS]
 })
 
 
@@ -35,7 +36,7 @@ export class CreateAuctionComponent {
    // http: Http;
     numberValidity : boolean = null;
 
-    constructor(@Inject(ValidatorService) validatorService : ValidatorService, @Inject(FormBuilder) fb: FormBuilder, private http: Http){
+    constructor(@Inject(ValidatorService) validatorService : ValidatorService, @Inject(FormBuilder) fb: FormBuilder, @Inject(Http)private http: Http){
         this.formInputs = new FormInputs();
         this.CreateGroup = fb.group({
             'auctionName'   : new Control(this.formInputs.auctionName, Validators.required),

@@ -1,10 +1,11 @@
 <div class="panel panel-auction">
     <h4 class="panel-heading-2">There are {{auctions.length}} live auctions below: </h4>
-    <div *ngFor="#auctionObj of auctions">
-        {{auctionObj.id}}
+    <div *ngFor="#aucInfo of arrayOfAucs">
+        {{auctions[aucInfo].id}}
         <auction-app
-                auction = {auctionObj} id = {{auctionObj.id}} name = {{auctionObj.name}}
-                desc = {{auctionObj.description}} username = {{user}} protocol = {{auctionObj.protocol}}>
+                auction = auctions[aucInfo] id = {{auctions[aucInfo].id}} name = {{auctions[aucInfo].name}}
+                desc = {{auctions[aucInfo].description}} username = {{user}} protocol = {{auctions[aucInfo].protocol}}
+                http = {{http}}>
         </auction-app>
     </div>
 </div>

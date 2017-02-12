@@ -49,13 +49,12 @@ head
         localStorage.username = '#{username}';
         user = '#{username}'
         console.log('Username: ' + user);
+
 header
     navbar
     | &#x9;
 body
     auction-holder([user] = "#{username}") Loading...
-    | &#x9;
-    message-app Loading...
     | &#x9;
     label
     createAuction-app Loading...
