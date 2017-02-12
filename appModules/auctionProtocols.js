@@ -125,7 +125,9 @@ module.exports = {
                 }
                 aucInfo.price = currentPrice;
                 aucInfo.winnerID = currentBidder;
-                moveCompletedAuction(auctionEventEmitter, aucInfo);
+                if(currentBidder != null){
+                    moveCompletedAuction(auctionEventEmitter, aucInfo);
+                }
             }
             counter++;
         });
@@ -175,7 +177,9 @@ module.exports = {
                 countdownTimer.removeAllListeners('stop');
                 aucInfo.price = currentPrice;
                 aucInfo.winnerID = currentBidder;
-                moveCompletedAuction(auctionEventEmitter, aucInfo);
+                if(currentBidder != null){
+                    moveCompletedAuction(auctionEventEmitter, aucInfo);
+                }
             }
         });
 

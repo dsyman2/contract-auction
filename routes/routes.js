@@ -101,8 +101,7 @@ module.exports = {
            createAuction.getIDFromName(req.user.username);
            createAuction.addAuctionEntry(req.body);*/
           console.log("we get this far");
-          createAuction.getIDFromName(req.user.username, function(id){
-              createAuction.addAuctionEntry(req.body, id, function(aucInfo, aucId){
+              createAuction.addAuctionEntry(req.user.username, req.body, function(aucInfo, aucId){
                   var auc1 = createAuction.initialiseAuctionEngine(aucInfo, aucId, io, CountdownTimer, protocols, socketTools, auctionEventEmitter);
                   //auctionListeners.push[auc1];
                   auctionListeners[aucId] = auc1;
@@ -110,9 +109,10 @@ module.exports = {
                   //currentAuctions.push(aucInfo);
                   currentAuctions[aucId] = aucInfo;
                   io.sockets.emit('auctionList', currentAuctions);
+                  res.end();
               });
-              res.end();
-          });
+
+
 
           res.end();
       });

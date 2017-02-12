@@ -20,28 +20,17 @@ var getIDFromName = function (username, callback) {
 }
 
 module.exports = {
-     getIDFromName : function (username, callback) {
-        console.log("we're just before query 1");
-        var query = ('SELECT id FROM ' + dbconfig.database + '.' + dbconfig.users_table + ' WHERE username = ?');
-        connection.query(query, username, function (err, rows, fields) {
-            if (err)
-                throw err;
-            console.log("YOUL: " + rows[0].id);
-            callback(rows[0].id);
-        });
-        return idSQL;
-    },
 
-    addAuctionEntry : function (insertionData, id, callback) {
-        console.log("creatorID: " + id);
-
-        insertionData.creatorID = id;
-        var query = ('INSERT INTO ' + dbconfig.database + '.' + dbconfig.auction_table + ' SET ?');
-        connection.query(query, insertionData, function(err, res){
-           if(err)
-               throw err;
-           console.log('Last insert ID: ' + res.insertId);
-           callback(insertionData, res.insertId);
+    addAuctionEntry : function (username, insertionData, callback) {
+        getIDFromName(username, function(id){
+            insertionData.creatorID = id;
+            var query = ('INSERT INTO ' + dbconfig.database + '.' + dbconfig.auction_table + ' SET ?');
+            connection.query(query, insertionData, function(err, res){
+                if(err)
+                    throw err;
+                console.log('Last insert ID: ' + res.insertId);
+                callback(insertionData, res.insertId);
+            });
         });
     },
 
@@ -112,4 +101,5 @@ module.exports = {
              });
          });
     }
+
 };
