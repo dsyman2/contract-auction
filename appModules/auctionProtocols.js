@@ -63,8 +63,8 @@ module.exports = {
         });
 
         auctionEventEmitter.on('delete-' + id, function(){
-            countdownTimer.stop();
             deleteStatus = true;
+            countdownTimer.stop();
         });
     },
 
@@ -168,8 +168,8 @@ module.exports = {
         });
 
         auctionEventEmitter.on('delete-' + id, function(){
-            countdownTimer.stop();
             deleteStatus = true;
+            countdownTimer.stop();
         });
     }
 
