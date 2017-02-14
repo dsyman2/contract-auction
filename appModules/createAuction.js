@@ -6,8 +6,9 @@ var mysql = require('mysql');
 var dbconfig = require('../config/database');
 var connection = mysql.createConnection(dbconfig.connection);
 var idSQL = null;
+var userUtilities = require('../appModules/userUtilities');
 
-var getIDFromName = function (username, callback) {
+/*var getIDFromName = function (username, callback) {
     console.log("we're just before query 1");
     var query = ('SELECT id FROM ' + dbconfig.database + '.' + dbconfig.users_table + ' WHERE username = ?');
     connection.query(query, username, function (err, rows, fields) {
@@ -17,12 +18,12 @@ var getIDFromName = function (username, callback) {
         callback(rows[0].id);
     });
     return idSQL;
-}
+}*/
 
 module.exports = {
 
     addAuctionEntry : function (username, insertionData, callback) {
-        getIDFromName(username, function(id){
+        userUtilities.getIDFromName(username, function(id){
             insertionData.creatorID = id;
             var query = ('INSERT INTO ' + dbconfig.database + '.' + dbconfig.auction_table + ' SET ?');
             connection.query(query, insertionData, function(err, res){
@@ -67,7 +68,7 @@ module.exports = {
     },
 
     deleteAuction : function (auctionID, username, callback) {
-        getIDFromName(username, function(userID){
+        userUtilities.getIDFromName(username, function(userID){
             var query = ('DELETE FROM ' + dbconfig.database + '.' + dbconfig.auction_table + ' WHERE id = ? AND creatorID = ?');
             connection.query(query, [auctionID, userID], function (err, result) {
                 if(err)
@@ -83,7 +84,7 @@ module.exports = {
     moveAuctionCompletedListener : function(aucEventEmitter){
          aucEventEmitter.on('moveCompletedAuc', function(aucInfo){
              //do a query and shit
-             getIDFromName(aucInfo.winnerID, function(userID){
+             userUtilities.getIDFromName(aucInfo.winnerID, function(userID){
                  aucInfo.winnerID = userID;
                  var query = ('INSERT INTO ' + dbconfig.database + '.' + dbconfig.results_table + ' SET ?');
                  connection.query(query, aucInfo, function (err, res) {

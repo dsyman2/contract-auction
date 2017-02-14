@@ -3,6 +3,7 @@
  */
 
 var _  = require('underscore');
+
 var moveCompletedAuction = function(auctionEventEmitter, aucInfo){
     auctionEventEmitter.emit('moveCompletedAuc', aucInfo);
 }
@@ -12,7 +13,6 @@ module.exports = {
     sealedBid : function(io, aucInfo, CountdownTimer, id, type, length, auctionEventEmitter) {
         var countdownTimer = new CountdownTimer(0.000347222, id);
         //countdownTimer.on('tick')
-        var count = 0;
         var bids = {};
         var deleteStatus = false;
         countdownTimer.start();
@@ -34,7 +34,7 @@ module.exports = {
         });
 
         countdownTimer.once('stop', function() {
-            if(count == 0 && deleteStatus === false) {
+            if(deleteStatus === false) {
                 if (!(_.isEmpty(bids))) {
                     var winner = _.min(Object.keys(bids), function (b) {
                         return bids[b];
@@ -61,7 +61,12 @@ module.exports = {
                     aucInfo.winnerID = winner;
                     moveCompletedAuction(auctionEventEmitter, aucInfo);
                 }
-                count++;
+                else{
+                /*    aucInfo.price = undefined;
+                    aucInfo.winnerID = '';
+                    moveCompletedAuction(auctionEventEmitter, aucInfo);*/
+                }
+
 
             }
             countdownTimer.removeAllListeners('stop');
@@ -78,7 +83,6 @@ module.exports = {
         var increment = (maxPrice/100)/*.toFixed(2)*/;
         var currentPrice = +(increment.toFixed(2));
         var countdownTimer = new CountdownTimer(0.5, id);
-        var counter = 0;
         var interval = 60000;
         var deleteStatus = false;
         console.log(auctionEventEmitter);
@@ -115,7 +119,7 @@ module.exports = {
 
         countdownTimer.once('stop', function () {
             // currentPrice, id, userID(of currentPrice)
-            if(counter < 1 && deleteStatus === false) {
+            if(deleteStatus === false) {
                 console.log('AUCTION: ' + id + " : " + currentBidder);
                 io.sockets.emit('auctionEnd-' + id, id);
                 // this.removeListener('stop');
@@ -128,8 +132,12 @@ module.exports = {
                 if(currentBidder != null){
                     moveCompletedAuction(auctionEventEmitter, aucInfo);
                 }
+                else{
+                    /*aucInfo.price = currentPrice;
+                    aucInfo.winnerID = ' ';
+                    moveCompletedAuction(auctionEventEmitter, aucInfo);*/
+                }
             }
-            counter++;
         });
 
         auctionEventEmitter.on('delete-' + id, function(){
@@ -139,7 +147,6 @@ module.exports = {
     },
 
     english : function(io, aucInfo, CountdownTimer, id, length, auctionEventEmitter){
-        var counter = 0;
         var countdownTimer = new CountdownTimer(0.000347222, id);
         //countdownTimer.on('tick')
 
@@ -169,9 +176,8 @@ module.exports = {
 
         countdownTimer.once('stop', function () {
             // currentPrice, id, userID(of currentPrice)
-            counter++;
-            if(counter < 2 && deleteStatus === false) {
-                console.log('AUCTION: ' + id + " : " + counter);
+            if(deleteStatus === false) {
+                console.log('AUCTION: ' + id);
                 io.sockets.emit('auctionEnd-' + id, id);
                 // this.removeListener('stop');
                 countdownTimer.removeAllListeners('stop');
@@ -179,6 +185,11 @@ module.exports = {
                 aucInfo.winnerID = currentBidder;
                 if(currentBidder != null){
                     moveCompletedAuction(auctionEventEmitter, aucInfo);
+                }
+                else{
+                    /*aucInfo.price = currentPrice;
+                    aucInfo.winnerID = ' ';
+                    moveCompletedAuction(auctionEventEmitter, aucInfo);*/
                 }
             }
         });

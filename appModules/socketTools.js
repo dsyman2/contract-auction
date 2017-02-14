@@ -3,25 +3,6 @@
  */
 module.exports = {
 
-    auctionEngine : function (io) {
-
-        var currentPrice = 9999;
-
-        io.on('connection', function (socket) {
-            socket.emit('priceUpdate', currentPrice);
-
-            socket.on('bid', function (data) {
-                var newBidPrice = parseInt(data);
-                if (currentPrice > newBidPrice) {
-                    currentPrice = newBidPrice;
-                    socket.emit('priceUpdate', currentPrice);
-                    socket.broadcast.emit('priceUpdate', currentPrice);
-                }
-            });
-
-        });
-    },
-
     messageEngine : function (io, id) {
         var msgs = [];
 

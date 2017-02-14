@@ -1,0 +1,11 @@
+<div class="panel panel-auction">
+    <h4 class="panel-heading-2">The results of the auctions you've created/won are below: </h4>
+    <div *ngFor="#result of results">
+        <result-app
+                result = auctions[aucInfo] id = {{result.resultID}} name = {{result.name}}
+                desc = {{result.description}} protocol = {{result.protocol}}
+                aucID = {{result.id}} creator = {{result.creatorID}} winner = {{result.winnerID}}
+                price = {{result.price}}>
+        </result-app>
+    </div>
+</div>

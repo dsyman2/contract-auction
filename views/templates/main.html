@@ -1,0 +1,3 @@
+<navbar (buttonChoice)='onMenuChoice($event)'></navbar>
+<auction-holder *ngIf="buttonClickVal=='auctions'" user = {{user}} ></auction-holder>
+<result-holder *ngIf="buttonClickVal=='myAuctions'"></result-holder>

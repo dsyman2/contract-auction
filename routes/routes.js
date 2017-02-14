@@ -5,6 +5,7 @@
 
 var auctionListeners = {};
 var currentAuctions = {};
+var auctionResults = require('../appModules/auctionResult');
 
 module.exports = {
     /**
@@ -111,9 +112,6 @@ module.exports = {
                   io.sockets.emit('auctionList', currentAuctions);
                   res.end();
               });
-
-
-
           res.end();
       });
 
@@ -144,6 +142,15 @@ module.exports = {
               //auctionEventEmitter.emit('delete-' + aucID);
               io.sockets.emit('auctionList', currentAuctions);
           }
+      });
+
+      app.get('/completedAuctions', function(req, res) {
+          //var resultList = [];
+          console.log('we got you');
+          auctionResults.getResultsByUserID(req.user.username, function(results){
+              console.log(results);
+              res.send(JSON.stringify(results));
+          });
       });
   }
 
