@@ -11,7 +11,7 @@ import {Inject} from "angular2/src/core/di/decorators";
 
 @Component({
     selector: 'auction-app',
-    templateUrl: '/templates/auction.html',
+    templateUrl: '/templates/auctionTemplates/auction.html',
     directives: [ClockAppComponent, MessageComponent],
     providers: [HTTP_PROVIDERS]
 })

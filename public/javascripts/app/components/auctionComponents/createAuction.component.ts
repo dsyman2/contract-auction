@@ -1,4 +1,4 @@
-///<reference path="../../../../node_modules/rxjs/Observable.d.ts"/>
+///<reference path="../../../../../node_modules/rxjs/Observable.d.ts"/>
 /**
  * Created by Umar on 20/01/2017.
  */
@@ -9,7 +9,7 @@ import {Inject} from "angular2/src/core/di/decorators";
 import {Http, Headers, HTTP_PROVIDERS} from 'angular2/http';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/first';
-import {ValidatorService} from "../services/validator.service.js";
+import {ValidatorService} from "../../services/validator.service.js";
 
 class FormInputs{
     auctionName: string;
@@ -21,7 +21,7 @@ class FormInputs{
 
 @Component({
     selector: 'createAuction-app',
-    templateUrl: '/templates/createAuction.html',
+    templateUrl: '/templates/auctionTemplates/createAuction.html',
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
     providers: [ValidatorService, HTTP_PROVIDERS]
    // providers: [HTTP_PROVIDERS]

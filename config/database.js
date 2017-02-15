@@ -10,5 +10,6 @@ module.exports = {
     'database': 'DB8',
     'users_table': 'users',
     'auction_table': 'auctions',
-    'results_table' : 'results'
+    'results_table' : 'results',
+    'unresolved_table' : 'unresolved'
 };

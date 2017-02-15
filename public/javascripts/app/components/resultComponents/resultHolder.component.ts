@@ -10,7 +10,7 @@ import {AuctionResultComponent} from "./auctionResult.component.js";
 
 @Component({
     selector: 'result-holder',
-    templateUrl: '/templates/resultHolder.html',
+    templateUrl: '/templates/resultTemplates/resultHolder.html',
     providers: [HTTP_PROVIDERS],
     directives: [AuctionResultComponent]
 })

@@ -33,7 +33,7 @@ var ResultHolderComponent = (function () {
     ResultHolderComponent = __decorate([
         core_1.Component({
             selector: 'result-holder',
-            templateUrl: '/templates/resultHolder.html',
+            templateUrl: '/templates/resultTemplates/resultHolder.html',
             providers: [http_1.HTTP_PROVIDERS],
             directives: [auctionResult_component_js_1.AuctionResultComponent]
         }),

@@ -2,36 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a4c5e7b-2923-4fb5-bbe0-70241d7f84e4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/appModules/auctionResult.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/appModules/userUtilities.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionResult.component.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionResult.component.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionResult.component.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/app/components/main.component.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/app/components/main.component.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/app/components/resultHolder.component.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/app/components/resultHolder.component.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/templates/main.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/templates/result.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/templates/resultHolder.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/appModules/dutchProtocol.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/appModules/auctionCompletionTasks.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/message.component.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/message.component.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionApp.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionApp.component.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionApp.component.js.map" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionApp.component.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionApp.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionApp.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionHolder.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionHolder.component.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionHolder.component.js.map" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionHolder.component.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionHolder.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionHolder.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionResult.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/resultComponents/auctionResult.component.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionResult.component.js.map" afterPath="$PROJECT_DIR$/public/javascripts/app/components/resultComponents/auctionResult.component.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionResult.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/resultComponents/auctionResult.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/clockApp.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/clockApp.component.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/clockApp.component.js.map" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/clockApp.component.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/clockApp.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/clockApp.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/createAuction.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/createAuction.component.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/createAuction.component.js.map" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/createAuction.component.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/createAuction.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/createAuction.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/message.component.js.map" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/message.component.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/message.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/message.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/resultHolder.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/resultComponents/resultHolder.component.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/javascripts/app/components/resultHolder.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/resultComponents/resultHolder.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/views/templates/auction.html" afterPath="$PROJECT_DIR$/views/templates/auctionTemplates/auction.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/views/templates/auctionHolder.html" afterPath="$PROJECT_DIR$/views/templates/auctionTemplates/auctionHolder.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/views/templates/clock.html" afterPath="$PROJECT_DIR$/views/templates/auctionTemplates/clock.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/views/templates/createAuction.html" afterPath="$PROJECT_DIR$/views/templates/auctionTemplates/createAuction.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/views/templates/message.html" afterPath="$PROJECT_DIR$/views/templates/auctionTemplates/message.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/views/templates/result.html" afterPath="$PROJECT_DIR$/views/templates/resultTemplates/result.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/views/templates/resultHolder.html" afterPath="$PROJECT_DIR$/views/templates/resultTemplates/resultHolder.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appModules/auctionProtocols.js" afterPath="$PROJECT_DIR$/appModules/auctionProtocols.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appModules/createAuction.js" afterPath="$PROJECT_DIR$/appModules/createAuction.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appModules/socketTools.js" afterPath="$PROJECT_DIR$/appModules/socketTools.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionApp.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionApp.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionHolder.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionHolder.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionHolder.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionHolder.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/createAuction.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/createAuction.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/navbar.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/navbar.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/navbar.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/navbar.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.js" afterPath="$PROJECT_DIR$/config/database.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/main.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/main.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/main.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/main.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/main.js" afterPath="$PROJECT_DIR$/public/javascripts/app/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/main.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/main.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/routes.js" afterPath="$PROJECT_DIR$/routes/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/app.jade" afterPath="$PROJECT_DIR$/views/app.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/templates/auction.html" afterPath="$PROJECT_DIR$/views/templates/auction.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/templates/createAuction.html" afterPath="$PROJECT_DIR$/views/templates/createAuction.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/templates/navbar.html" afterPath="$PROJECT_DIR$/views/templates/navbar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/create_database.js" afterPath="$PROJECT_DIR$/scripts/create_database.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -52,55 +62,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/main.component.ts">
+      <file leaf-file-name="auctionHolder.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionHolder.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding>
-                <element signature="e#42#82#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/templates/main.html">
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="56" lean-forward="true" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
+            <state relative-caret-position="479">
+              <caret line="142" column="60" lean-forward="false" selection-start-line="142" selection-start-column="60" selection-end-line="142" selection-end-column="60" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="clockApp.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/clockApp.component.ts">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/clockApp.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-              <folding>
-                <element signature="e#42#82#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1455">
-              <caret line="98" column="31" lean-forward="true" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/app.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+            <state relative-caret-position="60">
+              <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -113,17 +99,17 @@
               <caret line="16" column="2" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="31" />
               <folding>
                 <element signature="e#42#96#0" expanded="true" />
-                <element signature="e#374#439#0" expanded="true" />
+                <element signature="e#410#475#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auctionApp.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionApp.component.ts">
+      <file leaf-file-name="main.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/main.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="28" column="30" lean-forward="false" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+            <state relative-caret-position="195">
+              <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
               <folding>
                 <element signature="e#42#82#0" expanded="true" />
               </folding>
@@ -131,11 +117,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="navbar.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/navbar.component.ts">
+      <file leaf-file-name="resultHolder.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/resultComponents/resultHolder.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+            <state relative-caret-position="131">
+              <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="44" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#42#82#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="auctionResult.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/resultComponents/auctionResult.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
               <folding>
                 <element signature="e#42#82#0" expanded="true" />
               </folding>
@@ -143,21 +142,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="navbar.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/templates/navbar.html">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+            <state relative-caret-position="194">
+              <caret line="84" column="56" lean-forward="false" selection-start-line="84" selection-start-column="56" selection-end-line="84" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auction.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/templates/auction.html">
+      <file leaf-file-name="createAuction.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/createAuction.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="6" lean-forward="true" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+            <state relative-caret-position="120">
+              <caret line="23" column="45" lean-forward="false" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="message.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/message.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -169,10 +178,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="tsconfig.json" />
         <option value="TypeScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -187,6 +196,9 @@
       <find>current</find>
       <find>counter</find>
       <find>count</find>
+      <find>moveAuctionCompletedListener</find>
+      <find>create</find>
+      <find>moveCo</find>
     </findStrings>
     <replaceStrings>
       <replace>auctionEventEmitter</replace>
@@ -206,7 +218,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/javascripts/app/app.component.ts" />
         <option value="$PROJECT_DIR$/public/javascripts/app/main.component.ts" />
         <option value="$PROJECT_DIR$/public/javascripts/app/auctionHolder.component.ts" />
         <option value="$PROJECT_DIR$/public/javascripts/app/clockApp.component.ts" />
@@ -216,47 +227,48 @@
         <option value="$PROJECT_DIR$/public/javascripts/app/services/ValidatorService.ts" />
         <option value="$PROJECT_DIR$/public/javascripts/app/services/validatorService.ts" />
         <option value="$PROJECT_DIR$/public/javascripts/app/services/validator.service.ts" />
-        <option value="$PROJECT_DIR$/public/javascripts/app/components/clockApp.component.ts" />
         <option value="$PROJECT_DIR$/views/profile.jade" />
         <option value="$PROJECT_DIR$/views/templates/navabar.html" />
         <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/appModules/countdownTimer.js" />
         <option value="$PROJECT_DIR$/appModules/dutchProtocol.js" />
         <option value="$PROJECT_DIR$/views/login.jade" />
-        <option value="$PROJECT_DIR$/config/database.js" />
         <option value="$PROJECT_DIR$/views/signup.jade" />
         <option value="$PROJECT_DIR$/config/passport.js" />
         <option value="$PROJECT_DIR$/views/templates/clock.html" />
-        <option value="$PROJECT_DIR$/public/javascripts/app/components/message.component.ts" />
-        <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/views/templates/message.html" />
         <option value="$PROJECT_DIR$/appModules/onServerStartup.js" />
-        <option value="$PROJECT_DIR$/public/javascripts/app/components/createAuction.component.ts" />
-        <option value="$PROJECT_DIR$/scripts/create_database.js" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/appModules/auctionProtocols.js" />
         <option value="$PROJECT_DIR$/appModules/userUtilities.js" />
-        <option value="$PROJECT_DIR$/appModules/createAuction.js" />
         <option value="$PROJECT_DIR$/appModules/socketTools.js" />
         <option value="$PROJECT_DIR$/appModules/auctionResult.js" />
         <option value="$PROJECT_DIR$/public/javascripts/app/components/auctionResults.component.ts" />
-        <option value="$PROJECT_DIR$/routes/routes.js" />
         <option value="$PROJECT_DIR$/views/templates/auctionHolder.html" />
-        <option value="$PROJECT_DIR$/public/javascripts/app/components/auctionResult.component.ts" />
-        <option value="$PROJECT_DIR$/views/templates/createAuction.html" />
         <option value="$PROJECT_DIR$/views/templates/result.html" />
-        <option value="$PROJECT_DIR$/views/templates/resultHolder.html" />
-        <option value="$PROJECT_DIR$/views/templates/auction.html" />
         <option value="$PROJECT_DIR$/public/javascripts/app/components/mainApp.component.ts" />
-        <option value="$PROJECT_DIR$/public/javascripts/app/components/resultHolder.component.ts" />
-        <option value="$PROJECT_DIR$/public/javascripts/app/components/auctionHolder.component.ts" />
-        <option value="$PROJECT_DIR$/public/javascripts/app/main.ts" />
         <option value="$PROJECT_DIR$/public/javascripts/app/components/navbar.component.ts" />
         <option value="$PROJECT_DIR$/views/app.jade" />
         <option value="$PROJECT_DIR$/views/templates/main.html" />
-        <option value="$PROJECT_DIR$/public/javascripts/app/components/main.component.ts" />
-        <option value="$PROJECT_DIR$/public/javascripts/app/components/auctionApp.component.ts" />
         <option value="$PROJECT_DIR$/views/templates/navbar.html" />
+        <option value="$PROJECT_DIR$/views/templates/auction.html" />
+        <option value="$PROJECT_DIR$/views/templates/createAuction.html" />
+        <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/views/templates/resultHolder.html" />
+        <option value="$PROJECT_DIR$/config/database.js" />
+        <option value="$PROJECT_DIR$/scripts/create_database.js" />
+        <option value="$PROJECT_DIR$/appModules/auctionProtocols.js" />
+        <option value="$PROJECT_DIR$/appModules/createAuction.js" />
+        <option value="$PROJECT_DIR$/routes/routes.js" />
+        <option value="$PROJECT_DIR$/appModules/auctionCompletionTasks.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/app/components/auctionApp.component.ts" />
+        <option value="$PROJECT_DIR$/public/javascripts/app/components/auctionHolder.component.ts" />
+        <option value="$PROJECT_DIR$/public/javascripts/app/components/createAuction.component.ts" />
+        <option value="$PROJECT_DIR$/public/javascripts/app/components/message.component.ts" />
+        <option value="$PROJECT_DIR$/public/javascripts/app/components/resultHolder.component.ts" />
+        <option value="$PROJECT_DIR$/public/javascripts/app/components/auctionResult.component.ts" />
+        <option value="$PROJECT_DIR$/public/javascripts/app/components/clockApp.component.ts" />
+        <option value="$PROJECT_DIR$/public/javascripts/app/main.ts" />
+        <option value="$PROJECT_DIR$/public/javascripts/app/components/main.component.ts" />
       </list>
     </option>
   </component>
@@ -272,8 +284,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="12" />
     <option name="y" value="23" />
-    <option name="width" value="640" />
+    <option name="width" value="1268" />
     <option name="height" value="736" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -346,6 +359,50 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resultTemplates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contract-auction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contract-auction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auctionTemplates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contract-auction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contract-auction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -360,7 +417,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="routes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contract-auction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contract-auction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stylesheets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -414,7 +489,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -428,7 +515,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="appModules" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -452,19 +539,19 @@
     <property name="full.screen.before.presentation.mode" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/javascripts/app/components/resultComponents" />
+      <recent name="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents" />
+      <recent name="$PROJECT_DIR$/views/templates/auctionTemplates" />
+      <recent name="$PROJECT_DIR$/views/templates/resultTemplates" />
+      <recent name="$PROJECT_DIR$/public/images" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/appModules" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/views" />
       <recent name="$PROJECT_DIR$/routes" />
       <recent name="$PROJECT_DIR$/config" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/images" />
-      <recent name="$PROJECT_DIR$/views" />
-      <recent name="$PROJECT_DIR$/public/javascripts/app" />
-      <recent name="$PROJECT_DIR$/public/javascripts/app/components" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
@@ -554,7 +641,7 @@
       <workItem from="1486508103982" duration="7384000" />
       <workItem from="1486583179421" duration="22659000" />
       <workItem from="1486690309326" duration="26102000" />
-      <workItem from="1486903950554" duration="45305000" />
+      <workItem from="1486903950554" duration="56886000" />
     </task>
     <task id="LOCAL-00001" summary="da">
       <created>1484222776158</created>
@@ -752,11 +839,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486929080572</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="getting data from result table by username and now create angular component to hold the results for each user specifically">
+      <created>1487102622679</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1487102622679</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="403344000" />
+    <option name="totallyTimeSpent" value="414925000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -768,13 +862,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="640" height="736" extended-state="0" />
+    <frame x="12" y="23" width="1268" height="736" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11796537" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32956383" sideWeight="0.49256507" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19727346" sideWeight="0.49256507" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19444445" sideWeight="0.5056543" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15962441" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49434572" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18263473" sideWeight="0.50743496" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -787,7 +882,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7282609" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -826,7 +920,6 @@
         <option value="$PROJECT_DIR$/../contract-auction copy/public/javascripts/app/clockApp.component.js" />
         <option value="$PROJECT_DIR$/public/javascripts/app/components/navbar.component.js.map" />
         <option value="$PROJECT_DIR$/public/javascripts/app/components/navbar.component.js" />
-        <option value="$PROJECT_DIR$/public/javascripts/app/components/resultHolder.component.js" />
       </list>
     </option>
   </component>
@@ -835,7 +928,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
-    <MESSAGE value="big commit today, this mostly involves the introduction of users to the system. There is now a login/sign up page where only signed up users may enter. However the auction still remains a separate application as it means the code is more modular and if at a later date authentication changes all will be well." />
     <MESSAGE value="some clean up, ensuring todays is tidy and using the correct bootstrap, i keep forgetting i have it local to the project!" />
     <MESSAGE value="Angular component for messaging has been created, the messages also appears on the app.jade page underneath 'auction', included in code and uses sockets, had some issues with let in angular but it worked fine # symbol though" />
     <MESSAGE value="DB Table created with a JS script so now have an auction table which can hold auction specific data" />
@@ -860,7 +952,8 @@
     <MESSAGE value="now have a delete functionality for auctions" />
     <MESSAGE value="removes completed auctions and adds to the results table" />
     <MESSAGE value="sorted the error if nobody wins then it doesn't try and move it to the results table" />
-    <option name="LAST_COMMIT_MESSAGE" value="sorted the error if nobody wins then it doesn't try and move it to the results table" />
+    <MESSAGE value="getting data from result table by username and now create angular component to hold the results for each user specifically" />
+    <option name="LAST_COMMIT_MESSAGE" value="getting data from result table by username and now create angular component to hold the results for each user specifically" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -869,13 +962,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="80" lean-forward="false" selection-start-line="10" selection-start-column="80" selection-end-line="10" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/app/services/validator.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -944,35 +1030,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/login.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/message.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-          <folding>
-            <element signature="e#42#82#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/appModules/onServerStartup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="45" lean-forward="true" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1017,46 +1078,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/createAuction.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="80" column="27" lean-forward="true" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionResult.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
-          <folding>
-            <element signature="e#42#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/templates/resultHolder.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="83" lean-forward="false" selection-start-line="1" selection-start-column="83" selection-end-line="1" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/appModules/userUtilities.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/passport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="806">
+          <caret line="88" column="43" lean-forward="false" selection-start-line="88" selection-start-column="43" selection-end-line="88" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/templates/resultTemplates/result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/templates/auctionTemplates/clock.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/templates/auctionTemplates/auctionHolder.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/templates/auctionTemplates/message.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="10" lean-forward="true" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/app.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/templates/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="56" lean-forward="true" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/navbar.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+          <folding>
+            <element signature="e#42#82#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1071,36 +1164,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appModules/auctionProtocols.js">
+    <entry file="file://$PROJECT_DIR$/views/templates/navbar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appModules/createAuction.js">
+    <entry file="file://$PROJECT_DIR$/views/templates/auctionTemplates/auction.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="98" column="52" lean-forward="false" selection-start-line="98" selection-start-column="52" selection-end-line="98" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/create_database.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="50" column="6" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/passport.js">
+    <entry file="file://$PROJECT_DIR$/views/templates/auctionTemplates/createAuction.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="806">
-          <caret line="88" column="43" lean-forward="false" selection-start-line="88" selection-start-column="43" selection-end-line="88" selection-end-column="43" />
+        <state relative-caret-position="302">
+          <caret line="61" column="124" lean-forward="false" selection-start-line="61" selection-start-column="124" selection-end-line="61" selection-end-column="124" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/login.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="89" column="31" lean-forward="true" selection-start-line="89" selection-start-column="31" selection-end-line="89" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/templates/resultTemplates/resultHolder.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1108,31 +1215,93 @@
     <entry file="file://$PROJECT_DIR$/config/database.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="13" column="2" lean-forward="false" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/templates/result.html">
+    <entry file="file://$PROJECT_DIR$/scripts/create_database.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        <state relative-caret-position="-375">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/templates/createAuction.html">
+    <entry file="file://$PROJECT_DIR$/appModules/createAuction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="55" column="32" lean-forward="true" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
+        <state relative-caret-position="-270">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="8" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appModules/auctionProtocols.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/resultHolder.component.ts">
+    <entry file="file://$PROJECT_DIR$/appModules/auctionCompletionTasks.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+          <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionApp.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="45" />
+          <folding>
+            <element signature="e#42#82#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="84" column="56" lean-forward="false" selection-start-line="84" selection-start-column="56" selection-end-line="84" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionHolder.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/createAuction.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="23" column="45" lean-forward="false" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/message.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/resultComponents/resultHolder.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="12" column="44" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="44" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#42#82#0" expanded="true" />
@@ -1140,89 +1309,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionHolder.component.ts">
+    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/resultComponents/auctionResult.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-          <folding>
-            <element signature="e#42#82#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/templates/clock.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/templates/auctionHolder.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/templates/message.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="10" lean-forward="true" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1455">
-          <caret line="98" column="31" lean-forward="true" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/app.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/clockApp.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
           <folding>
             <element signature="e#42#82#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/templates/main.html">
+    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/clockApp.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="56" lean-forward="true" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
+        <state relative-caret-position="60">
+          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/templates/auction.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="6" lean-forward="true" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/navbar.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
-          <folding>
-            <element signature="e#42#82#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1232,35 +1333,25 @@
           <caret line="16" column="2" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="31" />
           <folding>
             <element signature="e#42#96#0" expanded="true" />
-            <element signature="e#374#439#0" expanded="true" />
+            <element signature="e#410#475#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/main.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="195">
+          <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
           <folding>
             <element signature="e#42#82#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionApp.component.ts">
+    <entry file="file://$PROJECT_DIR$/routes/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="28" column="30" lean-forward="false" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-          <folding>
-            <element signature="e#42#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/templates/navbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="6" lean-forward="true" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+        <state relative-caret-position="479">
+          <caret line="142" column="60" lean-forward="false" selection-start-line="142" selection-start-column="60" selection-end-line="142" selection-end-column="60" />
           <folding />
         </state>
       </provider>

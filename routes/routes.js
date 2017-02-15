@@ -6,6 +6,7 @@
 var auctionListeners = {};
 var currentAuctions = {};
 var auctionResults = require('../appModules/auctionResult');
+var auctionCompTasks = require('../appModules/auctionCompletionTasks');
 
 module.exports = {
     /**
@@ -131,7 +132,7 @@ module.exports = {
           res.end();
       });
 
-      createAuction.moveAuctionCompletedListener(auctionEventEmitter);
+      auctionCompTasks.moveAuctionCompletedListener(auctionEventEmitter);
 
       auctionEventEmitter.on('completedAucMoved', function(aucID){
           if (currentAuctions.hasOwnProperty(aucID)

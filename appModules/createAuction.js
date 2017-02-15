@@ -79,28 +79,6 @@ module.exports = {
                 }
             });
         })
-    },
-
-    moveAuctionCompletedListener : function(aucEventEmitter){
-         aucEventEmitter.on('moveCompletedAuc', function(aucInfo){
-             //do a query and shit
-             userUtilities.getIDFromName(aucInfo.winnerID, function(userID){
-                 aucInfo.winnerID = userID;
-                 var query = ('INSERT INTO ' + dbconfig.database + '.' + dbconfig.results_table + ' SET ?');
-                 connection.query(query, aucInfo, function (err, res) {
-                     if (err)
-                         throw err;
-                     console.log('Record added ' + res.affectedRows + ' rows');
-                     var deletionQuery = ('DELETE FROM ' + dbconfig.database + '.' + dbconfig.auction_table + ' WHERE id = ?');
-                     connection.query(deletionQuery, aucInfo.id, function (err, res) {
-                         if (err)
-                             throw err;
-                         console.log('Record deleted ' + res.affectedRows + ' rows');
-                         aucEventEmitter.emit('completedAucMoved', aucInfo.id);
-                     });
-                 });
-             });
-         });
     }
 
 };

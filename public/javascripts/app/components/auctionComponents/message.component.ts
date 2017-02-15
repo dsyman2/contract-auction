@@ -6,7 +6,7 @@ import {Input} from "angular2/src/core/metadata";
 
 @Component({
     selector: 'message-app',
-    templateUrl: '/templates/message.html'
+    templateUrl: '/templates/auctionTemplates/message.html'
 })
 
 export class MessageComponent {

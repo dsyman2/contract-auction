@@ -1,4 +1,4 @@
-///<reference path="../../../../node_modules/rxjs/Observable.d.ts"/>
+///<reference path="../../../../../node_modules/rxjs/Observable.d.ts"/>
 /**
  * Created by Umar on 20/01/2017.
  */
@@ -18,7 +18,7 @@ var decorators_1 = require("angular2/src/core/di/decorators");
 var http_1 = require('angular2/http');
 require('rxjs/Rx');
 require('rxjs/add/operator/first');
-var validator_service_js_1 = require("../services/validator.service.js");
+var validator_service_js_1 = require("../../services/validator.service.js");
 var FormInputs = (function () {
     function FormInputs() {
     }
@@ -81,7 +81,7 @@ var CreateAuctionComponent = (function () {
     CreateAuctionComponent = __decorate([
         core_1.Component({
             selector: 'createAuction-app',
-            templateUrl: '/templates/createAuction.html',
+            templateUrl: '/templates/auctionTemplates/createAuction.html',
             directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES],
             providers: [validator_service_js_1.ValidatorService, http_1.HTTP_PROVIDERS]
         }),

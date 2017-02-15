@@ -6,7 +6,7 @@ import {Input} from "angular2/src/core/metadata";
 
 @Component({
     selector: 'result-app',
-    templateUrl: '/templates/result.html',
+    templateUrl: '/templates/resultTemplates/result.html',
 })
 
 export class AuctionResultComponent {

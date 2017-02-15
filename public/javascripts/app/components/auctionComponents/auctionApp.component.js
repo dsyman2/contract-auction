@@ -80,7 +80,7 @@ var AuctionAppComponent = (function () {
     AuctionAppComponent = __decorate([
         core_1.Component({
             selector: 'auction-app',
-            templateUrl: '/templates/auction.html',
+            templateUrl: '/templates/auctionTemplates/auction.html',
             directives: [clockApp_component_js_1.ClockAppComponent, message_component_js_1.MessageComponent],
             providers: [http_1.HTTP_PROVIDERS]
         }),

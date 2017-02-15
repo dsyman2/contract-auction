@@ -12,6 +12,7 @@ a {
 
 button {
   background-color: #5bc0de;
+  color: white;
 }
 
 small{
@@ -80,7 +81,7 @@ small{
 }
 
 .btn-orange {
-  background-color: #5bc0de;
+  background-color: orange;
 }
 
 /* nav bar stuff*/
@@ -107,3 +108,32 @@ small{
 div ul{width:100%;}
 div ul{overflow:hidden; overflow-y:scroll;}
 .msg{width: 100%;}
+
+/* make navbar always humburgery taken from -->
+http://stackoverflow.com/questions/21860263/bootstrap-3-show-collapsed-navigation-for-all-screen-sizes*/
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+.navbar-collapse.collapse.in {display: block !important; } .

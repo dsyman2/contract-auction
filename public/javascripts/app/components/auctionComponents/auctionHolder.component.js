@@ -34,7 +34,7 @@ var AuctionHolderComponent = (function () {
     AuctionHolderComponent = __decorate([
         core_1.Component({
             selector: 'auction-holder',
-            templateUrl: '/templates/auctionHolder.html',
+            templateUrl: '/templates/auctionTemplates/auctionHolder.html',
             directives: [auctionApp_component_js_1.AuctionAppComponent]
         })
     ], AuctionHolderComponent);

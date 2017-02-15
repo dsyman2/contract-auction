@@ -48,9 +48,9 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.results_table + '` ( \
         CONSTRAINT `fk_PerWin` FOREIGN KEY (`winnerID`)'
                 + ' REFERENCES `'
                 + dbconfig.database + '`.`' + dbconfig.users_table + '`(`id`) \
-)');*/
-
-connection.query('\
+)');
+*/
+/*connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.results_table + '` ( \
     `resultID` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
     `id` INT UNSIGNED NOT NULL, \
@@ -69,8 +69,24 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.results_table + '` ( \
         CONSTRAINT `fk_PerRes2` FOREIGN KEY (`winnerID`)'
             + ' REFERENCES `'
             + dbconfig.database + '`.`' + dbconfig.users_table + '`(`id`) \
-)');
+)');*/
 
+
+connection.query('\
+CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.unresolved_table + '` ( \
+    `unresolvedID` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
+    `id` INT UNSIGNED NOT NULL, \
+    `name` TEXT NOT NULL, \
+    `description` LONGTEXT NOT NULL,\
+    `length` INT UNSIGNED NOT NULL, \
+    `protocol` TEXT NOT NULL, \
+    `creatorID` INT UNSIGNED NOT NULL, \
+        PRIMARY KEY (`unresolvedID`), \
+    UNIQUE INDEX `id_UNIQUE` (`unresolvedID` ASC), \
+        CONSTRAINT `fk_PerUnres` FOREIGN KEY (`creatorID`)'
+    + ' REFERENCES `'
+    + dbconfig.database + '`.`' + dbconfig.users_table + '`(`id`) \
+)');
 
 console.log('Success: Database Created!');
 

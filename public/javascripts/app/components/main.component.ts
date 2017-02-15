@@ -2,8 +2,8 @@
  * Created by Umar on 13/02/2017.
  */
 import {Component} from 'angular2/core';
-import {AuctionHolderComponent} from "./auctionHolder.component.js";
-import {ResultHolderComponent} from "./resultHolder.component.js";
+import {AuctionHolderComponent} from "./auctionComponents/auctionHolder.component.js";
+import {ResultHolderComponent} from "./resultComponents/resultHolder.component.js";
 import {Input} from "angular2/src/core/metadata";
 import {NavbarComponent} from "./navbar.component.js";
 

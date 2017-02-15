@@ -59,7 +59,8 @@ module.exports = {
                     io.sockets.emit('auctionEnd-' + id, {})
                     aucInfo.price = winningBid;
                     aucInfo.winnerID = winner;
-                    moveCompletedAuction(auctionEventEmitter, aucInfo);
+                    var auctionObj = {flag: 'result', aucInfo: aucInfo}
+                    moveCompletedAuction(auctionEventEmitter, auctionObj);
                 }
                 else{
                 /*    aucInfo.price = undefined;
@@ -127,10 +128,12 @@ module.exports = {
                 if(intervalID){
                     clearInterval(intervalID);
                 }
-                aucInfo.price = currentPrice;
-                aucInfo.winnerID = currentBidder;
+
                 if(currentBidder != null){
-                    moveCompletedAuction(auctionEventEmitter, aucInfo);
+                    aucInfo.price = currentPrice;
+                    aucInfo.winnerID = currentBidder;
+                    var auctionObj = {flag: 'result', aucInfo: aucInfo}
+                    moveCompletedAuction(auctionEventEmitter, auctionObj);
                 }
                 else{
                     /*aucInfo.price = currentPrice;
@@ -181,15 +184,16 @@ module.exports = {
                 io.sockets.emit('auctionEnd-' + id, id);
                 // this.removeListener('stop');
                 countdownTimer.removeAllListeners('stop');
-                aucInfo.price = currentPrice;
-                aucInfo.winnerID = currentBidder;
+                var auctionObj = null;
                 if(currentBidder != null){
-                    moveCompletedAuction(auctionEventEmitter, aucInfo);
+                    aucInfo.price = currentPrice;
+                    aucInfo.winnerID = currentBidder;
+                    auctionObj = {flag: 'result', aucInfo: aucInfo}
+                    moveCompletedAuction(auctionEventEmitter, auctionObj);
                 }
                 else{
-                    /*aucInfo.price = currentPrice;
-                    aucInfo.winnerID = ' ';
-                    moveCompletedAuction(auctionEventEmitter, aucInfo);*/
+                    auctionObj = {flag: 'unresolved', aucInfo: aucInfo};
+                    moveCompletedAuction(auctionEventEmitter, auctionObj);
                 }
             }
         });

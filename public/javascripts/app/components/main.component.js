@@ -9,8 +9,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
  * Created by Umar on 13/02/2017.
  */
 var core_1 = require('angular2/core');
-var auctionHolder_component_js_1 = require("./auctionHolder.component.js");
-var resultHolder_component_js_1 = require("./resultHolder.component.js");
+var auctionHolder_component_js_1 = require("./auctionComponents/auctionHolder.component.js");
+var resultHolder_component_js_1 = require("./resultComponents/resultHolder.component.js");
 var metadata_1 = require("angular2/src/core/metadata");
 var navbar_component_js_1 = require("./navbar.component.js");
 /* component in angular2 */

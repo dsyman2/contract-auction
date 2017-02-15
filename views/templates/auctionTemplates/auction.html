@@ -8,15 +8,14 @@
 
         <h2> Current bid: £{{price}}</h2>
         <div class="input-group">
-            <span class="input-group-addon">£</span>
+            <span *ngIf="protocol != 'Dutch'" class="input-group-addon">£</span>
             <input class="form-control" [(ngModel)]="bidValue" placeholder="Enter a bid value in pounds" *ngIf="protocol != 'Dutch'">
-            <span class = "input-group-addon" *ngIf="protocol === 'Dutch'">Like the bid &#8593;  You can't enter a value,  just bid &#8594;</span>
             <span class="input-group-btn">
-                <button class="btn btn-orange" (click)="bid()" [disabled]="!active">Place Bid</button>
+                <button class="btn msg" (click)="bid()" [disabled]="!active">Place Bid</button>
             </span>
         </div>
         <small> Protocol being used is {{protocol}}</small>
-        <button type="button " class = "btn" (click)="sendDelete()">Delete</button>
+        <button type="button" class = "btn" (click)="sendDelete()">Delete</button>
         <br>
         <br>
         <div>

@@ -49,7 +49,7 @@ var AuctionResultComponent = (function () {
     AuctionResultComponent = __decorate([
         core_1.Component({
             selector: 'result-app',
-            templateUrl: '/templates/result.html',
+            templateUrl: '/templates/resultTemplates/result.html',
         })
     ], AuctionResultComponent);
     return AuctionResultComponent;

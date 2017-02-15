@@ -3,7 +3,7 @@
  * Created by Umar on 11/01/2017.
  */
 var browser_1 = require('angular2/platform/browser');
-var createAuction_component_js_1 = require("./components/createAuction.component.js");
+var createAuction_component_js_1 = require("./components/auctionComponents/createAuction.component.js");
 //import {AuctionHolderComponent} from "./components/auctionHolder.component.js";
 var validator_service_js_1 = require("./services/validator.service.js");
 //import {ResultHolderComponent} from "./components/resultHolder.component.js";
