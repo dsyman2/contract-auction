@@ -17,6 +17,7 @@ var NavbarComponent = (function () {
         this.buttonChoice = new async_1.EventEmitter();
         this.auctions = 'auctions';
         this.myAuctions = 'myAuctions';
+        this.unresolved = 'unresolved';
         this.clickValue = this.auctions;
     }
     NavbarComponent.prototype.ngOnInit = function () {

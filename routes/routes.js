@@ -153,6 +153,14 @@ module.exports = {
               res.send(JSON.stringify(results));
           });
       });
+
+      app.get('/unresolvedAuctions', function(req, res){
+          console.log('got em!');
+          auctionResults.getUnresolvedByUserID(req.user.username, function (unresolvedList) {
+              console.log(unresolvedList);
+              res.send(JSON.stringify(unresolvedList));
+          })
+      });
   }
 
 };

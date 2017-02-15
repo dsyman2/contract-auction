@@ -13,6 +13,7 @@ var auctionHolder_component_js_1 = require("./auctionComponents/auctionHolder.co
 var resultHolder_component_js_1 = require("./resultComponents/resultHolder.component.js");
 var metadata_1 = require("angular2/src/core/metadata");
 var navbar_component_js_1 = require("./navbar.component.js");
+var unresolvedHolder_component_js_1 = require("./unresolvedComponents/unresolvedHolder.component.js");
 /* component in angular2 */
 var MainComponent = (function () {
     function MainComponent() {
@@ -33,7 +34,7 @@ var MainComponent = (function () {
         core_1.Component({
             selector: 'main-holder',
             templateUrl: '/templates/main.html',
-            directives: [auctionHolder_component_js_1.AuctionHolderComponent, resultHolder_component_js_1.ResultHolderComponent, navbar_component_js_1.NavbarComponent]
+            directives: [auctionHolder_component_js_1.AuctionHolderComponent, resultHolder_component_js_1.ResultHolderComponent, navbar_component_js_1.NavbarComponent, unresolvedHolder_component_js_1.UnresolvedHolderComponent]
         })
     ], MainComponent);
     return MainComponent;

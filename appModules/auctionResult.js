@@ -18,5 +18,16 @@ module.exports = {
                 callback(rows);
             });
         });
-    }
+    },
+
+    getUnresolvedByUserID : function(username, callback){
+        userUtilities.getIDFromName(username, function(id){
+            var query = ('SELECT * FROM ' + dbconfig.database + '.' + dbconfig.unresolved_table + ' WHERE creatorID = ?');
+            connection.query(query, id, function(err, rows){
+                if(err)
+                    throw err;
+                callback(rows);
+            });
+        });
+    },
 };

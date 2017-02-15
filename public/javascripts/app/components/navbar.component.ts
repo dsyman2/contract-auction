@@ -17,6 +17,7 @@ export class NavbarComponent {
     @Output() buttonChoice: EventEmitter<string> = new EventEmitter<string>();
     auctions : string = 'auctions';
     myAuctions : string = 'myAuctions';
+    unresolved : string = 'unresolved';
     clickValue : string = this.auctions;
 
 

@@ -6,13 +6,14 @@ import {AuctionHolderComponent} from "./auctionComponents/auctionHolder.componen
 import {ResultHolderComponent} from "./resultComponents/resultHolder.component.js";
 import {Input} from "angular2/src/core/metadata";
 import {NavbarComponent} from "./navbar.component.js";
+import {UnresolvedHolderComponent} from "./unresolvedComponents/unresolvedHolder.component.js";
 
 
 /* component in angular2 */
 @Component({
     selector: 'main-holder',
     templateUrl: '/templates/main.html',
-    directives: [AuctionHolderComponent, ResultHolderComponent, NavbarComponent]
+    directives: [AuctionHolderComponent, ResultHolderComponent, NavbarComponent, UnresolvedHolderComponent]
 })
 
 export class MainComponent {
