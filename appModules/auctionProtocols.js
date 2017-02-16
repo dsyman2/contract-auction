@@ -6,13 +6,12 @@ var _  = require('underscore');
 
 var moveCompletedAuction = function(auctionEventEmitter, aucInfo){
     auctionEventEmitter.emit('moveCompletedAuc', aucInfo);
-}
+};
 
 module.exports = {
 
     sealedBid : function(io, aucInfo, CountdownTimer, id, type, length, auctionEventEmitter) {
         var countdownTimer = new CountdownTimer(0.000347222, id);
-        //countdownTimer.on('tick')
         var bids = {};
         var deleteStatus = false;
         countdownTimer.start();
@@ -28,9 +27,7 @@ module.exports = {
                     console.log('BID: ' + newBidPrice + ' From: ' + newBidder);
                     bids[newBidder] = newBidPrice;
                 }
-
             });
-
         });
 
         countdownTimer.once('stop', function() {
@@ -56,16 +53,15 @@ module.exports = {
                     io.sockets.emit('priceUpdate-' + id, winningBid);
                     //sockets.broadcast.emit('priceUpdate-' + id, winningBid);
                     console.log('AUCTION + ' + id + ' has ended! --> Winner is: ' + winner);
-                    io.sockets.emit('auctionEnd-' + id, {})
+                    io.sockets.emit('auctionEnd-' + id, {});
                     aucInfo.price = winningBid;
                     aucInfo.winnerID = winner;
-                    var auctionObj = {flag: 'result', aucInfo: aucInfo}
+                    var auctionObj = {flag: 'result', aucInfo: aucInfo};
                     moveCompletedAuction(auctionEventEmitter, auctionObj);
                 }
                 else{
-                /*    aucInfo.price = undefined;
-                    aucInfo.winnerID = '';
-                    moveCompletedAuction(auctionEventEmitter, aucInfo);*/
+                    auctionObj = {flag: 'unresolved', aucInfo: aucInfo};
+                    moveCompletedAuction(auctionEventEmitter, auctionObj);
                 }
 
 
@@ -94,8 +90,6 @@ module.exports = {
 
             if(currentPrice < maxPrice){
                 currentPrice = +((currentPrice + increment).toFixed(2));
-                //currentPrice = parseFloat(currentPrice).toFixed(2);
-               // currentPrice = (parseFloat(currentPrice)).toFixed(2);
             }
             console.log('emitting price: ' + currentPrice);
             io.sockets.emit('priceUpdate-' + id, currentPrice)
@@ -115,7 +109,6 @@ module.exports = {
                 socket.emit('timeRemaining-' + id, 0);
                 socket.broadcast.emit('timeRemaining-' + id, 0);
             });
-
         });
 
         countdownTimer.once('stop', function () {
@@ -132,13 +125,12 @@ module.exports = {
                 if(currentBidder != null){
                     aucInfo.price = currentPrice;
                     aucInfo.winnerID = currentBidder;
-                    var auctionObj = {flag: 'result', aucInfo: aucInfo}
+                    var auctionObj = {flag: 'result', aucInfo: aucInfo};
                     moveCompletedAuction(auctionEventEmitter, auctionObj);
                 }
                 else{
-                    /*aucInfo.price = currentPrice;
-                    aucInfo.winnerID = ' ';
-                    moveCompletedAuction(auctionEventEmitter, aucInfo);*/
+                    auctionObj = {flag: 'unresolved', aucInfo: aucInfo};
+                    moveCompletedAuction(auctionEventEmitter, auctionObj);
                 }
             }
         });
@@ -165,7 +157,6 @@ module.exports = {
                 var newBidPrice = parseInt(data.bid);
                 var newBidder = data.bidder;
                 console.log('BID: ' + newBidPrice + newBidder);
-                /*** TO BE CHANGED WITH PROTOCOL***/
                 if (currentPrice > newBidPrice) {
                     currentPrice = newBidPrice;
                     currentBidder = newBidder;
@@ -173,12 +164,9 @@ module.exports = {
                     socket.broadcast.emit('priceUpdate-' + id, currentPrice);
                 }
             });
-            // console.log('yeaah')
-
         });
 
         countdownTimer.once('stop', function () {
-            // currentPrice, id, userID(of currentPrice)
             if(deleteStatus === false) {
                 console.log('AUCTION: ' + id);
                 io.sockets.emit('auctionEnd-' + id, id);
@@ -188,7 +176,7 @@ module.exports = {
                 if(currentBidder != null){
                     aucInfo.price = currentPrice;
                     aucInfo.winnerID = currentBidder;
-                    auctionObj = {flag: 'result', aucInfo: aucInfo}
+                    auctionObj = {flag: 'result', aucInfo: aucInfo};
                     moveCompletedAuction(auctionEventEmitter, auctionObj);
                 }
                 else{

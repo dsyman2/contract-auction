@@ -36,12 +36,14 @@ export class CreateAuctionComponent {
    // http: Http;
     numberValidity : boolean = null;
 
-    constructor(@Inject(ValidatorService) validatorService : ValidatorService, @Inject(FormBuilder) fb: FormBuilder, @Inject(Http)private http: Http){
+    constructor(@Inject(ValidatorService) validatorService : ValidatorService,
+                @Inject(FormBuilder) fb: FormBuilder, @Inject(Http)private http: Http){
         this.formInputs = new FormInputs();
         this.CreateGroup = fb.group({
             'auctionName'   : new Control(this.formInputs.auctionName, Validators.required),
             'auctionDesc'   : new Control(this.formInputs.auctionDesc, Validators.required),
-            'length'        : new Control(this.formInputs.length, Validators.compose([Validators.required, validatorService.isInteger]) ),
+            'length'        : new Control(this.formInputs.length, Validators.compose([Validators.required,
+                validatorService.isInteger, validatorService.isNotZero]) ),
             'protocol'      : new Control(this.formInputs.protocol, Validators.required)
         })
     }
@@ -57,30 +59,6 @@ export class CreateAuctionComponent {
 
         this.addAuctionPostRequest("/createAuction", data);
     }
-
-    /*public isInteger = (control : Control) => {
-        return this.checkIsInteger(control.value) ? null : {
-                valid: true
-            }
-    };
-
-    checkIsInteger(value: any) {
-        console.log((parseFloat(value) == parseInt(value)) && !isNaN(value));
-        return (parseFloat(value) == parseInt(value)) && !isNaN(value);
-    };*/
-   /* onlyDecimalNumberKey(event) {
-        let charCode = (event.which) ? event.which : event.keyCode;
-        if (charCode != 46 && charCode > 31
-            && (charCode < 48 || charCode > 57))
-            this.numberValidity = null;
-        this.numberValidity = true;
-    }
-
-    isNumberValid = (control : Control) => {
-        this.numberValidity ? null : {
-                valid: true
-            }
-    };*/
 
     addAuctionPostRequest(url, data) {
         console.log("auction name: " + data.auctionName);

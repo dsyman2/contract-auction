@@ -16,6 +16,11 @@ var ValidatorService = (function () {
                 valid: true
             };
         };
+        this.isNotZero = function (control) {
+            return checkIsZero(control.value) ? null : {
+                valid: true
+            };
+        };
     }
     ValidatorService = __decorate([
         decorators_1.Injectable()
@@ -26,4 +31,7 @@ exports.ValidatorService = ValidatorService;
 function checkIsInteger(value) {
     console.log((parseFloat(value) == parseInt(value)) && !isNaN(value));
     return (parseFloat(value) == parseInt(value)) && !isNaN(value);
+}
+function checkIsZero(value) {
+    return (value > 0);
 }

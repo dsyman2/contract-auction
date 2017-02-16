@@ -33,7 +33,8 @@ var CreateAuctionComponent = (function () {
         this.CreateGroup = fb.group({
             'auctionName': new common_1.Control(this.formInputs.auctionName, common_1.Validators.required),
             'auctionDesc': new common_1.Control(this.formInputs.auctionDesc, common_1.Validators.required),
-            'length': new common_1.Control(this.formInputs.length, common_1.Validators.compose([common_1.Validators.required, validatorService.isInteger])),
+            'length': new common_1.Control(this.formInputs.length, common_1.Validators.compose([common_1.Validators.required,
+                validatorService.isInteger, validatorService.isNotZero])),
             'protocol': new common_1.Control(this.formInputs.protocol, common_1.Validators.required)
         });
     }
@@ -47,29 +48,6 @@ var CreateAuctionComponent = (function () {
         };
         this.addAuctionPostRequest("/createAuction", data);
     };
-    /*public isInteger = (control : Control) => {
-        return this.checkIsInteger(control.value) ? null : {
-                valid: true
-            }
-    };
-
-    checkIsInteger(value: any) {
-        console.log((parseFloat(value) == parseInt(value)) && !isNaN(value));
-        return (parseFloat(value) == parseInt(value)) && !isNaN(value);
-    };*/
-    /* onlyDecimalNumberKey(event) {
-         let charCode = (event.which) ? event.which : event.keyCode;
-         if (charCode != 46 && charCode > 31
-             && (charCode < 48 || charCode > 57))
-             this.numberValidity = null;
-         this.numberValidity = true;
-     }
- 
-     isNumberValid = (control : Control) => {
-         this.numberValidity ? null : {
-                 valid: true
-             }
-     };*/
     CreateAuctionComponent.prototype.addAuctionPostRequest = function (url, data) {
         console.log("auction name: " + data.auctionName);
         this.headers = new http_1.Headers();

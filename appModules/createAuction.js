@@ -8,30 +8,16 @@ var connection = mysql.createConnection(dbconfig.connection);
 var idSQL = null;
 var userUtilities = require('../appModules/userUtilities');
 
-/*var getIDFromName = function (username, callback) {
-    console.log("we're just before query 1");
-    var query = ('SELECT id FROM ' + dbconfig.database + '.' + dbconfig.users_table + ' WHERE username = ?');
-    connection.query(query, username, function (err, rows, fields) {
-        if (err)
-            throw err;
-        console.log("YOUL: " + rows[0].id);
-        callback(rows[0].id);
-    });
-    return idSQL;
-}*/
-
 module.exports = {
 
-    addAuctionEntry : function (username, insertionData, callback) {
-        userUtilities.getIDFromName(username, function(id){
-            insertionData.creatorID = id;
-            var query = ('INSERT INTO ' + dbconfig.database + '.' + dbconfig.auction_table + ' SET ?');
-            connection.query(query, insertionData, function(err, res){
-                if(err)
-                    throw err;
-                console.log('Last insert ID: ' + res.insertId);
-                callback(insertionData, res.insertId);
-            });
+    addAuctionEntry : function (userID, insertionData, callback) {
+        insertionData.creatorID = userID;
+        var query = ('INSERT INTO ' + dbconfig.database + '.' + dbconfig.auction_table + ' SET ?');
+        connection.query(query, insertionData, function(err, res){
+            if(err)
+                throw err;
+            console.log('Last insert ID: ' + res.insertId);
+            callback(insertionData, res.insertId);
         });
     },
 
@@ -67,18 +53,16 @@ module.exports = {
 
     },
 
-    deleteAuction : function (auctionID, username, callback) {
-        userUtilities.getIDFromName(username, function(userID){
-            var query = ('DELETE FROM ' + dbconfig.database + '.' + dbconfig.auction_table + ' WHERE id = ? AND creatorID = ?');
-            connection.query(query, [auctionID, userID], function (err, result) {
-                if(err)
-                    throw err;
-                console.log('Record deleted ' + result.affectedRows + ' rows');
-                if(result.affectedRows > 0){
-                    callback(auctionID);
-                }
-            });
-        })
+    deleteAuction : function (auctionID, userID, callback) {
+        var query = ('DELETE FROM ' + dbconfig.database + '.' + dbconfig.auction_table + ' WHERE id = ? AND creatorID = ?');
+        connection.query(query, [auctionID, userID], function (err, result) {
+            if(err)
+                throw err;
+            console.log('Record deleted ' + result.affectedRows + ' rows');
+            if(result.affectedRows > 0){
+                callback(auctionID);
+            }
+        });
     }
 
 };

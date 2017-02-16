@@ -1,4 +1,7 @@
-
+/**
+ * A short script which will allow on running to configure the database for this
+ * app, all that is needed is a sql DB.
+ */
 var mysql = require('mysql');
 var dbconfig = require('../config/database');
 

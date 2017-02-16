@@ -6,14 +6,22 @@
     <div class="panel-body">
         <h5>{{desc}}</h5>
 
-        <h2> Current bid: £{{price}}</h2>
-        <div class="input-group">
+        <h2 *ngIf="protocol != '1st-price-sealed' || protocol != '2nd-price-sealed'">
+            Current bid: {{price | currency:'GBP':true:'1.2-2'}}
+        </h2>
+
+        <h2 *ngIf="protocol == '1st-price-sealed' || protocol == '2nd-price-sealed'">
+            Current bid is secret.
+        </h2>
+
+        <div class="input-group" [ngFormModel]="CreateGroup">
             <span *ngIf="protocol != 'Dutch'" class="input-group-addon">£</span>
-            <input class="form-control" [(ngModel)]="bidValue" placeholder="Enter a bid value in pounds" *ngIf="protocol != 'Dutch'">
+                <input class="form-control" [(ngModel)]="formInputs.bidValue" ngControl="bidValue"placeholder="Enter a bid value in pounds" *ngIf="protocol != 'Dutch'">
             <span class="input-group-btn">
-                <button class="btn msg" (click)="bid()" [disabled]="!active">Place Bid</button>
+                <button class="btn msg" [disabled]="!active" [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)">Place Bid</button>
             </span>
         </div>
+        <small *ngIf="!CreateGroup.controls['bidValue'].valid">The bid must be greater than zero and a number!</small>
         <small> Protocol being used is {{protocol}}</small>
         <button type="button" class = "btn" (click)="sendDelete()">Delete</button>
         <br>

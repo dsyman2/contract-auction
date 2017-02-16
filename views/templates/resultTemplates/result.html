@@ -4,7 +4,7 @@
     </div>
     <div class="panel-body">
         <p>Description of job: {{desc}}</p>
-        <p>Winning bid value: £{{price}}</p>
+        <p>Winning bid value: £{{price}}<!--{{price | currency:'GBP':true:'1.2-2'}}--></p>
         <p>Protocol used was: {{protocol}}</p>
         <p>Contract issuer: {{creator}}</p>
         <p>Winning contractor: {{winner}}</p>

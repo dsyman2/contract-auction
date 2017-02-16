@@ -12,9 +12,19 @@ export class ValidatorService {
             valid: true
             }
     };
+
+    public isNotZero = (control : Control) => {
+        return checkIsZero(control.value) ? null : {
+            valid: true
+            }
+    };
 }
 
 function checkIsInteger(value: any) {
     console.log((parseFloat(value) == parseInt(value)) && !isNaN(value));
     return (parseFloat(value) == parseInt(value)) && !isNaN(value);
+}
+
+function checkIsZero(value : any){
+    return (value > 0);
 }
