@@ -6,17 +6,26 @@ body {
   font: 125% "Century Gothic", bold, sans-serif;
 }
 
+.ruleBG{
+    background-color: #262626;
+}
 a {
   color: white;
 }
 
 button {
-  background-color: #5bc0de;
+  background-color: skyblue;
   color: white;
 }
 
 small{
   color: darkred;
+}
+
+.alert-orange {
+    border-color: lightcoral;
+    background: lightcoral;
+    color: white;
 }
 
 .inline{
@@ -72,8 +81,8 @@ small{
   border-radius: 50%;
   font-size: 400%;
   color: white;
-  background-color: #5bc0de;
-  border-color: #5bc0de;
+  background-color: skyblue;
+  border-color: skyblue;
 }
 
 .button-round:hover {
@@ -81,12 +90,12 @@ small{
 }
 
 .btn-orange {
-  background-color: orange;
+  background-color: lightcoral;
 }
 
 /* nav bar stuff*/
 .navbar-default {
-  background-color:#5bc0de;
+  background-color:skyblue;
   background-repeat: no-repeat;
 }
 

@@ -145,10 +145,19 @@ module.exports = {
         });
 
         /**
-         * returns an array of all unresolved auctions dependent on the username/id
+         * returns an array of all created auctions dependent on the username/id
          */
         app.get('/completedAuctions', function(req, res) {
-            postAucData.getResultsByUserID(req.user.id, function(results){
+            postAucData.getResultsByUserID(req.user.id, 'creator', function(results){
+                res.send(JSON.stringify(results));
+            });
+        });
+
+        /**
+         * returns an array of all won auctions dependent on the username/id
+         */
+        app.get('/wonAuctions', function(req, res) {
+            postAucData.getResultsByUserID(req.user.id, 'winner', function(results){
                 res.send(JSON.stringify(results));
             });
         });
@@ -156,10 +165,20 @@ module.exports = {
         /**
          * returns an array of all unresolved auctions dependent on the username/id
          */
-        app.get('/unresolvedAuctions', function(req, res){
+        app.get('/unresolvedAuctions', function(req, res) {
             postAucData.getUnresolvedByUserID(req.user.id, function (unresolvedList) {
                 res.send(JSON.stringify(unresolvedList));
             });
+        });
+
+        /**
+         * Returns the user details given an id
+         */
+        app.get('/contactDetails', function(req, res){
+            postAucData.getContactDetailsByUserID(req.query.id, function(contactDetails){
+                res.send(JSON.stringify(contactDetails));
+                console.log(contactDetails);
+            })
         });
 
         //Set listener for auction move event
@@ -168,7 +187,7 @@ module.exports = {
         /**
          * Updates the auction variable on this script whenever this event is heard
          */
-        auctionEventEmitter.on('completedAucMoved', function(aucID){
+        auctionEventEmitter.on('completedAucMoved', function(aucID) {
             if (currentAuctions.hasOwnProperty(aucID)
                 && auctionListeners.hasOwnProperty(aucID)) {
                 delete currentAuctions[aucID];

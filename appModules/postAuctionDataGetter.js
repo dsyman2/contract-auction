@@ -13,8 +13,9 @@ var connection = mysql.createConnection(dbconfig.connection);
 var userUtilities = require('../appModules/userUtilities');
 
 module.exports = {
-    getResultsByUserID : function(userID, callback){
-        var query = ('SELECT * FROM ' + dbconfig.database + '.' + dbconfig.results_table + ' WHERE creatorID = ? OR winnerID = ?');
+    getResultsByUserID : function(userID, idTag, callback){
+        var queryIDTag = idTag === 'winner' ? 'winnerID' : 'creatorID';
+        var query = ('SELECT * FROM ' + dbconfig.database + '.' + dbconfig.results_table + ' WHERE ' + queryIDTag + ' = ?');
         connection.query(query, [userID,userID], function(err, rows){
             if(err)
                 throw err;
@@ -30,4 +31,13 @@ module.exports = {
             callback(rows);
         });
     },
+
+    getContactDetailsByUserID : function(userID, callback){
+        var query = ('SELECT username, contactNumber, email FROM ' + dbconfig.database + '.' + dbconfig.users_table + ' WHERE id = ?');
+        connection.query(query, userID, function (err, rows) {
+            if(err)
+                throw err;
+            callback(rows[0]);
+        });
+    }
 };

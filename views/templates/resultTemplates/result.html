@@ -8,6 +8,11 @@
         <p>Protocol used was: {{protocol}}</p>
         <p>Contract issuer: {{creator}}</p>
         <p>Winning contractor: {{winner}}</p>
-        <button type="button" class = "btn msg">Contact other party</button>
+        <div class="alert alert-orange" *ngIf="resultView">
+            <p>Contact username:  {{contactUsername}}</p>
+            <p>Contact number:  {{contactNum }}</p>
+            <p>Contact email:  {{contactEmail}}</p>
+        </div>
+        <button type="button" class = "btn msg" (click)="updateRes()">Contact other party</button>
     </div>
 </div>

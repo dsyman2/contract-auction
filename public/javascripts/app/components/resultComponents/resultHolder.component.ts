@@ -16,24 +16,36 @@ import {AuctionResultComponent} from "./auctionResult.component.js";
 })
 
 export class ResultHolderComponent {
-    results : any;
+    createdList : any;
+    wonList: any;
+    won : boolean = false;
+    createdB : boolean = false;
 
     constructor(@Inject(Http)private http:Http){
-        this.getResults();
+        this.getCreatedAucResults();
+        this.getWonAucResults();
     }
 
-   /* ngOnInit(){
-
-    }*/
-
-    getResults(){
+    getCreatedAucResults(){
        this.http.get("/completedAuctions", {})
            .subscribe(
-                results => this.results = results.json(),
-                () => console.log(this.results)
+               createdList => this.createdList = createdList.json(),
+                () => console.log(this.createdList),
+               () => this.createdB = true
             );
         //this.results = x;
     }
+
+    getWonAucResults(){
+
+        this.http.get("/wonAuctions", {})
+            .subscribe(
+                wonList => this.wonList = wonList.json(),
+                () => console.log(this.wonList),
+                () => this.won = true
+            );
+    }
+
 
 
 }
