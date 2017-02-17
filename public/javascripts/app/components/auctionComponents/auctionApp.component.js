@@ -26,18 +26,21 @@ var FormInputs = (function () {
     return FormInputs;
 }());
 var AuctionAppComponent = (function () {
-    function AuctionAppComponent(http, validatorService, fb) {
+    /*CreateGroup: ControlGroup;
+    formInputs: FormInputs;*/
+    function AuctionAppComponent(http) {
         this.http = http;
         this.price = 0.0;
         this.socket = null;
+        this.bidValue = '';
         this.time = 0;
         this.active = true;
-        console.log('hihi');
+        /*console.log('hihi');
         this.formInputs = new FormInputs();
         this.CreateGroup = fb.group({
-            'bidValue': new common_1.Control(this.formInputs.bidValue, common_1.Validators.compose([common_1.Validators.required,
-                validatorService.isInteger, validatorService.isNotZero]))
-        });
+            'bidValue'        : new Control(this.formInputs.bidValue, Validators.compose([Validators.required,
+                validatorService.isInteger, validatorService.isNotZero]) )
+        })*/
     }
     AuctionAppComponent.prototype.ngOnInit = function () {
         console.log("username is:" + this.username);
@@ -49,19 +52,20 @@ var AuctionAppComponent = (function () {
             console.log('over and out: ' + data);
         });
     };
-    AuctionAppComponent.prototype.addNewGroup = function (formInputs) {
+    /*addNewGroup(formInputs : FormInputs) {
         this.formInputs = new FormInputs();
-        var data = {
+        let data = {
             bidVal: formInputs.bidValue,
         };
+
         this.bid(data);
-    };
-    AuctionAppComponent.prototype.bid = function (data) {
+    }*/
+    AuctionAppComponent.prototype.bid = function () {
         this.socket.emit('bid-' + this.id, {
-            bid: data.bidVal,
+            bid: this.bidValue,
             bidder: this.username
         });
-        this.formInputs.bidValue = null;
+        this.bidValue = '';
     };
     AuctionAppComponent.prototype.onTimeUp = function (data) {
         //alert(data);
@@ -103,9 +107,7 @@ var AuctionAppComponent = (function () {
             directives: [clockApp_component_js_1.ClockAppComponent, message_component_js_1.MessageComponent, common_1.FORM_DIRECTIVES],
             providers: [http_1.HTTP_PROVIDERS, validator_service_js_1.ValidatorService]
         }),
-        __param(0, decorators_1.Inject(http_1.Http)),
-        __param(1, decorators_1.Inject(validator_service_js_1.ValidatorService)),
-        __param(2, decorators_1.Inject(common_1.FormBuilder))
+        __param(0, decorators_1.Inject(http_1.Http))
     ], AuctionAppComponent);
     return AuctionAppComponent;
 }());

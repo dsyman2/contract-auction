@@ -18,6 +18,22 @@ export class ValidatorService {
             valid: true
             }
     };
+
+    public isIntegerPrice(protocol){
+      return (control : Control) => {
+          return checkIsIntegerPrice(control.value, protocol) ? null : {
+                  valid: true
+              }
+      };
+    }
+
+    public isNotZeroPrice (protocol){
+        return (control : Control) => {
+            return checkIsZeroPrice(control.value, protocol) ? null : {
+                    valid: true
+                }
+        };
+    }
 }
 
 function checkIsInteger(value: any) {
@@ -27,4 +43,19 @@ function checkIsInteger(value: any) {
 
 function checkIsZero(value : any){
     return (value > 0);
+}
+
+function checkIsIntegerPrice(value: any, protocol: any) {
+    if(protocol == 'English' || protocol == 'Dutch') {
+        console.log((parseFloat(value) == parseInt(value)) && !isNaN(value));
+        return (parseFloat(value) == parseInt(value)) && !isNaN(value);
+    }
+    return (parseFloat('1') == parseInt('1')) && !isNaN(1);
+}
+
+function checkIsZeroPrice(value : any, protocol : any){
+    if(protocol == 'English' || protocol == 'Dutch') {
+        return (value > 0);
+    }
+    return (parseFloat('1') == parseInt('1')) && !isNaN(1);
 }

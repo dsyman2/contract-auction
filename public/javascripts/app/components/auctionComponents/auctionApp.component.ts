@@ -25,7 +25,7 @@ class FormInputs{
 export class AuctionAppComponent {
     price : number = 0.0;
     socket = null;
-    //bidValue : string= '';
+    bidValue : string= '';
     @Input()auction : any;
     @Input()id : string;
     @Input()name : string;
@@ -35,17 +35,17 @@ export class AuctionAppComponent {
     @Input()protocol : string;
     time : number = 0;
     active : boolean = true;
-    CreateGroup: ControlGroup;
-    formInputs: FormInputs;
+    /*CreateGroup: ControlGroup;
+    formInputs: FormInputs;*/
 
-    constructor(@Inject(Http)private http:Http, @Inject(ValidatorService) validatorService : ValidatorService,
-                @Inject(FormBuilder) fb: FormBuilder){
-        console.log('hihi');
+    constructor(@Inject(Http)private http:Http, /*@Inject(ValidatorService) validatorService : ValidatorService,
+                @Inject(FormBuilder) fb: FormBuilder*/){
+        /*console.log('hihi');
         this.formInputs = new FormInputs();
         this.CreateGroup = fb.group({
             'bidValue'        : new Control(this.formInputs.bidValue, Validators.compose([Validators.required,
                 validatorService.isInteger, validatorService.isNotZero]) )
-        })
+        })*/
     }
 
     ngOnInit() {
@@ -61,22 +61,22 @@ export class AuctionAppComponent {
         });
     }
 
-    addNewGroup(formInputs : FormInputs) {
+    /*addNewGroup(formInputs : FormInputs) {
         this.formInputs = new FormInputs();
         let data = {
             bidVal: formInputs.bidValue,
         };
 
         this.bid(data);
-    }
+    }*/
 
-    bid(data) {
+    bid() {
         this.socket.emit('bid-'+this.id, {
-            bid: data.bidVal,
+            bid: this.bidValue,
             bidder: this.username
         });
 
-        this.formInputs.bidValue = null;
+        this.bidValue = '';
     }
 
     onTimeUp(data:string) {

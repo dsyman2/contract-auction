@@ -22,6 +22,20 @@ var ValidatorService = (function () {
             };
         };
     }
+    ValidatorService.prototype.isIntegerPrice = function (protocol) {
+        return function (control) {
+            return checkIsIntegerPrice(control.value, protocol) ? null : {
+                valid: true
+            };
+        };
+    };
+    ValidatorService.prototype.isNotZeroPrice = function (protocol) {
+        return function (control) {
+            return checkIsZeroPrice(control.value, protocol) ? null : {
+                valid: true
+            };
+        };
+    };
     ValidatorService = __decorate([
         decorators_1.Injectable()
     ], ValidatorService);
@@ -34,4 +48,17 @@ function checkIsInteger(value) {
 }
 function checkIsZero(value) {
     return (value > 0);
+}
+function checkIsIntegerPrice(value, protocol) {
+    if (protocol == 'English' || protocol == 'Dutch') {
+        console.log((parseFloat(value) == parseInt(value)) && !isNaN(value));
+        return (parseFloat(value) == parseInt(value)) && !isNaN(value);
+    }
+    return (parseFloat('1') == parseInt('1')) && !isNaN(1);
+}
+function checkIsZeroPrice(value, protocol) {
+    if (protocol == 'English' || protocol == 'Dutch') {
+        return (value > 0);
+    }
+    return (parseFloat('1') == parseInt('1')) && !isNaN(1);
 }

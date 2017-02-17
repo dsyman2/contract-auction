@@ -12,6 +12,9 @@ module.exports = {
 
     addAuctionEntry : function (userID, insertionData, callback) {
         insertionData.creatorID = userID;
+        insertionData.maxGuidePrice = (insertionData.protocol === 'Dutch' || insertionData.protocol === 'English') ?
+            insertionData.maxGuidePrice : '';
+        console.log(insertionData)
         var query = ('INSERT INTO ' + dbconfig.database + '.' + dbconfig.auction_table + ' SET ?');
         connection.query(query, insertionData, function(err, res){
             if(err)
