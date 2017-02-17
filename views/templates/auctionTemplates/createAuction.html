@@ -35,9 +35,9 @@
                             <br>
 
                             <div>
-                                Length of Auction:
+                                Length of Auction(in days):
                                 <input type="text" [(ngModel)]="formInputs.length" class="form-control" ngControl="length">
-                                <small *ngIf="!CreateGroup.controls['length'].valid">You must enter a length.</small>
+                                <small *ngIf="!CreateGroup.controls['length'].valid">You must enter a length, it must be a number and greater than 0.</small>
                             </div>
                             <br>
 
@@ -59,8 +59,7 @@
                         </form>
                     <br>
                     <div>
-                        <button type="button " [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)"
-                                class ="btn">
+                        <button type="button" [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)" class ="btn">
                             Create
                         </button>
                     </div>

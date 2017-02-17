@@ -1,4 +1,7 @@
-
+/**
+ * A short script which will allow on running to configure the database for this
+ * app, all that is needed is a sql DB.
+ */
 var mysql = require('mysql');
 var dbconfig = require('../config/database');
 
@@ -48,9 +51,9 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.results_table + '` ( \
         CONSTRAINT `fk_PerWin` FOREIGN KEY (`winnerID`)'
                 + ' REFERENCES `'
                 + dbconfig.database + '`.`' + dbconfig.users_table + '`(`id`) \
-)');*/
-
-connection.query('\
+)');
+*/
+/*connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.results_table + '` ( \
     `resultID` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
     `id` INT UNSIGNED NOT NULL, \
@@ -59,6 +62,7 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.results_table + '` ( \
     `length` INT UNSIGNED NOT NULL, \
     `protocol` TEXT NOT NULL, \
     `creatorID` INT UNSIGNED NOT NULL, \
+    `price` TEXT NOT NULL,\
     `winnerID` INT UNSIGNED NOT NULL,\
         PRIMARY KEY (`resultID`), \
     UNIQUE INDEX `id_UNIQUE` (`resultID` ASC), \
@@ -68,8 +72,24 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.results_table + '` ( \
         CONSTRAINT `fk_PerRes2` FOREIGN KEY (`winnerID`)'
             + ' REFERENCES `'
             + dbconfig.database + '`.`' + dbconfig.users_table + '`(`id`) \
-)');
+)');*/
 
+
+connection.query('\
+CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.unresolved_table + '` ( \
+    `unresolvedID` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
+    `id` INT UNSIGNED NOT NULL, \
+    `name` TEXT NOT NULL, \
+    `description` LONGTEXT NOT NULL,\
+    `length` INT UNSIGNED NOT NULL, \
+    `protocol` TEXT NOT NULL, \
+    `creatorID` INT UNSIGNED NOT NULL, \
+        PRIMARY KEY (`unresolvedID`), \
+    UNIQUE INDEX `id_UNIQUE` (`unresolvedID` ASC), \
+        CONSTRAINT `fk_PerUnres` FOREIGN KEY (`creatorID`)'
+    + ' REFERENCES `'
+    + dbconfig.database + '`.`' + dbconfig.users_table + '`(`id`) \
+)');
 
 console.log('Success: Database Created!');
 

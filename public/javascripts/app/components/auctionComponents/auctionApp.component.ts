@@ -8,18 +8,24 @@ import {MessageComponent} from "./message.component.js";
 import {Http, Headers, HTTP_PROVIDERS} from 'angular2/http';
 import 'rxjs/Rx';
 import {Inject} from "angular2/src/core/di/decorators";
+import {FORM_DIRECTIVES, Control, ControlGroup, FormBuilder, Validators} from 'angular2/common';
+import {ValidatorService} from "../../services/validator.service.js";
+
+class FormInputs{
+    bidValue : number;
+}
 
 @Component({
     selector: 'auction-app',
-    templateUrl: '/templates/auction.html',
-    directives: [ClockAppComponent, MessageComponent],
-    providers: [HTTP_PROVIDERS]
+    templateUrl: '/templates/auctionTemplates/auction.html',
+    directives: [ClockAppComponent, MessageComponent, FORM_DIRECTIVES],
+    providers: [HTTP_PROVIDERS, ValidatorService]
 })
 
 export class AuctionAppComponent {
     price : number = 0.0;
     socket = null;
-    bidValue : string= '';
+    //bidValue : string= '';
     @Input()auction : any;
     @Input()id : string;
     @Input()name : string;
@@ -29,9 +35,18 @@ export class AuctionAppComponent {
     @Input()protocol : string;
     time : number = 0;
     active : boolean = true;
+    CreateGroup: ControlGroup;
+    formInputs: FormInputs;
 
-
-    constructor(@Inject(Http)private http:Http){}
+    constructor(@Inject(Http)private http:Http, @Inject(ValidatorService) validatorService : ValidatorService,
+                @Inject(FormBuilder) fb: FormBuilder){
+        console.log('hihi');
+        this.formInputs = new FormInputs();
+        this.CreateGroup = fb.group({
+            'bidValue'        : new Control(this.formInputs.bidValue, Validators.compose([Validators.required,
+                validatorService.isInteger, validatorService.isNotZero]) )
+        })
+    }
 
     ngOnInit() {
         console.log("username is:" + this.username);
@@ -46,13 +61,22 @@ export class AuctionAppComponent {
         });
     }
 
-    bid() {
+    addNewGroup(formInputs : FormInputs) {
+        this.formInputs = new FormInputs();
+        let data = {
+            bidVal: formInputs.bidValue,
+        };
+
+        this.bid(data);
+    }
+
+    bid(data) {
         this.socket.emit('bid-'+this.id, {
-            bid: this.bidValue,
+            bid: data.bidVal,
             bidder: this.username
         });
 
-        this.bidValue = '';
+        this.formInputs.bidValue = null;
     }
 
     onTimeUp(data:string) {

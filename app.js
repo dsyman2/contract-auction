@@ -1,88 +1,52 @@
+/**
+ * app.js is required by all node applications to be the central script, this is in fact the server. It is mainly used
+ * as a place where application wide packages are imported. It also initialises the state of the server. By loading in
+ * any auction which are not finished yet, this is in case the server has crashed unexpectedly.
+ */
+
+/**
+ * Require --> This block is where packages are imported
+ */
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//var routes = require('./routes/index');
 var session  = require('express-session');
 var app = express();
 var routes = require('./routes/routes.js');
 
-
+//needed for Passport.JS
 var passport = require('passport');
 var flash    = require('connect-flash');
 
+//make this script a server
 var http = require('http');
 var server = http.createServer(app);
+
+//socket.io and node events
 var io = require('socket.io').listen(server);
-
 var EventEmitter = require('events').EventEmitter;
-var auctionEventEmitter = new EventEmitter();
-console.log(auctionEventEmitter)
 
+//other utility scripts created by the developer
 var createAuction = require('./appModules/createAuction.js');
+var socketTools = require('./appModules/socketTools.js');
+var CountdownTimer = require('./appModules/countdownTimer.js');
+var protocols = require('./appModules/auctionProtocols.js');
+var onServerStartup = require('./appModules/onServerStartup.js');
+
+// pass passport for configuration
+require('./config/passport')(passport);
+
+//initialise
+var auctionEventEmitter = new EventEmitter();
 var auctionListeners = {};
 var currentAuctions = {};
 
-require('./config/passport')(passport); // pass passport for configuration
-
-
 io.set("origins", "*:*");
 
-var socketTools = require('./appModules/socketTools.js');
-//socketTools.auctionEngine(io);
-//socketTools.messageEngine(io);
-
-var CountdownTimer = require('./appModules/countdownTimer.js');
-var protocols = require('./appModules/auctionProtocols.js');
-
-
-/*
-var currentPrice = 9999;
-
-io.on('connection', function (socket) {
-    socket.emit('priceUpdate', currentPrice);
-    socket.on('bid', function (data) {
-        var newBidPrice = parseInt(data);
-        if(currentPrice > newBidPrice){
-            currentPrice = newBidPrice;
-            socket.emit('priceUpdate', currentPrice);
-            socket.broadcast.emit('priceUpdate', currentPrice);
-        }
-
-    });
-});
-
-var msgs = [];
-
-io.on('connection', function(socket){
-    socket.emit('chat msgs', msgs);
-
-    socket.on('chat msg', function(msg){
-        msgs.push(msg);
-        console.log("Message: " + msg);
-        socket.emit('chat msg', msg);
-        socket.broadcast.emit('chat msg', msg);
-    });
-});
-*/
-
-/*var mysql = require('mysql');
-
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'test'
-});
-
-connection.connect(function (err) {
-    if(err) throw err
-    console.log('you are now connected to mysql...');
-});*/
-
-
+//Scripts and modules that need to be used by the application
 app.use('/scripts', express.static(__dirname + '/node_modules/'));
 app.use('/templates', express.static(__dirname + '/views/templates/'));
 app.use(logger('dev'));
@@ -90,14 +54,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.set('view engine', 'jade'); // set up ejs for templating
-
 app.use(express.static(path.join(__dirname, 'public')));
 
+//needed for passport.JS
 app.use(session({
     secret: 'omgwafflesareawesome',
     resave: true,
     saveUninitialized: true
 } )); // session secret
+
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
@@ -106,12 +71,9 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 /**
  * Load up all current auctions into the server from the DB
  */
-var onServerStartup = require('./appModules/onServerStartup.js');
-
 onServerStartup.getAllCurrentAuctionsFromDB(function(res){
     currentAuctions = res;
     setListenersForAuctions(function(){
-        //require('./routes/routes.js')(app, passport, createAuction, io, currentAuctions, auctionListeners); // load the routes and pass in our app and fully configured passport
         routes.updateAuctionVar(currentAuctions, auctionListeners);
         createAuction.pushAuctionsToClients_onConnection(io, currentAuctions);
         currentAuctions = {};
@@ -119,20 +81,20 @@ onServerStartup.getAllCurrentAuctionsFromDB(function(res){
     });
 });
 
+/**
+ * used as a util function, calls script to set
+ * auction listener variables
+ * @param callback
+ */
 var setListenersForAuctions = function(callback){
-    /*for(var i = 0; i < currentAuctions.length; i++){
-     var auc = createAuction.initialiseAuctionEngine(currentAuctions[i], currentAuctions[i].id, io, CountdownTimer, protocols, socketTools);
-     auctionListeners.push(auc);
-     }*/
     for (var key in currentAuctions) {
         if (currentAuctions.hasOwnProperty(key)) {
             var auc = currentAuctions[key];
-            //console.log('obj: '+ obj.id);
-            var createdAuc = createAuction.initialiseAuctionEngine(auc, auc.id, io, CountdownTimer, protocols, socketTools, auctionEventEmitter);
+            var createdAuc = createAuction
+                .initialiseAuctionEngine(auc, auc.id, io, CountdownTimer, protocols, socketTools, auctionEventEmitter);
             auctionListeners[auc.id] = createdAuc;
         }
     }
-
     callback();
 };
 
@@ -140,9 +102,6 @@ var setListenersForAuctions = function(callback){
  * Activate all routes with params required
  */
 routes.init(app, passport, createAuction, io, CountdownTimer, protocols, socketTools, auctionEventEmitter);
-
-
-//app.use('/', routes);
 
 /**
  * Catch the 404's
@@ -153,13 +112,7 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-
-/*var countdownTimer = new CountdownTimer(12);
-countdownTimer.on('tick', function(time) {
-    console.log('stopwatch tick: ' + time);
-});
-countdownTimer.start();*/
-
+//listen on this port
 server.listen(8000);
 
 module.exports = app;

@@ -8,7 +8,7 @@ import {EventEmitter} from "angular2/src/facade/async";
 
 @Component({
     selector: 'clock-app',
-    templateUrl: '/templates/clock.html'
+    templateUrl: '/templates/auctionTemplates/clock.html'
 })
 
 export class ClockAppComponent {

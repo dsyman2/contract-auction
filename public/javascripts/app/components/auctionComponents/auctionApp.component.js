@@ -18,14 +18,26 @@ var message_component_js_1 = require("./message.component.js");
 var http_1 = require('angular2/http');
 require('rxjs/Rx');
 var decorators_1 = require("angular2/src/core/di/decorators");
+var common_1 = require('angular2/common');
+var validator_service_js_1 = require("../../services/validator.service.js");
+var FormInputs = (function () {
+    function FormInputs() {
+    }
+    return FormInputs;
+}());
 var AuctionAppComponent = (function () {
-    function AuctionAppComponent(http) {
+    function AuctionAppComponent(http, validatorService, fb) {
         this.http = http;
         this.price = 0.0;
         this.socket = null;
-        this.bidValue = '';
         this.time = 0;
         this.active = true;
+        console.log('hihi');
+        this.formInputs = new FormInputs();
+        this.CreateGroup = fb.group({
+            'bidValue': new common_1.Control(this.formInputs.bidValue, common_1.Validators.compose([common_1.Validators.required,
+                validatorService.isInteger, validatorService.isNotZero]))
+        });
     }
     AuctionAppComponent.prototype.ngOnInit = function () {
         console.log("username is:" + this.username);
@@ -37,12 +49,19 @@ var AuctionAppComponent = (function () {
             console.log('over and out: ' + data);
         });
     };
-    AuctionAppComponent.prototype.bid = function () {
+    AuctionAppComponent.prototype.addNewGroup = function (formInputs) {
+        this.formInputs = new FormInputs();
+        var data = {
+            bidVal: formInputs.bidValue,
+        };
+        this.bid(data);
+    };
+    AuctionAppComponent.prototype.bid = function (data) {
         this.socket.emit('bid-' + this.id, {
-            bid: this.bidValue,
+            bid: data.bidVal,
             bidder: this.username
         });
-        this.bidValue = '';
+        this.formInputs.bidValue = null;
     };
     AuctionAppComponent.prototype.onTimeUp = function (data) {
         //alert(data);
@@ -80,11 +99,13 @@ var AuctionAppComponent = (function () {
     AuctionAppComponent = __decorate([
         core_1.Component({
             selector: 'auction-app',
-            templateUrl: '/templates/auction.html',
-            directives: [clockApp_component_js_1.ClockAppComponent, message_component_js_1.MessageComponent],
-            providers: [http_1.HTTP_PROVIDERS]
+            templateUrl: '/templates/auctionTemplates/auction.html',
+            directives: [clockApp_component_js_1.ClockAppComponent, message_component_js_1.MessageComponent, common_1.FORM_DIRECTIVES],
+            providers: [http_1.HTTP_PROVIDERS, validator_service_js_1.ValidatorService]
         }),
-        __param(0, decorators_1.Inject(http_1.Http))
+        __param(0, decorators_1.Inject(http_1.Http)),
+        __param(1, decorators_1.Inject(validator_service_js_1.ValidatorService)),
+        __param(2, decorators_1.Inject(common_1.FormBuilder))
     ], AuctionAppComponent);
     return AuctionAppComponent;
 }());

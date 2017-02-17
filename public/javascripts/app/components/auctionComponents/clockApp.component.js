@@ -77,7 +77,7 @@ var ClockAppComponent = (function () {
     ClockAppComponent = __decorate([
         core_1.Component({
             selector: 'clock-app',
-            templateUrl: '/templates/clock.html'
+            templateUrl: '/templates/auctionTemplates/clock.html'
         })
     ], ClockAppComponent);
     return ClockAppComponent;

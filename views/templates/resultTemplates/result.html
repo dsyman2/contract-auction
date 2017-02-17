@@ -1,0 +1,18 @@
+<div class="panel panel-auction">
+    <div class="panel-heading">
+        <h4 class='inline'>{{name}}</h4>
+    </div>
+    <div class="panel-body">
+        <p>Description of job: {{desc}}</p>
+        <p>Winning bid value: £{{price}}<!--{{price | currency:'GBP':true:'1.2-2'}}--></p>
+        <p>Protocol used was: {{protocol}}</p>
+        <p>Contract issuer: {{creator}}</p>
+        <p>Winning contractor: {{winner}}</p>
+        <div class="alert alert-orange" *ngIf="resultView">
+            <p>Contact username:  {{contactUsername}}</p>
+            <p>Contact number:  {{contactNum }}</p>
+            <p>Contact email:  {{contactEmail}}</p>
+        </div>
+        <button type="button" class = "btn msg" (click)="updateRes()">Contact other party</button>
+    </div>
+</div>

@@ -10,9 +10,8 @@ import {Http} from "angular2/src/http/http";
 /* component in angular2 */
 @Component({
     selector: 'auction-holder',
-    templateUrl: '/templates/auctionHolder.html',
-    directives: [AuctionAppComponent],
-
+    templateUrl: '/templates/auctionTemplates/auctionHolder.html',
+    directives: [AuctionAppComponent]
 })
 
 export class AuctionHolderComponent {
