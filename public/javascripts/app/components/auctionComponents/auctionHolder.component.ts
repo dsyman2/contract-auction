@@ -25,6 +25,7 @@ export class AuctionHolderComponent {
         this.user = localStorage.getItem('username');
 
         this.socket = io('http://localhost:8000');
+        //this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000')
 
         this.socket.on('auctionList', function(data){
             this.auctions = data;

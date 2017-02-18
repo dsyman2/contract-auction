@@ -18,6 +18,7 @@ var MessageComponent = (function () {
     }
     MessageComponent.prototype.ngOnInit = function () {
         this.socket = io('http://localhost:8000');
+        //this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000')
         this.socket.on('chat msgs-' + this.id, function (msgs) {
             var tempMessages = [];
             tempMessages = this.messages;

@@ -45,6 +45,7 @@ var AuctionAppComponent = (function () {
     AuctionAppComponent.prototype.ngOnInit = function () {
         console.log("username is:" + this.username);
         this.socket = io('http://localhost:8000');
+        //this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000')
         this.socket.on('priceUpdate-' + this.id, function (data) {
             this.price = data;
         }.bind(this));
