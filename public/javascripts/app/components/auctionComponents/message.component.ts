@@ -17,8 +17,8 @@ export class MessageComponent {
     @Input()username : string;
 
     ngOnInit(){
-        this.socket = io('http://localhost:8000');
-        //this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000')
+        //this.socket = io('http://localhost:8000');
+        this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000')
 
         this.socket.on('chat msgs-' + this.id, function (msgs){
             var tempMessages = [];

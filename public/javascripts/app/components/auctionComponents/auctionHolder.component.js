@@ -37,8 +37,8 @@ System.register(['angular2/core', './auctionApp.component.js', "angular2/src/cor
                 AuctionHolderComponent.prototype.ngOnInit = function () {
                     //console.log("u" + this.user);
                     this.user = localStorage.getItem('username');
-                    this.socket = io('http://localhost:8000');
-                    //this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000')
+                    //this.socket = io('http://localhost:8000');
+                    this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000');
                     this.socket.on('auctionList', function (data) {
                         this.auctions = data;
                         console.log(this.auctions);

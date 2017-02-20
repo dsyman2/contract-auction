@@ -25,8 +25,8 @@ var ClockAppComponent = (function () {
     }
     ClockAppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.socket = io('http://localhost:8000');
-        //this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000')
+        //this.socket = io('http://localhost:8000');
+        this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000');
         this.socket.on('timeRemaining-' + this.id, function (data) {
             this.time = data;
             console.log("Time is: " + data);
