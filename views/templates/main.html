@@ -1,4 +1,5 @@
 <navbar (buttonChoice)='onMenuChoice($event)'></navbar>
-<auction-holder *ngIf="buttonClickVal=='auctions'" user = {{user}} ></auction-holder>
+<auction-holder *ngIf="buttonClickVal=='auctions'" user = {{user}} (pushNotifToMain)='throwPushNotification($event)'></auction-holder>
 <result-holder *ngIf="buttonClickVal=='myAuctions'"></result-holder>
 <unresolved-holder *ngIf="buttonClickVal=='unresolved'"></unresolved-holder>
+<notifications></notifications>

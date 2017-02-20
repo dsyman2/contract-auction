@@ -5,7 +5,7 @@
         <auction-app
                 auction = auctions[aucInfo] id = {{auctions[aucInfo].id}} name = {{auctions[aucInfo].name}}
                 desc = {{auctions[aucInfo].description}} username = {{user}} protocol = {{auctions[aucInfo].protocol}}
-                http = {{http}}>
+                http = {{http}} (pushNotif)='onPushNotif($event)'>
         </auction-app>
     </div>
 </div>

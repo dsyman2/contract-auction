@@ -20,7 +20,8 @@ module.exports = {
                     description : rows[i].description,
                     length      : rows[i].length,
                     protocol    : rows[i].protocol,
-                    creatorID   : rows[i].creatorID
+                    creatorID   : rows[i].creatorID,
+                    maxGuidePrice : rows[i].maxGuidePrice
                 };
                 //results.push(result);
             }

@@ -27,7 +27,9 @@ var AuctionResultComponent = (function () {
     }
     AuctionResultComponent.prototype.ngOnInit = function () {
         console.log(this.protocol);
-        this.getContactsByID(this.winner);
+        var idChoice = (this.winner == localStorage.getItem('userID')) ?
+            this.creator : this.winner;
+        this.getContactsByID(idChoice);
     };
     AuctionResultComponent.prototype.updateRes = function () {
         this.resultView = true;

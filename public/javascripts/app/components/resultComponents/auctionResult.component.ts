@@ -36,8 +36,10 @@ export class AuctionResultComponent {
 
     ngOnInit() {
         console.log(this.protocol);
-        this.getContactsByID(this.winner);
-    }
+        var idChoice = (this.winner == localStorage.getItem('userID')) ?
+            this.creator : this.winner;
+            this.getContactsByID(idChoice);
+        }
 
     constructor(@Inject(Http)private http:Http){
     }

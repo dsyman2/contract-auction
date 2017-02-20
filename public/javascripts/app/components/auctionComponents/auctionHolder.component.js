@@ -1,4 +1,4 @@
-System.register(['angular2/core', './auctionApp.component.js', "angular2/src/core/metadata"], function(exports_1, context_1) {
+System.register(['angular2/core', './auctionApp.component.js', "angular2/src/core/metadata", "angular2/src/facade/async"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './auctionApp.component.js', "angular2/src/cor
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, auctionApp_component_js_1, metadata_1;
+    var core_1, auctionApp_component_js_1, metadata_1, async_1;
     var AuctionHolderComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', './auctionApp.component.js', "angular2/src/cor
             },
             function (metadata_1_1) {
                 metadata_1 = metadata_1_1;
+            },
+            function (async_1_1) {
+                async_1 = async_1_1;
             }],
         execute: function() {
             /* component in angular2 */
@@ -29,6 +32,7 @@ System.register(['angular2/core', './auctionApp.component.js', "angular2/src/cor
                 function AuctionHolderComponent() {
                     this.auctions = {};
                     this.socket = null;
+                    this.pushNotifToMain = new async_1.EventEmitter();
                 }
                 AuctionHolderComponent.prototype.ngOnInit = function () {
                     //console.log("u" + this.user);
@@ -42,10 +46,17 @@ System.register(['angular2/core', './auctionApp.component.js', "angular2/src/cor
                     }.bind(this));
                     console.log(this.arrayOfAucs);
                 };
+                AuctionHolderComponent.prototype.onPushNotif = function (notif) {
+                    this.pushNotifToMain.emit(notif);
+                };
                 __decorate([
                     metadata_1.Input(), 
                     __metadata('design:type', Object)
                 ], AuctionHolderComponent.prototype, "user", void 0);
+                __decorate([
+                    metadata_1.Output(), 
+                    __metadata('design:type', async_1.EventEmitter)
+                ], AuctionHolderComponent.prototype, "pushNotifToMain", void 0);
                 AuctionHolderComponent = __decorate([
                     core_1.Component({
                         selector: 'auction-holder',

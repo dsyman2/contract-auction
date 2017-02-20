@@ -20,6 +20,7 @@ require('rxjs/Rx');
 var decorators_1 = require("angular2/src/core/di/decorators");
 var common_1 = require('angular2/common');
 var validator_service_js_1 = require("../../services/validator.service.js");
+var async_1 = require("angular2/src/facade/async");
 var FormInputs = (function () {
     function FormInputs() {
     }
@@ -35,6 +36,7 @@ var AuctionAppComponent = (function () {
         this.bidValue = '';
         this.time = 0;
         this.active = true;
+        this.pushNotif = new async_1.EventEmitter();
         /*console.log('hihi');
         this.formInputs = new FormInputs();
         this.CreateGroup = fb.group({
@@ -47,7 +49,8 @@ var AuctionAppComponent = (function () {
         this.socket = io('http://localhost:8000');
         //this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000')
         this.socket.on('priceUpdate-' + this.id, function (data) {
-            this.price = data;
+            this.price = parseInt(data);
+            this.pushNotif.emit('Bid in for auction: ' + this.name + '. \n Price: ' + this.price + '.');
         }.bind(this));
         this.socket.on('auctionEnd-' + this.id, function (data) {
             console.log('over and out: ' + data);
@@ -101,6 +104,9 @@ var AuctionAppComponent = (function () {
     __decorate([
         metadata_1.Input()
     ], AuctionAppComponent.prototype, "protocol", void 0);
+    __decorate([
+        metadata_1.Output()
+    ], AuctionAppComponent.prototype, "pushNotif", void 0);
     AuctionAppComponent = __decorate([
         core_1.Component({
             selector: 'auction-app',

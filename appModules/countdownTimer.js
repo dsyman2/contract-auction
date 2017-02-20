@@ -8,8 +8,6 @@ function CountdownTimer(length) {
     }
 
     this.day = 86400000;
-    /*this.hour = 3600000;
-    this.minute = 60000;*/
     this.second = 1000;
     this.time = this.day * length;
     this.interval = undefined;
@@ -34,25 +32,6 @@ CountdownTimer.prototype.onTick = function() {
         //this.emit('stop');
         return ;
     }
-
-
-   /* var numDays = String(parseInt(remainder / this.day, 10));
-    remainder -= this.day * numDays;
-
-    var numHours = String(parseInt(remainder / this.hour, 10));
-    remainder -= this.hour * numHours;
-
-    var numMinutes = String(parseInt(remainder / this.minute, 10));
-    remainder -= this.minute * numMinutes;
-
-    var numSeconds = String(parseInt(remainder / this.second, 10));
-
-    var output = _.map([numDays, numHours, numMinutes, numSeconds], function(str) {
-        if (str.length === 1) {
-            return "0" + str;
-        }
-        return str;
-    }).join(":");*/
 
     this.emit('tick'/*, output*/);
     this.time -= this.second;

@@ -23,6 +23,8 @@ head
     | &#x9;
     script(src='scripts/angular2/bundles/http.dev.js')
     | &#x9;
+    script(src='scripts/angular2/bundles/router.dev.js')
+    | &#x9;
     script(src='javascripts/jquery.js')
     | &#x9;
     script(src='javascripts/bootstrap.min.js')
@@ -47,6 +49,7 @@ head
     script.
         //localStorage.tester = "hi";
         localStorage.username = '#{username}';
+        localStorage.userID = '#{userID}';
         user = '#{username}'
         console.log('Username: ' + user);
 

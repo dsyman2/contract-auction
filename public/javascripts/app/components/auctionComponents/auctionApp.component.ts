@@ -2,7 +2,7 @@
  * Created by Umar on 11/01/2017.
  */
 import {Component} from 'angular2/core';
-import {Input} from "angular2/src/core/metadata";
+import {Input, Output} from "angular2/src/core/metadata";
 import {ClockAppComponent} from './clockApp.component.js';
 import {MessageComponent} from "./message.component.js";
 import {Http, Headers, HTTP_PROVIDERS} from 'angular2/http';
@@ -10,6 +10,8 @@ import 'rxjs/Rx';
 import {Inject} from "angular2/src/core/di/decorators";
 import {FORM_DIRECTIVES, Control, ControlGroup, FormBuilder, Validators} from 'angular2/common';
 import {ValidatorService} from "../../services/validator.service.js";
+import {EventEmitter} from "angular2/src/facade/async";
+
 
 class FormInputs{
     bidValue : number;
@@ -35,6 +37,8 @@ export class AuctionAppComponent {
     @Input()protocol : string;
     time : number = 0;
     active : boolean = true;
+    @Output() pushNotif: EventEmitter<string> = new EventEmitter<string>();
+
     /*CreateGroup: ControlGroup;
     formInputs: FormInputs;*/
 
@@ -54,7 +58,8 @@ export class AuctionAppComponent {
         //this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000')
 
         this.socket.on('priceUpdate-' + this.id, function (data) {
-            this.price = data;
+            this.price = parseInt(data);
+            this.pushNotif.emit('Bid in for auction: ' + this.name + '. \n Price: ' + this.price + '.');
         }.bind(this));
 
         this.socket.on('auctionEnd-' + this.id, function (data) {
