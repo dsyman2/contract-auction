@@ -17,6 +17,7 @@ class FormInputs{
     length: number;
     protocol: any;
    // creatorID: string;
+    maxGuidePrice : string = '12000';
 }
 
 @Component({
@@ -35,6 +36,7 @@ export class CreateAuctionComponent {
     headers: Headers;
    // http: Http;
     numberValidity : boolean = null;
+    filesToUpload: Array<File>;
 
     constructor(@Inject(ValidatorService) validatorService : ValidatorService,
                 @Inject(FormBuilder) fb: FormBuilder, @Inject(Http)private http: Http){
@@ -44,8 +46,10 @@ export class CreateAuctionComponent {
             'auctionDesc'   : new Control(this.formInputs.auctionDesc, Validators.required),
             'length'        : new Control(this.formInputs.length, Validators.compose([Validators.required,
                 validatorService.isInteger, validatorService.isNotZero]) ),
-            'protocol'      : new Control(this.formInputs.protocol, Validators.required)
-        })
+            'protocol'      : new Control(this.formInputs.protocol, Validators.required),
+            'maxGuidePrice' : new Control(this.formInputs.maxGuidePrice, Validators.compose([Validators.required,
+                validatorService.isIntegerPrice(this.formInputs.protocol), validatorService.isNotZeroPrice(this.formInputs.protocol)]) )
+        });
     }
 
     addNewGroup(formInputs : FormInputs) {
@@ -54,7 +58,8 @@ export class CreateAuctionComponent {
             name:           formInputs.auctionName,
             description:    formInputs.auctionDesc,
             length:         formInputs.length,
-            protocol:       formInputs.protocol
+            protocol:       formInputs.protocol,
+            maxGuidePrice:  formInputs.maxGuidePrice
         };
 
         this.addAuctionPostRequest("/createAuction", data);

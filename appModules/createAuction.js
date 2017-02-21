@@ -12,11 +12,14 @@ module.exports = {
 
     addAuctionEntry : function (userID, insertionData, callback) {
         insertionData.creatorID = userID;
+        insertionData.maxGuidePrice = (insertionData.protocol === 'Dutch' || insertionData.protocol === 'English') ?
+            insertionData.maxGuidePrice : '';
         var query = ('INSERT INTO ' + dbconfig.database + '.' + dbconfig.auction_table + ' SET ?');
         connection.query(query, insertionData, function(err, res){
             if(err)
                 throw err;
             console.log('Last insert ID: ' + res.insertId);
+
             callback(insertionData, res.insertId);
         });
     },
@@ -28,16 +31,16 @@ module.exports = {
         socketTools.messageEngine(io, id);
         switch (aucInfo.protocol){
             case 'Dutch':
-                protocols.dutch(io, aucInfo, CountdownTimer, id, 99999, 1, aucEventEmitter);
+                protocols.dutch(io, aucInfo, CountdownTimer, id, aucEventEmitter);
                 break;
             case '1st-price-sealed':
-                protocols.sealedBid(io, aucInfo, CountdownTimer, id, true, 1, aucEventEmitter);
+                protocols.sealedBid(io, aucInfo, CountdownTimer, id, true, aucEventEmitter);
                 break;
             case '2nd-price-sealed':
-                protocols.sealedBid(io, aucInfo, CountdownTimer, id, false, 1, aucEventEmitter);
+                protocols.sealedBid(io, aucInfo, CountdownTimer, id, false, aucEventEmitter);
                 break;
             default:
-               protocols.english(io, aucInfo, CountdownTimer, id, 1, aucEventEmitter);
+               protocols.english(io, aucInfo, CountdownTimer, id, aucEventEmitter);
             break;
         }
 

@@ -10,6 +10,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
  */
 var core_1 = require('angular2/core');
 var metadata_1 = require("angular2/src/core/metadata");
+var globals = require('../../config/configer.js');
 var MessageComponent = (function () {
     function MessageComponent() {
         this.socket = null;
@@ -17,7 +18,8 @@ var MessageComponent = (function () {
         this.currentMessage = '';
     }
     MessageComponent.prototype.ngOnInit = function () {
-        this.socket = io('http://localhost:8000');
+        //this.socket = io('http://localhost:8000');
+        this.socket = io(globals.socket_src);
         this.socket.on('chat msgs-' + this.id, function (msgs) {
             var tempMessages = [];
             tempMessages = this.messages;

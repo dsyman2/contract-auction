@@ -54,12 +54,24 @@
 
                             </div>
                             <br>
+
+                            <div *ngIf="formInputs.protocol == 'Dutch' || formInputs.protocol == 'English'">
+                                <p *ngIf="formInputs.protocol == 'Dutch'">Pick a max price for the auction(this price will not be exceeded):</p>
+                                <p *ngIf="formInputs.protocol == 'English'">Pick a starting price for the auction(this should be an officially retrieved from qualified
+                                    personnel):</p>
+                                <input [(ngModel)]="formInputs.maxGuidePrice" ngControl="maxGuidePrice" type="text" class="form-control">
+                                <small *ngIf="!CreateGroup.controls['maxGuidePrice'].valid">You must enter a starting price, in numbers (whole).</small>
+                            </div>
+
+                            <br>
+
+                            <br>
                             <br>
 
                         </form>
                     <br>
                     <div>
-                        <button type="button" [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)" class ="btn">
+                        <button type="button" [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)" class ="btn btn-lg btn-wide">
                             Create
                         </button>
                     </div>

@@ -8,9 +8,11 @@ var createAuction_component_js_1 = require("./components/auctionComponents/creat
 var validator_service_js_1 = require("./services/validator.service.js");
 //import {ResultHolderComponent} from "./components/resultHolder.component.js";
 var main_component_js_1 = require("./components/main.component.js");
+var notifications_service_js_1 = require("./notifications/notifications.service.js");
+var router_providers_1 = require("angular2/src/router/router_providers");
 //bootstrap(MessageComponent);
 browser_1.bootstrap(createAuction_component_js_1.CreateAuctionComponent, [validator_service_js_1.ValidatorService]);
 //bootstrap(AuctionHolderComponent);
 /*bootstrap(NavbarComponent);*/
 //bootstrap(ResultHolderComponent);
-browser_1.bootstrap(main_component_js_1.MainComponent);
+browser_1.bootstrap(main_component_js_1.MainComponent, [notifications_service_js_1.NotificationsService, router_providers_1.ROUTER_PROVIDERS]);

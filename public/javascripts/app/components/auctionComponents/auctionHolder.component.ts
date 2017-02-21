@@ -3,8 +3,10 @@
  */
 import {Component} from 'angular2/core';
 import {AuctionAppComponent} from './auctionApp.component.js';
-import {Input} from "angular2/src/core/metadata";
+import {Input, Output} from "angular2/src/core/metadata";
 import {Http} from "angular2/src/http/http";
+import {EventEmitter} from "angular2/src/facade/async";
+import globals = require('../../config/configer.js');
 
 
 /* component in angular2 */
@@ -24,7 +26,8 @@ export class AuctionHolderComponent {
         //console.log("u" + this.user);
         this.user = localStorage.getItem('username');
 
-        this.socket = io('http://localhost:8000');
+        //this.socket = io('http://localhost:8000');
+        this.socket = io(globals.socket_src)
 
         this.socket.on('auctionList', function(data){
             this.auctions = data;

@@ -21,6 +21,8 @@ require('rxjs/add/operator/first');
 var validator_service_js_1 = require("../../services/validator.service.js");
 var FormInputs = (function () {
     function FormInputs() {
+        // creatorID: string;
+        this.maxGuidePrice = '12000';
     }
     return FormInputs;
 }());
@@ -35,7 +37,9 @@ var CreateAuctionComponent = (function () {
             'auctionDesc': new common_1.Control(this.formInputs.auctionDesc, common_1.Validators.required),
             'length': new common_1.Control(this.formInputs.length, common_1.Validators.compose([common_1.Validators.required,
                 validatorService.isInteger, validatorService.isNotZero])),
-            'protocol': new common_1.Control(this.formInputs.protocol, common_1.Validators.required)
+            'protocol': new common_1.Control(this.formInputs.protocol, common_1.Validators.required),
+            'maxGuidePrice': new common_1.Control(this.formInputs.maxGuidePrice, common_1.Validators.compose([common_1.Validators.required,
+                validatorService.isIntegerPrice(this.formInputs.protocol), validatorService.isNotZeroPrice(this.formInputs.protocol)]))
         });
     }
     CreateAuctionComponent.prototype.addNewGroup = function (formInputs) {
@@ -44,7 +48,8 @@ var CreateAuctionComponent = (function () {
             name: formInputs.auctionName,
             description: formInputs.auctionDesc,
             length: formInputs.length,
-            protocol: formInputs.protocol
+            protocol: formInputs.protocol,
+            maxGuidePrice: formInputs.maxGuidePrice
         };
         this.addAuctionPostRequest("/createAuction", data);
     };

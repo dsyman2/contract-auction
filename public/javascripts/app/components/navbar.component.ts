@@ -18,6 +18,7 @@ export class NavbarComponent {
     auctions : string = 'auctions';
     myAuctions : string = 'myAuctions';
     unresolved : string = 'unresolved';
+    profile : string = 'profile';
     clickValue : string = this.auctions;
 
 

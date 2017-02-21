@@ -1,12 +1,23 @@
 <div class="panel panel-auction">
     <div class="panel-heading">
+        <h4>
+            <button title='Notifications are disabled' class="rightPad smlButton" (click)="togglePushNotif()" *ngIf="!showNotif">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+            </button>
+            <button title='Notifications are enabled'class="rightPad smlButton" (click)="togglePushNotif()" *ngIf="showNotif">
+                <i class="fa fa-unlock" aria-hidden="true"></i>
+            </button>
+        </h4>
+
         <h4 class='inline'>{{name}}</h4>
+
         <small class='inline rightPad' *ngIf="!active">∅</small>
     </div>
+
     <div class="panel-body">
         <h5>{{desc}}</h5>
 
-        <h2 *ngIf="protocol != '1st-price-sealed' || protocol != '2nd-price-sealed'">
+        <h2 *ngIf="protocol == 'Dutch' || protocol == 'English'">
             Current bid: {{price | currency:'GBP':true:'1.2-2'}}
         </h2>
 
@@ -15,15 +26,16 @@
         </h2>
         <small> Protocol being used is {{protocol}}</small>
 
-        <div class="input-group" [ngFormModel]="CreateGroup">
+        <div class="input-group">
             <span *ngIf="protocol != 'Dutch'" class="input-group-addon">£</span>
-                <input class="form-control" [(ngModel)]="formInputs.bidValue" ngControl="bidValue"placeholder="Enter a bid value in pounds" *ngIf="protocol != 'Dutch'">
+                <input class="form-control" [(ngModel)]="bidValue" placeholder="Enter a bid value in pounds" *ngIf="protocol != 'Dutch'">
             <span class="input-group-btn">
-                <button class="btn msg" *ngIf="protocol != 'Dutch'" [disabled]="!active" [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)">Place Bid</button>
-                <button class="btn msg" [disabled]="!active" *ngIf="protocol == 'Dutch'" (click)="addNewGroup(formInputs)">Place Bid</button>
+                <button class="btn btn-wide" [disabled]="!active" (click)="bid()">Place Bid</button>
             </span>
         </div>
+<!--
         <small *ngIf="!CreateGroup.controls['bidValue'].valid">The bid must be greater than zero and a number!</small>
+-->
         <button type="button" class = "btn" (click)="sendDelete()">Delete</button>
         <br>
         <br>

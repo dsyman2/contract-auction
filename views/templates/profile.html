@@ -1,0 +1,39 @@
+<div class="container">
+    <br>
+    <br>
+    <p>
+        You can update your details below:
+    </p>
+    <div class="alert alert-danger" *ngIf="hasUpdated == false">
+        There has been an error when changing your profile details,
+        please enter unique email and contact number. The ones provided
+        are already in use.
+    </div>
+    <div class="alert alert-success" *ngIf="hasUpdated == true">
+        Your details have been successfully updated.
+    </div>
+    <form class="form-horizontal" id='createAuctionForm' role="form" [ngFormModel]="CreateGroup">
+        <div>
+            <i class="fa fa-envelope-o" aria-hidden="true"></i> Email:
+            <input type = "text" name = "email" [(ngModel)]="formInputs.email" class="form-control" ngControl="email"
+            placeholder="e.g. person@email.com">
+            <small *ngIf="!CreateGroup.controls['email'].valid">You must enter a valid email.</small>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div>
+            <i class="fa fa-phone" aria-hidden="true"></i> Contact Number:
+            <input type = "text" [(ngModel)]="formInputs.contactNumber" class="form-control" ngControl="contactNumber"
+                   placeholder="e.g. 123456789123">
+            <small *ngIf="!CreateGroup.controls['contactNumber'].valid">You must enter a number - remember area code if landline.</small>
+        </div>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button type="button" [disabled]='!CreateGroup.valid' (click)="updateProfile(formInputs)" class ="btn btn-wide">
+        Update
+    </button>
+</div>

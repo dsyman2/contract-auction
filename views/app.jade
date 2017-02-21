@@ -23,6 +23,8 @@ head
     | &#x9;
     script(src='scripts/angular2/bundles/http.dev.js')
     | &#x9;
+    script(src='scripts/angular2/bundles/router.dev.js')
+    | &#x9;
     script(src='javascripts/jquery.js')
     | &#x9;
     script(src='javascripts/bootstrap.min.js')
@@ -32,6 +34,8 @@ head
     link(href='stylesheets/style.css', rel='stylesheet')
     | &#x9;
     link(rel="shortcut icon" type="image/x-icon" href="images/favicon.ico")
+    | &#x9;
+    link(rel="stylesheet" href='stylesheets/font-awesome/css/font-awesome.min.css')
     | &#x9;
     script.
         System.config({
@@ -47,6 +51,7 @@ head
     script.
         //localStorage.tester = "hi";
         localStorage.username = '#{username}';
+        localStorage.userID = '#{userID}';
         user = '#{username}'
         console.log('Username: ' + user);
 

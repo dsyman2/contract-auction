@@ -12,6 +12,7 @@ var core_1 = require('angular2/core');
 var metadata_1 = require("angular2/src/core/metadata");
 var Rx_1 = require("rxjs/Rx");
 var async_1 = require("angular2/src/facade/async");
+var globals = require('../../config/configer.js');
 var ClockAppComponent = (function () {
     function ClockAppComponent() {
         this.day = 86400000;
@@ -25,7 +26,8 @@ var ClockAppComponent = (function () {
     }
     ClockAppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.socket = io('http://localhost:8000');
+        //this.socket = io('http://localhost:8000');
+        this.socket = io(globals.socket_src);
         this.socket.on('timeRemaining-' + this.id, function (data) {
             this.time = data;
             console.log("Time is: " + data);

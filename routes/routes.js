@@ -12,6 +12,7 @@ var auctionListeners = {};
 var currentAuctions = {};
 var postAucData = require('../appModules/postAuctionDataGetter');
 var auctionCompTasks = require('../appModules/auctionCompletionTasks');
+var userUtilities = require('../appModules/userUtilities');
 
 module.exports = {
 
@@ -93,7 +94,9 @@ module.exports = {
          */
         app.get('/app', isLoggedIn, function(req, res) {
             res.render('app.jade', {
-                username          : req.user.username // get the user out of session and pass to template
+                username          : req.user.username,
+                userID            : req.user.id
+                // get the user out of session and pass to template
             });
         });
 
@@ -179,6 +182,15 @@ module.exports = {
                 res.send(JSON.stringify(contactDetails));
                 console.log(contactDetails);
             })
+        });
+
+        /**
+         * Updates user profile info end point
+         */
+        app.get('/updateProfile', function(req, res){
+            userUtilities.updateUserProfile(req.user.id, req.query, function (hasUpdated) {
+               res.send(hasUpdated);
+            });
         });
 
         //Set listener for auction move event

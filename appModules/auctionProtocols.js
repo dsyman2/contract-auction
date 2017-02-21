@@ -10,8 +10,8 @@ var moveCompletedAuction = function(auctionEventEmitter, aucInfo){
 
 module.exports = {
 
-    sealedBid : function(io, aucInfo, CountdownTimer, id, type, length, auctionEventEmitter) {
-        var countdownTimer = new CountdownTimer(0.000347222, id);
+    sealedBid : function(io, aucInfo, CountdownTimer, id, type, auctionEventEmitter) {
+        var countdownTimer = new CountdownTimer(aucInfo.length, id);
         var bids = {};
         var deleteStatus = false;
         countdownTimer.start();
@@ -21,11 +21,13 @@ module.exports = {
             socket.emit('priceUpdate-' + id, 'Closed Auction');
             socket.emit('timeRemaining-' + id, countdownTimer.time);
             socket.on('bid-' + id, function (data) {
-                var newBidPrice = parseInt(data.bid);
+                var newBidPrice = +parseFloat(data.bid).toFixed(2);
                 var newBidder = data.bidder;
                 if(!(bids.hasOwnProperty(newBidder))) {
                     console.log('BID: ' + newBidPrice + ' From: ' + newBidder);
-                    bids[newBidder] = newBidPrice;
+                    if(newBidPrice > 0){
+                        bids[newBidder] = newBidPrice;
+                    }
                 }
             });
         });
@@ -76,10 +78,11 @@ module.exports = {
         });
     },
 
-    dutch : function(io, aucInfo, CountdownTimer, id, maxPrice, length, auctionEventEmitter){
+    dutch : function(io, aucInfo, CountdownTimer, id, auctionEventEmitter){
+        var maxPrice = aucInfo.maxGuidePrice;
         var increment = (maxPrice/100)/*.toFixed(2)*/;
         var currentPrice = +(increment.toFixed(2));
-        var countdownTimer = new CountdownTimer(0.5, id);
+        var countdownTimer = new CountdownTimer(aucInfo.length, id);
         var interval = 60000;
         var deleteStatus = false;
         console.log(auctionEventEmitter);
@@ -141,12 +144,12 @@ module.exports = {
         });
     },
 
-    english : function(io, aucInfo, CountdownTimer, id, length, auctionEventEmitter){
-        var countdownTimer = new CountdownTimer(0.000347222, id);
+    english : function(io, aucInfo, CountdownTimer, id, auctionEventEmitter){
+        var countdownTimer = new CountdownTimer(parseInt(aucInfo.length), id);
         //countdownTimer.on('tick')
-
+        console.log("YAAY: " + aucInfo.length);
         countdownTimer.start();
-        var currentPrice = 9999;
+        var currentPrice = aucInfo.maxGuidePrice;
         var currentBidder = null;
         var deleteStatus = false;
 
@@ -154,7 +157,7 @@ module.exports = {
             socket.emit('priceUpdate-' + id, currentPrice);
             socket.emit('timeRemaining-' + id, countdownTimer.time);
             socket.on('bid-' + id, function (data) {
-                var newBidPrice = parseInt(data.bid);
+                var newBidPrice = +parseFloat(data.bid).toFixed(2);
                 var newBidder = data.bidder;
                 console.log('BID: ' + newBidPrice + newBidder);
                 if (currentPrice > newBidPrice) {

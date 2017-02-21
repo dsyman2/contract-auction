@@ -49,7 +49,7 @@ module.exports = function(passport) {
                 var contactNumber = req.body.contactNumber;
                 // find a user whose email is the same as the forms email
                 // we are checking to see if the user trying to login already exists
-                connection.query("SELECT * FROM users WHERE username = ? OR email = ?",[username, email], function(err, rows) {
+                connection.query("SELECT * FROM users WHERE username = ? OR email = ? OR contactNumber =?",[username, email, contactNumber], function(err, rows) {
                     if (err)
                         return done(err);
                     if (rows.length) {
@@ -60,7 +60,7 @@ module.exports = function(passport) {
                         var newUserMysql = {
                             username: username,
                             email: email,
-                            contactNumber: '123',
+                            contactNumber: contactNumber,
                             password: bcrypt.hashSync(password, null, null)// use the generateHash function in our user model
                         };
 

@@ -21,7 +21,31 @@ var ValidatorService = (function () {
                 valid: true
             };
         };
+        this.isValidEmailFormat = function (control) {
+            return isValidEmailFormat(control.value) ? null : {
+                valid: true
+            };
+        };
+        this.isPhoneNumberLength = function (control) {
+            return isPhoneNumberLength(control.value) ? null : {
+                valid: true
+            };
+        };
     }
+    ValidatorService.prototype.isIntegerPrice = function (protocol) {
+        return function (control) {
+            return checkIsIntegerPrice(control.value, protocol) ? null : {
+                valid: true
+            };
+        };
+    };
+    ValidatorService.prototype.isNotZeroPrice = function (protocol) {
+        return function (control) {
+            return checkIsZeroPrice(control.value, protocol) ? null : {
+                valid: true
+            };
+        };
+    };
     ValidatorService = __decorate([
         decorators_1.Injectable()
     ], ValidatorService);
@@ -34,4 +58,30 @@ function checkIsInteger(value) {
 }
 function checkIsZero(value) {
     return (value > 0);
+}
+function checkIsIntegerPrice(value, protocol) {
+    if (protocol == 'English' || protocol == 'Dutch') {
+        console.log((parseFloat(value) == parseInt(value)) && !isNaN(value));
+        return (parseFloat(value) == parseInt(value)) && !isNaN(value);
+    }
+    return (parseFloat('1') == parseInt('1')) && !isNaN(1);
+}
+function checkIsZeroPrice(value, protocol) {
+    if (protocol == 'English' || protocol == 'Dutch') {
+        return (value > 0);
+    }
+    return (parseFloat('1') == parseInt('1')) && !isNaN(1);
+}
+function isValidEmailFormat(value) {
+    // RFC 2822 compliant regex
+    if (value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+        return true;
+    }
+    return null;
+}
+function isPhoneNumberLength(value) {
+    if (value.length >= 11) {
+        return true;
+    }
+    return null;
 }
