@@ -12,6 +12,7 @@ import {NotificationsService} from "../notifications/notifications.service.js";
 import {Notification} from "../notifications/notifications.model.js";
 import {ROUTER_DIRECTIVES} from "angular2/router";
 import {Inject} from "angular2/src/core/di/decorators";
+import {ProfileUpdaterComponent} from "./profileUpdater.component.js";
 
 
 /* component in angular2 */
@@ -19,7 +20,7 @@ import {Inject} from "angular2/src/core/di/decorators";
     selector: 'main-holder',
     templateUrl: '/templates/main.html',
     directives: [AuctionHolderComponent, ResultHolderComponent, NavbarComponent,
-        UnresolvedHolderComponent, Notifications, ROUTER_DIRECTIVES]
+        UnresolvedHolderComponent, Notifications, ROUTER_DIRECTIVES, ProfileUpdaterComponent]
 })
 
 export class MainComponent {
@@ -39,9 +40,5 @@ export class MainComponent {
     onMenuChoice(optionPicked : string){
         console.log('hi: ' + optionPicked);
         this.buttonClickVal = optionPicked;
-    }
-
-    throwPushNotification(message: string){
-        this._notes.add(new Notification('error', message));
     }
 }

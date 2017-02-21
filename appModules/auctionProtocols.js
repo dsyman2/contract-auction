@@ -21,11 +21,13 @@ module.exports = {
             socket.emit('priceUpdate-' + id, 'Closed Auction');
             socket.emit('timeRemaining-' + id, countdownTimer.time);
             socket.on('bid-' + id, function (data) {
-                var newBidPrice = parseInt(data.bid);
+                var newBidPrice = parseFloat(data.bid).toFixed(2);
                 var newBidder = data.bidder;
                 if(!(bids.hasOwnProperty(newBidder))) {
                     console.log('BID: ' + newBidPrice + ' From: ' + newBidder);
-                    bids[newBidder] = newBidPrice;
+                    if(newBidPrice > 0){
+                        bids[newBidder] = newBidPrice;
+                    }
                 }
             });
         });
@@ -155,10 +157,10 @@ module.exports = {
             socket.emit('priceUpdate-' + id, currentPrice);
             socket.emit('timeRemaining-' + id, countdownTimer.time);
             socket.on('bid-' + id, function (data) {
-                var newBidPrice = parseInt(data.bid);
+                var newBidPrice = parseFloat(data.bid).toFixed(2);
                 var newBidder = data.bidder;
                 console.log('BID: ' + newBidPrice + newBidder);
-                if (currentPrice > newBidPrice) {
+                if (currentPrice > newBidPrice && newBidPrice > 0) {
                     currentPrice = newBidPrice;
                     currentBidder = newBidder;
                     socket.emit('priceUpdate-' + id, currentPrice);

@@ -5,6 +5,7 @@ import {Component} from 'angular2/core';
 import {Input, Output} from "angular2/src/core/metadata";
 import {Observable} from "rxjs/Rx";
 import {EventEmitter} from "angular2/src/facade/async";
+import globals = require('../../config/configer.js');
 
 @Component({
     selector: 'clock-app',
@@ -28,7 +29,7 @@ export class ClockAppComponent {
 
     ngOnInit() {
         //this.socket = io('http://localhost:8000');
-        this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000')
+        this.socket = io(globals.socket_src)
 
         this.socket.on('timeRemaining-' + this.id, function(data){
             this.time = data;

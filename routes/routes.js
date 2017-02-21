@@ -12,6 +12,7 @@ var auctionListeners = {};
 var currentAuctions = {};
 var postAucData = require('../appModules/postAuctionDataGetter');
 var auctionCompTasks = require('../appModules/auctionCompletionTasks');
+var userUtilities = require('../appModules/userUtilities');
 
 module.exports = {
 
@@ -181,6 +182,15 @@ module.exports = {
                 res.send(JSON.stringify(contactDetails));
                 console.log(contactDetails);
             })
+        });
+
+        /**
+         * Updates user profile info end point
+         */
+        app.get('/updateProfile', function(req, res){
+            userUtilities.updateUserProfile(req.user.id, req.query, function (hasUpdated) {
+               res.send(hasUpdated);
+            });
         });
 
         //Set listener for auction move event

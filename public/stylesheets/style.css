@@ -6,6 +6,18 @@ body {
     font: 125% "Century Gothic", bold, sans-serif;
 }
 
+.smlButton{
+    background: Transparent no-repeat;
+    color: skyblue;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-size: 300%;
+    line-height: 100%;
+    margin-top: -2.5%;
+}
+
 .ruleBG{
     background-color: #262626;
 }
@@ -37,7 +49,7 @@ small{
 }
 
 .bg{
-    background: url('../images/bg.jpg') no-repeat center center fixed;
+    background: url('../images/gradient.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -116,7 +128,8 @@ small{
 
 div ul{width:100%;}
 div ul{overflow:hidden; overflow-y:scroll;}
-.msg{width: 100%;}
+
+.btn-wide{width: 100%;}
 
 /* make navbar always humburgery taken from -->
 http://stackoverflow.com/questions/21860263/bootstrap-3-show-collapsed-navigation-for-all-screen-sizes*/
@@ -144,6 +157,11 @@ http://stackoverflow.com/questions/21860263/bootstrap-3-show-collapsed-navigatio
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+nav{
+    margin-bottom: 20%;
+}
+
 
 .navbar-collapse.collapse.in {display: block !important; }
 

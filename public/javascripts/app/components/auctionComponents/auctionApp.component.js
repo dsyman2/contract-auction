@@ -20,7 +20,9 @@ require('rxjs/Rx');
 var decorators_1 = require("angular2/src/core/di/decorators");
 var common_1 = require('angular2/common');
 var validator_service_js_1 = require("../../services/validator.service.js");
-var async_1 = require("angular2/src/facade/async");
+var globals = require('../../config/configer.js');
+var notifications_service_js_1 = require("../../notifications/notifications.service.js");
+var notifications_model_js_1 = require("../../notifications/notifications.model.js");
 var FormInputs = (function () {
     function FormInputs() {
     }
@@ -29,14 +31,16 @@ var FormInputs = (function () {
 var AuctionAppComponent = (function () {
     /*CreateGroup: ControlGroup;
     formInputs: FormInputs;*/
-    function AuctionAppComponent(http) {
+    function AuctionAppComponent(http, _notes /*@Inject(ValidatorService) validatorService : ValidatorService,
+                    @Inject(FormBuilder) fb: FormBuilder*/) {
         this.http = http;
+        this._notes = _notes;
         this.price = 0.0;
         this.socket = null;
         this.bidValue = '';
         this.time = 0;
         this.active = true;
-        this.pushNotif = new async_1.EventEmitter();
+        this.showNotif = false;
         /*console.log('hihi');
         this.formInputs = new FormInputs();
         this.CreateGroup = fb.group({
@@ -47,10 +51,13 @@ var AuctionAppComponent = (function () {
     AuctionAppComponent.prototype.ngOnInit = function () {
         console.log("username is:" + this.username);
         //this.socket = io('http://localhost:8000');
-        this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000');
+        this.socket = io(globals.socket_src);
         this.socket.on('priceUpdate-' + this.id, function (data) {
-            this.price = parseInt(data);
-            this.pushNotif.emit('Bid in for auction: ' + this.name + '. \n Price: ' + this.price + '.');
+            this.price = +parseFloat(data);
+            if (this.showNotif) {
+                this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');
+            }
+            this.showNotif = true;
         }.bind(this));
         this.socket.on('auctionEnd-' + this.id, function (data) {
             console.log('over and out: ' + data);
@@ -65,6 +72,7 @@ var AuctionAppComponent = (function () {
         this.bid(data);
     }*/
     AuctionAppComponent.prototype.bid = function () {
+        this.showNotif = true;
         this.socket.emit('bid-' + this.id, {
             bid: this.bidValue,
             bidder: this.username
@@ -82,6 +90,12 @@ var AuctionAppComponent = (function () {
         var body = JSON.stringify(data);
         this.http.post("/deleteAuction", body, { headers: this.headers })
             .map(function (res) { return (res.json()); }).subscribe();
+    };
+    AuctionAppComponent.prototype.throwPushNotification = function (message) {
+        this._notes.add(new notifications_model_js_1.Notification('error', message));
+    };
+    AuctionAppComponent.prototype.togglePushNotif = function () {
+        this.showNotif = !this.showNotif;
     };
     __decorate([
         metadata_1.Input()
@@ -104,9 +118,6 @@ var AuctionAppComponent = (function () {
     __decorate([
         metadata_1.Input()
     ], AuctionAppComponent.prototype, "protocol", void 0);
-    __decorate([
-        metadata_1.Output()
-    ], AuctionAppComponent.prototype, "pushNotif", void 0);
     AuctionAppComponent = __decorate([
         core_1.Component({
             selector: 'auction-app',
@@ -114,7 +125,8 @@ var AuctionAppComponent = (function () {
             directives: [clockApp_component_js_1.ClockAppComponent, message_component_js_1.MessageComponent, common_1.FORM_DIRECTIVES],
             providers: [http_1.HTTP_PROVIDERS, validator_service_js_1.ValidatorService]
         }),
-        __param(0, decorators_1.Inject(http_1.Http))
+        __param(0, decorators_1.Inject(http_1.Http)),
+        __param(1, decorators_1.Inject(notifications_service_js_1.NotificationsService))
     ], AuctionAppComponent);
     return AuctionAppComponent;
 }());

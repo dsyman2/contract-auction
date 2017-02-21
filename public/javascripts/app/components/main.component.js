@@ -19,9 +19,9 @@ var navbar_component_js_1 = require("./navbar.component.js");
 var unresolvedHolder_component_js_1 = require("./unresolvedComponents/unresolvedHolder.component.js");
 var notifications_component_js_1 = require('../notifications/notifications.component.js');
 var notifications_service_js_1 = require("../notifications/notifications.service.js");
-var notifications_model_js_1 = require("../notifications/notifications.model.js");
 var router_1 = require("angular2/router");
 var decorators_1 = require("angular2/src/core/di/decorators");
+var profileUpdater_component_js_1 = require("./profileUpdater.component.js");
 /* component in angular2 */
 var MainComponent = (function () {
     function MainComponent(_notes) {
@@ -38,9 +38,6 @@ var MainComponent = (function () {
         console.log('hi: ' + optionPicked);
         this.buttonClickVal = optionPicked;
     };
-    MainComponent.prototype.throwPushNotification = function (message) {
-        this._notes.add(new notifications_model_js_1.Notification('error', message));
-    };
     __decorate([
         metadata_1.Input()
     ], MainComponent.prototype, "user", void 0);
@@ -49,7 +46,7 @@ var MainComponent = (function () {
             selector: 'main-holder',
             templateUrl: '/templates/main.html',
             directives: [auctionHolder_component_js_1.AuctionHolderComponent, resultHolder_component_js_1.ResultHolderComponent, navbar_component_js_1.NavbarComponent,
-                unresolvedHolder_component_js_1.UnresolvedHolderComponent, notifications_component_js_1.Notifications, router_1.ROUTER_DIRECTIVES]
+                unresolvedHolder_component_js_1.UnresolvedHolderComponent, notifications_component_js_1.Notifications, router_1.ROUTER_DIRECTIVES, profileUpdater_component_js_1.ProfileUpdaterComponent]
         }),
         __param(0, decorators_1.Inject(notifications_service_js_1.NotificationsService))
     ], MainComponent);

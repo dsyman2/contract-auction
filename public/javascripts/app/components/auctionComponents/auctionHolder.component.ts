@@ -6,6 +6,7 @@ import {AuctionAppComponent} from './auctionApp.component.js';
 import {Input, Output} from "angular2/src/core/metadata";
 import {Http} from "angular2/src/http/http";
 import {EventEmitter} from "angular2/src/facade/async";
+import globals = require('../../config/configer.js');
 
 
 /* component in angular2 */
@@ -20,14 +21,13 @@ export class AuctionHolderComponent {
     socket = null;
     @Input()user;
     private arrayOfAucs: string[];
-    @Output() pushNotifToMain: EventEmitter<string> = new EventEmitter<string>();
 
     ngOnInit(){
         //console.log("u" + this.user);
         this.user = localStorage.getItem('username');
 
         //this.socket = io('http://localhost:8000');
-        this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000')
+        this.socket = io(globals.socket_src)
 
         this.socket.on('auctionList', function(data){
             this.auctions = data;
@@ -38,9 +38,5 @@ export class AuctionHolderComponent {
 
         console.log(this.arrayOfAucs);
 
-    }
-
-    onPushNotif(notif:string){
-        this.pushNotifToMain.emit(notif);
     }
 }

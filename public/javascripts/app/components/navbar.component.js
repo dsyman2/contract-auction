@@ -18,6 +18,7 @@ var NavbarComponent = (function () {
         this.auctions = 'auctions';
         this.myAuctions = 'myAuctions';
         this.unresolved = 'unresolved';
+        this.profile = 'profile';
         this.clickValue = this.auctions;
     }
     NavbarComponent.prototype.ngOnInit = function () {

@@ -3,6 +3,7 @@
  */
 import {Component} from 'angular2/core';
 import {Input} from "angular2/src/core/metadata";
+import globals = require('../../config/configer.js');
 
 @Component({
     selector: 'message-app',
@@ -18,7 +19,7 @@ export class MessageComponent {
 
     ngOnInit(){
         //this.socket = io('http://localhost:8000');
-        this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000')
+        this.socket = io(globals.socket_src);
 
         this.socket.on('chat msgs-' + this.id, function (msgs){
             var tempMessages = [];

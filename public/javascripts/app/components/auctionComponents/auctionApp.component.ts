@@ -11,7 +11,9 @@ import {Inject} from "angular2/src/core/di/decorators";
 import {FORM_DIRECTIVES, Control, ControlGroup, FormBuilder, Validators} from 'angular2/common';
 import {ValidatorService} from "../../services/validator.service.js";
 import {EventEmitter} from "angular2/src/facade/async";
-
+import globals = require('../../config/configer.js');
+import {NotificationsService} from "../../notifications/notifications.service.js";
+import {Notification} from "../../notifications/notifications.model.js";
 
 class FormInputs{
     bidValue : number;
@@ -37,12 +39,11 @@ export class AuctionAppComponent {
     @Input()protocol : string;
     time : number = 0;
     active : boolean = true;
-    @Output() pushNotif: EventEmitter<string> = new EventEmitter<string>();
-
+    showNotif : boolean = false;
     /*CreateGroup: ControlGroup;
     formInputs: FormInputs;*/
 
-    constructor(@Inject(Http)private http:Http, /*@Inject(ValidatorService) validatorService : ValidatorService,
+    constructor(@Inject(Http)private http:Http, @Inject(NotificationsService)private _notes: NotificationsService/*@Inject(ValidatorService) validatorService : ValidatorService,
                 @Inject(FormBuilder) fb: FormBuilder*/){
         /*console.log('hihi');
         this.formInputs = new FormInputs();
@@ -55,11 +56,14 @@ export class AuctionAppComponent {
     ngOnInit() {
         console.log("username is:" + this.username);
         //this.socket = io('http://localhost:8000');
-        this.socket = io('http://ec2-52-56-141-53.eu-west-2.compute.amazonaws.com:8000')
+        this.socket = io(globals.socket_src);
 
         this.socket.on('priceUpdate-' + this.id, function (data) {
-            this.price = parseInt(data);
-            this.pushNotif.emit('Bid in for auction: ' + this.name + '. \n Price: ' + this.price + '.');
+            this.price = +parseFloat(data);
+            if(this.showNotif){
+                this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');
+            }
+            this.showNotif = true;
         }.bind(this));
 
         this.socket.on('auctionEnd-' + this.id, function (data) {
@@ -77,6 +81,7 @@ export class AuctionAppComponent {
     }*/
 
     bid() {
+        this.showNotif = true;
         this.socket.emit('bid-'+this.id, {
             bid: this.bidValue,
             bidder: this.username
@@ -99,5 +104,13 @@ export class AuctionAppComponent {
 
         this.http.post("/deleteAuction", body, {headers: this.headers})
             .map(res => (res.json())).subscribe();
+    }
+
+    throwPushNotification(message: string){
+        this._notes.add(new Notification('error', message));
+    }
+
+    togglePushNotif(){
+        this.showNotif = !this.showNotif;
     }
 }

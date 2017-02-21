@@ -1,0 +1,31 @@
+<div class="container">
+    <br>
+    <br>
+    <p>
+        You can update your details below:
+    </p>
+    <form class="form-horizontal" id='createAuctionForm' role="form" [ngFormModel]="CreateGroup">
+        <div>
+            Email:
+            <input type = "text" name = "email" [(ngModel)]="formInputs.email" class="form-control" ngControl="email"
+            placeholder="e.g. person@email.com">
+            <small *ngIf="!CreateGroup.controls['email'].valid">You must enter a valid email.</small>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div>
+            Contact Number:
+            <input type = "text" [(ngModel)]="formInputs.contactNumber" class="form-control" ngControl="contactNumber"
+                   placeholder="e.g. 123456789123">
+            <small *ngIf="!CreateGroup.controls['contactNumber'].valid">You must enter a number - remember area code if landline.</small>
+        </div>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button type="button" [disabled]='!CreateGroup.valid' (click)="updateProfile(formInputs)" class ="btn btn-wide">
+        Update
+    </button>
+</div>
