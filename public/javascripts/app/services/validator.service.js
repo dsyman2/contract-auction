@@ -16,6 +16,11 @@ var ValidatorService = (function () {
                 valid: true
             };
         };
+        this.isFloat = function (control) {
+            return checkIsFloat(control.value) ? null : {
+                valid: true
+            };
+        };
         this.isNotZero = function (control) {
             return checkIsZero(control.value) ? null : {
                 valid: true
@@ -56,6 +61,10 @@ function checkIsInteger(value) {
     console.log((parseFloat(value) == parseInt(value)) && !isNaN(value));
     return (parseFloat(value) == parseInt(value)) && !isNaN(value);
 }
+function checkIsFloat(value) {
+    console.log((parseFloat(value) == parseFloat(value)) && !isNaN(value));
+    return (parseFloat(value) == parseFloat(value)) && !isNaN(value);
+}
 function checkIsZero(value) {
     return (value > 0);
 }
@@ -80,7 +89,7 @@ function isValidEmailFormat(value) {
     return null;
 }
 function isPhoneNumberLength(value) {
-    if (value.length >= 11) {
+    if (value.length > 10) {
         return true;
     }
     return null;

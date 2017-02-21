@@ -49,6 +49,9 @@ module.exports = function(passport) {
                 var contactNumber = req.body.contactNumber;
                 // find a user whose email is the same as the forms email
                 // we are checking to see if the user trying to login already exists
+                if(email.length < 1 || contactNumber.length < 1 || password.length < 1 || username.length < 1){
+                    return done(null, false, req.flash('signupMessage', 'Missing info, please fill all fields'));
+                }
                 connection.query("SELECT * FROM users WHERE username = ? OR email = ? OR contactNumber =?",[username, email, contactNumber], function(err, rows) {
                     if (err)
                         return done(err);
