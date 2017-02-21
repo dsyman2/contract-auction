@@ -14,6 +14,12 @@ export class ValidatorService {
             }
     };
 
+    public isFloat = (control : Control) => {
+        return checkIsFloat(control.value) ? null : {
+                valid: true
+            }
+    };
+
     public isNotZero = (control : Control) => {
         return checkIsZero(control.value) ? null : {
             valid: true
@@ -47,11 +53,18 @@ export class ValidatorService {
                 }
         };
     }
+
+
 }
 
 function checkIsInteger(value: any) {
     console.log((parseFloat(value) == parseInt(value)) && !isNaN(value));
     return (parseFloat(value) == parseInt(value)) && !isNaN(value);
+}
+
+function checkIsFloat(value: any) {
+    console.log((parseFloat(value) == parseFloat(value)) && !isNaN(value));
+    return (parseFloat(value) == parseFloat(value)) && !isNaN(value);
 }
 
 function checkIsZero(value : any){
@@ -82,7 +95,7 @@ function isValidEmailFormat(value : any) {
 }
 
 function isPhoneNumberLength(value : any) {
-    if(value.length >= 11){
+    if(value.length > 10){
         return true;
     }
     return null;

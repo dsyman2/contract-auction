@@ -10,14 +10,8 @@ import { Observable } from 'rxjs/Observable';
 export class NotificationsService {
     private _notifications = new Subject<Notification>();
 
-
-    //public noteAdded = this._notifications;
-
     public noteAdded = new Observable(fn => this._notifications._subscribe(fn));
 
-   /* public getNoteAdded(){
-        return asObservable(this._notifications)
-    }*/
     public add(notification: Notification) {
         this._notifications.next(notification);
     }

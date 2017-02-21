@@ -15,12 +15,8 @@ var NotificationsService = (function () {
     function NotificationsService() {
         var _this = this;
         this._notifications = new Subject_1.Subject();
-        //public noteAdded = this._notifications;
         this.noteAdded = new Observable_1.Observable(function (fn) { return _this._notifications._subscribe(fn); });
     }
-    /* public getNoteAdded(){
-         return asObservable(this._notifications)
-     }*/
     NotificationsService.prototype.add = function (notification) {
         this._notifications.next(notification);
     };

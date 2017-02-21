@@ -12,6 +12,10 @@ import {NavbarComponent} from "./components/navbar.component.js";
 import {MainComponent} from "./components/main.component.js";
 import {NotificationsService} from "./notifications/notifications.service.js";
 import {ROUTER_PROVIDERS} from "angular2/src/router/router_providers";
+import {enableProdMode} from "angular2/src/facade/lang";
+
+
+enableProdMode();
 
 //bootstrap(MessageComponent);
 bootstrap(CreateAuctionComponent, [ValidatorService]);

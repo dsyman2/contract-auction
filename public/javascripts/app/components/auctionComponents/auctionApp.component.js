@@ -25,14 +25,12 @@ var notifications_service_js_1 = require("../../notifications/notifications.serv
 var notifications_model_js_1 = require("../../notifications/notifications.model.js");
 var FormInputs = (function () {
     function FormInputs() {
+        this.bidValue = '';
     }
     return FormInputs;
 }());
 var AuctionAppComponent = (function () {
-    /*CreateGroup: ControlGroup;
-    formInputs: FormInputs;*/
-    function AuctionAppComponent(http, _notes /*@Inject(ValidatorService) validatorService : ValidatorService,
-                    @Inject(FormBuilder) fb: FormBuilder*/) {
+    function AuctionAppComponent(http, _notes, validatorService, fb) {
         this.http = http;
         this._notes = _notes;
         this.price = 0.0;
@@ -41,16 +39,16 @@ var AuctionAppComponent = (function () {
         this.time = 0;
         this.active = true;
         this.showNotif = false;
-        /*console.log('hihi');
-        this.formInputs = new FormInputs();
-        this.CreateGroup = fb.group({
-            'bidValue'        : new Control(this.formInputs.bidValue, Validators.compose([Validators.required,
-                validatorService.isInteger, validatorService.isNotZero]) )
-        })*/
+        if (this.protocol != 'Dutch') {
+            this.formInputs = new FormInputs();
+            this.CreateGroup = fb.group({
+                'bidValue': new common_1.Control(this.formInputs.bidValue, common_1.Validators.compose([common_1.Validators.required,
+                    validatorService.isFloat, validatorService.isNotZero]))
+            });
+        }
     }
     AuctionAppComponent.prototype.ngOnInit = function () {
         console.log("username is:" + this.username);
-        //this.socket = io('http://localhost:8000');
         this.socket = io(globals.socket_src);
         this.socket.on('priceUpdate-' + this.id, function (data) {
             console.log(data);
@@ -64,14 +62,13 @@ var AuctionAppComponent = (function () {
             console.log('over and out: ' + data);
         });
     };
-    /*addNewGroup(formInputs : FormInputs) {
+    AuctionAppComponent.prototype.addNewGroup = function (formInputs) {
         this.formInputs = new FormInputs();
-        let data = {
+        var data = {
             bidVal: formInputs.bidValue,
         };
-
-        this.bid(data);
-    }*/
+        this.bidParam(data);
+    };
     AuctionAppComponent.prototype.bid = function () {
         this.showNotif = true;
         this.socket.emit('bid-' + this.id, {
@@ -79,6 +76,14 @@ var AuctionAppComponent = (function () {
             bidder: this.username
         });
         this.bidValue = '';
+    };
+    AuctionAppComponent.prototype.bidParam = function (data) {
+        this.showNotif = true;
+        this.socket.emit('bid-' + this.id, {
+            bid: data.bidVal,
+            bidder: this.username
+        });
+        this.formInputs.bidValue = '';
     };
     AuctionAppComponent.prototype.onTimeUp = function (data) {
         //alert(data);
@@ -124,10 +129,12 @@ var AuctionAppComponent = (function () {
             selector: 'auction-app',
             templateUrl: '/templates/auctionTemplates/auction.html',
             directives: [clockApp_component_js_1.ClockAppComponent, message_component_js_1.MessageComponent, common_1.FORM_DIRECTIVES],
-            providers: [http_1.HTTP_PROVIDERS, validator_service_js_1.ValidatorService]
+            providers: [http_1.HTTP_PROVIDERS, validator_service_js_1.ValidatorService, common_1.FormBuilder]
         }),
         __param(0, decorators_1.Inject(http_1.Http)),
-        __param(1, decorators_1.Inject(notifications_service_js_1.NotificationsService))
+        __param(1, decorators_1.Inject(notifications_service_js_1.NotificationsService)),
+        __param(2, decorators_1.Inject(validator_service_js_1.ValidatorService)),
+        __param(3, decorators_1.Inject(common_1.FormBuilder))
     ], AuctionAppComponent);
     return AuctionAppComponent;
 }());
