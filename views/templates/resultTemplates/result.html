@@ -9,9 +9,15 @@
         <p>Contract issuer: {{creator}}</p>
         <p>Winning contractor: {{winner}}</p>
         <div class="alert alert-orange" *ngIf="resultView">
-            <p>Contact username:  {{contactUsername}}</p>
-            <p>Contact number:  {{contactNum }}</p>
-            <p>Contact email:  {{contactEmail}}</p>
+            <p>
+                <i class="fa fa-user-o" aria-hidden="true"></i> Contact username:  {{contactUsername}}
+            </p>
+            <p><a href="{{contactNumber}}">
+                <i class="fa fa-phone" aria-hidden="true"></i> Contact number:  {{contactNum}}
+            </a></p>
+            <p><a href="mailto:{{contactEmail}}">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i> Contact email:  {{contactEmail}}
+            </a></p>
         </div>
         <button type="button" class = "btn btn-wide" (click)="updateRes()">Contact other party</button>
     </div>

@@ -36,6 +36,7 @@ export class CreateAuctionComponent {
     headers: Headers;
    // http: Http;
     numberValidity : boolean = null;
+    filesToUpload: Array<File>;
 
     constructor(@Inject(ValidatorService) validatorService : ValidatorService,
                 @Inject(FormBuilder) fb: FormBuilder, @Inject(Http)private http: Http){

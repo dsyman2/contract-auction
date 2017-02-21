@@ -30,6 +30,7 @@ var ProfileUpdaterComponent = (function () {
     function ProfileUpdaterComponent(validatorService, fb, http) {
         this.http = http;
         this.options = new base_request_options_1.RequestOptions({ headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
+        this.hasUpdated = undefined;
         this.formInputs = new FormInputs();
         this.CreateGroup = fb.group({
             'email': new common_1.Control(this.formInputs.email, common_1.Validators.compose([common_1.Validators.required,

@@ -26,7 +26,7 @@ export class ProfileUpdaterComponent {
     CreateGroup: ControlGroup;
     formInputs: FormInputs;
     private options = new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})});
-    hasUpdated: boolean;
+    hasUpdated: boolean = undefined;
 
     constructor(@Inject(ValidatorService) validatorService : ValidatorService,
                 @Inject(FormBuilder) fb: FormBuilder, @Inject(Http)private http: Http) {

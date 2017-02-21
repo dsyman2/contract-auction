@@ -13,7 +13,7 @@ body {
     cursor:pointer;
     overflow: hidden;
     outline:none;
-    font-size: 300%;
+    font-size: 240%;
     line-height: 100%;
     margin-top: -2.5%;
 }
@@ -21,6 +21,7 @@ body {
 .ruleBG{
     background-color: #262626;
 }
+
 a {
     color: white;
 }

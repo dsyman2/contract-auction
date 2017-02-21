@@ -59,6 +59,7 @@ export class AuctionAppComponent {
         this.socket = io(globals.socket_src);
 
         this.socket.on('priceUpdate-' + this.id, function (data) {
+            console.log(data)
             this.price = +parseFloat(data);
             if(this.showNotif){
                 this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');
