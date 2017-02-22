@@ -93,9 +93,11 @@ module.exports = {
 
             if(currentPrice < maxPrice){
                 currentPrice = +((currentPrice + increment).toFixed(2));
+                console.log('emitting price: ' + currentPrice);
+                io.sockets.emit('priceUpdate-' + id, currentPrice);
             }
-            console.log('emitting price: ' + currentPrice);
-            io.sockets.emit('priceUpdate-' + id, currentPrice)
+           /* console.log('emitting price: ' + currentPrice);
+            io.sockets.emit('priceUpdate-' + id, currentPrice);*/
         }, interval);
 
         var currentBidder = null;
@@ -163,6 +165,13 @@ module.exports = {
                 if (currentPrice > newBidPrice) {
                     currentPrice = newBidPrice;
                     currentBidder = newBidder;
+
+                    if(countdownTimer.time < 10000){
+                        countdownTimer.time = countdownTimer.time + 10000;
+                    }
+
+                    socket.emit('timeRemaining-' + id, countdownTimer.time);
+                    socket.broadcast.emit('timeRemaining-' + id, countdownTimer.time);
                     socket.emit('priceUpdate-' + id, currentPrice);
                     socket.broadcast.emit('priceUpdate-' + id, currentPrice);
                 }
