@@ -1,11 +1,11 @@
 <div class="panel panel-auction">
     <div class="panel-heading">
         <h4>
-            <button title='Notifications are disabled' class="rightPad smlButton" (click)="togglePushNotif()" *ngIf="!showNotif">
-                <i class="fa fa-lock" aria-hidden="true"></i>
+            <button title='Notifications are disabled' class="rightPad btn btn-sm" (click)="togglePushNotif()" *ngIf="!showNotif">
+                Alerts off
             </button>
-            <button title='Notifications are enabled'class="rightPad smlButton" (click)="togglePushNotif()" *ngIf="showNotif">
-                <i class="fa fa-unlock" aria-hidden="true"></i>
+            <button title='Notifications are enabled'class="rightPad btn btn-sm" (click)="togglePushNotif()" *ngIf="showNotif">
+                Alerts on
             </button>
         </h4>
 
@@ -15,7 +15,9 @@
     </div>
 
     <div class="panel-body">
-        <h5>{{desc}}</h5>
+        <div class="angular-with-newlines">
+            {{desc}}
+        </div>
 
         <h2 *ngIf="protocol == 'Dutch' || protocol == 'English'">
             Current bid: {{price | currency:'GBP':true:'1.2-2'}}

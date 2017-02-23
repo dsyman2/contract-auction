@@ -69,6 +69,8 @@ export class CreateAuctionComponent {
             maxGuidePrice:  formInputs.maxGuidePrice
         };
 
+       // data.description = data.description.replace(/\r\n?/g, '<br />');
+
         this.addAuctionPostRequest("/createAuction", data);
     }
 
