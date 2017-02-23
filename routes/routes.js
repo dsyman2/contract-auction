@@ -95,7 +95,8 @@ module.exports = {
         app.get('/app', isLoggedIn, function(req, res) {
             res.render('app.jade', {
                 username          : req.user.username,
-                userID            : req.user.id
+                userID            : req.user.id,
+                accountType       : req.user.accountType
                 // get the user out of session and pass to template
             });
         });

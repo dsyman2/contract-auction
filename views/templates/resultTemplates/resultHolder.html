@@ -2,24 +2,27 @@
     <button class="btn btn-lg btn-wide btn-orange"(click)="getCreatedAucResults">Refresh Results &#x21ba;</button>
     <br>
     <br>
-    <h4 class="panel-heading-2">The results s of the auctions you've created/won are below: </h4>
-    <div *ngFor="#created of createdList">
-        <result-app
-                id = {{created.createdID}} name = {{created.name}}
-                desc = {{created.description}} protocol = {{created.protocol}}
-                aucID = {{created.id}} creator = {{created.creatorID}} winner = {{created.winnerID}}
-                price = {{created.price}}>
-        </result-app>
+    <div *ngIf="accountType=='Contract Issuer'">
+        <h4 class="panel-heading-2">The results s of the auctions you've created are below: </h4>
+        <div *ngFor="#created of createdList">
+            <result-app
+                    id = {{created.createdID}} name = {{created.name}}
+                    desc = {{created.description}} protocol = {{created.protocol}}
+                    aucID = {{created.id}} creator = {{created.creatorID}} winner = {{created.winnerID}}
+                    price = {{created.price}}>
+            </result-app>
+        </div>
     </div>
 
-    <h4 class="panel-heading-2">The results s of the auctions you've created/won are below: </h4>
-    <div *ngFor="#won of wonList">
-        <result-app
-                id = {{won.createdID}} name = {{won.name}}
-                desc = {{won.description}} protocol = {{won.protocol}}
-                aucID = {{won.id}} creator = {{won.creatorID}} winner = {{won.winnerID}}
-                price = {{won.price}}>
-        </result-app>
+    <div *ngIf="accountType=='contractor'">
+        <h4 class="panel-heading-2">The results s of the auctions you've won are below: </h4>
+        <div *ngFor="#won of wonList">
+            <result-app
+                    id = {{won.createdID}} name = {{won.name}}
+                    desc = {{won.description}} protocol = {{won.protocol}}
+                    aucID = {{won.id}} creator = {{won.creatorID}} winner = {{won.winnerID}}
+                    price = {{won.price}}>
+            </result-app>
+        </div>
     </div>
-
 </div>

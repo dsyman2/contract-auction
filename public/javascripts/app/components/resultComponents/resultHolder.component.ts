@@ -5,7 +5,7 @@ import {Component} from 'angular2/core';
 import 'rxjs/Rx';
 import {Http, HTTP_PROVIDERS} from "angular2/http";
 import {Inject} from "angular2/src/core/di/decorators";
-
+import globals = require('../../config/globals.js');
 import {AuctionResultComponent} from "./auctionResult.component.js";
 
 @Component({
@@ -20,10 +20,15 @@ export class ResultHolderComponent {
     wonList: any;
     won : boolean = false;
     createdB : boolean = false;
+    accountType : string;
 
     constructor(@Inject(Http)private http:Http){
         this.getCreatedAucResults();
         this.getWonAucResults();
+    }
+
+    ngOnInit(){
+        this.accountType = globals.accountType;
     }
 
     getCreatedAucResults(){
@@ -33,7 +38,6 @@ export class ResultHolderComponent {
                 () => console.log(this.createdList),
                () => this.createdB = true
             );
-        //this.results = x;
     }
 
     getWonAucResults(){

@@ -52,15 +52,15 @@ head
         //localStorage.tester = "hi";
         localStorage.username = '#{username}';
         localStorage.userID = '#{userID}';
+        localStorage.accountType = '#{accountType}';
         user = '#{username}'
-        console.log('Username: ' + user);
 
 header
 body
-    main-holder([user] = "#{username}") Loading...
+    main-holder([user] = username, [accountType] = accountType) Loading...
     | &#x9;
     label
-    createAuction-app Loading...
+    createAuction-app( *ngIf="accountType == 'Contract Issuer'") Loading...
     | &#x9;
 
 

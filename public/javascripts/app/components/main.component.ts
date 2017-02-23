@@ -25,6 +25,7 @@ import {ProfileUpdaterComponent} from "./profileUpdater.component.js";
 
 export class MainComponent {
     @Input()user;
+    @Input()accountType;
     buttonClickVal : string = "auctions";
 
     constructor(@Inject(NotificationsService)private _notes: NotificationsService) {
@@ -32,8 +33,9 @@ export class MainComponent {
     }
 
     ngOnInit(){
-        //console.log("u" + this.user);
+        console.log("u" + this.user);
         this.user = localStorage.getItem('username');
+        this.accountType = localStorage.getItem('accountType');
         //this.throwPushNotification('hi everyone you');
     }
 

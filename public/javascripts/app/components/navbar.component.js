@@ -11,6 +11,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require('angular2/core');
 var metadata_1 = require("angular2/src/core/metadata");
 var async_1 = require("angular2/src/facade/async");
+var globalVars = require('../config/globals.js');
 /* component in angular2 */
 var NavbarComponent = (function () {
     function NavbarComponent() {
@@ -22,6 +23,7 @@ var NavbarComponent = (function () {
         this.clickValue = this.auctions;
     }
     NavbarComponent.prototype.ngOnInit = function () {
+        this.accountType = globalVars.accountType;
     };
     NavbarComponent.prototype.setMenuOption = function (option) {
         console.log('hi');

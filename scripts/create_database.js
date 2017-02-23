@@ -16,10 +16,13 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.users_table + '` ( \
     `password` CHAR(60) NOT NULL, \
     `email` VARCHAR(255) NOT NULL,\
     `contactNumber` VARCHAR(255) NOT NULL,\
+    `accountType` TINYTEXT NOT NULL,\
+    `address` VARCHAR(255) NOT NULL,\
         PRIMARY KEY (`id`), \
     UNIQUE INDEX `id_UNIQUE` (`id` ASC), \
     UNIQUE INDEX `username_UNIQUE` (`username` ASC), \
-    UNIQUE INDEX `email_UNIQUE` (`email` ASC) \
+    UNIQUE INDEX `email_UNIQUE` (`email` ASC), \
+    UNIQUE INDEX `address_UNIQUE` (`address` ASC)\
 )');
 
 connection.query('\
@@ -37,22 +40,6 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.auction_table + '` ( \
         + ' REFERENCES `'
         + dbconfig.database + '`.`' + dbconfig.users_table + '`(`id`) \
 )');
-
-/*connection.query('\
-CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.results_table + '` ( \
-    `auctionID` INT UNSIGNED NOT NULL, \
-    `creatorID` INT UNSIGNED NOT NULL, \
-    `winnerID` INT UNSIGNED NOT NULL, \
-        CONSTRAINT `fk_PerResult` FOREIGN KEY (`creatorID`)'
-                + ' REFERENCES `'
-                + dbconfig.database + '`.`' + dbconfig.auction_table + '`(`creatorID`), \
-        CONSTRAINT `fk_PerAucRes` FOREIGN KEY (`auctionID`)'
-                + ' REFERENCES `'
-                + dbconfig.database + '`.`' + dbconfig.auction_table + '`(`id`), \
-        CONSTRAINT `fk_PerWin` FOREIGN KEY (`winnerID`)'
-                + ' REFERENCES `'
-                + dbconfig.database + '`.`' + dbconfig.users_table + '`(`id`) \
-)');*/
 
 connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.results_table + '` ( \

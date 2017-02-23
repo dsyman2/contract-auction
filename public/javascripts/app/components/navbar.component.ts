@@ -4,6 +4,8 @@
 import {Component} from 'angular2/core';
 import {Output} from "angular2/src/core/metadata";
 import {EventEmitter} from "angular2/src/facade/async";
+import globalVars = require('../config/globals.js');
+
 
 /* component in angular2 */
 @Component({
@@ -20,10 +22,10 @@ export class NavbarComponent {
     unresolved : string = 'unresolved';
     profile : string = 'profile';
     clickValue : string = this.auctions;
-
+    accountType : string;
 
     ngOnInit(){
-
+        this.accountType = globalVars.accountType;
     }
 
     setMenuOption(option : string){

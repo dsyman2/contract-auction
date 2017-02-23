@@ -11,7 +11,9 @@ import {Inject} from "angular2/src/core/di/decorators";
 import {FORM_DIRECTIVES, Control, ControlGroup, FormBuilder, Validators} from 'angular2/common';
 import {ValidatorService} from "../../services/validator.service.js";
 import {EventEmitter} from "angular2/src/facade/async";
-import globals = require('../../config/configer.js');
+import config = require('../../config/configer.js');
+import globals = require('../../config/globals.js');
+
 import {NotificationsService} from "../../notifications/notifications.service.js";
 import {Notification} from "../../notifications/notifications.model.js";
 
@@ -42,6 +44,7 @@ export class AuctionAppComponent {
     showNotif : boolean = false;
     CreateGroup: ControlGroup;
     formInputs: FormInputs;
+    accountType : string;
 
     constructor(@Inject(Http)private http:Http, @Inject(NotificationsService)private _notes: NotificationsService,
                 @Inject(ValidatorService) validatorService : ValidatorService, @Inject(FormBuilder) fb: FormBuilder ){
@@ -55,10 +58,10 @@ export class AuctionAppComponent {
     }
 
     ngOnInit() {
-
+        this.accountType = globals.accountType;
         console.log("username is:" + this.username);
 
-        this.socket = io(globals.socket_src);
+        this.socket = io(config.socket_src);
 
         this.socket.on('priceUpdate-' + this.id, function (data) {
             console.log(data)

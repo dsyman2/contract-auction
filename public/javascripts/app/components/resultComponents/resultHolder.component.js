@@ -15,6 +15,7 @@ var core_1 = require('angular2/core');
 require('rxjs/Rx');
 var http_1 = require("angular2/http");
 var decorators_1 = require("angular2/src/core/di/decorators");
+var globals = require('../../config/globals.js');
 var auctionResult_component_js_1 = require("./auctionResult.component.js");
 var ResultHolderComponent = (function () {
     function ResultHolderComponent(http) {
@@ -24,11 +25,13 @@ var ResultHolderComponent = (function () {
         this.getCreatedAucResults();
         this.getWonAucResults();
     }
+    ResultHolderComponent.prototype.ngOnInit = function () {
+        this.accountType = globals.accountType;
+    };
     ResultHolderComponent.prototype.getCreatedAucResults = function () {
         var _this = this;
         this.http.get("/completedAuctions", {})
             .subscribe(function (createdList) { return _this.createdList = createdList.json(); }, function () { return console.log(_this.createdList); }, function () { return _this.createdB = true; });
-        //this.results = x;
     };
     ResultHolderComponent.prototype.getWonAucResults = function () {
         var _this = this;

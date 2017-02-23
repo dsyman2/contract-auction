@@ -10,6 +10,8 @@ import {Http, Headers, HTTP_PROVIDERS} from 'angular2/http';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/first';
 import {ValidatorService} from "../../services/validator.service.js";
+import globals = require('../../config/globals.js');
+
 
 class FormInputs{
     auctionName: string;
@@ -37,6 +39,7 @@ export class CreateAuctionComponent {
    // http: Http;
     numberValidity : boolean = null;
     filesToUpload: Array<File>;
+    accountType : string;
 
     constructor(@Inject(ValidatorService) validatorService : ValidatorService,
                 @Inject(FormBuilder) fb: FormBuilder, @Inject(Http)private http: Http){
@@ -50,6 +53,10 @@ export class CreateAuctionComponent {
             'maxGuidePrice' : new Control(this.formInputs.maxGuidePrice, Validators.compose([Validators.required,
                 validatorService.isIntegerPrice(this.formInputs.protocol), validatorService.isNotZeroPrice(this.formInputs.protocol)]) )
         });
+    }
+
+    ngOnInit(){
+        this.accountType = globals.accountType;
     }
 
     addNewGroup(formInputs : FormInputs) {

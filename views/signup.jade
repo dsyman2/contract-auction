@@ -9,6 +9,7 @@ html
     link(rel='stylesheet', href='stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='stylesheets/style.css')
     link(rel="shortcut icon" type="image/x-icon" href="images/favicon.ico")
+    link(rel="stylesheet" href='stylesheets/font-awesome/css/font-awesome.min.css')
   body.bg
     .container
       .col-sm-6.col-sm-offset-3
@@ -19,19 +20,44 @@ html
             .alert.alert-danger= message
         form(action='/signup', method='post')
           .form-group
+            span.fa.fa-user-o
+            | &#x9;
             label Username
             | &#x9;&#x9;&#x9;
             input.form-control(type='text', name='username')
           | &#x9;&#x9;
           .form-group
+            span.fa.fa-envelope-o
+            | &#x9;
             label Email
             | &#x9;&#x9;&#x9;
-            input.form-control(type='email', name='email')
+            input.form-control(type='email', name='email' placeholder="e.g. me@mymail.com")
           | &#x9;&#x9;
           .form-group
-            label Contact Number
+            span.fa.fa-phone
+            | &#x9;
+            label Contact Number (remember the area code)
             | &#x9;&#x9;&#x9;
-            input.form-control(type='text', name='contactNumber')
+            input.form-control(type='number', placeholder="e.g. 0141123456" name='contactNumber' onkeypress='return event.charCode >= 48 && event.charCode <= 57>' pattern=".{8,}" required)
+          | &#x9;&#x9;
+          .form-group
+            span.fa.fa-map-marker
+            | &#x9;
+            label Address Details(will not be used)
+            | &#x9;&#x9;&#x9;
+            div.input-group
+              span.input-group-addon Number
+              input.form-control(type='text', name='addressNum' placeholder="e.g. 109")
+              span.input-group-addon Post Code
+              input.form-control(type='text', name='postcode' placeholder="e.g. G11 0NS")
+          | &#x9;&#x9;
+          .form-group
+            label What type of account?
+            | &#x9;&#x9;&#x9;
+            select.form-control(name='accountType')
+              - var options = [{value: 'contractor', label: 'Contractor'}, {value: 'Contract Issuer', label: 'Contract Issuer'}]
+              each option in options
+                option(value=option.value, selected=(option.value))= option.label
           | &#x9;&#x9;
           .form-group
             label Password

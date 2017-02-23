@@ -35,6 +35,10 @@ small{
     color: darkred;
 }
 
+.container{
+    color: dimgrey;
+}
+
 .alert-orange {
     border-color: lightcoral;
     background: lightcoral;

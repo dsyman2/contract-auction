@@ -1,6 +1,6 @@
 <div class="container" >
     <!-- Trigger the modal with a button -->
-    <div class="footer">
+    <div *ngIf="accountType=='Contract Issuer'" class="footer">
         <button type="button" class="btn btn-lg footer-r button-round" data-toggle="modal" data-target="#myModal">+</button>
     </div>
 
@@ -71,6 +71,7 @@
                         </form>
                     <br>
                     <div>
+
                         <button type="button" [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)" class ="btn btn-lg btn-wide">
                             Create
                         </button>

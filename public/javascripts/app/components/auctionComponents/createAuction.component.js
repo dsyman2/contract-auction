@@ -19,6 +19,7 @@ var http_1 = require('angular2/http');
 require('rxjs/Rx');
 require('rxjs/add/operator/first');
 var validator_service_js_1 = require("../../services/validator.service.js");
+var globals = require('../../config/globals.js');
 var FormInputs = (function () {
     function FormInputs() {
         // creatorID: string;
@@ -42,6 +43,9 @@ var CreateAuctionComponent = (function () {
                 validatorService.isIntegerPrice(this.formInputs.protocol), validatorService.isNotZeroPrice(this.formInputs.protocol)]))
         });
     }
+    CreateAuctionComponent.prototype.ngOnInit = function () {
+        this.accountType = globals.accountType;
+    };
     CreateAuctionComponent.prototype.addNewGroup = function (formInputs) {
         this.formInputs = new FormInputs();
         var data = {

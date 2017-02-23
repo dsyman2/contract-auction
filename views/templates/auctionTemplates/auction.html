@@ -26,7 +26,7 @@
         </h2>
         <small> Protocol being used is {{protocol}}</small>
 
-        <form class="input-group" [ngFormModel]="CreateGroup">
+        <form *ngIf="accountType !='Contract Issuer'" class="input-group" [ngFormModel]="CreateGroup">
             <span *ngIf="protocol != 'Dutch'" class="input-group-addon">£</span>
                 <input class="form-control" [(ngModel)]="formInputs.bidValue" ngControl="bidValue" placeholder="Enter a bid value in pounds" *ngIf="protocol != 'Dutch'">
             <span class="input-group-btn">
@@ -37,7 +37,7 @@
 
         <small *ngIf="!CreateGroup.controls['bidValue'].valid">The bid must be greater than zero and a number!</small>
 
-        <button type="button" class = "btn" (click)="sendDelete()">Delete</button>
+        <button *ngIf="accountType=='Contract Issuer'" type="button" class = "btn" (click)="sendDelete()">Delete</button>
         <br>
         <br>
         <div>
