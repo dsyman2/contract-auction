@@ -21,7 +21,8 @@ module.exports = {
                     length      : rows[i].length,
                     protocol    : rows[i].protocol,
                     creatorID   : rows[i].creatorID,
-                    maxGuidePrice : rows[i].maxGuidePrice
+                    maxGuidePrice : rows[i].maxGuidePrice,
+                    contractType    : rows[i].contractType
                 };
                 //results.push(result);
             }

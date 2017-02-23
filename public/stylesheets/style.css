@@ -1,8 +1,3 @@
-.angular-with-newlines {
-    white-space: pre-wrap;
-    white-space: pre-line;
-}
-
 body {
     padding-left: 5%;
     padding-right: 5%;
@@ -45,8 +40,8 @@ small{
 }
 
 .alert-orange {
-    border-color: lightcoral;
-    background: lightcoral;
+    border-color: lightsalmon;
+    background: lightsalmon;
     color: white;
 }
 
@@ -112,7 +107,7 @@ small{
 }
 
 .btn-orange {
-    background-color: lightcoral;
+    background-color: lightsalmon;
 }
 
 /* nav bar stuff*/
@@ -193,7 +188,7 @@ nav{
 }
 
 .notifications div.error {
-    background-color: lightcoral;
+    background-color: lightsalmon;
     border-color: darkgrey;
     color: white;
 }

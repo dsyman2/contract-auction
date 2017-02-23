@@ -13,7 +13,6 @@ import {ValidatorService} from "../../services/validator.service.js";
 import {EventEmitter} from "angular2/src/facade/async";
 import config = require('../../config/configer.js');
 import globals = require('../../config/globals.js');
-
 import {NotificationsService} from "../../notifications/notifications.service.js";
 import {Notification} from "../../notifications/notifications.model.js";
 
@@ -32,6 +31,7 @@ export class AuctionAppComponent {
     price : number = 0.0;
     socket = null;
     bidValue : string= '';
+    userID : string;
     @Input()auction : any;
     @Input()id : string;
     @Input()name : string;
@@ -39,11 +39,12 @@ export class AuctionAppComponent {
     @Input()creator : string;
     @Input()username;
     @Input()protocol : string;
+    @Input()contractType : string;
     time : number = 0;
     active : boolean = true;
     showNotif : boolean = false;
-    CreateGroup: ControlGroup;
-    formInputs: FormInputs;
+    CreateGroup : ControlGroup;
+    formInputs : FormInputs;
     accountType : string;
 
     constructor(@Inject(Http)private http:Http, @Inject(NotificationsService)private _notes: NotificationsService,
@@ -59,12 +60,12 @@ export class AuctionAppComponent {
 
     ngOnInit() {
         this.accountType = globals.accountType;
-        console.log("username is:" + this.username);
-
+        console.log("username is:" + this.creator);
+        this.userID = globals.userID;
         this.socket = io(config.socket_src);
 
         this.socket.on('priceUpdate-' + this.id, function (data) {
-            console.log(data)
+            console.log(data);
             this.price = +parseFloat(data);
             if(this.showNotif){
                 this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');

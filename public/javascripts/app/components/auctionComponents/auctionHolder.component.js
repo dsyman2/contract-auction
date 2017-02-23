@@ -17,6 +17,7 @@ var AuctionHolderComponent = (function () {
     function AuctionHolderComponent() {
         this.auctions = {};
         this.socket = null;
+        this.filterSettings = 'All';
     }
     AuctionHolderComponent.prototype.ngOnInit = function () {
         //console.log("u" + this.user);

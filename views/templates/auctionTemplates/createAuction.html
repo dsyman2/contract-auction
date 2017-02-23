@@ -18,6 +18,20 @@
                 <div class="modal-body">
                     <p>Please enter the details of the job below: </p>
                         <form class="form-horizontal" id='createAuctionForm' role="form" [ngFormModel]="CreateGroup">
+                            <br>
+
+                            <div>
+                                Select a contract type:
+                                <select #selectOptions (change)="formInputs.contractType=selectOptions.value" class="form-control" ngControl="contractType">
+                                    <option> select</option>
+                                    <option value="Domestic" [selected]="formInputs.contractType==='Domestic'">Domestic</option>
+                                    <option value="Commercial" [selected]="formInputs.contractType==='Commercial'">Commercial</option>
+                                </select>
+
+                                <small *ngIf="!CreateGroup.controls['contractType'].valid">You must select a contract type.</small>
+                            </div>
+                            <br>
+
                             <div>
                                 Name:
                                 <input type = "text" name = "name" [(ngModel)]="formInputs.auctionName" class="form-control" ngControl="auctionName">

@@ -2,109 +2,83 @@
 /**
  * Created by Umar on 20/01/2017.
  */
-System.register(['angular2/core', 'angular2/common', "angular2/src/core/di/decorators", 'angular2/http', 'rxjs/Rx', 'rxjs/add/operator/first', "../../services/validator.service.js", '../../config/globals.js'], function(exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-    };
-    var __metadata = (this && this.__metadata) || function (k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-    };
-    var __param = (this && this.__param) || function (paramIndex, decorator) {
-        return function (target, key) { decorator(target, key, paramIndex); }
-    };
-    var core_1, common_1, decorators_1, http_1, validator_service_js_1, globals;
-    var FormInputs, CreateAuctionComponent;
-    return {
-        setters:[
-            function (core_1_1) {
-                core_1 = core_1_1;
-            },
-            function (common_1_1) {
-                common_1 = common_1_1;
-            },
-            function (decorators_1_1) {
-                decorators_1 = decorators_1_1;
-            },
-            function (http_1_1) {
-                http_1 = http_1_1;
-            },
-            function (_1) {},
-            function (_2) {},
-            function (validator_service_js_1_1) {
-                validator_service_js_1 = validator_service_js_1_1;
-            },
-            function (globals_1) {
-                globals = globals_1;
-            }],
-        execute: function() {
-            FormInputs = (function () {
-                function FormInputs() {
-                    // creatorID: string;
-                    this.maxGuidePrice = '12000';
-                }
-                return FormInputs;
-            }());
-            CreateAuctionComponent = (function () {
-                function CreateAuctionComponent(validatorService, fb, http) {
-                    this.http = http;
-                    // http: Http;
-                    this.numberValidity = null;
-                    this.formInputs = new FormInputs();
-                    this.CreateGroup = fb.group({
-                        'auctionName': new common_1.Control(this.formInputs.auctionName, common_1.Validators.required),
-                        'auctionDesc': new common_1.Control(this.formInputs.auctionDesc, common_1.Validators.required),
-                        'length': new common_1.Control(this.formInputs.length, common_1.Validators.compose([common_1.Validators.required,
-                            validatorService.isInteger, validatorService.isNotZero])),
-                        'protocol': new common_1.Control(this.formInputs.protocol, common_1.Validators.required),
-                        'maxGuidePrice': new common_1.Control(this.formInputs.maxGuidePrice, common_1.Validators.compose([common_1.Validators.required,
-                            validatorService.isIntegerPrice(this.formInputs.protocol), validatorService.isNotZeroPrice(this.formInputs.protocol)]))
-                    });
-                }
-                CreateAuctionComponent.prototype.ngOnInit = function () {
-                    this.accountType = globals.accountType;
-                };
-                CreateAuctionComponent.prototype.addNewGroup = function (formInputs) {
-                    this.formInputs = new FormInputs();
-                    var data = {
-                        name: formInputs.auctionName,
-                        description: formInputs.auctionDesc,
-                        length: formInputs.length,
-                        protocol: formInputs.protocol,
-                        maxGuidePrice: formInputs.maxGuidePrice
-                    };
-                    // data.description = data.description.replace(/\r\n?/g, '<br />');
-                    this.addAuctionPostRequest("/createAuction", data);
-                };
-                CreateAuctionComponent.prototype.addAuctionPostRequest = function (url, data) {
-                    console.log("auction name: " + data.auctionName);
-                    this.headers = new http_1.Headers();
-                    this.headers.append('Content-Type', 'application/json');
-                    var body = JSON.stringify(data);
-                    this.http.post(url, body, { headers: this.headers })
-                        .map(function (res) { return (res.json()); }).subscribe();
-                };
-                CreateAuctionComponent = __decorate([
-                    core_1.Component({
-                        selector: 'createAuction-app',
-                        templateUrl: '/templates/auctionTemplates/createAuction.html',
-                        directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES],
-                        providers: [validator_service_js_1.ValidatorService, http_1.HTTP_PROVIDERS]
-                    }),
-                    __param(0, decorators_1.Inject(validator_service_js_1.ValidatorService)),
-                    __param(1, decorators_1.Inject(common_1.FormBuilder)),
-                    __param(2, decorators_1.Inject(http_1.Http)), 
-                    __metadata('design:paramtypes', [(typeof (_a = typeof validator_service_js_1.ValidatorService !== 'undefined' && validator_service_js_1.ValidatorService) === 'function' && _a) || Object, common_1.FormBuilder, http_1.Http])
-                ], CreateAuctionComponent);
-                return CreateAuctionComponent;
-                var _a;
-            }());
-            exports_1("CreateAuctionComponent", CreateAuctionComponent);
-        }
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var core_1 = require('angular2/core');
+var common_1 = require('angular2/common');
+var decorators_1 = require("angular2/src/core/di/decorators");
+var http_1 = require('angular2/http');
+require('rxjs/Rx');
+require('rxjs/add/operator/first');
+var validator_service_js_1 = require("../../services/validator.service.js");
+var globals = require('../../config/globals.js');
+var FormInputs = (function () {
+    function FormInputs() {
+        // creatorID: string;
+        this.maxGuidePrice = '12000';
     }
-});
-//# sourceMappingURL=createAuction.component.js.map
+    return FormInputs;
+}());
+var CreateAuctionComponent = (function () {
+    function CreateAuctionComponent(validatorService, fb, http) {
+        this.http = http;
+        // http: Http;
+        this.numberValidity = null;
+        this.formInputs = new FormInputs();
+        this.CreateGroup = fb.group({
+            'auctionName': new common_1.Control(this.formInputs.auctionName, common_1.Validators.required),
+            'auctionDesc': new common_1.Control(this.formInputs.auctionDesc, common_1.Validators.required),
+            'length': new common_1.Control(this.formInputs.length, common_1.Validators.compose([common_1.Validators.required,
+                validatorService.isInteger, validatorService.isNotZero])),
+            'protocol': new common_1.Control(this.formInputs.protocol, common_1.Validators.required),
+            'maxGuidePrice': new common_1.Control(this.formInputs.maxGuidePrice, common_1.Validators.compose([common_1.Validators.required,
+                validatorService.isIntegerPrice(this.formInputs.protocol), validatorService.isNotZeroPrice(this.formInputs.protocol)])),
+            'contractType': new common_1.Control(this.formInputs.contractType, common_1.Validators.required)
+        });
+    }
+    CreateAuctionComponent.prototype.ngOnInit = function () {
+        this.accountType = globals.accountType;
+    };
+    CreateAuctionComponent.prototype.addNewGroup = function (formInputs) {
+        this.formInputs = new FormInputs();
+        var data = {
+            name: formInputs.auctionName,
+            description: formInputs.auctionDesc,
+            length: formInputs.length,
+            protocol: formInputs.protocol,
+            maxGuidePrice: formInputs.maxGuidePrice,
+            contractType: formInputs.contractType
+        };
+        // data.description = data.description.replace(/\r\n?/g, '<br />');
+        this.addAuctionPostRequest("/createAuction", data);
+    };
+    CreateAuctionComponent.prototype.addAuctionPostRequest = function (url, data) {
+        console.log("auction name: " + data.auctionName);
+        this.headers = new http_1.Headers();
+        this.headers.append('Content-Type', 'application/json');
+        var body = JSON.stringify(data);
+        this.http.post(url, body, { headers: this.headers })
+            .map(function (res) { return (res.json()); }).subscribe();
+    };
+    CreateAuctionComponent = __decorate([
+        core_1.Component({
+            selector: 'createAuction-app',
+            templateUrl: '/templates/auctionTemplates/createAuction.html',
+            directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES],
+            providers: [validator_service_js_1.ValidatorService, http_1.HTTP_PROVIDERS]
+        }),
+        __param(0, decorators_1.Inject(validator_service_js_1.ValidatorService)),
+        __param(1, decorators_1.Inject(common_1.FormBuilder)),
+        __param(2, decorators_1.Inject(http_1.Http))
+    ], CreateAuctionComponent);
+    return CreateAuctionComponent;
+}());
+exports.CreateAuctionComponent = CreateAuctionComponent;

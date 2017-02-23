@@ -21,6 +21,7 @@ export class AuctionHolderComponent {
     socket = null;
     @Input()user;
     private arrayOfAucs: string[];
+    filterSettings: string = 'All';
 
     ngOnInit(){
         //console.log("u" + this.user);

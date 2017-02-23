@@ -34,6 +34,7 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.auction_table + '` ( \
     `protocol` TEXT NOT NULL, \
     `creatorID` INT UNSIGNED NOT NULL, \
     `maxGuidePrice` TEXT, \
+    `contractType` TEXT NOT NULL,\
         PRIMARY KEY (`id`), \
     UNIQUE INDEX `id_UNIQUE` (`id` ASC), \
         CONSTRAINT `fk_PerAuction` FOREIGN KEY (`creatorID`)'
@@ -51,6 +52,7 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.results_table + '` ( \
     `protocol` TEXT NOT NULL, \
     `creatorID` INT UNSIGNED NOT NULL, \
     `maxGuidePrice` TEXT, \
+    `contractType` TEXT NOT NULL,\
     `price` TEXT NOT NULL,\
     `winnerID` INT UNSIGNED NOT NULL,\
         PRIMARY KEY (`resultID`), \
@@ -74,6 +76,7 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.unresolved_table + '` ( \
     `protocol` TEXT NOT NULL, \
     `creatorID` INT UNSIGNED NOT NULL, \
     `maxGuidePrice` TEXT, \
+    `contractType` TEXT NOT NULL, \
         PRIMARY KEY (`unresolvedID`), \
     UNIQUE INDEX `id_UNIQUE` (`unresolvedID` ASC), \
         CONSTRAINT `fk_PerUnres` FOREIGN KEY (`creatorID`)'

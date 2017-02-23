@@ -81,7 +81,8 @@ System.register(['angular2/core', "angular2/src/core/metadata", './clockApp.comp
                 }
                 AuctionAppComponent.prototype.ngOnInit = function () {
                     this.accountType = globals.accountType;
-                    console.log("username is:" + this.username);
+                    console.log("username is:" + this.creator);
+                    this.userID = globals.userID;
                     this.socket = io(config.socket_src);
                     this.socket.on('priceUpdate-' + this.id, function (data) {
                         console.log(data);
@@ -164,6 +165,10 @@ System.register(['angular2/core', "angular2/src/core/metadata", './clockApp.comp
                     metadata_1.Input(), 
                     __metadata('design:type', String)
                 ], AuctionAppComponent.prototype, "protocol", void 0);
+                __decorate([
+                    metadata_1.Input(), 
+                    __metadata('design:type', String)
+                ], AuctionAppComponent.prototype, "contractType", void 0);
                 AuctionAppComponent = __decorate([
                     core_1.Component({
                         selector: 'auction-app',
