@@ -6,6 +6,13 @@ body {
     font: 125% "Century Gothic", bold, sans-serif;
 }
 
+.angular-with-newlines {
+    white-space: pre-wrap;
+    white-space: pre-line;
+    overflow: auto;
+    max-height: 100px;
+}
+
 .smlButton{
     background: Transparent no-repeat;
     color: skyblue;
@@ -54,7 +61,7 @@ small{
 }
 
 .bg{
-    background: url('../images/gradient.png') no-repeat center center fixed;
+    background: url('../images/grey.jpeg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

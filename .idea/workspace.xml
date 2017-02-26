@@ -2,26 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a4c5e7b-2923-4fb5-bbe0-70241d7f84e4" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/grey.jpeg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appModules/onServerStartup.js" afterPath="$PROJECT_DIR$/appModules/onServerStartup.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appModules/postAuctionDataGetter.js" afterPath="$PROJECT_DIR$/appModules/postAuctionDataGetter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionApp.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionApp.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionApp.component.js.map" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionApp.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionApp.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionApp.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionHolder.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionHolder.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionHolder.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionHolder.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/createAuction.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/createAuction.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/createAuction.component.js.map" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/createAuction.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/createAuction.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/createAuction.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/profileUpdater.component.js" afterPath="$PROJECT_DIR$/public/javascripts/app/components/profileUpdater.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app/components/profileUpdater.component.ts" afterPath="$PROJECT_DIR$/public/javascripts/app/components/profileUpdater.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/create_database.js" afterPath="$PROJECT_DIR$/scripts/create_database.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/signup.jade" afterPath="$PROJECT_DIR$/views/signup.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/templates/auctionTemplates/auction.html" afterPath="$PROJECT_DIR$/views/templates/auctionTemplates/auction.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/templates/auctionTemplates/auctionHolder.html" afterPath="$PROJECT_DIR$/views/templates/auctionTemplates/auctionHolder.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/templates/auctionTemplates/createAuction.html" afterPath="$PROJECT_DIR$/views/templates/auctionTemplates/createAuction.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/templates/profile.html" afterPath="$PROJECT_DIR$/views/templates/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/templates/unresolvedTemplates/unresolvedHolder.html" afterPath="$PROJECT_DIR$/views/templates/unresolvedTemplates/unresolvedHolder.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -54,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auction.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="auction.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/templates/auctionTemplates/auction.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="64" lean-forward="true" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+            <state relative-caret-position="105">
+              <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -74,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="190" column="34" lean-forward="false" selection-start-line="190" selection-start-column="34" selection-end-line="190" selection-end-column="34" />
+            <state relative-caret-position="135">
+              <caret line="54" column="8" lean-forward="true" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -109,7 +94,7 @@
       <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/templates/profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
+            <state relative-caret-position="330">
               <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
@@ -126,6 +111,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="signup.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/signup.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="62" column="26" lean-forward="true" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="auctionApp.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/auctionComponents/auctionApp.component.ts">
           <provider selected="true" editor-type-id="text-editor">
@@ -133,18 +128,6 @@
               <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
                 <element signature="e#721#803#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resultHolder.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/resultComponents/resultHolder.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-132">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="e#42#82#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -165,8 +148,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>app.component</find>
-      <find>app</find>
       <find>cookie</find>
       <find>.stop</find>
       <find>aucEventEmitter</find>
@@ -194,7 +175,9 @@
       <find>lightcoral</find>
       <find>navbar</find>
       <find>usern</find>
+      <find>darkseagreen</find>
       <find>globals</find>
+      <find>angu</find>
     </findStrings>
     <replaceStrings>
       <replace>auctionEventEmitter</replace>
@@ -203,6 +186,7 @@
       <replace>skyblue</replace>
       <replace>darkblue</replace>
       <replace>lightsalmon</replace>
+      <replace>steelblue</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -255,7 +239,6 @@
         <option value="$PROJECT_DIR$/views/app.jade" />
         <option value="$PROJECT_DIR$/public/javascripts/app/components/resultComponents/resultHolder.component.ts" />
         <option value="$PROJECT_DIR$/views/templates/resultTemplates/resultHolder.html" />
-        <option value="$PROJECT_DIR$/views/signup.jade" />
         <option value="$PROJECT_DIR$/config/passport.js" />
         <option value="$PROJECT_DIR$/appModules/onServerStartup.js" />
         <option value="$PROJECT_DIR$/scripts/create_database.js" />
@@ -270,6 +253,7 @@
         <option value="$PROJECT_DIR$/views/templates/profile.html" />
         <option value="$PROJECT_DIR$/views/templates/auctionTemplates/auction.html" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/views/signup.jade" />
       </list>
     </option>
   </component>
@@ -286,8 +270,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="640" />
-    <option name="height" value="738" />
+    <option name="width" value="1280" />
+    <option name="height" value="736" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -589,7 +573,7 @@
       <workItem from="1486903950554" duration="87068000" />
       <workItem from="1487295070809" duration="588000" />
       <workItem from="1487328418163" duration="70973000" />
-      <workItem from="1487715384379" duration="61754000" />
+      <workItem from="1487715384379" duration="65075000" />
     </task>
     <task id="LOCAL-00001" summary="da">
       <created>1484222776158</created>
@@ -878,11 +862,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487860247449</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="more look and feel with some more features added to user profile">
+      <created>1487892739202</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1487892739202</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="578422000" />
+    <option name="totallyTimeSpent" value="581743000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -894,25 +885,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="640" height="738" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="736" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11796537" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2552504" sideWeight="0.49256507" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.055900622" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08607199" sideWeight="0.5071721" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12549643" sideWeight="0.49256507" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.055900622" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08607199" sideWeight="0.5071721" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.57608694" sideWeight="0.49282786" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49434572" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49434572" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18263473" sideWeight="0.50743496" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24861" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18263473" sideWeight="0.50743496" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39906833" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39906833" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -960,7 +951,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
-    <MESSAGE value="added in a countdown timer with dd--hh--mm--ss, seems to work on the server side correctly" />
     <MESSAGE value="on front end angular we now can see time appearing as well in the back-end this is done via socket.io" />
     <MESSAGE value="created a front end angular component to view the countdown clock. This means the clock count down now works this is done using a simple directive and sockets and a function which does the count down." />
     <MESSAGE value="added username to the bid object" />
@@ -985,7 +975,8 @@
     <MESSAGE value="adding in anti sniping features" />
     <MESSAGE value="validation for login and new thinfs" />
     <MESSAGE value="formatting descriptions" />
-    <option name="LAST_COMMIT_MESSAGE" value="formatting descriptions" />
+    <MESSAGE value="more look and feel with some more features added to user profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="more look and feel with some more features added to user profile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1187,14 +1178,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/signup.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="57" column="56" lean-forward="false" selection-start-line="57" selection-start-column="56" selection-end-line="57" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/passport.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1155">
@@ -1363,14 +1346,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appModules/postAuctionDataGetter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="16" column="58" lean-forward="true" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/app/components/resultComponents/auctionResult.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -1399,26 +1374,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/templates/profile.html">
+    <entry file="file://$PROJECT_DIR$/appModules/postAuctionDataGetter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="16" column="58" lean-forward="true" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/templates/auctionTemplates/auction.html">
+    <entry file="file://$PROJECT_DIR$/views/templates/profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="64" lean-forward="true" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+        <state relative-caret-position="330">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="190" column="34" lean-forward="false" selection-start-line="190" selection-start-column="34" selection-end-line="190" selection-end-column="34" />
+        <state relative-caret-position="135">
+          <caret line="54" column="8" lean-forward="true" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/signup.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="62" column="26" lean-forward="true" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/templates/auctionTemplates/auction.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
           <folding />
         </state>
       </provider>

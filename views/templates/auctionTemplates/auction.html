@@ -1,7 +1,7 @@
 <div class="panel panel-auction">
     <div class="panel-heading">
         <h4>
-            <button *ngIf="userID==creator" type="button" class = "btn btn-danger btn-sm inline rightPad" (click)="sendDelete()">Delete</button>
+            <button *ngIf="userID==creator" type="button" class = "btn btn-orange btn-sm inline rightPad" (click)="sendDelete()">Delete</button>
 
             <button title='Notifications are disabled' class="rightPad btn btn-sm" (click)="togglePushNotif()" *ngIf="!showNotif">
                 Alerts off

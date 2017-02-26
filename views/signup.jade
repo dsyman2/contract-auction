@@ -36,14 +36,14 @@ html
           .form-group
             span.fa.fa-phone
             | &#x9;
-            label Contact Number (remember the area code)
+            label Contact Number (Including area code)
             | &#x9;&#x9;&#x9;
             input.form-control(type='number', placeholder="e.g. 0141123456" name='contactNumber' onkeypress='return event.charCode >= 48 && event.charCode <= 57>' pattern=".{8,}" required)
           | &#x9;&#x9;
           .form-group
             span.fa.fa-map-marker
             | &#x9;
-            label Address Details(will not be used)
+            label Address Details (will not be used)
             | &#x9;&#x9;&#x9;
             div.input-group
               span.input-group-addon Number
@@ -52,7 +52,7 @@ html
               input.form-control(type='text', name='postcode' placeholder="e.g. G11 0NS")
           | &#x9;&#x9;
           .form-group
-            label What type of account?
+            label Choose an account type
             | &#x9;&#x9;&#x9;
             select.form-control(name='accountType')
               - var options = [{value: 'contractor', label: 'Contractor'}, {value: 'Contract Issuer', label: 'Contract Issuer'}]
