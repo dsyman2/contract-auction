@@ -6,11 +6,18 @@ body {
     font: 125% "Century Gothic", bold, sans-serif;
 }
 
+.no-border {
+    border: none;
+}
+
 .angular-with-newlines {
     white-space: pre-wrap;
     white-space: pre-line;
     overflow: auto;
     max-height: 100px;
+    border: thin solid lightgray;
+    border-radius: 5px;
+    padding: 0.5% 1% 1%;
 }
 
 .smlButton{
@@ -29,6 +36,14 @@ body {
     background-color: #262626;
 }
 
+.black{
+    color: black;
+}
+
+.themecolour{
+    color : white;
+    background-color: #428bca;
+}
 a {
     color: white;
 }
@@ -58,6 +73,10 @@ small{
 
 .rightPad {
     float: right;
+}
+
+.leftPad{
+    float: left;
 }
 
 .bg{

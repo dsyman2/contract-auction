@@ -90,6 +90,7 @@ System.register(['angular2/core', "angular2/src/core/metadata", './clockApp.comp
                         if (this.showNotif) {
                             this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');
                         }
+                        console.log('hi i is hefre');
                         this.showNotif = true;
                     }.bind(this));
                     this.socket.on('auctionEnd-' + this.id, function (data) {

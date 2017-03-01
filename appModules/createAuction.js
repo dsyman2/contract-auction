@@ -50,7 +50,6 @@ module.exports = {
 
         io.on('connection', function (socket){
             socket.emit('auctionList', auctions);
-            //socket.broadcast.emit('auctionList', auctions);
         });
 
 

@@ -6,5 +6,6 @@
         <p>Description of job: {{desc}}</p>
         <p>Protocol used was: {{protocol}}</p>
         <p>Contract issuer: {{creator}}</p>
+        <p *ngIf="protocol=='English' || protocol=='Dutch'">Max Guide Price: {{maxGuidePrice}}</p>
     </div>
 </div>

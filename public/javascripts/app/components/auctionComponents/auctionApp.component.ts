@@ -10,7 +10,6 @@ import 'rxjs/Rx';
 import {Inject} from "angular2/src/core/di/decorators";
 import {FORM_DIRECTIVES, Control, ControlGroup, FormBuilder, Validators} from 'angular2/common';
 import {ValidatorService} from "../../services/validator.service.js";
-import {EventEmitter} from "angular2/src/facade/async";
 import config = require('../../config/configer.js');
 import globals = require('../../config/globals.js');
 import {NotificationsService} from "../../notifications/notifications.service.js";
@@ -70,7 +69,7 @@ export class AuctionAppComponent {
             if(this.showNotif){
                 this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');
             }
-
+            console.log('hi i is hefre');
             this.showNotif = true;
 
         }.bind(this));
@@ -95,6 +94,7 @@ export class AuctionAppComponent {
             bid: this.bidValue,
             bidder: this.username
         });
+
 
         this.bidValue = '';
     }

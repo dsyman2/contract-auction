@@ -142,6 +142,9 @@ module.exports = {
 
         auctionEventEmitter.on('delete-' + id, function(){
             deleteStatus = true;
+            if(intervalID){
+                clearInterval(intervalID);
+            }
             countdownTimer.stop();
         });
     },
