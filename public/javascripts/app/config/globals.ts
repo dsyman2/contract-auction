@@ -6,3 +6,5 @@
 var username = localStorage.getItem('username');
 var userID = localStorage.getItem('userID');
 var accountType = localStorage.getItem('accountType');
+var tradeTypes = ['Plumbing', 'Electrician', 'Joinery', 'Masonry', 'Cleaning Services', 'Painting & Decorating',
+    'Software Development']

@@ -1,0 +1,33 @@
+<div class="panel panel-auction" *ngIf="accountType != 'Admin'">
+
+    <div class="panel-heading">
+        <h4 class='inline'>{{username}}</h4>
+        <button class = "btn btn-orange btn-sm inline rightPad" (click)="sendDelete()">Delete</button>
+
+    </div>
+
+    <div class="panel-body">
+        <div class = "alert alert-info no-border">
+            <p>
+                <i class="fa fa-address-card-o" aria-hidden="true"></i>  Account type:  {{accountType}}
+            </p>
+
+            <p>
+                <i class="fa fa-user-o" aria-hidden="true"></i>  Username:  {{username}}
+            </p>
+
+            <p>
+                <i class="fa fa-user-o" aria-hidden="true"></i>  User ID:  {{id}}
+            </p>
+
+            <p>
+                <i class="fa fa-phone" aria-hidden="true"></i>  Contact number:  {{contactNumber}}
+            </p>
+
+            <p>
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>  Email:  {{email}}
+            </p>
+        </div>
+    </div>
+
+</div>

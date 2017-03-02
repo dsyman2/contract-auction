@@ -32,6 +32,7 @@ var CreateAuctionComponent = (function () {
         this.http = http;
         // http: Http;
         this.numberValidity = null;
+        this.tradeTypes = globals.tradeTypes;
         this.formInputs = new FormInputs();
         this.CreateGroup = fb.group({
             'auctionName': new common_1.Control(this.formInputs.auctionName, common_1.Validators.required),
@@ -41,7 +42,8 @@ var CreateAuctionComponent = (function () {
             'protocol': new common_1.Control(this.formInputs.protocol, common_1.Validators.required),
             'maxGuidePrice': new common_1.Control(this.formInputs.maxGuidePrice, common_1.Validators.compose([common_1.Validators.required,
                 validatorService.isIntegerPrice(this.formInputs.protocol), validatorService.isNotZeroPrice(this.formInputs.protocol)])),
-            'contractType': new common_1.Control(this.formInputs.contractType, common_1.Validators.required)
+            'contractType': new common_1.Control(this.formInputs.contractType, common_1.Validators.required),
+            'tradeType': new common_1.Control(this.formInputs.tradeType, common_1.Validators.required)
         });
     }
     CreateAuctionComponent.prototype.ngOnInit = function () {
@@ -55,7 +57,8 @@ var CreateAuctionComponent = (function () {
             length: formInputs.length,
             protocol: formInputs.protocol,
             maxGuidePrice: formInputs.maxGuidePrice,
-            contractType: formInputs.contractType
+            contractType: formInputs.contractType,
+            tradeType: formInputs.tradeType
         };
         // data.description = data.description.replace(/\r\n?/g, '<br />');
         this.addAuctionPostRequest("/createAuction", data);

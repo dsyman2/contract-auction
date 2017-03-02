@@ -1,5 +1,5 @@
 <div class="notifications">
-    <div (click)="hide(note)" class="{{ note.type }}" *ngFor="#note of _notes">
+    <div (click)="hide(note)" class="error" *ngFor="#note of _notes">
         <i class="fa fa-bell-o" aria-hidden="true"></i>
         {{ note.message }}
     </div>

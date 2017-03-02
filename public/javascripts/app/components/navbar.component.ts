@@ -22,7 +22,7 @@ export class NavbarComponent {
     unresolved : string = 'unresolved';
     profile : string = 'profile';
     issues : string = 'issues';
-    usersPage : string = 'users'
+    usersPage : string = 'usersPage'
     clickValue : string = this.auctions;
     accountType : string;
 

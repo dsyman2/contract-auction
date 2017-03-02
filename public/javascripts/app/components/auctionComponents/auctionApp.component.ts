@@ -39,6 +39,7 @@ export class AuctionAppComponent {
     @Input()username;
     @Input()protocol : string;
     @Input()contractType : string;
+    @Input()tradeType : string;
     time : number = 0;
     active : boolean = true;
     showNotif : boolean = false;
@@ -68,6 +69,7 @@ export class AuctionAppComponent {
             this.price = +parseFloat(data);
             if(this.showNotif){
                 this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');
+
             }
             console.log('hi i is hefre');
             this.showNotif = true;
@@ -126,7 +128,7 @@ export class AuctionAppComponent {
     }
 
     throwPushNotification(message: string){
-        this._notes.add(new Notification('error', message));
+        this._notes.add(new Notification(message));
     }
 
     togglePushNotif(){

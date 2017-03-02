@@ -13,6 +13,7 @@ import {Notification} from "../notifications/notifications.model.js";
 import {ROUTER_DIRECTIVES} from "angular2/router";
 import {Inject} from "angular2/src/core/di/decorators";
 import {ProfileUpdaterComponent} from "./profileUpdater.component.js";
+import {UserManagementComponent} from "../admin/userManagement/userManagement.component.js";
 
 
 /* component in angular2 */
@@ -20,7 +21,8 @@ import {ProfileUpdaterComponent} from "./profileUpdater.component.js";
     selector: 'main-holder',
     templateUrl: '/templates/main.html',
     directives: [AuctionHolderComponent, ResultHolderComponent, NavbarComponent,
-        UnresolvedHolderComponent, Notifications, ROUTER_DIRECTIVES, ProfileUpdaterComponent]
+        UnresolvedHolderComponent, Notifications, ROUTER_DIRECTIVES, ProfileUpdaterComponent,
+        UserManagementComponent]
 })
 
 export class MainComponent {

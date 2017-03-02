@@ -1,7 +1,7 @@
 <div class="panel panel-auction">
     <div class="panel-heading">
         <h4>
-            <button *ngIf="userID==creator" type="button" class = "btn btn-orange btn-sm inline rightPad" data-toggle="modal" [attr.data-target] ="'#deleteConfirmation-' + id">Delete</button>
+            <button *ngIf="userID==creator || accountType=='Admin' " type="button" class = "btn btn-orange btn-sm inline rightPad" data-toggle="modal" [attr.data-target] ="'#deleteConfirmation-' + id">Delete</button>
 
             <div class="modal fade" [id] ="'deleteConfirmation-' + id" role="dialog">
                 <div class="modal-dialog">
@@ -37,7 +37,7 @@
     </div>
 
     <div class="panel-body">
-        <p>{{contractType}} Contract</p>
+        <p>{{tradeType}} - {{contractType}} Contract</p>
 
         <p>Specification: </p>
         <div class="angular-with-newlines">

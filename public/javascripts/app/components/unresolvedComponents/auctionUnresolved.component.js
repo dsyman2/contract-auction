@@ -42,6 +42,12 @@ var AuctionUnresolvedComponent = (function () {
     __decorate([
         metadata_1.Input()
     ], AuctionUnresolvedComponent.prototype, "maxGuidePrice", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionUnresolvedComponent.prototype, "contractType", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionUnresolvedComponent.prototype, "tradeType", void 0);
     AuctionUnresolvedComponent = __decorate([
         core_1.Component({
             selector: 'unresolved-app',

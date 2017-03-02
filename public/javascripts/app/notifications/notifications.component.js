@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var notifications_service_js_1 = require('./notifications.service.js');
 var decorators_1 = require("angular2/src/core/di/decorators");
+//https://matthewross.me/blog/posts/notifications-an-angular-2-component
 var Notifications = (function () {
     function Notifications(_notifications) {
         var _this = this;

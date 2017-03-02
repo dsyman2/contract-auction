@@ -1,0 +1,55 @@
+<div class="panel panel-auction">
+    <br>
+    <br>
+    <h4 class="panel-heading-2">Current Users: </h4>
+
+    <div class="alert alert-danger no-border" *ngIf="hasDeleted == false">
+        There was an issue deleting the user...
+    </div>
+
+    <div class="alert alert-success no-border" *ngIf="hasDeleted == true">
+        The user has been successfully deleted.
+    </div>
+
+    <button type="button" class="btn btn-wide btn-orange" data-toggle="modal" data-target="#filterModal">
+        <i class="fa fa-filter" aria-hidden="true"></i> Filter Settings
+    </button>
+    <div class="modal fade" id ="filterModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Filter Settings</h4>
+                </div>
+
+                <div class="modal-body">
+                    <p>Select a account type: </p>
+                    <select #selectOption (change)="filterSettings=selectOption.value" class="form-control">
+                        <option value="All" [selected]="filterSettings==='All'">All</option>
+                        <option value="contractor" [selected]="filterSettings==='contractor'">Contractor</option>
+                        <option value="Contract Issuer" [selected]="filterSettings==='Contract Issuer'">Contract Issuer</option>
+                    </select>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <button class="btn btn-wide btn-orange"(click)="getAllUsers()">Refresh &#x21ba;</button>
+    <br>
+    <br>
+    <div *ngFor="#userInfo of usersList">
+            <user-info *ngIf="filterSettings==='All' || filterSettings === userInfo.accountType"
+                       username={{userInfo.username}} email={{userInfo.email}} contactNumber={{userInfo.contactNumber}}
+                       accountType={{userInfo.accountType}} address={{userInfo.address}} id={{userInfo.id}}
+                       (deleteUserEvent)="onDeleteUserEvent($event)">
+            </user-info>
+    </div>
+</div>

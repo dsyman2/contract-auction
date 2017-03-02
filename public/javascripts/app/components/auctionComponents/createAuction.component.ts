@@ -21,6 +21,7 @@ class FormInputs{
    // creatorID: string;
     maxGuidePrice : string = '12000';
     contractType : string;
+    tradeType : string;
 }
 
 @Component({
@@ -41,6 +42,7 @@ export class CreateAuctionComponent {
     numberValidity : boolean = null;
     filesToUpload: Array<File>;
     accountType : string;
+    tradeTypes : Array<String> = globals.tradeTypes;
 
     constructor(@Inject(ValidatorService) validatorService : ValidatorService,
                 @Inject(FormBuilder) fb: FormBuilder, @Inject(Http)private http: Http){
@@ -53,7 +55,8 @@ export class CreateAuctionComponent {
             'protocol'      : new Control(this.formInputs.protocol, Validators.required),
             'maxGuidePrice' : new Control(this.formInputs.maxGuidePrice, Validators.compose([Validators.required,
                 validatorService.isIntegerPrice(this.formInputs.protocol), validatorService.isNotZeroPrice(this.formInputs.protocol)])),
-            'contractType'  : new Control(this.formInputs.contractType, Validators.required)
+            'contractType'  : new Control(this.formInputs.contractType, Validators.required),
+            'tradeType'     : new Control(this.formInputs.tradeType, Validators.required)
         });
     }
 
@@ -69,7 +72,8 @@ export class CreateAuctionComponent {
             length:         formInputs.length,
             protocol:       formInputs.protocol,
             maxGuidePrice:  formInputs.maxGuidePrice,
-            contractType:   formInputs.contractType
+            contractType:   formInputs.contractType,
+            tradeType:      formInputs.tradeType
         };
 
        // data.description = data.description.replace(/\r\n?/g, '<br />');

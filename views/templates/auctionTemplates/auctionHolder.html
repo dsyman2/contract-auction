@@ -1,5 +1,6 @@
 <div class="panel panel-auction">
-
+    <br>
+    <br>
     <div>
         <button type="button" class="btn btn-wide btn-orange" data-toggle="modal" data-target="#filterModal">
             <i class="fa fa-filter" aria-hidden="true"></i> Filter Settings
@@ -18,10 +19,22 @@
 
                 <div class="modal-body">
                     <p>Select a contract type: </p>
-                    <select #selectOption (change)="filterSettings=selectOption.value" class="form-control">
-                        <option value="All" [selected]="filterSettings==='All'">All</option>
-                        <option value="Domestic" [selected]="filterSettings==='Domestic'">Domestic</option>
-                        <option value="Commercial" [selected]="filterSettings==='Commercial'">Commercial</option>
+                    <select #selectOption (change)="filterContractType=selectOption.value" class="form-control">
+                        <option value="All" [selected]="filterContractType==='All'">All</option>
+                        <option value="Domestic" [selected]="filterContractType==='Domestic'">Domestic</option>
+                        <option value="Commercial" [selected]="filterContractType==='Commercial'">Commercial</option>
+                    </select>
+                    <br>
+                    <p>Select a trade/profession type: </p>
+                    <select #selectOptions (change)="filterTradeType=selectOptions.value" class="form-control">
+                        <option value="All" [selected]="filterTradeType==='All'">All</option>
+                        <option value="Plumbing" [selected]="filterTradeType==='Plumbing'">Plumbing</option>
+                        <option value="Electrician" [selected]="filterTradeType==='Electrician'">Electrician</option>
+                        <option value="Joinery" [selected]="filterTradeType==='Joiner'">Joinery</option>
+                        <option value="Masonry" [selected]="filterTradeType==='Masonry'">Masonry</option>
+                        <option value="Cleaning Services" [selected]="filterTradeType==='Cleaning Services'">Cleaning</option>
+                        <option value="Painting & Decorating" [selected]="filterTradeType==='Painting & Decorating'">Painting & Decorating</option>
+                        <option value="Software Development" [selected]="filterTradeType==='Software Development'">Software Development</option>
                     </select>
                 </div>
 
@@ -33,14 +46,15 @@
         </div>
     </div>
 
-    <h4 class="panel-heading-2">{{filterSettings}} auctions below: </h4>
+    <h4 class="panel-heading-2">{{filterContractType}} auctions below: </h4>
     <div *ngFor="#aucInfo of arrayOfAucs">
         <auction-app
-                *ngIf="filterSettings==='All' || filterSettings === auctions[aucInfo].contractType"
+                *ngIf="(filterContractType==='All' || filterContractType === auctions[aucInfo].contractType) &&
+                        (filterTradeType==='All' || filterTradeType === auctions[aucInfo].tradeType)"
                 auction = auctions[aucInfo] id = {{auctions[aucInfo].id}} name = {{auctions[aucInfo].name}}
                 desc = {{auctions[aucInfo].description}} username = {{user}} protocol = {{auctions[aucInfo].protocol}}
-                contractType = {{auctions[aucInfo].contractType}} [creator]="auctions[aucInfo].creatorID"
-                http = {{http}}>
+                contractType = {{auctions[aucInfo].contractType}} creator={{auctions[aucInfo].creatorID}}
+                http = {{http}} tradeType = {{auctions[aucInfo].tradeType}}>
         </auction-app>
     </div>
 </div>
