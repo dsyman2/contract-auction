@@ -1,45 +1,71 @@
 <div class="panel panel-auction">
     <div class="panel-heading">
         <h4>
-            <button title='Notifications are disabled' class="rightPad smlButton" (click)="togglePushNotif()" *ngIf="!showNotif">
-                <i class="fa fa-lock" aria-hidden="true"></i>
+            <button *ngIf="userID==creator || accountType=='Admin' " type="button" class = "btn btn-orange btn-sm inline rightPad" data-toggle="modal" [attr.data-target] ="'#deleteConfirmation-' + id">Delete</button>
+
+            <div class="modal fade" [id] ="'deleteConfirmation-' + id" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Auction Messages</h4>
+                        </div>
+
+                        <div class="modal-body black">
+                            Are you sure you want to delete this auction?
+                        </div>
+                        <div class="modal-footer">
+                            <button class = "btn btn-lg rightPad" (click)="sendDelete()" data-dismiss="modal">YES</button>
+                            <button class="btn btn-lg leftPad btn-orange" data-dismiss="modal">NO</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <button title='Notifications are disabled' class="rightPad btn btn-sm" (click)="togglePushNotif()" *ngIf="!showNotif">
+                Alerts off
             </button>
-            <button title='Notifications are enabled'class="rightPad smlButton" (click)="togglePushNotif()" *ngIf="showNotif">
-                <i class="fa fa-unlock" aria-hidden="true"></i>
+            <button title='Notifications are enabled'class="rightPad btn btn-sm" (click)="togglePushNotif()" *ngIf="showNotif">
+                Alerts on
             </button>
         </h4>
 
         <h4 class='inline'>{{name}}</h4>
-
-        <small class='inline rightPad' *ngIf="!active">∅</small>
     </div>
 
     <div class="panel-body">
-        <h5>{{desc}}</h5>
+        <p>{{tradeType}} - {{contractType}} Contract</p>
 
-        <h2 *ngIf="protocol == 'Dutch' || protocol == 'English'">
-            Current bid: {{price | currency:'GBP':true:'1.2-2'}}
-        </h2>
+        <p>Specification: </p>
+        <div class="angular-with-newlines">
+            {{desc}}
+        </div>
+        <br>
+        <div class="alert alert-info no-border">
+            <h2 *ngIf="protocol == 'Dutch' || protocol == 'English'">
+                Current bid: {{price | currency:'GBP':true:'1.2-2'}}
+            </h2>
 
-        <h2 *ngIf="protocol == '1st-price-sealed' || protocol == '2nd-price-sealed'">
-            Current bid is secret.
-        </h2>
-        <small> Protocol being used is {{protocol}}</small>
+            <h2 *ngIf="protocol == '1st-price-sealed' || protocol == '2nd-price-sealed'">
+                Current bid is secret.
+            </h2>
+            <small> Protocol being used is {{protocol}}</small>
 
-        <form class="input-group" [ngFormModel]="CreateGroup">
-            <span *ngIf="protocol != 'Dutch'" class="input-group-addon">£</span>
+            <form *ngIf="accountType=='contractor'" class="input-group" [ngFormModel]="CreateGroup">
+                <span *ngIf="protocol != 'Dutch'" class="input-group-addon">£</span>
                 <input class="form-control" [(ngModel)]="formInputs.bidValue" ngControl="bidValue" placeholder="Enter a bid value in pounds" *ngIf="protocol != 'Dutch'">
-            <span class="input-group-btn">
+                <span class="input-group-btn">
                 <button class="btn btn-wide" *ngIf="protocol != 'Dutch'" [disabled]="!active" [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)">Place Bid</button>
                 <button class="btn btn-wide" *ngIf="protocol == 'Dutch'" [disabled]="!active" (click)="bid()">Place Bid</button>
             </span>
-        </form>
+            </form>
 
-        <small *ngIf="!CreateGroup.controls['bidValue'].valid">The bid must be greater than zero and a number!</small>
+            <small *ngIf="!CreateGroup.controls['bidValue'].valid && accountType=='contractor'">The bid must be greater than zero and a number!</small>
+        </div>
 
-        <button type="button" class = "btn" (click)="sendDelete()">Delete</button>
-        <br>
-        <br>
         <div>
             <clock-app id = {{id}} (timeUp) ='onTimeUp($event)'></clock-app>
             <message-app id = {{id}} username = {{username}}></message-app>

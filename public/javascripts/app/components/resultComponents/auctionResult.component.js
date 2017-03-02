@@ -75,6 +75,12 @@ var AuctionResultComponent = (function () {
     __decorate([
         metadata_1.Input()
     ], AuctionResultComponent.prototype, "price", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "contractType", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "tradeType", void 0);
     AuctionResultComponent = __decorate([
         core_1.Component({
             selector: 'result-app',

@@ -1,6 +1,6 @@
 <div class="container" >
     <!-- Trigger the modal with a button -->
-    <div class="footer">
+    <div *ngIf="accountType=='Contract Issuer'" class="footer">
         <button type="button" class="btn btn-lg footer-r button-round" data-toggle="modal" data-target="#myModal">+</button>
     </div>
 
@@ -18,6 +18,42 @@
                 <div class="modal-body">
                     <p>Please enter the details of the job below: </p>
                         <form class="form-horizontal" id='createAuctionForm' role="form" [ngFormModel]="CreateGroup">
+                            <br>
+
+                            <div>
+                                Select a contract type:
+                                <select #selectOptionConType (change)="formInputs.contractType=selectOptionConType.value" class="form-control" ngControl="contractType">
+                                    <option> select</option>
+                                    <option value="Domestic" [selected]="formInputs.contractType==='Domestic'">Domestic</option>
+                                    <option value="Commercial" [selected]="formInputs.contractType==='Commercial'">Commercial</option>
+                                </select>
+
+                                <small *ngIf="!CreateGroup.controls['contractType'].valid">You must select a contract type.</small>
+                            </div>
+                            <br>
+
+                            <div>
+                                Select a trade/profession type:
+                                <select #selectOptionTrade (change)="formInputs.tradeType=selectOptionTrade.value" class="form-control" ngControl="tradeType">
+                                    <option> select</option>
+                                    <option *ngFor="#tradeType of tradeTypes"
+                                            value= {{tradeType}}
+                                            [selected] ="formInputs.tradeType === tradeType">
+                                            {{tradeType}}
+                                    </option>
+                          <!--          <option value="Plumbing" [selected]="formInputs.tradeType==='Plumbing'">Plumbing</option>
+                                    <option value="Electrician" [selected]="formInputs.tradeType==='Electrician'">Electrician</option>
+                                    <option value="Joinery" [selected]="formInputs.tradeType==='Joiner'">Joinery</option>
+                                    <option value="Masonry" [selected]="formInputs.tradeType==='Masonry'">Masonry</option>
+                                    <option value="Cleaning Services" [selected]="formInputs.tradeType==='Cleaning Services'">Cleaning</option>
+                                    <option value="Painting & Decorating" [selected]="formInputs.tradeType==='Painting & Decorating'">Painting & Decorating</option>
+                                    <option value="Software Development" [selected]="formInputs.tradeType==='Software Development'">Software Development</option>-->
+                                </select>
+
+                                <small *ngIf="!CreateGroup.controls['tradeType'].valid">You must select a trade type.</small>
+                            </div>
+                            <br>
+
                             <div>
                                 Name:
                                 <input type = "text" name = "name" [(ngModel)]="formInputs.auctionName" class="form-control" ngControl="auctionName">
@@ -43,7 +79,7 @@
 
                             <div>
                                 Pick a protocol:
-                                <select #selectOption (change)="formInputs.protocol=selectOption.value" class="form-control" ngControl="protocol">
+                                <select #selectOptionProto (change)="formInputs.protocol=selectOptionProto.value" class="form-control" ngControl="protocol">
                                     <option> select</option>
                                     <option value="English" [selected]="formInputs.protocol==='English'">English</option>
                                     <option value="Dutch" [selected]="formInputs.protocol==='Dutch'">Dutch</option>
@@ -71,6 +107,7 @@
                         </form>
                     <br>
                     <div>
+
                         <button type="button" [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)" class ="btn btn-lg btn-wide">
                             Create
                         </button>

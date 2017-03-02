@@ -19,6 +19,7 @@ var http_1 = require('angular2/http');
 require('rxjs/Rx');
 require('rxjs/add/operator/first');
 var validator_service_js_1 = require("../../services/validator.service.js");
+var globals = require('../../config/globals.js');
 var FormInputs = (function () {
     function FormInputs() {
         // creatorID: string;
@@ -31,6 +32,7 @@ var CreateAuctionComponent = (function () {
         this.http = http;
         // http: Http;
         this.numberValidity = null;
+        this.tradeTypes = globals.tradeTypes;
         this.formInputs = new FormInputs();
         this.CreateGroup = fb.group({
             'auctionName': new common_1.Control(this.formInputs.auctionName, common_1.Validators.required),
@@ -39,9 +41,14 @@ var CreateAuctionComponent = (function () {
                 validatorService.isInteger, validatorService.isNotZero])),
             'protocol': new common_1.Control(this.formInputs.protocol, common_1.Validators.required),
             'maxGuidePrice': new common_1.Control(this.formInputs.maxGuidePrice, common_1.Validators.compose([common_1.Validators.required,
-                validatorService.isIntegerPrice(this.formInputs.protocol), validatorService.isNotZeroPrice(this.formInputs.protocol)]))
+                validatorService.isIntegerPrice(this.formInputs.protocol), validatorService.isNotZeroPrice(this.formInputs.protocol)])),
+            'contractType': new common_1.Control(this.formInputs.contractType, common_1.Validators.required),
+            'tradeType': new common_1.Control(this.formInputs.tradeType, common_1.Validators.required)
         });
     }
+    CreateAuctionComponent.prototype.ngOnInit = function () {
+        this.accountType = globals.accountType;
+    };
     CreateAuctionComponent.prototype.addNewGroup = function (formInputs) {
         this.formInputs = new FormInputs();
         var data = {
@@ -49,8 +56,11 @@ var CreateAuctionComponent = (function () {
             description: formInputs.auctionDesc,
             length: formInputs.length,
             protocol: formInputs.protocol,
-            maxGuidePrice: formInputs.maxGuidePrice
+            maxGuidePrice: formInputs.maxGuidePrice,
+            contractType: formInputs.contractType,
+            tradeType: formInputs.tradeType
         };
+        // data.description = data.description.replace(/\r\n?/g, '<br />');
         this.addAuctionPostRequest("/createAuction", data);
     };
     CreateAuctionComponent.prototype.addAuctionPostRequest = function (url, data) {

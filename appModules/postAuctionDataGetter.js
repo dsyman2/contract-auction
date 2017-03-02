@@ -33,7 +33,8 @@ module.exports = {
     },
 
     getContactDetailsByUserID : function(userID, callback){
-        var query = ('SELECT username, contactNumber, email FROM ' + dbconfig.database + '.' + dbconfig.users_table + ' WHERE id = ?');
+        console.log(userID);
+        var query = ('SELECT username, contactNumber, email, accountType FROM ' + dbconfig.database + '.' + dbconfig.users_table + ' WHERE id = ?');
         connection.query(query, userID, function (err, rows) {
             if(err)
                 throw err;

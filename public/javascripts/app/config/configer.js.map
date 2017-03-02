@@ -1,1 +1,1 @@
-{"version":3,"file":"socketUse.js","sourceRoot":"","sources":["socketUse.ts"],"names":[],"mappings":";IAAA;;OAEG;IACH,YAAY,CAAC;;QAGF,UAAU;;;;YAAV,wBAAA,UAAU,GAAU,8DAA8D,CAAA,CAAC;;;;AAC9F,yDAAyD"}
+{"version":3,"file":"configer.js","sourceRoot":"","sources":["configer.ts"],"names":[],"mappings":";IAAA;;OAEG;IACH,YAAY,CAAC;;QAIF,UAAU;;;;YADrB,gGAAgG;YACrF,wBAAA,UAAU,GAAW,uBAAuB,CAAA,CAAA"}

@@ -19,7 +19,9 @@ export class AuctionUnresolvedComponent {
     @Input()creator : string;
     @Input()username;
     @Input()protocol : string;
-
+    @Input()maxGuidePrice : string;
+    @Input()contractType : string;
+    @Input()tradeType : string;
 
     ngOnInit() {
     }

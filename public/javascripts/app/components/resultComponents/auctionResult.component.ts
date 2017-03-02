@@ -27,6 +27,9 @@ export class AuctionResultComponent {
     @Input()protocol : string;
     @Input()winner : string;
     @Input()price : any;
+    @Input()contractType : string;
+    @Input()tradeType : string;
+
     private options = new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})});
     details : any;
     contactUsername : string;

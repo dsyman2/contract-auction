@@ -10,8 +10,8 @@ import 'rxjs/Rx';
 import {Inject} from "angular2/src/core/di/decorators";
 import {FORM_DIRECTIVES, Control, ControlGroup, FormBuilder, Validators} from 'angular2/common';
 import {ValidatorService} from "../../services/validator.service.js";
-import {EventEmitter} from "angular2/src/facade/async";
-import globals = require('../../config/configer.js');
+import config = require('../../config/configer.js');
+import globals = require('../../config/globals.js');
 import {NotificationsService} from "../../notifications/notifications.service.js";
 import {Notification} from "../../notifications/notifications.model.js";
 
@@ -30,6 +30,7 @@ export class AuctionAppComponent {
     price : number = 0.0;
     socket = null;
     bidValue : string= '';
+    userID : string;
     @Input()auction : any;
     @Input()id : string;
     @Input()name : string;
@@ -37,11 +38,14 @@ export class AuctionAppComponent {
     @Input()creator : string;
     @Input()username;
     @Input()protocol : string;
+    @Input()contractType : string;
+    @Input()tradeType : string;
     time : number = 0;
     active : boolean = true;
     showNotif : boolean = false;
-    CreateGroup: ControlGroup;
-    formInputs: FormInputs;
+    CreateGroup : ControlGroup;
+    formInputs : FormInputs;
+    accountType : string;
 
     constructor(@Inject(Http)private http:Http, @Inject(NotificationsService)private _notes: NotificationsService,
                 @Inject(ValidatorService) validatorService : ValidatorService, @Inject(FormBuilder) fb: FormBuilder ){
@@ -55,18 +59,19 @@ export class AuctionAppComponent {
     }
 
     ngOnInit() {
-
-        console.log("username is:" + this.username);
-
-        this.socket = io(globals.socket_src);
+        this.accountType = globals.accountType;
+        console.log("username is:" + this.creator);
+        this.userID = globals.userID;
+        this.socket = io(config.socket_src);
 
         this.socket.on('priceUpdate-' + this.id, function (data) {
-            console.log(data)
+            console.log(data);
             this.price = +parseFloat(data);
             if(this.showNotif){
                 this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');
-            }
 
+            }
+            console.log('hi i is hefre');
             this.showNotif = true;
 
         }.bind(this));
@@ -91,6 +96,7 @@ export class AuctionAppComponent {
             bid: this.bidValue,
             bidder: this.username
         });
+
 
         this.bidValue = '';
     }
@@ -122,7 +128,7 @@ export class AuctionAppComponent {
     }
 
     throwPushNotification(message: string){
-        this._notes.add(new Notification('error', message));
+        this._notes.add(new Notification(message));
     }
 
     togglePushNotif(){

@@ -13,6 +13,7 @@ var currentAuctions = {};
 var postAucData = require('../appModules/postAuctionDataGetter');
 var auctionCompTasks = require('../appModules/auctionCompletionTasks');
 var userUtilities = require('../appModules/userUtilities');
+var adminData = require('../appModules/adminData');
 
 module.exports = {
 
@@ -95,7 +96,8 @@ module.exports = {
         app.get('/app', isLoggedIn, function(req, res) {
             res.render('app.jade', {
                 username          : req.user.username,
-                userID            : req.user.id
+                userID            : req.user.id,
+                accountType       : req.user.accountType
                 // get the user out of session and pass to template
             });
         });
@@ -134,7 +136,7 @@ module.exports = {
         app.post('/deleteAuction', function(req, res){
             console.log('we get this far into delete');
             var aucID = req.body.id;
-            createAuction.deleteAuction(aucID, req.user.id, function(id){
+            createAuction.deleteAuction(aucID, req.user.id, req.user.accountType, function(id){
                 if (currentAuctions.hasOwnProperty(id)
                     && auctionListeners.hasOwnProperty(id)) {
                     delete currentAuctions[id];
@@ -191,6 +193,37 @@ module.exports = {
             userUtilities.updateUserProfile(req.user.id, req.query, function (hasUpdated) {
                res.send(hasUpdated);
             });
+        });
+
+        /**
+         * Get all user details - for admin
+         */
+        app.get('/allUserDetails', function(req, res){
+            if(req.user.accountType === 'Admin'){
+                adminData.getUserDetails(function(userDetails){
+                    console.log(userDetails)
+                    res.send(JSON.stringify(userDetails));
+                });
+            }
+            else{
+                res.send([])
+            }
+
+        });
+
+        /**
+         * Delete user
+         */
+        app.get('/deleteUser', function(req, res){
+            if(req.user.accountType === 'Admin'){
+                adminData.deleteUser(req.query.userID, function(hasDeleted){
+                    console.log(hasDeleted);
+                    res.send(hasDeleted);
+                });
+            }
+            else{
+                res.send(false);
+            }
         });
 
         //Set listener for auction move event

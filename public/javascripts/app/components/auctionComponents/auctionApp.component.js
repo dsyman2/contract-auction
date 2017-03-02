@@ -20,7 +20,8 @@ require('rxjs/Rx');
 var decorators_1 = require("angular2/src/core/di/decorators");
 var common_1 = require('angular2/common');
 var validator_service_js_1 = require("../../services/validator.service.js");
-var globals = require('../../config/configer.js');
+var config = require('../../config/configer.js');
+var globals = require('../../config/globals.js');
 var notifications_service_js_1 = require("../../notifications/notifications.service.js");
 var notifications_model_js_1 = require("../../notifications/notifications.model.js");
 var FormInputs = (function () {
@@ -48,14 +49,17 @@ var AuctionAppComponent = (function () {
         }
     }
     AuctionAppComponent.prototype.ngOnInit = function () {
-        console.log("username is:" + this.username);
-        this.socket = io(globals.socket_src);
+        this.accountType = globals.accountType;
+        console.log("username is:" + this.creator);
+        this.userID = globals.userID;
+        this.socket = io(config.socket_src);
         this.socket.on('priceUpdate-' + this.id, function (data) {
             console.log(data);
             this.price = +parseFloat(data);
             if (this.showNotif) {
                 this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');
             }
+            console.log('hi i is hefre');
             this.showNotif = true;
         }.bind(this));
         this.socket.on('auctionEnd-' + this.id, function (data) {
@@ -98,7 +102,7 @@ var AuctionAppComponent = (function () {
             .map(function (res) { return (res.json()); }).subscribe();
     };
     AuctionAppComponent.prototype.throwPushNotification = function (message) {
-        this._notes.add(new notifications_model_js_1.Notification('error', message));
+        this._notes.add(new notifications_model_js_1.Notification(message));
     };
     AuctionAppComponent.prototype.togglePushNotif = function () {
         this.showNotif = !this.showNotif;
@@ -124,6 +128,12 @@ var AuctionAppComponent = (function () {
     __decorate([
         metadata_1.Input()
     ], AuctionAppComponent.prototype, "protocol", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionAppComponent.prototype, "contractType", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionAppComponent.prototype, "tradeType", void 0);
     AuctionAppComponent = __decorate([
         core_1.Component({
             selector: 'auction-app',

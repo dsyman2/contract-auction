@@ -21,6 +21,9 @@ export class AuctionHolderComponent {
     socket = null;
     @Input()user;
     private arrayOfAucs: string[];
+    filterContractType: string = 'All';
+    filterTradeType : string = 'All';
+    tradeTypes : Array<String> = globals.tradeTypes;
 
     ngOnInit(){
         //console.log("u" + this.user);

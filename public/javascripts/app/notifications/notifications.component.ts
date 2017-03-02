@@ -7,6 +7,7 @@ import { NotificationsService } from './notifications.service.js';
 import { Notification } from './notifications.model.js';
 import {Inject} from "angular2/src/core/di/decorators";
 
+//https://matthewross.me/blog/posts/notifications-an-angular-2-component
 @Component({
     selector: 'notifications',
     templateUrl: '/templates/notifications.html'

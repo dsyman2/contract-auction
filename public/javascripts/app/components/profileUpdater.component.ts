@@ -8,6 +8,7 @@ import {HTTP_PROVIDERS, Http, Headers} from "angular2/http";
 import {Inject} from "angular2/src/core/di/decorators";
 import {URLSearchParams} from "angular2/src/http/url_search_params";
 import {RequestOptions} from "angular2/src/http/base_request_options";
+import globals = require('../config/globals.js');
 
 class FormInputs{
     email: string ="";
@@ -27,6 +28,11 @@ export class ProfileUpdaterComponent {
     formInputs: FormInputs;
     private options = new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})});
     hasUpdated: boolean = undefined;
+    details : any;
+    email: string;
+    username : string;
+    contactNumber : string;
+    accountType : string;
 
     constructor(@Inject(ValidatorService) validatorService : ValidatorService,
                 @Inject(FormBuilder) fb: FormBuilder, @Inject(Http)private http: Http) {
@@ -37,6 +43,7 @@ export class ProfileUpdaterComponent {
             'contactNumber' : new Control(this.formInputs.contactNumber, Validators.compose([Validators.required,
                 validatorService.isInteger, validatorService.isPhoneNumberLength]))
         });
+        this.getProfileDetails();
     }
 
     /*addNewGroup(formInputs : FormInputs) {
@@ -49,7 +56,24 @@ export class ProfileUpdaterComponent {
         this.updateProfile(data);
     }*/
 
-    ngOnInit(){
+    setProfileDetailsForDisplay(){
+        this.username = this.details.username;
+        this.email = this.details.email;
+        this.contactNumber = this.details.contactNumber;
+        this.accountType = this.details.accountType;
+    }
+
+    getProfileDetails(){
+        let params: URLSearchParams = new URLSearchParams();
+        params.set("id", globals.userID);
+        this.options.search = params;
+
+        return this.http.get('/contactDetails', this.options)
+            .subscribe(
+                details => this.details = details.json(),
+                () => console.log('hi' + this.details),
+                () => this.setProfileDetailsForDisplay()
+            );
     }
 
     updateProfile(formInputs : FormInputs){
@@ -63,7 +87,7 @@ export class ProfileUpdaterComponent {
             .subscribe(
                 result => this.hasUpdated = result.json(),
                 () => console.log('hasChanged : ' + this.hasUpdated),
-                () => console.log('lol')
+                () => this.getProfileDetails()
             );
     }
 }

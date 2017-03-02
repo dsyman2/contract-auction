@@ -1,13 +1,15 @@
 <div class="panel panel-auction">
-    <h4 class="panel-heading-2">The unresolved auctions you've created are below: </h4>
     <button class="btn btn-lg btn-wide btn-orange"(click)="getUnresolved()">Refresh Unresolved &#x21ba;</button>
     <br>
     <br>
+
+    <h4 class="panel-heading-2">The unresolved auctions you've created are below: </h4>
     <div *ngFor="#unresolved of unresolvedList">
         <unresolved-app
                 result = auctions[aucInfo] id = {{unresolved.unresolvedID}} name = {{unresolved.name}}
                 desc = {{unresolved.description}} protocol = {{unresolved.protocol}}
-                aucID = {{unresolved.id}} creator = {{unresolved.creatorID}}>
+                aucID = {{unresolved.id}} creator = {{unresolved.creatorID}} maxguideprice="{{unresolved.maxGuidePrice}}"
+                contractType={{unresolved.contractType}} tradeType={{unresolved.tradeType}}>>
         </unresolved-app>
     </div>
 </div>

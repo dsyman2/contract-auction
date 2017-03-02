@@ -6,6 +6,20 @@ body {
     font: 125% "Century Gothic", bold, sans-serif;
 }
 
+.no-border {
+    border: none;
+}
+
+.angular-with-newlines {
+    white-space: pre-wrap;
+    white-space: pre-line;
+    overflow: auto;
+    max-height: 100px;
+    border: thin solid lightgray;
+    border-radius: 5px;
+    padding: 0.5% 1% 1%;
+}
+
 .smlButton{
     background: Transparent no-repeat;
     color: skyblue;
@@ -22,6 +36,14 @@ body {
     background-color: #262626;
 }
 
+.black{
+    color: black;
+}
+
+.themecolour{
+    color : white;
+    background-color: #428bca;
+}
 a {
     color: white;
 }
@@ -35,9 +57,13 @@ small{
     color: darkred;
 }
 
+.container{
+    color: dimgrey;
+}
+
 .alert-orange {
-    border-color: lightcoral;
-    background: lightcoral;
+    border-color: lightsalmon;
+    background: lightsalmon;
     color: white;
 }
 
@@ -49,8 +75,12 @@ small{
     float: right;
 }
 
+.leftPad{
+    float: left;
+}
+
 .bg{
-    background: url('../images/gradient.png') no-repeat center center fixed;
+    background: url('../images/grey.jpeg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -103,7 +133,7 @@ small{
 }
 
 .btn-orange {
-    background-color: lightcoral;
+    background-color: lightsalmon;
 }
 
 /* nav bar stuff*/
@@ -184,7 +214,7 @@ nav{
 }
 
 .notifications div.error {
-    background-color: lightcoral;
+    background-color: lightsalmon;
     border-color: darkgrey;
     color: white;
 }

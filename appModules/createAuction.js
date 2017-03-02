@@ -50,19 +50,25 @@ module.exports = {
 
         io.on('connection', function (socket){
             socket.emit('auctionList', auctions);
-            //socket.broadcast.emit('auctionList', auctions);
         });
 
 
     },
 
-    deleteAuction : function (auctionID, userID, callback) {
-        var query = ('DELETE FROM ' + dbconfig.database + '.' + dbconfig.auction_table + ' WHERE id = ? AND creatorID = ?');
-        connection.query(query, [auctionID, userID], function (err, result) {
+    deleteAuction : function (auctionID, userID, accountType, callback) {
+        var query;
+        if(accountType == 'Admin'){
+            query = 'DELETE FROM ' + dbconfig.database + '.' + dbconfig.auction_table + ' WHERE id = ?'
+        }
+        else{
+            query = ('DELETE FROM ' + dbconfig.database + '.' + dbconfig.auction_table + ' WHERE id = ? AND creatorID = ?');
+        }
+
+        connection.query(query, [auctionID, userID], function (err, res) {
             if(err)
                 throw err;
-            console.log('Record deleted ' + result.affectedRows + ' rows');
-            if(result.affectedRows > 0){
+            console.log('Record deleted ' + res.affectedRows + ' rows');
+            if(res.affectedRows > 0){
                 callback(auctionID);
             }
         });
