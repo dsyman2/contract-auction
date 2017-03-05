@@ -19,7 +19,7 @@ module.exports = {
             socket.emit('priceUpdate-' + id, 'Closed Auction');
             socket.emit('timeRemaining-' + id, countdownTimer.time);
             socket.on('bid-' + id, function (data) {
-                auctionFraud.updateUserBids(data.bidderID, aucInfo);
+                auctionFraud.updateUserBids(data.bidderID, data.bidder, aucInfo);
                 var newBidPrice = +parseFloat(data.bid).toFixed(2);
                 var newBidder = data.bidder;
                 if (!(bids.hasOwnProperty(newBidder))) {

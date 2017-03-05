@@ -1,3 +1,23 @@
+<br>
+<br>
+<h4>Users suspected of Auction Fraud: </h4>
+
 <div *ngFor="#suspUser of suspUsers">
-    {{suspUser}}
+    <div class="panel panel-auction">
+
+        <div class="panel-heading">
+            Username: {{suspUser}}
+        </div>
+        <div class="panel-body">
+            <div *ngFor="#suspBids of suspiciousUsers[suspUser]">
+                <div class="alert alert-info no-border">
+                    <p> Auction ID: {{suspBids.aucID}} </p>
+                    <p> Auction Name: {{suspBids.aucName}} </p>
+                    <p> Auction Creator: {{suspBids.aucCreator}} </p>
+                    <p> Reason for suspicion: {{suspBids.reason}} </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

@@ -34,7 +34,7 @@ module.exports = {
             socket.emit('timeRemaining-' + id, countdownTimer.time);
             socket.on('bid-' + id, function (data) {
 
-                auctionFraud.updateUserBids(data.bidderID, aucInfo);
+                auctionFraud.updateUserBids(data.bidderID, data.bidder, aucInfo);
                 currentBidder = data.bidder;
                 countdownTimer.stop();
                 if(intervalID){

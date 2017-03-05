@@ -7,19 +7,19 @@ var count = 0;
 
 module.exports = {
 
-    updateUserBids : function(id, aucInfo){
-        if(users[id]){
+    updateUserBids : function(id, username, aucInfo){
+        if(users[username]){
             count++;
             //update that user
-            users[id].updateBids(aucInfo);
+            users[username].updateBids(aucInfo);
             console.log('i worked old user');
             console.log('count is: ' + count)
         }
         else{
             //create the user
             count++;
-            users[id] = new UserFraudObj(id);
-            users[id].updateBids(aucInfo);
+            users[username] = new UserFraudObj(id);
+            users[username].updateBids(aucInfo);
             console.log('i worked new user');
             console.log('count is: ' + count)
         }

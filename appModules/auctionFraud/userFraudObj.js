@@ -14,7 +14,7 @@ function UserFraudObj(id) {
 
 UserFraudObj.prototype.updateBids = function (aucInfo) {
     this.bidsMade[this.bidsMade.length + 1] = {
-        auctionID: aucInfo.auctionID,
+        auctionID: aucInfo.id,
         tradeType: aucInfo.tradeType,
         contractType: aucInfo.contractType
     };
@@ -72,9 +72,10 @@ UserFraudObj.prototype.inspectBidTradeType = function(tradeType, aucInfo){
     if(tradeType != this.topTrade && this.topTrade != undefined){
         if(tradeType != this.secondTopTrade && this.secondTopTrade != undefined){
             this.suspiciousBids.push({
-                aucID: aucInfo.auctionID,
+                aucID: aucInfo.id,
+                aucName: aucInfo.name,
                 reason: 'unusual trade type user usually bids on ' + this.topTrade + ' & occasionally '
-                + this.secondTopTrade + 'but actually bid on ' + tradeType +'.',
+                + this.secondTopTrade + ' but actually bid on ' + tradeType +'.',
                 userID: this.userID,
                 aucCreator: aucInfo.creatorID
             });

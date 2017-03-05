@@ -19,7 +19,7 @@ module.exports = {
             socket.emit('timeRemaining-' + id, countdownTimer.time);
             socket.on('bid-' + id, function (data) {
 
-                auctionFraud.updateUserBids(data.bidderID, aucInfo);
+                auctionFraud.updateUserBids(data.bidderID, data.bidder, aucInfo);
                 var newBidPrice = +parseFloat(data.bid).toFixed(2);
                 var newBidder = data.bidder;
                 console.log('BID: ' + newBidPrice + newBidder);
