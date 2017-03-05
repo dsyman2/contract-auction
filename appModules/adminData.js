@@ -20,32 +20,6 @@ var userExists = function(userID, callback){
     })
 };
 
-var deleteAuctionData = function(userID, callback){
-    var query = ('DELETE FROM ' + dbconfig.database + '.' + dbconfig.auction_table + ' WHERE creatorID = ?');
-    connection.query(query, userID, function(err, res){
-        if(err)
-            throw err;
-        console.log('Record deleted ' + res.affectedRows + ' rows');
-
-        query = ('DELETE FROM ' + dbconfig.database + '.' + dbconfig.results_table + ' WHERE creatorID = ? OR winnerID = ?');
-        connection.query(query, userID, userID, function(err, res){
-            if(err)
-                throw err;
-            console.log('Record deleted ' + res.affectedRows + ' rows');
-
-            query = ('DELETE FROM ' + dbconfig.database + '.' + dbconfig.unresolved_table + ' WHERE creatorID = ?');
-            connection.query(query, userID, function (err, res) {
-                if (err)
-                    throw err;
-                console.log('Record deleted ' + res.affectedRows + ' rows');
-                callback();
-            });
-        });
-    });
-
-
-};
-
 var deleteAuctionHistory = function(userID, callback){
     var query = ('DELETE FROM ' + dbconfig.database + '.' + dbconfig.auction_table + ' WHERE creatorID = ?');
     connection.query(query, userID, function(err, res){

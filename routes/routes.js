@@ -6,8 +6,6 @@
  * for get and post request to manipulate the application state such as createAuction().
  */
 
-// app/routes.js
-
 var auctionListeners = {};
 var currentAuctions = {};
 var postAucData = require('../appModules/postAuctionDataGetter');
@@ -35,12 +33,9 @@ module.exports = {
      * @param passport
      * @param createAuction
      * @param io
-     * @param CountdownTimer
-     * @param protocols
-     * @param socketTools
      * @param auctionEventEmitter
      */
-    init : function(app, passport, createAuction, io, CountdownTimer, protocols, socketTools, auctionEventEmitter){
+    init : function(app, passport, createAuction, io, auctionEventEmitter){
         /**
          * Homepage -> Index (LOGIN)
          */
@@ -118,7 +113,7 @@ module.exports = {
             createAuction.addAuctionEntry(req.user.id, req.body, function(aucInfo, aucId){
                 var auc1 = createAuction
                     .initialiseAuctionEngine(
-                        aucInfo, aucId, io, CountdownTimer, protocols, socketTools, auctionEventEmitter);
+                        aucInfo, aucId, io, auctionEventEmitter);
                 //auctionListeners.push[auc1];
                 auctionListeners[aucId] = auc1;
                 aucInfo.id = aucId;
@@ -201,7 +196,7 @@ module.exports = {
         app.get('/allUserDetails', function(req, res){
             if(req.user.accountType === 'Admin'){
                 adminData.getUserDetails(function(userDetails){
-                    console.log(userDetails)
+                    console.log(userDetails);
                     res.send(JSON.stringify(userDetails));
                 });
             }
@@ -226,7 +221,19 @@ module.exports = {
             }
         });
 
-        //Set listener for auction move event
+        /**
+         * Get suspicious users
+         */
+        app.get('/getSuspiciousUsers', function(req, res){
+           createAuction.getSuspiciousUsers(function(suspUsers){
+               res.send(JSON.stringify(suspUsers));
+               console.log('Suspicious: ' + suspUsers);
+           });
+        });
+
+        /**
+         * Set listener for auction move event
+         */
         auctionCompTasks.moveAuctionCompletedListener(auctionEventEmitter);
 
         /**
@@ -248,7 +255,7 @@ module.exports = {
 };
 
 /**
- * Are they logged in? function
+ * isLoggedIn detects whether a user is logged in
  **/
 function isLoggedIn(req, res, next) {
 

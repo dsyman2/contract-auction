@@ -14,6 +14,7 @@ import {ROUTER_DIRECTIVES} from "angular2/router";
 import {Inject} from "angular2/src/core/di/decorators";
 import {ProfileUpdaterComponent} from "./profileUpdater.component.js";
 import {UserManagementComponent} from "../admin/userManagement/userManagement.component.js";
+import {IssueManagementComponent} from "../admin/IssueManagement.component.js";
 
 
 /* component in angular2 */
@@ -22,7 +23,7 @@ import {UserManagementComponent} from "../admin/userManagement/userManagement.co
     templateUrl: '/templates/main.html',
     directives: [AuctionHolderComponent, ResultHolderComponent, NavbarComponent,
         UnresolvedHolderComponent, Notifications, ROUTER_DIRECTIVES, ProfileUpdaterComponent,
-        UserManagementComponent]
+        UserManagementComponent, IssueManagementComponent]
 })
 
 export class MainComponent {

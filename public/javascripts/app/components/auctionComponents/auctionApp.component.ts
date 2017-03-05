@@ -105,7 +105,8 @@ export class AuctionAppComponent {
         this.showNotif = true;
         this.socket.emit('bid-'+this.id, {
             bid: data.bidVal,
-            bidder: this.username
+            bidder: this.username,
+            bidderID: this.userID
         });
 
         this.formInputs.bidValue = '';

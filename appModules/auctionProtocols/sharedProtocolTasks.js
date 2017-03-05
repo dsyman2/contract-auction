@@ -2,15 +2,13 @@
  * Created by Umar on 05/02/2017.
  */
 
-var _  = require('underscore');
-
-var moveCompletedAuction = function(auctionEventEmitter, aucInfo){
-    auctionEventEmitter.emit('moveCompletedAuc', aucInfo);
-};
-
 module.exports = {
 
-    sealedBid : function(io, aucInfo, CountdownTimer, id, type, auctionEventEmitter) {
+    moveCompletedAuction : function(auctionEventEmitter, aucInfo){
+        auctionEventEmitter.emit('moveCompletedAuc', aucInfo);
+    }
+
+    /*sealedBid : function(io, aucInfo, CountdownTimer, id, type, auctionEventEmitter) {
         var countdownTimer = new CountdownTimer(aucInfo.length, id);
         var bids = {};
         var deleteStatus = false;
@@ -80,7 +78,7 @@ module.exports = {
 
     dutch : function(io, aucInfo, CountdownTimer, id, auctionEventEmitter){
         var maxPrice = aucInfo.maxGuidePrice;
-        var increment = (maxPrice/100)/*.toFixed(2)*/;
+        var increment = (maxPrice/100)/!*.toFixed(2)*!/;
         var currentPrice = +(increment.toFixed(2));
         var countdownTimer = new CountdownTimer(aucInfo.length, id);
         var interval = 60000;
@@ -96,8 +94,8 @@ module.exports = {
                 console.log('emitting price: ' + currentPrice);
                 io.sockets.emit('priceUpdate-' + id, currentPrice);
             }
-           /* console.log('emitting price: ' + currentPrice);
-            io.sockets.emit('priceUpdate-' + id, currentPrice);*/
+           /!* console.log('emitting price: ' + currentPrice);
+            io.sockets.emit('priceUpdate-' + id, currentPrice);*!/
         }, interval);
 
         var currentBidder = null;
@@ -205,7 +203,7 @@ module.exports = {
             deleteStatus = true;
             countdownTimer.stop();
         });
-    }
+    }*/
 
     //decrement auction by how much each time?
 };

@@ -63,7 +63,7 @@
             </span>
             </form>
 
-            <small *ngIf="!CreateGroup.controls['bidValue'].valid && accountType=='contractor'">The bid must be greater than zero and a number!</small>
+            <small *ngIf="(!CreateGroup.controls['bidValue'].valid && accountType=='contractor') && formInputs.bidValue.length > 0">The bid must be greater than zero and a number!</small>
         </div>
 
         <div>

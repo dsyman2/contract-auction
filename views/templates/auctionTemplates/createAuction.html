@@ -23,7 +23,6 @@
                             <div>
                                 Select a contract type:
                                 <select #selectOptionConType (change)="formInputs.contractType=selectOptionConType.value" class="form-control" ngControl="contractType">
-                                    <option> select</option>
                                     <option value="Domestic" [selected]="formInputs.contractType==='Domestic'">Domestic</option>
                                     <option value="Commercial" [selected]="formInputs.contractType==='Commercial'">Commercial</option>
                                 </select>
@@ -35,7 +34,6 @@
                             <div>
                                 Select a trade/profession type:
                                 <select #selectOptionTrade (change)="formInputs.tradeType=selectOptionTrade.value" class="form-control" ngControl="tradeType">
-                                    <option> select</option>
                                     <option *ngFor="#tradeType of tradeTypes"
                                             value= {{tradeType}}
                                             [selected] ="formInputs.tradeType === tradeType">
