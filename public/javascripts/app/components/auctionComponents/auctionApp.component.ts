@@ -67,14 +67,18 @@ export class AuctionAppComponent {
         this.socket.on('priceUpdate-' + this.id, function (data) {
             console.log(data);
             this.price = +parseFloat(data);
-            if(this.showNotif){
-                this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');
 
+            if(this.showNotif && (this.protocol != '1st-price-sealed' && this.protocol != '2nd-price-sealed')) {
+                this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');
             }
+
             console.log('hi i is hefre');
-            this.showNotif = true;
 
         }.bind(this));
+
+        if(this.creator == this.userID){
+            this.showNotif = true;
+        }
 
         this.socket.on('auctionEnd-' + this.id, function (data) {
             console.log('over and out: ' + data);
@@ -94,7 +98,8 @@ export class AuctionAppComponent {
         this.showNotif = true;
         this.socket.emit('bid-'+this.id, {
             bid: this.bidValue,
-            bidder: this.username
+            bidder: this.username,
+            bidderID: this.userID
         });
 
 
@@ -102,13 +107,13 @@ export class AuctionAppComponent {
     }
 
     bidParam(data){
-        this.showNotif = true;
         this.socket.emit('bid-'+this.id, {
             bid: data.bidVal,
             bidder: this.username,
             bidderID: this.userID
         });
 
+        this.showNotif = true;
         this.formInputs.bidValue = '';
     }
 

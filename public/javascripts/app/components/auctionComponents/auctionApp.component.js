@@ -87,12 +87,14 @@ System.register(['angular2/core', "angular2/src/core/metadata", './clockApp.comp
                     this.socket.on('priceUpdate-' + this.id, function (data) {
                         console.log(data);
                         this.price = +parseFloat(data);
-                        if (this.showNotif) {
+                        if (this.showNotif && (this.protocol != '1st-price-sealed' && this.protocol != '2nd-price-sealed')) {
                             this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');
                         }
                         console.log('hi i is hefre');
-                        this.showNotif = true;
                     }.bind(this));
+                    if (this.creator == this.userID) {
+                        this.showNotif = true;
+                    }
                     this.socket.on('auctionEnd-' + this.id, function (data) {
                         console.log('over and out: ' + data);
                     });
@@ -108,17 +110,18 @@ System.register(['angular2/core', "angular2/src/core/metadata", './clockApp.comp
                     this.showNotif = true;
                     this.socket.emit('bid-' + this.id, {
                         bid: this.bidValue,
-                        bidder: this.username
+                        bidder: this.username,
+                        bidderID: this.userID
                     });
                     this.bidValue = '';
                 };
                 AuctionAppComponent.prototype.bidParam = function (data) {
-                    this.showNotif = true;
                     this.socket.emit('bid-' + this.id, {
                         bid: data.bidVal,
                         bidder: this.username,
                         bidderID: this.userID
                     });
+                    this.showNotif = true;
                     this.formInputs.bidValue = '';
                 };
                 AuctionAppComponent.prototype.onTimeUp = function (data) {

@@ -34,9 +34,9 @@ export class ResultHolderComponent {
     getCreatedAucResults(){
        this.http.get("/completedAuctions", {})
            .subscribe(
-               createdList => this.createdList = createdList.json(),
+               createdList => this.createdList = createdList.json().reverse(),
                 () => console.log(this.createdList),
-               () => this.createdB = true
+                () => this.createdB = true
             );
     }
 
@@ -44,7 +44,7 @@ export class ResultHolderComponent {
 
         this.http.get("/wonAuctions", {})
             .subscribe(
-                wonList => this.wonList = wonList.json(),
+                wonList => this.wonList = wonList.json().reverse(),
                 () => console.log(this.wonList),
                 () => this.won = true
             );
