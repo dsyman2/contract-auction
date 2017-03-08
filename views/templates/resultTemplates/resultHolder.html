@@ -1,11 +1,11 @@
-<div class="panel panel-auction">
+<div>
     <br>
     <br>
     <button class="btn btn-lg btn-wide btn-orange"(click)="getCreatedAucResults">Refresh Results &#x21ba;</button>
     <br>
     <br>
     <div *ngIf="accountType=='Contract Issuer'">
-        <h4 class="panel-heading-2">The results s of the auctions you've created are below: </h4>
+        <h4 class="panel-heading-2">The results of the auctions you've created are below: </h4>
         <div *ngFor="#created of createdList">
             <result-app
                     id = {{created.createdID}} name = {{created.name}}

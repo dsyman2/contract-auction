@@ -105,10 +105,11 @@
                         </form>
                     <br>
                     <div>
-
-                        <button type="button" [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)" class ="btn btn-lg btn-wide">
-                            Create
-                        </button>
+                        <a data-dismiss="modal">
+                            <button type="button" [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)" data-dismiss="modal" class ="btn btn-lg btn-wide">
+                                Create
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="modal-footer">
