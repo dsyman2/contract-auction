@@ -85,12 +85,11 @@ small{
 }
 
 .bg{
-   /* background: url('../images/grey.jpeg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;*/
-    background-color: darkorange;
+    background: url('../images/gradient.png') no-repeat center center fixed;
+    -webkit-background-size: auto;
+    -moz-background-size: auto;
+    -o-background-size: auto;
+    background-size: auto;
 }
 
 .no-click{
@@ -122,6 +121,13 @@ small{
 .footer-r {
     text-align: center;
     float: right;
+}
+
+.floatyFilter {
+    position:fixed;
+    text-align: center;
+    width: 90%;
+    box-shadow: .5px .5px .5px #888888;
 }
 
 .button-round {

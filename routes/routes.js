@@ -163,7 +163,7 @@ module.exports = {
         });
 
         /**
-         * returns an array of all unresolved auctions dependent on the username/id
+         * responds with an array of all unresolved auctions dependent on the username/id
          */
         app.get('/unresolvedAuctions', function(req, res) {
             postAucData.getUnresolvedByUserID(req.user.id, function (unresolvedList) {
