@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: app/components/resultComponents/auctionResult.component.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: app/components/resultComponents/auctionResult.component.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c &lt; 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" &amp;&amp; typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c &lt; 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 &amp;&amp; r &amp;&amp; Object.defineProperty(target, key, r), r;
+};
+var __param = (this &amp;&amp; this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+/**
+ * Created by Umar on 12/02/2017.
+ */
+var core_1 = require('angular2/core');
+var metadata_1 = require("angular2/src/core/metadata");
+var http_1 = require("angular2/http");
+var base_request_options_1 = require("angular2/src/http/base_request_options");
+var url_search_params_1 = require("angular2/src/http/url_search_params");
+var http_2 = require("angular2/src/http/http");
+var decorators_1 = require("angular2/src/core/di/decorators");
+var headers_1 = require("angular2/src/http/headers");
+var AuctionResultComponent = (function () {
+    function AuctionResultComponent(http) {
+        this.http = http;
+        this.options = new base_request_options_1.RequestOptions({ headers: new headers_1.Headers({ 'Content-Type': 'application/json' }) });
+        this.resultView = false;
+    }
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
+    AuctionResultComponent.prototype.ngOnInit = function () {
+        var idChoice = (this.winner == localStorage.getItem('userID')) ?
+            this.creator : this.winner;
+        this.getContactsByID(idChoice);
+    };
+    /**
+     * displays contact details
+     */
+    AuctionResultComponent.prototype.updateRes = function () {
+        this.resultView = !this.resultView;
+        this.contactUsername = this.details.username;
+        this.contactEmail = this.details.email;
+        this.contactNum = this.details.contactNumber;
+    };
+    /**
+     * Gets contact details of user by id
+     * @param id
+     * @returns {Subscription&lt;Response>}
+     */
+    AuctionResultComponent.prototype.getContactsByID = function (id) {
+        var _this = this;
+        var params = new url_search_params_1.URLSearchParams();
+        params.set("id", id);
+        this.options.search = params;
+        return this.http.get('/contactDetails', this.options)
+            .subscribe(function (details) { return _this.details = details.json(); });
+    };
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "result", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "id", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "aucID", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "name", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "desc", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "creator", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "username", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "protocol", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "winner", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "price", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "contractType", void 0);
+    __decorate([
+        metadata_1.Input()
+    ], AuctionResultComponent.prototype, "tradeType", void 0);
+    AuctionResultComponent = __decorate([
+        core_1.Component({
+            selector: 'result-app',
+            templateUrl: '/templates/resultTemplates/result.html',
+            providers: [http_1.HTTP_PROVIDERS]
+        }),
+        __param(0, decorators_1.Inject(http_2.Http))
+    ], AuctionResultComponent);
+    return AuctionResultComponent;
+}());
+exports.AuctionResultComponent = AuctionResultComponent;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#browser_1">browser_1</a></li><li><a href="global.html#core_1">core_1</a></li><li><a href="global.html#decorators_1">decorators_1</a></li><li><a href="global.html#FormInputs">FormInputs</a></li><li><a href="global.html#metadata_1">metadata_1</a></li><li><a href="global.html#Notification">Notification</a></li><li><a href="global.html#NotificationsService">NotificationsService</a></li><li><a href="global.html#ProfileValidatorsService">ProfileValidatorsService</a></li><li><a href="global.html#ValidatorService">ValidatorService</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Mar 22 2017 20:38:37 GMT+0000 (GMT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

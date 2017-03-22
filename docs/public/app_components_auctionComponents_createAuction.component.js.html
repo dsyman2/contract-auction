@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: app/components/auctionComponents/createAuction.component.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: app/components/auctionComponents/createAuction.component.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>///&lt;reference path="../../../../../node_modules/rxjs/Observable.d.ts"/>
+/**
+ * Created by Umar on 20/01/2017.
+ */
+"use strict";
+var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c &lt; 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" &amp;&amp; typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c &lt; 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 &amp;&amp; r &amp;&amp; Object.defineProperty(target, key, r), r;
+};
+var __param = (this &amp;&amp; this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var core_1 = require('angular2/core');
+var common_1 = require('angular2/common');
+var decorators_1 = require("angular2/src/core/di/decorators");
+var http_1 = require('angular2/http');
+require('rxjs/Rx');
+require('rxjs/add/operator/first');
+var validator_service_js_1 = require("../../services/validator.service.js");
+var globals = require('../../config/globals.js');
+/**
+ * Class represents all form inputs in the create auction popup
+ */
+var FormInputs = (function () {
+    function FormInputs() {
+        this.maxGuidePrice = '12000';
+    }
+    return FormInputs;
+}());
+var CreateAuctionComponent = (function () {
+    function CreateAuctionComponent(validatorService, fb, http) {
+        this.http = http;
+        this.numberValidity = null;
+        this.tradeTypes = globals.tradeTypes;
+        this.formInputs = new FormInputs();
+        this.CreateGroup = fb.group({
+            'auctionName': new common_1.Control(this.formInputs.auctionName, common_1.Validators.required),
+            'auctionDesc': new common_1.Control(this.formInputs.auctionDesc, common_1.Validators.required),
+            'length': new common_1.Control(this.formInputs.length, common_1.Validators.compose([common_1.Validators.required,
+                validatorService.isInteger, validatorService.isNotZero])),
+            'protocol': new common_1.Control(this.formInputs.protocol, common_1.Validators.required),
+            'maxGuidePrice': new common_1.Control(this.formInputs.maxGuidePrice, common_1.Validators.compose([common_1.Validators.required,
+                validatorService.isIntegerPrice(this.formInputs.protocol), validatorService.isNotZeroPrice(this.formInputs.protocol)])),
+            'contractType': new common_1.Control(this.formInputs.contractType, common_1.Validators.required),
+            'tradeType': new common_1.Control(this.formInputs.tradeType, common_1.Validators.required)
+        });
+    }
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
+    CreateAuctionComponent.prototype.ngOnInit = function () {
+        this.accountType = globals.accountType;
+    };
+    /**
+     * Adds form inputs to an object
+     * @param formInputs
+     */
+    CreateAuctionComponent.prototype.addNewGroup = function (formInputs) {
+        this.formInputs = new FormInputs();
+        var data = {
+            name: formInputs.auctionName,
+            description: formInputs.auctionDesc,
+            length: formInputs.length,
+            protocol: formInputs.protocol,
+            maxGuidePrice: formInputs.maxGuidePrice,
+            contractType: formInputs.contractType,
+            tradeType: formInputs.tradeType
+        };
+        this.addAuctionPostRequest("/createAuction", data);
+    };
+    /**
+     * Makes a post request to post the create auction with the given
+     * data
+     * @param url
+     * @param data
+     */
+    CreateAuctionComponent.prototype.addAuctionPostRequest = function (url, data) {
+        this.headers = new http_1.Headers();
+        this.headers.append('Content-Type', 'application/json');
+        var body = JSON.stringify(data);
+        this.http.post(url, body, { headers: this.headers })
+            .map(function (res) { return (res.json()); }).subscribe();
+    };
+    CreateAuctionComponent = __decorate([
+        core_1.Component({
+            selector: 'createAuction-app',
+            templateUrl: '/templates/auctionTemplates/createAuction.html',
+            directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES],
+            providers: [validator_service_js_1.ValidatorService, http_1.HTTP_PROVIDERS]
+        }),
+        __param(0, decorators_1.Inject(validator_service_js_1.ValidatorService)),
+        __param(1, decorators_1.Inject(common_1.FormBuilder)),
+        __param(2, decorators_1.Inject(http_1.Http))
+    ], CreateAuctionComponent);
+    return CreateAuctionComponent;
+}());
+exports.CreateAuctionComponent = CreateAuctionComponent;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#browser_1">browser_1</a></li><li><a href="global.html#core_1">core_1</a></li><li><a href="global.html#decorators_1">decorators_1</a></li><li><a href="global.html#FormInputs">FormInputs</a></li><li><a href="global.html#metadata_1">metadata_1</a></li><li><a href="global.html#Notification">Notification</a></li><li><a href="global.html#NotificationsService">NotificationsService</a></li><li><a href="global.html#ProfileValidatorsService">ProfileValidatorsService</a></li><li><a href="global.html#ValidatorService">ValidatorService</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Mar 22 2017 20:38:37 GMT+0000 (GMT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
