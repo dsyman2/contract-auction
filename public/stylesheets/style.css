@@ -211,7 +211,7 @@ nav{
 
 /*NOTIFS*/
 .notifications {
-    left: calc(50% - 150px);
+    right: calc(50% - 150px);
     text-align: center;
     position: fixed;
     bottom: 0%;

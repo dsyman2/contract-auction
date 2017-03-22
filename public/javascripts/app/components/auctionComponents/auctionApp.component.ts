@@ -26,6 +26,9 @@ class FormInputs{
     providers: [HTTP_PROVIDERS, ValidatorService, FormBuilder]
 })
 
+/**
+ * AuctionAppComponent represents an auction widget it provides auction specific logic
+ */
 export class AuctionAppComponent {
     price : number = 0.0;
     socket = null;
@@ -58,21 +61,20 @@ export class AuctionAppComponent {
         }
     }
 
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     ngOnInit() {
         this.accountType = globals.accountType;
-        console.log("username is:" + this.creator);
         this.userID = globals.userID;
         this.socket = io(config.socket_src);
 
         this.socket.on('priceUpdate-' + this.id, function (data) {
-            console.log(data);
             this.price = +parseFloat(data);
 
             if(this.showNotif && (this.protocol != '1st-price-sealed' && this.protocol != '2nd-price-sealed')) {
                 this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');
             }
-
-            console.log('hi i is hefre');
 
         }.bind(this));
 
@@ -85,6 +87,10 @@ export class AuctionAppComponent {
         });
     }
 
+    /**
+     * Adds a new angular form group
+     * @param formInputs
+     */
     addNewGroup(formInputs : FormInputs) {
         this.formInputs = new FormInputs();
         let data = {
@@ -94,6 +100,9 @@ export class AuctionAppComponent {
         this.bidParam(data);
     }
 
+    /**
+     * Called when a bid is made
+     */
     bid() {
         this.showNotif = true;
         this.socket.emit('bid-'+this.id, {
@@ -106,6 +115,10 @@ export class AuctionAppComponent {
         this.bidValue = '';
     }
 
+    /**
+     * Called when a bid is made with an input value
+     * @param data
+     */
     bidParam(data){
         this.socket.emit('bid-'+this.id, {
             bid: data.bidVal,
@@ -117,11 +130,17 @@ export class AuctionAppComponent {
         this.formInputs.bidValue = '';
     }
 
+    /**
+     * On a time up event do this task
+     * @param data
+     */
     onTimeUp(data:string) {
-        //alert(data);
         this.active = false;
     }
 
+    /**
+     * Delete this auction
+     */
     sendDelete(){
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
@@ -133,10 +152,17 @@ export class AuctionAppComponent {
             .map(res => (res.json())).subscribe();
     }
 
+    /**
+     * Create a new push notification to alert UI
+     * @param message
+     */
     throwPushNotification(message: string){
         this._notes.add(new Notification(message));
     }
 
+    /**
+     * Toggle the notification visibility
+     */
     togglePushNotif(){
         this.showNotif = !this.showNotif;
     }

@@ -5,7 +5,6 @@
  * of the auction in the correct table.
  */
 
-//require these
 var mysql = require('mysql');
 var dbconfig = require('../config/database');
 var connection = mysql.createConnection(dbconfig.connection);
@@ -23,12 +22,10 @@ var auctionMoveToTable = function (aucInfo, tableName, aucEventEmitter) {
     connection.query(query, aucInfo, function (err, res) {
         if (err)
             throw err;
-        console.log('Record added to: ' + tableName + '. ' + res.affectedRows + ' rows');
         var deletionQuery = ('DELETE FROM ' + dbconfig.database + '.' + dbconfig.auction_table + ' WHERE id = ?');
         connection.query(deletionQuery, aucInfo.id, function (err, res) {
             if (err)
                 throw err;
-            console.log('Record deleted from auction table' + res.affectedRows + ' rows');
             aucEventEmitter.emit('completedAucMoved', aucInfo.id);
         });
     });

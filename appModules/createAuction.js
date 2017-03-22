@@ -28,7 +28,6 @@ module.exports = {
         connection.query(query, insertionData, function(err, res){
             if(err)
                 throw err;
-            console.log('Last insert ID: ' + res.insertId);
 
             callback(insertionData, res.insertId);
         });
@@ -43,8 +42,6 @@ module.exports = {
      * @param aucEventEmitter
      */
     initialiseAuctionEngine : function(aucInfo, id, io, aucEventEmitter) {
-        console.log("the id of this created initialiseAuctionEngine is: " + id);
-        console.log(aucEventEmitter);
         messageEngine.messageEngine(io, id);
 
         switch (aucInfo.protocol){
@@ -99,16 +96,19 @@ module.exports = {
         connection.query(query, [auctionID, userID], function (err, res) {
             if(err)
                 throw err;
-            console.log('Record deleted ' + res.affectedRows + ' rows');
             if(res.affectedRows > 0){
                 callback(auctionID);
             }
         });
     },
 
+    /**
+     * Gets all suspicious users
+     * @param callback
+     */
     getSuspiciousUsers : function(callback){
-        var x = auctionFraud.getAllSuspiciousUsers();
-        callback(x);
+        var suspUsers = auctionFraud.getAllSuspiciousUsers();
+        callback(suspUsers);
 
     }
 

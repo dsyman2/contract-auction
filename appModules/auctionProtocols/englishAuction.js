@@ -7,8 +7,6 @@ var CountdownTimer = require('../countdownTimer');
 module.exports = {
     english : function(io, aucInfo, id, auctionEventEmitter, auctionFraud){
         var countdownTimer = new CountdownTimer(parseInt(aucInfo.length), id);
-        //countdownTimer.on('tick')
-        console.log("YAAY: " + aucInfo.length);
         countdownTimer.start();
         var currentPrice = aucInfo.maxGuidePrice;
         var currentBidder = null;
@@ -18,11 +16,10 @@ module.exports = {
             socket.emit('priceUpdate-' + id, currentPrice);
             socket.emit('timeRemaining-' + id, countdownTimer.time);
             socket.on('bid-' + id, function (data) {
-
+                console.log("Bid Received for auction : " + id + " - By: " + data.bidder);
                 auctionFraud.updateUserBids(data.bidderID, data.bidder, aucInfo);
                 var newBidPrice = +parseFloat(data.bid).toFixed(2);
                 var newBidder = data.bidder;
-                console.log('BID: ' + newBidPrice + newBidder);
                 if (currentPrice > newBidPrice) {
                     currentPrice = newBidPrice;
                     currentBidder = newBidder;
@@ -41,9 +38,7 @@ module.exports = {
 
         countdownTimer.once('stop', function () {
             if(deleteStatus === false) {
-                console.log('AUCTION: ' + id);
                 io.sockets.emit('auctionEnd-' + id, id);
-                // this.removeListener('stop');
                 countdownTimer.removeAllListeners('stop');
                 var auctionObj = null;
                 if(currentBidder != null){

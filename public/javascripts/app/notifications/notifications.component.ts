@@ -13,7 +13,10 @@ import {Inject} from "angular2/src/core/di/decorators";
     templateUrl: '/templates/notifications.html'
 })
 
-
+/**
+ * This is notifications component for the data contian in notifications
+ * and does the logic involved with these
+ */
 export class Notifications {
     private _notes: Notification[];
 
@@ -27,6 +30,10 @@ export class Notifications {
         });
     }
 
+    /**
+     * Hides the notification
+     * @param note
+     */
     private hide(note) {
         let index = this._notes.indexOf(note);
 

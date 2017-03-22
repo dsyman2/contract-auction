@@ -22,7 +22,6 @@ module.exports = {
      */
     updateAuctionVar : function(currentAucs, aucListeners){
         currentAuctions = currentAucs;
-        console.log("updating initialise AuctionEngine variables");
         auctionListeners = aucListeners;
     },
 
@@ -109,15 +108,12 @@ module.exports = {
          * End point for all auction creation requests
          */
         app.post('/createAuction', function(req, res) {
-            console.log("we get this far: " + req.user.id);
             createAuction.addAuctionEntry(req.user.id, req.body, function(aucInfo, aucId){
                 var auc1 = createAuction
                     .initialiseAuctionEngine(
                         aucInfo, aucId, io, auctionEventEmitter);
-                //auctionListeners.push[auc1];
                 auctionListeners[aucId] = auc1;
                 aucInfo.id = aucId;
-                //currentAuctions.push(aucInfo);
                 currentAuctions[aucId] = aucInfo;
                 io.sockets.emit('auctionList', currentAuctions);
                 res.end();
@@ -129,14 +125,12 @@ module.exports = {
          * End point for auction deletion
          */
         app.post('/deleteAuction', function(req, res){
-            console.log('we get this far into delete');
             var aucID = req.body.id;
             createAuction.deleteAuction(aucID, req.user.id, req.user.accountType, function(id){
                 if (currentAuctions.hasOwnProperty(id)
                     && auctionListeners.hasOwnProperty(id)) {
                     delete currentAuctions[id];
                     delete auctionListeners[id];
-                    //console.log('obj: '+ obj.id);
                     auctionEventEmitter.emit('delete-' + id);
                     io.sockets.emit('auctionList', currentAuctions);
                 }
@@ -177,7 +171,6 @@ module.exports = {
         app.get('/contactDetails', function(req, res){
             postAucData.getContactDetailsByUserID(req.query.id, function(contactDetails){
                 res.send(JSON.stringify(contactDetails));
-                console.log(contactDetails);
             })
         });
 
@@ -196,7 +189,6 @@ module.exports = {
         app.get('/allUserDetails', function(req, res){
             if(req.user.accountType === 'Admin'){
                 adminData.getUserDetails(function(userDetails){
-                    console.log(userDetails);
                     res.send(JSON.stringify(userDetails));
                 });
             }
@@ -212,7 +204,6 @@ module.exports = {
         app.get('/deleteUser', function(req, res){
             if(req.user.accountType === 'Admin'){
                 adminData.deleteUser(req.query.userID, function(hasDeleted){
-                    console.log(hasDeleted);
                     res.send(hasDeleted);
                 });
             }
@@ -227,7 +218,6 @@ module.exports = {
         app.get('/getSuspiciousUsers', function(req, res){
            createAuction.getSuspiciousUsers(function(suspUsers){
                res.send(JSON.stringify(suspUsers));
-               console.log('Suspicious: ' + suspUsers);
            });
         });
 
@@ -244,8 +234,6 @@ module.exports = {
                 && auctionListeners.hasOwnProperty(aucID)) {
                 delete currentAuctions[aucID];
                 delete auctionListeners[aucID];
-                //console.log('obj: '+ obj.id);
-                //auctionEventEmitter.emit('delete-' + aucID);
                 io.sockets.emit('auctionList', currentAuctions);
             }
         });

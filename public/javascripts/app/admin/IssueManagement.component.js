@@ -10,6 +10,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 /**
  * Created by Umar on 05/03/2017.
+ *
  */
 var metadata_1 = require("angular2/src/core/metadata");
 var decorators_1 = require("angular2/src/core/di/decorators");
@@ -19,10 +20,14 @@ var IssueManagementComponent = (function () {
         this.http = http;
         this.getSuspiciousUsers();
     }
+    /**
+     * Makes http request to get all suspicious users
+     * @returns {Subscription<Response>}
+     */
     IssueManagementComponent.prototype.getSuspiciousUsers = function () {
         var _this = this;
         return this.http.get('/getSuspiciousUsers', {})
-            .subscribe(function (suspiciousUsers) { return _this.suspiciousUsers = suspiciousUsers.json(); }, function () { return console.log('hi'); }, function () { return _this.suspUsers = Object.keys(_this.suspiciousUsers); });
+            .subscribe(function (suspiciousUsers) { return _this.suspiciousUsers = suspiciousUsers.json(); }, function () { return _this.suspUsers = Object.keys(_this.suspiciousUsers); });
     };
     IssueManagementComponent = __decorate([
         metadata_1.Component({

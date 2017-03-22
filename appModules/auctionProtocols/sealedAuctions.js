@@ -1,7 +1,7 @@
 /**
  * Created by Umar on 02/03/2017.
  */
-var _  = require('underscore');
+var _ = require('underscore');
 var auctionTasks = require('./sharedProtocolTasks.js');
 var CountdownTimer = require('../countdownTimer');
 
@@ -19,11 +19,11 @@ module.exports = {
             socket.emit('priceUpdate-' + id, 'Closed Auction');
             socket.emit('timeRemaining-' + id, countdownTimer.time);
             socket.on('bid-' + id, function (data) {
+                console.log("Bid Received for auction : " + id + " - By: " + data.bidder);
                 auctionFraud.updateUserBids(data.bidderID, data.bidder, aucInfo);
                 var newBidPrice = +parseFloat(data.bid).toFixed(2);
                 var newBidder = data.bidder;
                 if (!(bids.hasOwnProperty(newBidder))) {
-                    console.log('BID: ' + newBidPrice + ' From: ' + newBidder);
                     if (newBidPrice > 0) {
                         bids[newBidder] = newBidPrice;
                     }
@@ -37,11 +37,9 @@ module.exports = {
                     var winner = _.min(Object.keys(bids), function (b) {
                         return bids[b];
                     });
-                    //var winningBidder = winner;
                     var winningBid = bids[winner];
 
                     if (type === false) {
-                        console.log('hihihi');
                         bids = _.omit(bids, winner);
                         if (!_.isEmpty(bids)) {
                             var secondBestBidder = _.min(Object.keys(bids), function (b) {
@@ -52,11 +50,10 @@ module.exports = {
                     }
 
                     io.sockets.emit('priceUpdate-' + id, winningBid);
-                    //sockets.broadcast.emit('priceUpdate-' + id, winningBid);
-                    console.log('AUCTION + ' + id + ' has ended! --> Winner is: ' + winner);
                     io.sockets.emit('auctionEnd-' + id, {});
                     aucInfo.price = winningBid;
                     aucInfo.winnerID = winner;
+
                     var auctionObj = {flag: 'result', aucInfo: aucInfo};
                     auctionTasks.moveCompletedAuction(auctionEventEmitter, auctionObj);
                 }

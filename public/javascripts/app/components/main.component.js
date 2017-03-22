@@ -24,21 +24,23 @@ var decorators_1 = require("angular2/src/core/di/decorators");
 var profileUpdater_component_js_1 = require("./profileUpdater.component.js");
 var userManagement_component_js_1 = require("../admin/userManagement/userManagement.component.js");
 var IssueManagement_component_js_1 = require("../admin/IssueManagement.component.js");
-/* component in angular2 */
 var MainComponent = (function () {
     function MainComponent(_notes) {
         this._notes = _notes;
         this.buttonClickVal = "auctions";
-        console.log('hi');
     }
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     MainComponent.prototype.ngOnInit = function () {
-        console.log("u" + this.user);
         this.user = localStorage.getItem('username');
         this.accountType = localStorage.getItem('accountType');
-        //this.throwPushNotification('hi everyone you');
     };
+    /**
+     * Sets the menu choice with button value
+     * @param optionPicked
+     */
     MainComponent.prototype.onMenuChoice = function (optionPicked) {
-        console.log('hi: ' + optionPicked);
         this.buttonClickVal = optionPicked;
     };
     __decorate([

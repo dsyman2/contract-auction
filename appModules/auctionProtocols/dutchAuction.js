@@ -12,7 +12,6 @@ module.exports = {
         var countdownTimer = new CountdownTimer(aucInfo.length, id);
         var interval = 60000;
         var deleteStatus = false;
-        console.log(auctionEventEmitter);
 
         countdownTimer.start();
 
@@ -20,11 +19,8 @@ module.exports = {
 
             if(currentPrice < maxPrice){
                 currentPrice = +((currentPrice + increment).toFixed(2));
-                console.log('emitting price: ' + currentPrice);
                 io.sockets.emit('priceUpdate-' + id, currentPrice);
             }
-            /* console.log('emitting price: ' + currentPrice);
-             io.sockets.emit('priceUpdate-' + id, currentPrice);*/
         }, interval);
 
         var currentBidder = null;
@@ -33,7 +29,7 @@ module.exports = {
             socket.emit('priceUpdate-' + id, currentPrice);
             socket.emit('timeRemaining-' + id, countdownTimer.time);
             socket.on('bid-' + id, function (data) {
-
+                console.log("Bid Received for auction : " + id + " - By: " + data.bidder);
                 auctionFraud.updateUserBids(data.bidderID, data.bidder, aucInfo);
                 currentBidder = data.bidder;
                 countdownTimer.stop();
@@ -46,11 +42,8 @@ module.exports = {
         });
 
         countdownTimer.once('stop', function () {
-            // currentPrice, id, userID(of currentPrice)
             if(deleteStatus === false) {
-                console.log('AUCTION: ' + id + " : " + currentBidder);
                 io.sockets.emit('auctionEnd-' + id, id);
-                // this.removeListener('stop');
                 countdownTimer.removeAllListeners('stop');
                 if(intervalID){
                     clearInterval(intervalID);

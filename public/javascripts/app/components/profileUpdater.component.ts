@@ -10,11 +10,14 @@ import {URLSearchParams} from "angular2/src/http/url_search_params";
 import {RequestOptions} from "angular2/src/http/base_request_options";
 import globals = require('../config/globals.js');
 
+/**
+ * Class holds the form inputs for profiles
+ */
 class FormInputs{
     email: string ="";
     contactNumber: string ="";
 }
-/* component in angular2 */
+
 @Component({
     selector: 'profile',
     templateUrl: '/templates/profile.html',
@@ -22,6 +25,10 @@ class FormInputs{
     providers: [ValidatorService, HTTP_PROVIDERS]
 })
 
+/**
+ * This components is used for the profile update panel which
+ * allows users to update thier profile
+ */
 export class ProfileUpdaterComponent {
 
     CreateGroup: ControlGroup;
@@ -46,16 +53,9 @@ export class ProfileUpdaterComponent {
         this.getProfileDetails();
     }
 
-    /*addNewGroup(formInputs : FormInputs) {
-        this.formInputs = new FormInputs();
-        let data = {
-            email:           formInputs.email,
-            contactNumber:    formInputs.contactNumber
-        };
-
-        this.updateProfile(data);
-    }*/
-
+    /**
+     * Sets up the profile data to be displayed
+     */
     setProfileDetailsForDisplay(){
         this.username = this.details.username;
         this.email = this.details.email;
@@ -63,19 +63,28 @@ export class ProfileUpdaterComponent {
         this.accountType = this.details.accountType;
     }
 
+    /**
+     * Gets the user specif profile data
+     * @returns {Subscription<Response>}
+     */
     getProfileDetails(){
         let params: URLSearchParams = new URLSearchParams();
         params.set("id", globals.userID);
         this.options.search = params;
-
         return this.http.get('/contactDetails', this.options)
             .subscribe(
                 details => this.details = details.json(),
-                () => console.log('hi' + this.details),
+                () => console.log(this.details.username),
                 () => this.setProfileDetailsForDisplay()
             );
     }
 
+    /**
+     * Makes get request to update user profile data, withe
+     * form inputs
+     * @param formInputs
+     * @returns {Subscription<Response>}
+     */
     updateProfile(formInputs : FormInputs){
         this.formInputs = new FormInputs();
         let params: URLSearchParams = new URLSearchParams();
@@ -86,7 +95,6 @@ export class ProfileUpdaterComponent {
         return this.http.get('/updateProfile', this.options)
             .subscribe(
                 result => this.hasUpdated = result.json(),
-                () => console.log('hasChanged : ' + this.hasUpdated),
                 () => this.getProfileDetails()
             );
     }

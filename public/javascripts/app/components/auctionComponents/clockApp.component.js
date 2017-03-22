@@ -19,36 +19,37 @@ var ClockAppComponent = (function () {
         this.hour = 3600000;
         this.minute = 60000;
         this.second = 1000;
-        //interval = undefined;
         this.isActive = true;
         this.socket = null;
         this.timeUp = new async_1.EventEmitter();
     }
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     ClockAppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        //this.socket = io('http://localhost:8000');
         this.socket = io(globals.socket_src);
         this.socket.on('timeRemaining-' + this.id, function (data) {
             this.time = data;
             console.log("Time is: " + data);
         }.bind(this));
-        console.log(this.time);
         this.observer = Rx_1.Observable.interval(1000).map(function (x) {
             _this.timeRemaining = _this.onTick();
         }).subscribe(function (x) { });
     };
+    /**
+     * Does all on tick tasks such as updating time and checking if the
+     * clock is over.
+     * @returns {string}
+     */
     ClockAppComponent.prototype.onTick = function () {
         if (this.isActive === false) {
             this.observer.unsubscribe();
             this.observer = null;
         }
-        //console.log("ticking af");
         var output = "";
         var remainder = this.time;
-        //this.timeLeft = remainder;
         if (this.time === 0 || this.time <= 0) {
-            //this.stop();
-            console.log('timeup');
             this.isActive = false;
             this.timeUp.emit('timeUp-' + this.id);
             return;
@@ -67,7 +68,6 @@ var ClockAppComponent = (function () {
             return str;
         }).join(":"));
         this.time -= this.second;
-        //console.log("oooh : "+ output);
         return output;
     };
     __decorate([

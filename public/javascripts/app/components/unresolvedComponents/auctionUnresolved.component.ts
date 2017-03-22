@@ -10,6 +10,9 @@ import {Input} from "angular2/src/core/metadata";
     templateUrl: '/templates/unresolvedTemplates/unresolved.html',
 })
 
+/**
+ * Represent a data holder for an individual unresolved auction
+ */
 export class AuctionUnresolvedComponent {
     @Input()unresolved : string;
     @Input()id : string;

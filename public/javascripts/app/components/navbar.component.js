@@ -24,11 +24,17 @@ var NavbarComponent = (function () {
         this.usersPage = 'usersPage';
         this.clickValue = this.auctions;
     }
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     NavbarComponent.prototype.ngOnInit = function () {
         this.accountType = globalVars.accountType;
     };
+    /**
+     * Sets the menu selected option to the option in the parameter
+     * @param option
+     */
     NavbarComponent.prototype.setMenuOption = function (option) {
-        console.log('hi');
         this.clickValue = option;
         this.buttonChoice.emit(option);
     };

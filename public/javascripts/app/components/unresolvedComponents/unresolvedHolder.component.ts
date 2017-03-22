@@ -14,22 +14,24 @@ import {AuctionUnresolvedComponent} from "./auctionUnresolved.component.js";
     directives: [AuctionUnresolvedComponent]
 })
 
+/**
+ * This component holds all the unresolved auctions
+ */
 export class UnresolvedHolderComponent {
     unresolvedList : any;
 
     constructor(@Inject(Http)private http:Http){
-        console.log('getunresolved');
         this.getUnresolved();
     }
 
+    /**
+     * Gets all the unresolved auctions
+     */
     getUnresolved(){
-        console.log('getunresolved');
         this.http.get("/unresolvedAuctions", {})
             .subscribe(
-                unresolvedList => this.unresolvedList = unresolvedList.json(),
-                () => console.log(this.unresolvedList)
+                unresolvedList => this.unresolvedList = unresolvedList.json()
             );
-        //this.results = x;
     }
 
 

@@ -6,8 +6,9 @@ import {Control} from "angular2/src/common/forms/model";
 import {Http} from "angular2/src/http/http";
 import {URLSearchParams} from "angular2/src/http/url_search_params";
 
-
-
+/**
+ * This service is used to validate profile inputs
+ */
 @Injectable()
 export class ProfileValidatorsService {
     details : any;
@@ -30,8 +31,6 @@ function isNotUsed(value: any) {
     return this.http.get('/contactDetails', this.options)
         .subscribe(
             details => this.details = details.json(),
-            () => console.log('hi' + this.details),
-            () => console.log('lol')
         );
 }
 

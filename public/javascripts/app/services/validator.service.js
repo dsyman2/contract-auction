@@ -9,6 +9,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
  * Created by Umar on 04/02/2017.
  */
 var decorators_1 = require("angular2/src/core/di/decorators");
+/**
+ * Validator service is used to validate user input throughout
+ */
 var ValidatorService = (function () {
     function ValidatorService() {
         this.isInteger = function (control) {
@@ -58,11 +61,9 @@ var ValidatorService = (function () {
 }());
 exports.ValidatorService = ValidatorService;
 function checkIsInteger(value) {
-    console.log((parseFloat(value) == parseInt(value)) && !isNaN(value));
     return (parseFloat(value) == parseInt(value)) && !isNaN(value);
 }
 function checkIsFloat(value) {
-    console.log((parseFloat(value) == parseFloat(value)) && !isNaN(value));
     return (parseFloat(value) == parseFloat(value)) && !isNaN(value);
 }
 function checkIsZero(value) {
@@ -70,7 +71,6 @@ function checkIsZero(value) {
 }
 function checkIsIntegerPrice(value, protocol) {
     if (protocol == 'English' || protocol == 'Dutch') {
-        console.log((parseFloat(value) == parseInt(value)) && !isNaN(value));
         return (parseFloat(value) == parseInt(value)) && !isNaN(value);
     }
     return (parseFloat('1') == parseInt('1')) && !isNaN(1);

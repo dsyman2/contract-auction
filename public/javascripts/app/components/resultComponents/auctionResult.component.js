@@ -25,25 +25,35 @@ var AuctionResultComponent = (function () {
         this.options = new base_request_options_1.RequestOptions({ headers: new headers_1.Headers({ 'Content-Type': 'application/json' }) });
         this.resultView = false;
     }
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     AuctionResultComponent.prototype.ngOnInit = function () {
-        console.log(this.protocol);
         var idChoice = (this.winner == localStorage.getItem('userID')) ?
             this.creator : this.winner;
         this.getContactsByID(idChoice);
     };
+    /**
+     * displays contact details
+     */
     AuctionResultComponent.prototype.updateRes = function () {
-        this.resultView = true;
+        this.resultView = !this.resultView;
         this.contactUsername = this.details.username;
         this.contactEmail = this.details.email;
         this.contactNum = this.details.contactNumber;
     };
+    /**
+     * Gets contact details of user by id
+     * @param id
+     * @returns {Subscription<Response>}
+     */
     AuctionResultComponent.prototype.getContactsByID = function (id) {
         var _this = this;
         var params = new url_search_params_1.URLSearchParams();
         params.set("id", id);
         this.options.search = params;
         return this.http.get('/contactDetails', this.options)
-            .subscribe(function (details) { return _this.details = details.json(); }, function () { return console.log('hi' + _this.details); }, function () { return console.log('lol'); });
+            .subscribe(function (details) { return _this.details = details.json(); });
     };
     __decorate([
         metadata_1.Input()

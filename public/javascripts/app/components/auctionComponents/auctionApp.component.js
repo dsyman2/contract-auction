@@ -48,18 +48,18 @@ var AuctionAppComponent = (function () {
             });
         }
     }
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     AuctionAppComponent.prototype.ngOnInit = function () {
         this.accountType = globals.accountType;
-        console.log("username is:" + this.creator);
         this.userID = globals.userID;
         this.socket = io(config.socket_src);
         this.socket.on('priceUpdate-' + this.id, function (data) {
-            console.log(data);
             this.price = +parseFloat(data);
             if (this.showNotif && (this.protocol != '1st-price-sealed' && this.protocol != '2nd-price-sealed')) {
                 this.throwPushNotification('Bid for auction: ' + this.name + '. \n Price: £' + this.price + '.');
             }
-            console.log('hi i is hefre');
         }.bind(this));
         if (this.creator == this.userID) {
             this.showNotif = true;
@@ -68,6 +68,10 @@ var AuctionAppComponent = (function () {
             console.log('over and out: ' + data);
         });
     };
+    /**
+     * Adds a new angular form group
+     * @param formInputs
+     */
     AuctionAppComponent.prototype.addNewGroup = function (formInputs) {
         this.formInputs = new FormInputs();
         var data = {
@@ -75,6 +79,9 @@ var AuctionAppComponent = (function () {
         };
         this.bidParam(data);
     };
+    /**
+     * Called when a bid is made
+     */
     AuctionAppComponent.prototype.bid = function () {
         this.showNotif = true;
         this.socket.emit('bid-' + this.id, {
@@ -84,6 +91,10 @@ var AuctionAppComponent = (function () {
         });
         this.bidValue = '';
     };
+    /**
+     * Called when a bid is made with an input value
+     * @param data
+     */
     AuctionAppComponent.prototype.bidParam = function (data) {
         this.socket.emit('bid-' + this.id, {
             bid: data.bidVal,
@@ -93,10 +104,16 @@ var AuctionAppComponent = (function () {
         this.showNotif = true;
         this.formInputs.bidValue = '';
     };
+    /**
+     * On a time up event do this task
+     * @param data
+     */
     AuctionAppComponent.prototype.onTimeUp = function (data) {
-        //alert(data);
         this.active = false;
     };
+    /**
+     * Delete this auction
+     */
     AuctionAppComponent.prototype.sendDelete = function () {
         this.headers = new http_1.Headers();
         this.headers.append('Content-Type', 'application/json');
@@ -105,9 +122,16 @@ var AuctionAppComponent = (function () {
         this.http.post("/deleteAuction", body, { headers: this.headers })
             .map(function (res) { return (res.json()); }).subscribe();
     };
+    /**
+     * Create a new push notification to alert UI
+     * @param message
+     */
     AuctionAppComponent.prototype.throwPushNotification = function (message) {
         this._notes.add(new notifications_model_js_1.Notification(message));
     };
+    /**
+     * Toggle the notification visibility
+     */
     AuctionAppComponent.prototype.togglePushNotif = function () {
         this.showNotif = !this.showNotif;
     };

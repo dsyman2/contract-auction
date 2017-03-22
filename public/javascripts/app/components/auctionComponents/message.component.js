@@ -17,8 +17,10 @@ var MessageComponent = (function () {
         this.messages = [];
         this.currentMessage = '';
     }
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     MessageComponent.prototype.ngOnInit = function () {
-        //this.socket = io('http://localhost:8000');
         this.socket = io(globals.socket_src);
         this.socket.on('chat msgs-' + this.id, function (msgs) {
             var tempMessages = [];
@@ -27,9 +29,11 @@ var MessageComponent = (function () {
         }.bind(this));
         this.socket.on('chat msg-' + this.id, function (msg) {
             this.messages.push(msg);
-            console.log(msg);
         }.bind(this));
     };
+    /**
+     * Sends the message via sockets
+     */
     MessageComponent.prototype.sendMsg = function () {
         this.socket.emit('chat msg-' + this.id, this.username + ': ' + this.currentMessage);
         this.currentMessage = '';

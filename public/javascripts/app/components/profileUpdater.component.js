@@ -19,6 +19,9 @@ var decorators_1 = require("angular2/src/core/di/decorators");
 var url_search_params_1 = require("angular2/src/http/url_search_params");
 var base_request_options_1 = require("angular2/src/http/base_request_options");
 var globals = require('../config/globals.js');
+/**
+ * Class holds the form inputs for profiles
+ */
 var FormInputs = (function () {
     function FormInputs() {
         this.email = "";
@@ -26,7 +29,6 @@ var FormInputs = (function () {
     }
     return FormInputs;
 }());
-/* component in angular2 */
 var ProfileUpdaterComponent = (function () {
     function ProfileUpdaterComponent(validatorService, fb, http) {
         this.http = http;
@@ -41,29 +43,33 @@ var ProfileUpdaterComponent = (function () {
         });
         this.getProfileDetails();
     }
-    /*addNewGroup(formInputs : FormInputs) {
-        this.formInputs = new FormInputs();
-        let data = {
-            email:           formInputs.email,
-            contactNumber:    formInputs.contactNumber
-        };
-
-        this.updateProfile(data);
-    }*/
+    /**
+     * Sets up the profile data to be displayed
+     */
     ProfileUpdaterComponent.prototype.setProfileDetailsForDisplay = function () {
         this.username = this.details.username;
         this.email = this.details.email;
         this.contactNumber = this.details.contactNumber;
         this.accountType = this.details.accountType;
     };
+    /**
+     * Gets the user specif profile data
+     * @returns {Subscription<Response>}
+     */
     ProfileUpdaterComponent.prototype.getProfileDetails = function () {
         var _this = this;
         var params = new url_search_params_1.URLSearchParams();
         params.set("id", globals.userID);
         this.options.search = params;
         return this.http.get('/contactDetails', this.options)
-            .subscribe(function (details) { return _this.details = details.json(); }, function () { return console.log('hi' + _this.details); }, function () { return _this.setProfileDetailsForDisplay(); });
+            .subscribe(function (details) { return _this.details = details.json(); }, function () { return console.log(_this.details.username); }, function () { return _this.setProfileDetailsForDisplay(); });
     };
+    /**
+     * Makes get request to update user profile data, withe
+     * form inputs
+     * @param formInputs
+     * @returns {Subscription<Response>}
+     */
     ProfileUpdaterComponent.prototype.updateProfile = function (formInputs) {
         var _this = this;
         this.formInputs = new FormInputs();
@@ -72,7 +78,7 @@ var ProfileUpdaterComponent = (function () {
         params.set("contactNumber", formInputs.contactNumber);
         this.options.search = params;
         return this.http.get('/updateProfile', this.options)
-            .subscribe(function (result) { return _this.hasUpdated = result.json(); }, function () { return console.log('hasChanged : ' + _this.hasUpdated); }, function () { return _this.getProfileDetails(); });
+            .subscribe(function (result) { return _this.hasUpdated = result.json(); }, function () { return _this.getProfileDetails(); });
     };
     ProfileUpdaterComponent = __decorate([
         core_1.Component({
