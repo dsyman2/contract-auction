@@ -14,6 +14,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var decorators_1 = require("angular2/src/core/di/decorators");
 var http_1 = require("angular2/src/http/http");
 var url_search_params_1 = require("angular2/src/http/url_search_params");
+/**
+ * This service is used to validate profile inputs
+ */
 var ProfileValidatorsService = (function () {
     function ProfileValidatorsService(http) {
         this.http = http;
@@ -36,5 +39,5 @@ function isNotUsed(value) {
     params.set("value", value);
     this.options.search = params;
     return this.http.get('/contactDetails', this.options)
-        .subscribe(function (details) { return _this.details = details.json(); }, function () { return console.log('hi' + _this.details); }, function () { return console.log('lol'); });
+        .subscribe(function (details) { return _this.details = details.json(); });
 }

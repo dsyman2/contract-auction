@@ -25,6 +25,10 @@ var Notifications = (function () {
             setTimeout(function () { _this.hide.bind(_this)(note); }, 5000);
         });
     }
+    /**
+     * Hides the notification
+     * @param note
+     */
     Notifications.prototype.hide = function (note) {
         var index = this._notes.indexOf(note);
         if (index >= 0) {

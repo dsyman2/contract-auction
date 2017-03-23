@@ -4,7 +4,9 @@
 import {Injectable} from "angular2/src/core/di/decorators";
 import {Control} from "angular2/src/common/forms/model";
 
-
+/**
+ * Validator service is used to validate user input throughout
+ */
 @Injectable()
 export class ValidatorService {
 
@@ -58,12 +60,10 @@ export class ValidatorService {
 }
 
 function checkIsInteger(value: any) {
-    console.log((parseFloat(value) == parseInt(value)) && !isNaN(value));
     return (parseFloat(value) == parseInt(value)) && !isNaN(value);
 }
 
 function checkIsFloat(value: any) {
-    console.log((parseFloat(value) == parseFloat(value)) && !isNaN(value));
     return (parseFloat(value) == parseFloat(value)) && !isNaN(value);
 }
 
@@ -73,7 +73,6 @@ function checkIsZero(value : any){
 
 function checkIsIntegerPrice(value: any, protocol: any) {
     if(protocol == 'English' || protocol == 'Dutch') {
-        console.log((parseFloat(value) == parseInt(value)) && !isNaN(value));
         return (parseFloat(value) == parseInt(value)) && !isNaN(value);
     }
     return (parseFloat('1') == parseInt('1')) && !isNaN(1);

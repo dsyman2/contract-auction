@@ -12,7 +12,6 @@ var core_1 = require('angular2/core');
 var auctionApp_component_js_1 = require('./auctionApp.component.js');
 var metadata_1 = require("angular2/src/core/metadata");
 var globals = require('../../config/configer.js');
-/* component in angular2 */
 var AuctionHolderComponent = (function () {
     function AuctionHolderComponent() {
         this.auctions = {};
@@ -21,17 +20,16 @@ var AuctionHolderComponent = (function () {
         this.filterTradeType = 'All';
         this.tradeTypes = globals.tradeTypes;
     }
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     AuctionHolderComponent.prototype.ngOnInit = function () {
-        //console.log("u" + this.user);
         this.user = localStorage.getItem('username');
-        //this.socket = io('http://localhost:8000');
         this.socket = io(globals.socket_src);
         this.socket.on('auctionList', function (data) {
             this.auctions = data;
-            console.log(this.auctions);
             this.arrayOfAucs = Object.keys(this.auctions);
         }.bind(this));
-        console.log(this.arrayOfAucs);
     };
     __decorate([
         metadata_1.Input()

@@ -4,10 +4,15 @@ body {
     padding-bottom: 5%;
     padding-top: 10%;
     font: 125% "Century Gothic", bold, sans-serif;
+    background-color: whitesmoke;
 }
 
 .no-border {
     border: none;
+}
+
+.inWhite {
+    color: white;
 }
 
 .angular-with-newlines {
@@ -22,7 +27,7 @@ body {
 
 .smlButton{
     background: Transparent no-repeat;
-    color: skyblue;
+    color: deepskyblue;
     border: none;
     cursor:pointer;
     overflow: hidden;
@@ -49,7 +54,7 @@ a {
 }
 
 button {
-    background-color: skyblue;
+    background-color: deepskyblue;
     color: white;
 }
 
@@ -58,12 +63,12 @@ small{
 }
 
 .container{
-    color: dimgrey;
+    color: dimgray;
 }
 
 .alert-orange {
-    border-color: lightsalmon;
-    background: lightsalmon;
+    border-color: darkorange;
+    background: darkorange;
     color: white;
 }
 
@@ -80,11 +85,11 @@ small{
 }
 
 .bg{
-    background: url('../images/grey.jpeg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: url('../images/gradient.png') no-repeat center center fixed;
+    -webkit-background-size: auto;
+    -moz-background-size: auto;
+    -o-background-size: auto;
+    background-size: auto;
 }
 
 .no-click{
@@ -92,13 +97,13 @@ small{
 }
 
 .panel-auction {
-    border-color: transparent;
+    border: none;
 }
 
 .panel-auction > .panel-heading {
-    background: darkgray;
+    background: skyblue;
     color: white;
-    border-color: darkgray;
+    border-color: skyblue;
 }
 
 .panel-auction > .panel-heading-2 {
@@ -118,14 +123,22 @@ small{
     float: right;
 }
 
+.floatyFilter {
+    position:fixed;
+    text-align: center;
+    width: 90%;
+    box-shadow: .5px .5px .5px #888888;
+}
+
 .button-round {
     width: 140%;
     height: 100%;
     border-radius: 50%;
     font-size: 400%;
     color: white;
-    background-color: skyblue;
-    border-color: skyblue;
+    background-color: deepskyblue;
+    border-color: deepskyblue;
+    box-shadow: .5px .5px .5px #888888;
 }
 
 .button-round:hover {
@@ -133,12 +146,12 @@ small{
 }
 
 .btn-orange {
-    background-color: lightsalmon;
+    background-color: darkorange;
 }
 
 /* nav bar stuff*/
 .navbar-default {
-    background-color:skyblue;
+    background-color:deepskyblue;
     background-repeat: no-repeat;
 }
 
@@ -198,12 +211,13 @@ nav{
 
 /*NOTIFS*/
 .notifications {
-    left: calc(50% - 150px);
+    right: calc(50% - 150px);
+    text-align: center;
     position: fixed;
-    top: 10%;
+    bottom: 0%;
 }
 .notifications div {
-    box-shadow: 5px 5px 5px #888888;
+    box-shadow: 3px 3px 3px #888888;
     border-radius: 4px;
     cursor: pointer;
     margin-bottom: 10%;
@@ -214,7 +228,7 @@ nav{
 }
 
 .notifications div.error {
-    background-color: lightsalmon;
+    background-color: darkorange;
     border-color: darkgrey;
     color: white;
 }

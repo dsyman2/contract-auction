@@ -14,6 +14,9 @@ import globalVars = require('../config/globals.js');
 
 })
 
+/**
+ * Component for the navbar, it holds all data associated with it
+ */
 export class NavbarComponent {
 
     @Output() buttonChoice: EventEmitter<string> = new EventEmitter<string>();
@@ -22,16 +25,22 @@ export class NavbarComponent {
     unresolved : string = 'unresolved';
     profile : string = 'profile';
     issues : string = 'issues';
-    usersPage : string = 'usersPage'
+    usersPage : string = 'usersPage';
     clickValue : string = this.auctions;
     accountType : string;
 
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     ngOnInit(){
         this.accountType = globalVars.accountType;
     }
 
+    /**
+     * Sets the menu selected option to the option in the parameter
+     * @param option
+     */
     setMenuOption(option : string){
-        console.log('hi');
         this.clickValue = option;
         this.buttonChoice.emit(option);
     }

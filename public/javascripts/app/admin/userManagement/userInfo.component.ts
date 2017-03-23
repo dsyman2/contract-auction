@@ -2,15 +2,7 @@
  * Created by Umar on 01/03/2017.
  */
 import {Component, Input, Output} from "angular2/src/core/metadata";
-import {URLSearchParams} from "angular2/src/http/url_search_params";
-import {Inject} from "angular2/src/core/di/decorators";
-import {HTTP_PROVIDERS, Http, Headers} from "angular2/http";
-import {RequestOptions} from "angular2/src/http/base_request_options";
 import {EventEmitter} from "angular2/src/facade/async";
-
-/**
- * Created by Umar on 01/03/2017.
- */
 
 @Component({
     selector: 'user-info',
@@ -18,6 +10,9 @@ import {EventEmitter} from "angular2/src/facade/async";
     providers: []
 })
 
+/**
+ * UserInfoComponent represents one user fraud rep in the front end
+ */
 export class UserInfoComponent {
     @Input()username : string;
     @Input()email : string;
@@ -29,9 +24,11 @@ export class UserInfoComponent {
 
 
     constructor() {
-
     }
 
+    /**
+     * Emits a delete signal to the controller
+     */
     sendDelete(){
         this.deleteUserEvent.emit(this.id);
     }

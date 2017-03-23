@@ -14,35 +14,40 @@ import {ROUTER_DIRECTIVES} from "angular2/router";
 import {Inject} from "angular2/src/core/di/decorators";
 import {ProfileUpdaterComponent} from "./profileUpdater.component.js";
 import {UserManagementComponent} from "../admin/userManagement/userManagement.component.js";
+import {IssueManagementComponent} from "../admin/IssueManagement.component.js";
 
-
-/* component in angular2 */
 @Component({
     selector: 'main-holder',
     templateUrl: '/templates/main.html',
     directives: [AuctionHolderComponent, ResultHolderComponent, NavbarComponent,
         UnresolvedHolderComponent, Notifications, ROUTER_DIRECTIVES, ProfileUpdaterComponent,
-        UserManagementComponent]
+        UserManagementComponent, IssueManagementComponent]
 })
 
+/**
+ * This component is the top level which holds all components within it
+ */
 export class MainComponent {
     @Input()user;
     @Input()accountType;
     buttonClickVal : string = "auctions";
 
     constructor(@Inject(NotificationsService)private _notes: NotificationsService) {
-        console.log('hi');
     }
 
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     ngOnInit(){
-        console.log("u" + this.user);
         this.user = localStorage.getItem('username');
         this.accountType = localStorage.getItem('accountType');
-        //this.throwPushNotification('hi everyone you');
     }
 
+    /**
+     * Sets the menu choice with button value
+     * @param optionPicked
+     */
     onMenuChoice(optionPicked : string){
-        console.log('hi: ' + optionPicked);
         this.buttonClickVal = optionPicked;
     }
 }

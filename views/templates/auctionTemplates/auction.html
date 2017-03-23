@@ -56,14 +56,14 @@
 
             <form *ngIf="accountType=='contractor'" class="input-group" [ngFormModel]="CreateGroup">
                 <span *ngIf="protocol != 'Dutch'" class="input-group-addon">£</span>
-                <input class="form-control" [(ngModel)]="formInputs.bidValue" ngControl="bidValue" placeholder="Enter a bid value in pounds" *ngIf="protocol != 'Dutch'">
+                <input name="{{name}}-bidVal" class="form-control" [(ngModel)]="formInputs.bidValue" ngControl="bidValue" placeholder="Enter a bid value in pounds" *ngIf="protocol != 'Dutch'">
                 <span class="input-group-btn">
-                <button class="btn btn-wide" *ngIf="protocol != 'Dutch'" [disabled]="!active" [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)">Place Bid</button>
+                <button name ="{{name}}-bid" class="btn btn-wide" *ngIf="protocol != 'Dutch'" [disabled]="!active" [disabled]='!CreateGroup.valid' (click)="addNewGroup(formInputs)">Place Bid</button>
                 <button class="btn btn-wide" *ngIf="protocol == 'Dutch'" [disabled]="!active" (click)="bid()">Place Bid</button>
             </span>
             </form>
 
-            <small *ngIf="!CreateGroup.controls['bidValue'].valid && accountType=='contractor'">The bid must be greater than zero and a number!</small>
+            <small *ngIf="(!CreateGroup.controls['bidValue'].valid && accountType=='contractor') && formInputs.bidValue.length > 0">The bid must be greater than zero and a number!</small>
         </div>
 
         <div>

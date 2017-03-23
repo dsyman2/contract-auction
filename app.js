@@ -31,9 +31,6 @@ var EventEmitter = require('events').EventEmitter;
 
 //other utility scripts created by the developer
 var createAuction = require('./appModules/createAuction.js');
-var socketTools = require('./appModules/socketTools.js');
-var CountdownTimer = require('./appModules/countdownTimer.js');
-var protocols = require('./appModules/auctionProtocols.js');
 var onServerStartup = require('./appModules/onServerStartup.js');
 
 // pass passport for configuration
@@ -91,7 +88,7 @@ var setListenersForAuctions = function(callback){
         if (currentAuctions.hasOwnProperty(key)) {
             var auc = currentAuctions[key];
             var createdAuc = createAuction
-                .initialiseAuctionEngine(auc, auc.id, io, CountdownTimer, protocols, socketTools, auctionEventEmitter);
+                .initialiseAuctionEngine(auc, auc.id, io, auctionEventEmitter);
             auctionListeners[auc.id] = createdAuc;
         }
     }
@@ -101,7 +98,7 @@ var setListenersForAuctions = function(callback){
 /**
  * Activate all routes with params required
  */
-routes.init(app, passport, createAuction, io, CountdownTimer, protocols, socketTools, auctionEventEmitter);
+routes.init(app, passport, createAuction, io, auctionEventEmitter);
 
 /**
  * Catch the 404's

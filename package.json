@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
     "concurrently": "^1.0.0",
     "lite-server": "^2.0.1",
     "typescript": "^1.7.5",

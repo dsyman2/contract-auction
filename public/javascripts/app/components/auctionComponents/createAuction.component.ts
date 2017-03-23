@@ -12,13 +12,14 @@ import 'rxjs/add/operator/first';
 import {ValidatorService} from "../../services/validator.service.js";
 import globals = require('../../config/globals.js');
 
-
+/**
+ * Class represents all form inputs in the create auction popup
+ */
 class FormInputs{
     auctionName: string;
     auctionDesc: string;
     length: number;
     protocol: string;
-   // creatorID: string;
     maxGuidePrice : string = '12000';
     contractType : string;
     tradeType : string;
@@ -29,18 +30,16 @@ class FormInputs{
     templateUrl: '/templates/auctionTemplates/createAuction.html',
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
     providers: [ValidatorService, HTTP_PROVIDERS]
-   // providers: [HTTP_PROVIDERS]
 })
 
-
+/**
+ * This component reperesents the popup for creating an auction
+ */
 export class CreateAuctionComponent {
     CreateGroup: ControlGroup;
     formInputs: FormInputs;
-    //requestOptions: RequestOptions;
     headers: Headers;
-   // http: Http;
     numberValidity : boolean = null;
-    filesToUpload: Array<File>;
     accountType : string;
     tradeTypes : Array<String> = globals.tradeTypes;
 
@@ -60,10 +59,17 @@ export class CreateAuctionComponent {
         });
     }
 
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     ngOnInit(){
         this.accountType = globals.accountType;
     }
 
+    /**
+     * Adds form inputs to an object
+     * @param formInputs
+     */
     addNewGroup(formInputs : FormInputs) {
         this.formInputs = new FormInputs();
         let data = {
@@ -76,14 +82,16 @@ export class CreateAuctionComponent {
             tradeType:      formInputs.tradeType
         };
 
-       // data.description = data.description.replace(/\r\n?/g, '<br />');
-
         this.addAuctionPostRequest("/createAuction", data);
     }
 
+    /**
+     * Makes a post request to post the create auction with the given
+     * data
+     * @param url
+     * @param data
+     */
     addAuctionPostRequest(url, data) {
-        console.log("auction name: " + data.auctionName);
-
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
 

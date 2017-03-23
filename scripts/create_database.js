@@ -7,8 +7,8 @@ var dbconfig = require('../config/database');
 
 var connection = mysql.createConnection(dbconfig.connection);
 
-/*connection.query('CREATE DATABASE ' + dbconfig.database);*/
-/*
+connection.query('CREATE DATABASE ' + dbconfig.database);
+
 connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.users_table + '` ( \
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
@@ -23,7 +23,7 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.users_table + '` ( \
     UNIQUE INDEX `username_UNIQUE` (`username` ASC), \
     UNIQUE INDEX `email_UNIQUE` (`email` ASC), \
     UNIQUE INDEX `address_UNIQUE` (`address` ASC)\
-)');*/
+)');
 
 connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.auction_table + '` ( \
@@ -42,7 +42,7 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.auction_table + '` ( \
         + ' REFERENCES `'
         + dbconfig.database + '`.`' + dbconfig.users_table + '`(`id`) \
 )');
-/*
+
 connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.results_table + '` ( \
     `resultID` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
@@ -85,7 +85,7 @@ CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.unresolved_table + '` ( \
         CONSTRAINT `fk_PerUnres` FOREIGN KEY (`creatorID`)'
     + ' REFERENCES `'
     + dbconfig.database + '`.`' + dbconfig.users_table + '`(`id`) \
-)');*/
+)');
 
 console.log('Success: Database Created!');
 

@@ -6,8 +6,6 @@
  * for get and post request to manipulate the application state such as createAuction().
  */
 
-// app/routes.js
-
 var auctionListeners = {};
 var currentAuctions = {};
 var postAucData = require('../appModules/postAuctionDataGetter');
@@ -24,7 +22,6 @@ module.exports = {
      */
     updateAuctionVar : function(currentAucs, aucListeners){
         currentAuctions = currentAucs;
-        console.log("updating initialise AuctionEngine variables");
         auctionListeners = aucListeners;
     },
 
@@ -35,12 +32,9 @@ module.exports = {
      * @param passport
      * @param createAuction
      * @param io
-     * @param CountdownTimer
-     * @param protocols
-     * @param socketTools
      * @param auctionEventEmitter
      */
-    init : function(app, passport, createAuction, io, CountdownTimer, protocols, socketTools, auctionEventEmitter){
+    init : function(app, passport, createAuction, io, auctionEventEmitter){
         /**
          * Homepage -> Index (LOGIN)
          */
@@ -114,15 +108,12 @@ module.exports = {
          * End point for all auction creation requests
          */
         app.post('/createAuction', function(req, res) {
-            console.log("we get this far: " + req.user.id);
             createAuction.addAuctionEntry(req.user.id, req.body, function(aucInfo, aucId){
                 var auc1 = createAuction
                     .initialiseAuctionEngine(
-                        aucInfo, aucId, io, CountdownTimer, protocols, socketTools, auctionEventEmitter);
-                //auctionListeners.push[auc1];
+                        aucInfo, aucId, io, auctionEventEmitter);
                 auctionListeners[aucId] = auc1;
                 aucInfo.id = aucId;
-                //currentAuctions.push(aucInfo);
                 currentAuctions[aucId] = aucInfo;
                 io.sockets.emit('auctionList', currentAuctions);
                 res.end();
@@ -134,14 +125,12 @@ module.exports = {
          * End point for auction deletion
          */
         app.post('/deleteAuction', function(req, res){
-            console.log('we get this far into delete');
             var aucID = req.body.id;
             createAuction.deleteAuction(aucID, req.user.id, req.user.accountType, function(id){
                 if (currentAuctions.hasOwnProperty(id)
                     && auctionListeners.hasOwnProperty(id)) {
                     delete currentAuctions[id];
                     delete auctionListeners[id];
-                    //console.log('obj: '+ obj.id);
                     auctionEventEmitter.emit('delete-' + id);
                     io.sockets.emit('auctionList', currentAuctions);
                 }
@@ -168,7 +157,7 @@ module.exports = {
         });
 
         /**
-         * returns an array of all unresolved auctions dependent on the username/id
+         * responds with an array of all unresolved auctions dependent on the username/id
          */
         app.get('/unresolvedAuctions', function(req, res) {
             postAucData.getUnresolvedByUserID(req.user.id, function (unresolvedList) {
@@ -182,7 +171,6 @@ module.exports = {
         app.get('/contactDetails', function(req, res){
             postAucData.getContactDetailsByUserID(req.query.id, function(contactDetails){
                 res.send(JSON.stringify(contactDetails));
-                console.log(contactDetails);
             })
         });
 
@@ -201,7 +189,6 @@ module.exports = {
         app.get('/allUserDetails', function(req, res){
             if(req.user.accountType === 'Admin'){
                 adminData.getUserDetails(function(userDetails){
-                    console.log(userDetails)
                     res.send(JSON.stringify(userDetails));
                 });
             }
@@ -217,7 +204,6 @@ module.exports = {
         app.get('/deleteUser', function(req, res){
             if(req.user.accountType === 'Admin'){
                 adminData.deleteUser(req.query.userID, function(hasDeleted){
-                    console.log(hasDeleted);
                     res.send(hasDeleted);
                 });
             }
@@ -226,7 +212,18 @@ module.exports = {
             }
         });
 
-        //Set listener for auction move event
+        /**
+         * Get suspicious users
+         */
+        app.get('/getSuspiciousUsers', function(req, res){
+           createAuction.getSuspiciousUsers(function(suspUsers){
+               res.send(JSON.stringify(suspUsers));
+           });
+        });
+
+        /**
+         * Set listener for auction move event
+         */
         auctionCompTasks.moveAuctionCompletedListener(auctionEventEmitter);
 
         /**
@@ -237,8 +234,6 @@ module.exports = {
                 && auctionListeners.hasOwnProperty(aucID)) {
                 delete currentAuctions[aucID];
                 delete auctionListeners[aucID];
-                //console.log('obj: '+ obj.id);
-                //auctionEventEmitter.emit('delete-' + aucID);
                 io.sockets.emit('auctionList', currentAuctions);
             }
         });
@@ -248,7 +243,7 @@ module.exports = {
 };
 
 /**
- * Are they logged in? function
+ * isLoggedIn detects whether a user is logged in
  **/
 function isLoggedIn(req, res, next) {
 

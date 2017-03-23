@@ -19,15 +19,15 @@ var auctionUnresolved_component_js_1 = require("./auctionUnresolved.component.js
 var UnresolvedHolderComponent = (function () {
     function UnresolvedHolderComponent(http) {
         this.http = http;
-        console.log('getunresolved');
         this.getUnresolved();
     }
+    /**
+     * Gets all the unresolved auctions
+     */
     UnresolvedHolderComponent.prototype.getUnresolved = function () {
         var _this = this;
-        console.log('getunresolved');
         this.http.get("/unresolvedAuctions", {})
-            .subscribe(function (unresolvedList) { return _this.unresolvedList = unresolvedList.json(); }, function () { return console.log(_this.unresolvedList); });
-        //this.results = x;
+            .subscribe(function (unresolvedList) { return _this.unresolvedList = unresolvedList.json(); });
     };
     UnresolvedHolderComponent = __decorate([
         core_1.Component({

@@ -1,5 +1,7 @@
 /**
  * Created by Umar on 23/02/2017.
+ *
+ * Holds all global variables need for the front end
  */
 'use strict';
 

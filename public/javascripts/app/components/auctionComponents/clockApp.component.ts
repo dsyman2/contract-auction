@@ -12,6 +12,10 @@ import globals = require('../../config/configer.js');
     templateUrl: '/templates/auctionTemplates/clock.html'
 })
 
+/**
+ * The clock app is present in all auctionApps, it's an angular app
+ * which does the front end countdown clock.
+ */
 export class ClockAppComponent {
 
     @Input() id;
@@ -21,14 +25,15 @@ export class ClockAppComponent {
     minute = 60000;
     second = 1000;
     time;
-    //interval = undefined;
     isActive = true;
     socket = null;
     @Output() timeUp: EventEmitter<string> = new EventEmitter<string>();
     observer;
 
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     ngOnInit() {
-        //this.socket = io('http://localhost:8000');
         this.socket = io(globals.socket_src)
 
         this.socket.on('timeRemaining-' + this.id, function(data){
@@ -36,13 +41,16 @@ export class ClockAppComponent {
             console.log("Time is: " + data);
         }.bind(this));
 
-        console.log(this.time);
-
         this.observer = Observable.interval(1000).map((x) => {
             this.timeRemaining = this.onTick();
         }).subscribe((x) => {});
     }
 
+    /**
+     * Does all on tick tasks such as updating time and checking if the
+     * clock is over.
+     * @returns {string}
+     */
     onTick(){
 
         if(this.isActive === false){
@@ -50,14 +58,10 @@ export class ClockAppComponent {
             this.observer = null;
         }
 
-        //console.log("ticking af");
         let output = "";
         let remainder = this.time;
-        //this.timeLeft = remainder;
 
         if (this.time === 0 || this.time <= 0) {
-            //this.stop();
-            console.log('timeup');
             this.isActive = false;
             this.timeUp.emit('timeUp-' + this.id);
             return;
@@ -82,7 +86,6 @@ export class ClockAppComponent {
         }).join(":")
     );
         this.time -= this.second;
-        //console.log("oooh : "+ output);
         return output;
     }
 

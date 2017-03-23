@@ -15,6 +15,9 @@ import {AuctionResultComponent} from "./auctionResult.component.js";
     directives: [AuctionResultComponent]
 })
 
+/**
+ * This component holds all auction results and functions for these results
+ */
 export class ResultHolderComponent {
     createdList : any;
     wonList: any;
@@ -27,29 +30,34 @@ export class ResultHolderComponent {
         this.getWonAucResults();
     }
 
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     ngOnInit(){
         this.accountType = globals.accountType;
     }
 
+    /**
+     * Get request for all completed auctions which are created by contract issuers
+     */
     getCreatedAucResults(){
        this.http.get("/completedAuctions", {})
            .subscribe(
-               createdList => this.createdList = createdList.json(),
-                () => console.log(this.createdList),
-               () => this.createdB = true
+               createdList => this.createdList = createdList.json().reverse(),
+                () => this.createdB = true
             );
     }
 
+    /**
+     * Get request for all won auctions which are created by contractors
+     */
     getWonAucResults(){
 
         this.http.get("/wonAuctions", {})
             .subscribe(
-                wonList => this.wonList = wonList.json(),
-                () => console.log(this.wonList),
+                wonList => this.wonList = wonList.json().reverse(),
                 () => this.won = true
             );
     }
-
-
 
 }

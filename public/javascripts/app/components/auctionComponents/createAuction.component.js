@@ -20,9 +20,11 @@ require('rxjs/Rx');
 require('rxjs/add/operator/first');
 var validator_service_js_1 = require("../../services/validator.service.js");
 var globals = require('../../config/globals.js');
+/**
+ * Class represents all form inputs in the create auction popup
+ */
 var FormInputs = (function () {
     function FormInputs() {
-        // creatorID: string;
         this.maxGuidePrice = '12000';
     }
     return FormInputs;
@@ -30,7 +32,6 @@ var FormInputs = (function () {
 var CreateAuctionComponent = (function () {
     function CreateAuctionComponent(validatorService, fb, http) {
         this.http = http;
-        // http: Http;
         this.numberValidity = null;
         this.tradeTypes = globals.tradeTypes;
         this.formInputs = new FormInputs();
@@ -46,9 +47,16 @@ var CreateAuctionComponent = (function () {
             'tradeType': new common_1.Control(this.formInputs.tradeType, common_1.Validators.required)
         });
     }
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     CreateAuctionComponent.prototype.ngOnInit = function () {
         this.accountType = globals.accountType;
     };
+    /**
+     * Adds form inputs to an object
+     * @param formInputs
+     */
     CreateAuctionComponent.prototype.addNewGroup = function (formInputs) {
         this.formInputs = new FormInputs();
         var data = {
@@ -60,11 +68,15 @@ var CreateAuctionComponent = (function () {
             contractType: formInputs.contractType,
             tradeType: formInputs.tradeType
         };
-        // data.description = data.description.replace(/\r\n?/g, '<br />');
         this.addAuctionPostRequest("/createAuction", data);
     };
+    /**
+     * Makes a post request to post the create auction with the given
+     * data
+     * @param url
+     * @param data
+     */
     CreateAuctionComponent.prototype.addAuctionPostRequest = function (url, data) {
-        console.log("auction name: " + data.auctionName);
         this.headers = new http_1.Headers();
         this.headers.append('Content-Type', 'application/json');
         var body = JSON.stringify(data);

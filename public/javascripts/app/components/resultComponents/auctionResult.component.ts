@@ -16,6 +16,9 @@ import {Headers} from "angular2/src/http/headers";
     providers: [HTTP_PROVIDERS]
 })
 
+/**
+ * This component represents an auction result widget
+ */
 export class AuctionResultComponent {
     @Input()result : string;
     @Input()id : string;
@@ -37,8 +40,10 @@ export class AuctionResultComponent {
     contactNum : string;
     resultView: boolean = false;
 
+    /**
+     * On initialising do... instead of constructor so data can be passed in
+     */
     ngOnInit() {
-        console.log(this.protocol);
         var idChoice = (this.winner == localStorage.getItem('userID')) ?
             this.creator : this.winner;
             this.getContactsByID(idChoice);
@@ -47,14 +52,22 @@ export class AuctionResultComponent {
     constructor(@Inject(Http)private http:Http){
     }
 
+    /**
+     * displays contact details
+     */
     updateRes(){
-        this.resultView = true;
+        this.resultView = !this.resultView;
         this.contactUsername = this.details.username;
         this.contactEmail = this.details.email;
         this.contactNum = this.details.contactNumber;
 
     }
 
+    /**
+     * Gets contact details of user by id
+     * @param id
+     * @returns {Subscription<Response>}
+     */
     getContactsByID(id : string){
         let params: URLSearchParams = new URLSearchParams();
         params.set("id", id);
@@ -62,9 +75,7 @@ export class AuctionResultComponent {
 
         return this.http.get('/contactDetails', this.options)
             .subscribe(
-                details => this.details = details.json(),
-                () => console.log('hi' + this.details),
-                () => console.log('lol')
+                details => this.details = details.json()
             );
     }
 }

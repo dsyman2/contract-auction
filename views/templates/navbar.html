@@ -13,9 +13,9 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a name="auctions" href="#" (click)="setMenuOption(auctions)" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Auctions<span class="sr-only">(current)</span></a></li>
-                <li><a *ngIf="accountType!='Admin'" href="#" (click)="setMenuOption(myAuctions)" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">My Auctions</a></li>
-                <li *ngIf="accountType=='Contract Issuer'"><a href="#" (click)="setMenuOption(unresolved)" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Unresolved</a></li>
+                <li><a name="auctions" href="#" (click)="setMenuOption(auctions)" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Live Auctions<span class="sr-only">(current)</span></a></li>
+                <li><a *ngIf="accountType!='Admin'" href="#" (click)="setMenuOption(myAuctions)" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">My Completed Auctions</a></li>
+                <li *ngIf="accountType=='Contract Issuer'"><a href="#" (click)="setMenuOption(unresolved)" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Unresolved Auctions</a></li>
                 <li><a *ngIf="accountType!='Admin'" href="#" (click)="setMenuOption(profile)" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Profile</a></li>
                 <li *ngIf="accountType=='Admin'"><a href="#" (click)="setMenuOption(usersPage)" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">User Management</a></li>
                 <li *ngIf="accountType=='Admin'"><a href="#" (click)="setMenuOption(issues)" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Issue Management</a></li>

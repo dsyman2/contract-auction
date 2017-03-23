@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: app/components/profileUpdater.component.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: app/components/profileUpdater.component.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c &lt; 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" &amp;&amp; typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c &lt; 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 &amp;&amp; r &amp;&amp; Object.defineProperty(target, key, r), r;
+};
+var __param = (this &amp;&amp; this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+/**
+ * Created by Umar on 20/02/2017.
+ */
+var core_1 = require('angular2/core');
+var common_1 = require("angular2/common");
+var validator_service_js_1 = require("../services/validator.service.js");
+var http_1 = require("angular2/http");
+var decorators_1 = require("angular2/src/core/di/decorators");
+var url_search_params_1 = require("angular2/src/http/url_search_params");
+var base_request_options_1 = require("angular2/src/http/base_request_options");
+var globals = require('../config/globals.js');
+/**
+ * Class holds the form inputs for profiles
+ */
+var FormInputs = (function () {
+    function FormInputs() {
+        this.email = "";
+        this.contactNumber = "";
+    }
+    return FormInputs;
+}());
+var ProfileUpdaterComponent = (function () {
+    function ProfileUpdaterComponent(validatorService, fb, http) {
+        this.http = http;
+        this.options = new base_request_options_1.RequestOptions({ headers: new http_1.Headers({ 'Content-Type': 'application/json' }) });
+        this.hasUpdated = undefined;
+        this.formInputs = new FormInputs();
+        this.CreateGroup = fb.group({
+            'email': new common_1.Control(this.formInputs.email, common_1.Validators.compose([common_1.Validators.required,
+                validatorService.isValidEmailFormat])),
+            'contactNumber': new common_1.Control(this.formInputs.contactNumber, common_1.Validators.compose([common_1.Validators.required,
+                validatorService.isInteger, validatorService.isPhoneNumberLength]))
+        });
+        this.getProfileDetails();
+    }
+    /**
+     * Sets up the profile data to be displayed
+     */
+    ProfileUpdaterComponent.prototype.setProfileDetailsForDisplay = function () {
+        this.username = this.details.username;
+        this.email = this.details.email;
+        this.contactNumber = this.details.contactNumber;
+        this.accountType = this.details.accountType;
+    };
+    /**
+     * Gets the user specif profile data
+     * @returns {Subscription&lt;Response>}
+     */
+    ProfileUpdaterComponent.prototype.getProfileDetails = function () {
+        var _this = this;
+        var params = new url_search_params_1.URLSearchParams();
+        params.set("id", globals.userID);
+        this.options.search = params;
+        return this.http.get('/contactDetails', this.options)
+            .subscribe(function (details) { return _this.details = details.json(); }, function () { return console.log(_this.details.username); }, function () { return _this.setProfileDetailsForDisplay(); });
+    };
+    /**
+     * Makes get request to update user profile data, withe
+     * form inputs
+     * @param formInputs
+     * @returns {Subscription&lt;Response>}
+     */
+    ProfileUpdaterComponent.prototype.updateProfile = function (formInputs) {
+        var _this = this;
+        this.formInputs = new FormInputs();
+        var params = new url_search_params_1.URLSearchParams();
+        params.set("email", formInputs.email);
+        params.set("contactNumber", formInputs.contactNumber);
+        this.options.search = params;
+        return this.http.get('/updateProfile', this.options)
+            .subscribe(function (result) { return _this.hasUpdated = result.json(); }, function () { return _this.getProfileDetails(); });
+    };
+    ProfileUpdaterComponent = __decorate([
+        core_1.Component({
+            selector: 'profile',
+            templateUrl: '/templates/profile.html',
+            directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES],
+            providers: [validator_service_js_1.ValidatorService, http_1.HTTP_PROVIDERS]
+        }),
+        __param(0, decorators_1.Inject(validator_service_js_1.ValidatorService)),
+        __param(1, decorators_1.Inject(common_1.FormBuilder)),
+        __param(2, decorators_1.Inject(http_1.Http))
+    ], ProfileUpdaterComponent);
+    return ProfileUpdaterComponent;
+}());
+exports.ProfileUpdaterComponent = ProfileUpdaterComponent;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#browser_1">browser_1</a></li><li><a href="global.html#core_1">core_1</a></li><li><a href="global.html#decorators_1">decorators_1</a></li><li><a href="global.html#FormInputs">FormInputs</a></li><li><a href="global.html#metadata_1">metadata_1</a></li><li><a href="global.html#Notification">Notification</a></li><li><a href="global.html#NotificationsService">NotificationsService</a></li><li><a href="global.html#ProfileValidatorsService">ProfileValidatorsService</a></li><li><a href="global.html#ValidatorService">ValidatorService</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Mar 22 2017 20:38:37 GMT+0000 (GMT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
