@@ -67,7 +67,7 @@ function checkIsFloat(value) {
     return (parseFloat(value) == parseFloat(value)) && !isNaN(value);
 }
 function checkIsZero(value) {
-    return (value > 0);
+    return (parseInt(value) > 0);
 }
 function checkIsIntegerPrice(value, protocol) {
     if (protocol == 'English' || protocol == 'Dutch') {

@@ -3,7 +3,6 @@
  *
  * Here you can set all the DB specifics which are needed in 'scripts/create_database.js' such as seen below.
  */
-/*
 module.exports = {
     'connection': {
         'host': 'localhost',
@@ -17,8 +16,7 @@ module.exports = {
     'unresolved_table' : 'unresolved'
 };
 
-*/
-module.exports = {
+/*module.exports = {
     'connection': {
         'host': 'ip-172-31-27-155',
         'user': 'root',
@@ -29,7 +27,7 @@ module.exports = {
     'auction_table': 'auctions',
     'results_table' : 'results',
     'unresolved_table' : 'unresolved'
-};
+};*/
 
 /*
 module.exports = {

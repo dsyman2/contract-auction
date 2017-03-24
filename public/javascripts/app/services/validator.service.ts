@@ -68,7 +68,7 @@ function checkIsFloat(value: any) {
 }
 
 function checkIsZero(value : any){
-    return (value > 0);
+    return (parseInt(value) > 0);
 }
 
 function checkIsIntegerPrice(value: any, protocol: any) {
