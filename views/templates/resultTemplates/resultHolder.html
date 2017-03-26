@@ -17,7 +17,7 @@
     </div>
 
     <div *ngIf="accountType=='contractor'">
-        <h4 class="panel-heading-2">The results s of the auctions you've won are below: </h4>
+        <h4 class="panel-heading-2">The results of the auctions you've won are below: </h4>
         <div *ngFor="#won of wonList">
             <result-app
                     id = {{won.createdID}} name = {{won.name}} desc = {{won.description}} protocol = {{won.protocol}}
